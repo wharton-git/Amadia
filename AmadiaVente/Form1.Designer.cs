@@ -45,6 +45,7 @@
             // 
             // guna2TextBox1
             // 
+            guna2TextBox1.Anchor = AnchorStyles.None;
             guna2TextBox1.CustomizableEdges = customizableEdges1;
             guna2TextBox1.DefaultText = "";
             guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -65,6 +66,7 @@
             // 
             // guna2TextBox2
             // 
+            guna2TextBox2.Anchor = AnchorStyles.None;
             guna2TextBox2.CustomizableEdges = customizableEdges3;
             guna2TextBox2.DefaultText = "";
             guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -85,6 +87,7 @@
             // 
             // btnConnect
             // 
+            btnConnect.Anchor = AnchorStyles.None;
             btnConnect.CustomizableEdges = customizableEdges5;
             btnConnect.DisabledState.BorderColor = Color.DarkGray;
             btnConnect.DisabledState.CustomBorderColor = Color.DarkGray;

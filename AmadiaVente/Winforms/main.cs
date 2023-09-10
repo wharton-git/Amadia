@@ -14,12 +14,30 @@ namespace AmadiaVente.Winforms
     {
         //Déclaration Globale
         private Size originalSize;
+        private Form activeForm;
 
         //Méthodes (fonctions)
         public main()
         {
             InitializeComponent();
             originalSize = this.Size;
+        }
+
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            //ActivateButton(btnSender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelMainChild.Controls.Add(childForm);
+            this.panelMainChild.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
         private void disconnectAction()
@@ -47,5 +65,15 @@ namespace AmadiaVente.Winforms
         {
             disconnectAction();
         }
+        private void main_Load(object sender, EventArgs e)
+        {
+            OpenChildForm(new functionality.achat(), sender);
+        }
+
+        private void btnAchat_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new functionality.achat(), sender);
+        }
+
     }
 }
