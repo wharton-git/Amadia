@@ -12,4 +12,8 @@
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Winforms\" />
+  </ItemGroup>
+
 </Project>
