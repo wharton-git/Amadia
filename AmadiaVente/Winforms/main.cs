@@ -15,12 +15,20 @@ namespace AmadiaVente.Winforms
         //Déclaration Globale
         private Size originalSize;
         private Form activeForm;
-                
+        Form1 Session;
+        String sessionNom;
+        String sessionPrenom;
+        String sessionFunction;
+
         //Méthodes (fonctions)
-        public main()
+        public main(string sessionNom, string sessionPrenom, string sessionFunction)
         {
             InitializeComponent();
             originalSize = this.Size;
+
+            this.sessionNom = sessionNom;
+            this.sessionPrenom = sessionPrenom;
+            this.sessionFunction = sessionFunction;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -67,6 +75,7 @@ namespace AmadiaVente.Winforms
         }
         private void main_Load(object sender, EventArgs e)
         {
+            labelSession.Text = sessionNom;
             OpenChildForm(new functionality.achat(), sender);
         }
 

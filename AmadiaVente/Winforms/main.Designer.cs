@@ -50,11 +50,13 @@
             btnDisconnect = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             panelMainChild = new Guna.UI2.WinForms.Guna2GradientPanel();
+            labelSession = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelLeftMenu.SuspendLayout();
             SuspendLayout();
             // 
             // panelLeftMenu
             // 
+            panelLeftMenu.Controls.Add(labelSession);
             panelLeftMenu.Controls.Add(guna2GradientButton5);
             panelLeftMenu.Controls.Add(guna2GradientButton4);
             panelLeftMenu.Controls.Add(guna2GradientButton3);
@@ -160,7 +162,7 @@
             // guna2Separator1
             // 
             guna2Separator1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            guna2Separator1.Location = new Point(8, 396);
+            guna2Separator1.Location = new Point(8, 374);
             guna2Separator1.Name = "guna2Separator1";
             guna2Separator1.Size = new Size(166, 13);
             guna2Separator1.TabIndex = 0;
@@ -175,6 +177,15 @@
             panelMainChild.Size = new Size(731, 502);
             panelMainChild.TabIndex = 1;
             // 
+            // labelSession
+            // 
+            labelSession.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            labelSession.BackColor = Color.Transparent;
+            labelSession.Location = new Point(7, 400);
+            labelSession.Name = "labelSession";
+            labelSession.Size = new Size(3, 2);
+            labelSession.TabIndex = 6;
+            // 
             // main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -186,6 +197,7 @@
             Text = "main";
             Load += main_Load;
             panelLeftMenu.ResumeLayout(false);
+            panelLeftMenu.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -199,5 +211,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnAchat;
         private Guna.UI2.WinForms.Guna2GradientButton btnDisconnect;
         private Guna.UI2.WinForms.Guna2GradientPanel panelMainChild;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelSession;
     }
 }
