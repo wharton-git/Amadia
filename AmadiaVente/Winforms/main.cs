@@ -19,9 +19,10 @@ namespace AmadiaVente.Winforms
         String sessionNom;
         String sessionPrenom;
         String sessionFunction;
+        String sessionId;
 
         //Méthodes (fonctions)
-        public main(string sessionNom, string sessionPrenom, string sessionFunction)
+        public main(string sessionNom, string sessionPrenom, string sessionFunction, string sessionId)
         {
             InitializeComponent();
             originalSize = this.Size;
@@ -29,6 +30,7 @@ namespace AmadiaVente.Winforms
             this.sessionNom = sessionNom;
             this.sessionPrenom = sessionPrenom;
             this.sessionFunction = sessionFunction;
+            this.sessionId = sessionId;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)

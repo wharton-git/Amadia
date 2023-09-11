@@ -12,6 +12,7 @@ namespace AmadiaVente
         public string sessionNom;
         public string sessionPrenom;
         public string sessionFunction;
+        public string sessionId;
 
         //Méthodes (Fonctions)
         public Form1()
@@ -47,7 +48,7 @@ namespace AmadiaVente
                             string prenomUser = reader.GetString(2);
                             string fonctionUser = reader.GetString(3);
 
-                            return new string[] { nomUser, prenomUser, fonctionUser };
+                            return new string[] { nomUser, prenomUser, fonctionUser, idUser.ToString() };
                         }
                     }
                 }
@@ -58,7 +59,7 @@ namespace AmadiaVente
 
         private void connectAction()
         {
-            Winforms.main mainWin = new Winforms.main(sessionNom, sessionPrenom, sessionFunction);
+            Winforms.main mainWin = new Winforms.main(sessionNom, sessionPrenom, sessionFunction, sessionId);
             mainWin.StartPosition = FormStartPosition.Manual;
             mainWin.Location = this.Location;
             mainWin.Size = this.Size;
