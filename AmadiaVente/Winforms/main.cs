@@ -15,7 +15,7 @@ namespace AmadiaVente.Winforms
         //Déclaration Globale
         private Size originalSize;
         private Form activeForm;
-
+                
         //Méthodes (fonctions)
         public main()
         {
@@ -74,6 +74,5 @@ namespace AmadiaVente.Winforms
         {
             OpenChildForm(new functionality.achat(), sender);
         }
-
     }
 }
