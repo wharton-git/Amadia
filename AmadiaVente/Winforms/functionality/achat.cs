@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using Microsoft.Data.Sqlite;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace AmadiaVente.Winforms.functionality
@@ -96,6 +97,10 @@ namespace AmadiaVente.Winforms.functionality
             comboBoxTypeArticle.Items.Add("Médicaments");
             comboBoxTypeArticle.Items.Add("Equipements");
             comboBoxTypeArticle.SelectedItem = "Médicaments";
+
+            //comboBoxNomMembre.DropDownStyle = ComboBoxStyle.DropDown;
+            /*comboBoxNomMembre.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxNomMembre.AutoCompleteSource = AutoCompleteSource.ListItems;*/
 
             txtBoxPU.Text = "300";
             txtBoxPU.Enabled = false;
