@@ -32,14 +32,14 @@ namespace AmadiaVente.Winforms.functionality
 
         private void disableFunction()
         {
-            comboBoxNumeroMembre.Enabled = false;
+            txtBoxNumeroMembre.Enabled = false;
             comboBoxNomMembre.Enabled = false;
             txtBoxPrix.Enabled = false;
         }
 
         private void enableFunction()
         {
-            comboBoxNumeroMembre.Enabled = true;
+            txtBoxNumeroMembre.Enabled = true;
             comboBoxNomMembre.Enabled = true;
             txtBoxPrix.Enabled = true;
         }
@@ -136,7 +136,7 @@ namespace AmadiaVente.Winforms.functionality
         {
             DisableAllFunction();
             comboBoxMembre.Enabled = true;
-            comboBoxMembre.Text = comboBoxDesignation.Text = comboBoxNomMembre.Text = comboBoxNumeroMembre.Text = comboBoxTypeArticle.Text = string.Empty;
+            comboBoxMembre.Text = comboBoxDesignation.Text = comboBoxNomMembre.Text = txtBoxNumeroMembre.Text = comboBoxTypeArticle.Text = string.Empty;
             txtBoxPrix.Text = txtBoxPU.Text = txtBoxQuantite.Text = labelStock.Text = string.Empty;
         }
 
@@ -156,28 +156,6 @@ namespace AmadiaVente.Winforms.functionality
                         while (reader.Read())
                         {
                             comboBoxNomMembre.Items.Add(reader["nom_membre"].ToString() + " " + reader["prenom_membre"].ToString());
-                        }
-                    }
-                }
-            }
-        }
-
-        private void afficheNumeroMembreLoad()
-        {
-            comboBoxNumeroMembre.Items.Clear();
-            using (SqliteConnection connection = new SqliteConnection(cs))
-            {
-                connection.Open();
-
-                string selectMedicamentsQuery = "SELECT id_membre FROM membre";
-
-                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
-                {
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            comboBoxNumeroMembre.Items.Add(reader["id_membre"].ToString());
                         }
                     }
                 }
@@ -228,7 +206,6 @@ namespace AmadiaVente.Winforms.functionality
 
             afficheMedicComboBoxLoad();
             afficheNomMembreLoad();
-            afficheNumeroMembreLoad();
 
             DisableAllFunction();
 
@@ -318,17 +295,30 @@ namespace AmadiaVente.Winforms.functionality
             reinitialiseAllFunction();
         }
 
-        private void comboBoxNumeroMembre_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtBoxNumeroMembre_TextChanged(object sender, EventArgs e)
         {
-            int numero = Convert.ToInt32(comboBoxNumeroMembre.SelectedItem.ToString());
-            string[] selectionNom = SelectMembreById(numero);
-
-            if (selectionNom != null)
+            if(txtBoxNumeroMembre.Text != null && txtBoxNumeroMembre.Text != "")
             {
-                string nomEtPrenom = selectionNom[1] + " " + selectionNom[2];
-                comboBoxNomMembre.SelectedItem = nomEtPrenom;
+                int numero = Convert.ToInt32(txtBoxNumeroMembre.Text.ToString());
+                if (SelectMembreById(numero) != null)
+                {
+                    string[] infoMembre = SelectMembreById(numero);
+                    string nomEtPrenom = infoMembre[1] + " " + infoMembre[2];
 
-                comboBoxNumeroMembre.SelectedItem = numero.ToString();
+                    comboBoxNomMembre.SelectedItem = nomEtPrenom;
+                    labelAlertNumeroMembre.Text = string.Empty;
+                }
+                else
+                {
+                    labelAlertNumeroMembre.Text = "Membre n'existe pas !";
+                    comboBoxNomMembre.SelectedItem = null;
+                }
+               
+
+            }
+            else
+            {
+                comboBoxNomMembre.SelectedItem = null;
             }
         }
     }
