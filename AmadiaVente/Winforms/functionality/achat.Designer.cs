@@ -35,8 +35,8 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -45,10 +45,15 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtBoxQuantite = new Guna.UI2.WinForms.Guna2TextBox();
             txtBoxPrix = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewPanier = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnAnnulerAchat = new Guna.UI2.WinForms.Guna2GradientButton();
+            labelStock = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             comboBoxDesignation = new ComboBox();
             comboBoxNomMembre = new ComboBox();
             comboBoxTypeArticle = new ComboBox();
@@ -63,11 +68,9 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtBoxPU = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnValiderAchat = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-            guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            labelStock = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPanier).BeginInit();
             guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
@@ -92,6 +95,7 @@
             txtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtBoxQuantite.Size = new Size(80, 25);
             txtBoxQuantite.TabIndex = 4;
+            txtBoxQuantite.TextChanged += txtBoxQuantite_TextChanged;
             // 
             // txtBoxPrix
             // 
@@ -170,6 +174,7 @@
             // 
             // guna2GradientPanel1
             // 
+            guna2GradientPanel1.Controls.Add(btnAnnulerAchat);
             guna2GradientPanel1.Controls.Add(labelStock);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel9);
             guna2GradientPanel1.Controls.Add(comboBoxDesignation);
@@ -186,19 +191,63 @@
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel2);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel1);
             guna2GradientPanel1.Controls.Add(txtBoxPU);
-            guna2GradientPanel1.Controls.Add(guna2GradientButton3);
+            guna2GradientPanel1.Controls.Add(btnValiderAchat);
             guna2GradientPanel1.Controls.Add(guna2GradientButton2);
             guna2GradientPanel1.Controls.Add(guna2GradientButton1);
             guna2GradientPanel1.Controls.Add(dataGridViewPanier);
             guna2GradientPanel1.Controls.Add(txtBoxPrix);
             guna2GradientPanel1.Controls.Add(txtBoxQuantite);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges13;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges15;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2GradientPanel1.Size = new Size(715, 463);
             guna2GradientPanel1.TabIndex = 7;
+            // 
+            // btnAnnulerAchat
+            // 
+            btnAnnulerAchat.Anchor = AnchorStyles.Top;
+            btnAnnulerAchat.BorderRadius = 15;
+            btnAnnulerAchat.CustomizableEdges = customizableEdges5;
+            btnAnnulerAchat.DisabledState.BorderColor = Color.DarkGray;
+            btnAnnulerAchat.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAnnulerAchat.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAnnulerAchat.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnAnnulerAchat.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAnnulerAchat.FillColor = Color.FromArgb(255, 128, 128);
+            btnAnnulerAchat.FillColor2 = Color.FromArgb(255, 128, 128);
+            btnAnnulerAchat.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAnnulerAchat.ForeColor = Color.White;
+            btnAnnulerAchat.Location = new Point(510, 227);
+            btnAnnulerAchat.Name = "btnAnnulerAchat";
+            btnAnnulerAchat.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnAnnulerAchat.Size = new Size(140, 45);
+            btnAnnulerAchat.TabIndex = 31;
+            btnAnnulerAchat.Text = "Annuler l'Achat";
+            btnAnnulerAchat.Click += btnAnnulerAchat_Click;
+            // 
+            // labelStock
+            // 
+            labelStock.Anchor = AnchorStyles.Top;
+            labelStock.BackColor = Color.Transparent;
+            labelStock.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelStock.Location = new Point(146, 173);
+            labelStock.Name = "labelStock";
+            labelStock.Size = new Size(3, 2);
+            labelStock.TabIndex = 30;
+            labelStock.Text = null;
+            // 
+            // guna2HtmlLabel9
+            // 
+            guna2HtmlLabel9.Anchor = AnchorStyles.Top;
+            guna2HtmlLabel9.BackColor = Color.Transparent;
+            guna2HtmlLabel9.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2HtmlLabel9.Location = new Point(89, 173);
+            guna2HtmlLabel9.Name = "guna2HtmlLabel9";
+            guna2HtmlLabel9.Size = new Size(51, 22);
+            guna2HtmlLabel9.TabIndex = 29;
+            guna2HtmlLabel9.Text = "Stock :";
             // 
             // comboBoxDesignation
             // 
@@ -237,6 +286,7 @@
             comboBoxNumeroMembre.Name = "comboBoxNumeroMembre";
             comboBoxNumeroMembre.Size = new Size(101, 23);
             comboBoxNumeroMembre.TabIndex = 25;
+            comboBoxNumeroMembre.SelectedIndexChanged += comboBoxNumeroMembre_SelectedIndexChanged;
             // 
             // comboBoxMembre
             // 
@@ -339,7 +389,7 @@
             // txtBoxPU
             // 
             txtBoxPU.Anchor = AnchorStyles.Top;
-            txtBoxPU.CustomizableEdges = customizableEdges5;
+            txtBoxPU.CustomizableEdges = customizableEdges7;
             txtBoxPU.DefaultText = "";
             txtBoxPU.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxPU.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -353,34 +403,37 @@
             txtBoxPU.PasswordChar = '\0';
             txtBoxPU.PlaceholderText = "";
             txtBoxPU.SelectedText = "";
-            txtBoxPU.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtBoxPU.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtBoxPU.Size = new Size(106, 25);
             txtBoxPU.TabIndex = 10;
             // 
-            // guna2GradientButton3
+            // btnValiderAchat
             // 
-            guna2GradientButton3.Anchor = AnchorStyles.Top;
-            guna2GradientButton3.BorderRadius = 15;
-            guna2GradientButton3.CustomizableEdges = customizableEdges7;
-            guna2GradientButton3.DisabledState.BorderColor = Color.DarkGray;
-            guna2GradientButton3.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2GradientButton3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2GradientButton3.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            guna2GradientButton3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2GradientButton3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2GradientButton3.ForeColor = Color.White;
-            guna2GradientButton3.Location = new Point(479, 227);
-            guna2GradientButton3.Name = "guna2GradientButton3";
-            guna2GradientButton3.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2GradientButton3.Size = new Size(180, 45);
-            guna2GradientButton3.TabIndex = 9;
-            guna2GradientButton3.Text = "Valider l'Achat";
+            btnValiderAchat.Anchor = AnchorStyles.Top;
+            btnValiderAchat.BorderRadius = 15;
+            btnValiderAchat.CustomizableEdges = customizableEdges9;
+            btnValiderAchat.DisabledState.BorderColor = Color.DarkGray;
+            btnValiderAchat.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnValiderAchat.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnValiderAchat.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnValiderAchat.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnValiderAchat.FillColor = Color.MediumSeaGreen;
+            btnValiderAchat.FillColor2 = Color.MediumSeaGreen;
+            btnValiderAchat.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnValiderAchat.ForeColor = Color.White;
+            btnValiderAchat.Location = new Point(361, 227);
+            btnValiderAchat.Name = "btnValiderAchat";
+            btnValiderAchat.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnValiderAchat.Size = new Size(140, 45);
+            btnValiderAchat.TabIndex = 9;
+            btnValiderAchat.Text = "Valider l'Achat";
+            btnValiderAchat.Click += btnValiderAchat_Click;
             // 
             // guna2GradientButton2
             // 
             guna2GradientButton2.Anchor = AnchorStyles.Top;
             guna2GradientButton2.BorderRadius = 15;
-            guna2GradientButton2.CustomizableEdges = customizableEdges9;
+            guna2GradientButton2.CustomizableEdges = customizableEdges11;
             guna2GradientButton2.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton2.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -388,10 +441,10 @@
             guna2GradientButton2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2GradientButton2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             guna2GradientButton2.ForeColor = Color.White;
-            guna2GradientButton2.Location = new Point(272, 227);
+            guna2GradientButton2.Location = new Point(212, 227);
             guna2GradientButton2.Name = "guna2GradientButton2";
-            guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2GradientButton2.Size = new Size(180, 45);
+            guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2GradientButton2.Size = new Size(140, 45);
             guna2GradientButton2.TabIndex = 8;
             guna2GradientButton2.Text = "Supprimer du panier";
             // 
@@ -399,7 +452,7 @@
             // 
             guna2GradientButton1.Anchor = AnchorStyles.Top;
             guna2GradientButton1.BorderRadius = 15;
-            guna2GradientButton1.CustomizableEdges = customizableEdges11;
+            guna2GradientButton1.CustomizableEdges = customizableEdges13;
             guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -409,31 +462,10 @@
             guna2GradientButton1.ForeColor = Color.White;
             guna2GradientButton1.Location = new Point(66, 227);
             guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2GradientButton1.Size = new Size(180, 45);
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2GradientButton1.Size = new Size(140, 45);
             guna2GradientButton1.TabIndex = 7;
             guna2GradientButton1.Text = "Ajouter au panier";
-            // 
-            // guna2HtmlLabel9
-            // 
-            guna2HtmlLabel9.Anchor = AnchorStyles.Top;
-            guna2HtmlLabel9.BackColor = Color.Transparent;
-            guna2HtmlLabel9.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel9.Location = new Point(89, 173);
-            guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            guna2HtmlLabel9.Size = new Size(51, 22);
-            guna2HtmlLabel9.TabIndex = 29;
-            guna2HtmlLabel9.Text = "Stock :";
-            // 
-            // labelStock
-            // 
-            labelStock.Anchor = AnchorStyles.Top;
-            labelStock.BackColor = Color.Transparent;
-            labelStock.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelStock.Location = new Point(146, 173);
-            labelStock.Name = "labelStock";
-            labelStock.Size = new Size(3, 2);
-            labelStock.TabIndex = 30;
             // 
             // achat
             // 
@@ -456,7 +488,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBoxPrix;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewPanier;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton3;
+        private Guna.UI2.WinForms.Guna2GradientButton btnValiderAchat;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton2;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
@@ -475,5 +507,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBoxPU;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelStock;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
+        private Guna.UI2.WinForms.Guna2GradientButton btnAnnulerAchat;
     }
 }
