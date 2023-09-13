@@ -90,6 +90,8 @@ namespace AmadiaVente
                 sessionNom = connection[0];
                 sessionPrenom = connection[1];
                 sessionFunction = connection[2];
+                sessionId = connection[3];
+                Classes.Storage.SessionId = sessionId;
                 connectAction();
             }
             else
