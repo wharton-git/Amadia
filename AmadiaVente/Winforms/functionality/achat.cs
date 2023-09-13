@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using Microsoft.Data.Sqlite;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace AmadiaVente.Winforms.functionality
@@ -88,6 +89,37 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        private int[] AfficheArcticle(string article)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(cs))
+            {
+                connection.Open();
+
+                string query = "SELECT prix_article,nbr_stock FROM article WHERE designation=@article";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+
+                    command.Parameters.AddWithValue("@article", article);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                            int prixArticle = reader.GetInt32(0);
+                            int NombreStock = reader.GetInt32(1);
+                            
+                            return new int[] { prixArticle, NombreStock };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         //Evénements
         private void achat_Load(object sender, EventArgs e)
         {
@@ -130,6 +162,18 @@ namespace AmadiaVente.Winforms.functionality
             else if (comboBoxTypeArticle.SelectedItem != null && comboBoxTypeArticle.SelectedItem.ToString() == "Equipements")
             {
                 afficheMedicamentComboBox("Equipements");
+            }
+        }
+
+        private void comboBoxDesignation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBoxDesignation.SelectedItem != null)
+            {
+                string articleSelectionner = comboBoxDesignation.SelectedItem.ToString();
+                int prixArticle = AfficheArcticle(articleSelectionner)[0];
+                int resteStock = AfficheArcticle(articleSelectionner)[1];
+                txtBoxPU.Text = prixArticle.ToString();
+                labelStock.Text = resteStock.ToString();
             }
         }
     }

@@ -35,14 +35,16 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtBoxQuantite = new Guna.UI2.WinForms.Guna2TextBox();
             txtBoxPrix = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewPanier = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -60,9 +62,12 @@
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            txtBoxPU = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            labelStock = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPanier).BeginInit();
             guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
@@ -70,7 +75,6 @@
             // txtBoxQuantite
             // 
             txtBoxQuantite.Anchor = AnchorStyles.Top;
-            txtBoxQuantite.BorderRadius = 15;
             txtBoxQuantite.CustomizableEdges = customizableEdges1;
             txtBoxQuantite.DefaultText = "";
             txtBoxQuantite.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -86,13 +90,12 @@
             txtBoxQuantite.PlaceholderText = "";
             txtBoxQuantite.SelectedText = "";
             txtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtBoxQuantite.Size = new Size(80, 36);
+            txtBoxQuantite.Size = new Size(80, 25);
             txtBoxQuantite.TabIndex = 4;
             // 
             // txtBoxPrix
             // 
             txtBoxPrix.Anchor = AnchorStyles.Top;
-            txtBoxPrix.BorderRadius = 15;
             txtBoxPrix.CustomizableEdges = customizableEdges3;
             txtBoxPrix.DefaultText = "";
             txtBoxPrix.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -108,7 +111,7 @@
             txtBoxPrix.PlaceholderText = "";
             txtBoxPrix.SelectedText = "";
             txtBoxPrix.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtBoxPrix.Size = new Size(109, 36);
+            txtBoxPrix.Size = new Size(109, 25);
             txtBoxPrix.TabIndex = 5;
             // 
             // dataGridViewPanier
@@ -167,6 +170,8 @@
             // 
             // guna2GradientPanel1
             // 
+            guna2GradientPanel1.Controls.Add(labelStock);
+            guna2GradientPanel1.Controls.Add(guna2HtmlLabel9);
             guna2GradientPanel1.Controls.Add(comboBoxDesignation);
             guna2GradientPanel1.Controls.Add(comboBoxNomMembre);
             guna2GradientPanel1.Controls.Add(comboBoxTypeArticle);
@@ -180,40 +185,45 @@
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel3);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel2);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel1);
+            guna2GradientPanel1.Controls.Add(txtBoxPU);
             guna2GradientPanel1.Controls.Add(guna2GradientButton3);
             guna2GradientPanel1.Controls.Add(guna2GradientButton2);
             guna2GradientPanel1.Controls.Add(guna2GradientButton1);
             guna2GradientPanel1.Controls.Add(dataGridViewPanier);
             guna2GradientPanel1.Controls.Add(txtBoxPrix);
             guna2GradientPanel1.Controls.Add(txtBoxQuantite);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges11;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges13;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges14;
             guna2GradientPanel1.Size = new Size(715, 463);
             guna2GradientPanel1.TabIndex = 7;
             // 
             // comboBoxDesignation
             // 
+            comboBoxDesignation.Anchor = AnchorStyles.Top;
             comboBoxDesignation.FormattingEnabled = true;
             comboBoxDesignation.Location = new Point(47, 127);
             comboBoxDesignation.Name = "comboBoxDesignation";
             comboBoxDesignation.Size = new Size(281, 23);
             comboBoxDesignation.TabIndex = 28;
+            comboBoxDesignation.SelectedIndexChanged += comboBoxDesignation_SelectedIndexChanged;
             // 
             // comboBoxNomMembre
             // 
+            comboBoxNomMembre.Anchor = AnchorStyles.Top;
             comboBoxNomMembre.FormattingEnabled = true;
-            comboBoxNomMembre.Location = new Point(259, 48);
+            comboBoxNomMembre.Location = new Point(259, 46);
             comboBoxNomMembre.Name = "comboBoxNomMembre";
             comboBoxNomMembre.Size = new Size(242, 23);
             comboBoxNomMembre.TabIndex = 27;
             // 
             // comboBoxTypeArticle
             // 
+            comboBoxTypeArticle.Anchor = AnchorStyles.Top;
             comboBoxTypeArticle.FormattingEnabled = true;
-            comboBoxTypeArticle.Location = new Point(523, 48);
+            comboBoxTypeArticle.Location = new Point(523, 46);
             comboBoxTypeArticle.Name = "comboBoxTypeArticle";
             comboBoxTypeArticle.Size = new Size(172, 23);
             comboBoxTypeArticle.TabIndex = 26;
@@ -221,14 +231,16 @@
             // 
             // comboBoxNumeroMembre
             // 
+            comboBoxNumeroMembre.Anchor = AnchorStyles.Top;
             comboBoxNumeroMembre.FormattingEnabled = true;
-            comboBoxNumeroMembre.Location = new Point(145, 45);
+            comboBoxNumeroMembre.Location = new Point(145, 46);
             comboBoxNumeroMembre.Name = "comboBoxNumeroMembre";
             comboBoxNumeroMembre.Size = new Size(101, 23);
             comboBoxNumeroMembre.TabIndex = 25;
             // 
             // comboBoxMembre
             // 
+            comboBoxMembre.Anchor = AnchorStyles.Top;
             comboBoxMembre.FormattingEnabled = true;
             comboBoxMembre.Location = new Point(47, 46);
             comboBoxMembre.Name = "comboBoxMembre";
@@ -324,11 +336,32 @@
             guna2HtmlLabel1.TabIndex = 11;
             guna2HtmlLabel1.Text = "Membre :";
             // 
+            // txtBoxPU
+            // 
+            txtBoxPU.Anchor = AnchorStyles.Top;
+            txtBoxPU.CustomizableEdges = customizableEdges5;
+            txtBoxPU.DefaultText = "";
+            txtBoxPU.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtBoxPU.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtBoxPU.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxPU.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxPU.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxPU.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPU.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxPU.Location = new Point(467, 125);
+            txtBoxPU.Name = "txtBoxPU";
+            txtBoxPU.PasswordChar = '\0';
+            txtBoxPU.PlaceholderText = "";
+            txtBoxPU.SelectedText = "";
+            txtBoxPU.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtBoxPU.Size = new Size(106, 25);
+            txtBoxPU.TabIndex = 10;
+            // 
             // guna2GradientButton3
             // 
             guna2GradientButton3.Anchor = AnchorStyles.Top;
             guna2GradientButton3.BorderRadius = 15;
-            guna2GradientButton3.CustomizableEdges = customizableEdges5;
+            guna2GradientButton3.CustomizableEdges = customizableEdges7;
             guna2GradientButton3.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton3.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -338,7 +371,7 @@
             guna2GradientButton3.ForeColor = Color.White;
             guna2GradientButton3.Location = new Point(479, 227);
             guna2GradientButton3.Name = "guna2GradientButton3";
-            guna2GradientButton3.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2GradientButton3.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientButton3.Size = new Size(180, 45);
             guna2GradientButton3.TabIndex = 9;
             guna2GradientButton3.Text = "Valider l'Achat";
@@ -347,7 +380,7 @@
             // 
             guna2GradientButton2.Anchor = AnchorStyles.Top;
             guna2GradientButton2.BorderRadius = 15;
-            guna2GradientButton2.CustomizableEdges = customizableEdges7;
+            guna2GradientButton2.CustomizableEdges = customizableEdges9;
             guna2GradientButton2.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton2.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -357,7 +390,7 @@
             guna2GradientButton2.ForeColor = Color.White;
             guna2GradientButton2.Location = new Point(272, 227);
             guna2GradientButton2.Name = "guna2GradientButton2";
-            guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2GradientButton2.Size = new Size(180, 45);
             guna2GradientButton2.TabIndex = 8;
             guna2GradientButton2.Text = "Supprimer du panier";
@@ -366,7 +399,7 @@
             // 
             guna2GradientButton1.Anchor = AnchorStyles.Top;
             guna2GradientButton1.BorderRadius = 15;
-            guna2GradientButton1.CustomizableEdges = customizableEdges9;
+            guna2GradientButton1.CustomizableEdges = customizableEdges11;
             guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -376,10 +409,31 @@
             guna2GradientButton1.ForeColor = Color.White;
             guna2GradientButton1.Location = new Point(66, 227);
             guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2GradientButton1.Size = new Size(180, 45);
             guna2GradientButton1.TabIndex = 7;
             guna2GradientButton1.Text = "Ajouter au panier";
+            // 
+            // guna2HtmlLabel9
+            // 
+            guna2HtmlLabel9.Anchor = AnchorStyles.Top;
+            guna2HtmlLabel9.BackColor = Color.Transparent;
+            guna2HtmlLabel9.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2HtmlLabel9.Location = new Point(89, 173);
+            guna2HtmlLabel9.Name = "guna2HtmlLabel9";
+            guna2HtmlLabel9.Size = new Size(51, 22);
+            guna2HtmlLabel9.TabIndex = 29;
+            guna2HtmlLabel9.Text = "Stock :";
+            // 
+            // labelStock
+            // 
+            labelStock.Anchor = AnchorStyles.Top;
+            labelStock.BackColor = Color.Transparent;
+            labelStock.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelStock.Location = new Point(146, 173);
+            labelStock.Name = "labelStock";
+            labelStock.Size = new Size(3, 2);
+            labelStock.TabIndex = 30;
             // 
             // achat
             // 
@@ -418,5 +472,8 @@
         private ComboBox comboBoxNumeroMembre;
         private ComboBox comboBoxNomMembre;
         private ComboBox comboBoxDesignation;
+        private Guna.UI2.WinForms.Guna2TextBox txtBoxPU;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelStock;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
     }
 }
