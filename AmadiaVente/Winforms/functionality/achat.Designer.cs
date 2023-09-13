@@ -28,39 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            comboBoxMembre = new Guna.UI2.WinForms.Guna2ComboBox();
-            comboBoxNumeroMembre = new Guna.UI2.WinForms.Guna2ComboBox();
             txtBoxQuantite = new Guna.UI2.WinForms.Guna2TextBox();
             txtBoxPrix = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewPanier = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            comboBoxDesignation = new ComboBox();
             comboBoxNomMembre = new ComboBox();
+            comboBoxTypeArticle = new ComboBox();
+            comboBoxNumeroMembre = new ComboBox();
+            comboBoxMembre = new ComboBox();
             guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            comboBoxTypeArticle = new Guna.UI2.WinForms.Guna2ComboBox();
             guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -68,60 +60,18 @@
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            txtBoxPU = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-            guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(components);
-            comboBoxDesignation = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPanier).BeginInit();
             guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // comboBoxMembre
-            // 
-            comboBoxMembre.Anchor = AnchorStyles.Top;
-            comboBoxMembre.BackColor = Color.Transparent;
-            comboBoxMembre.BorderRadius = 15;
-            comboBoxMembre.CustomizableEdges = customizableEdges1;
-            comboBoxMembre.DrawMode = DrawMode.OwnerDrawFixed;
-            comboBoxMembre.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxMembre.FocusedColor = Color.FromArgb(94, 148, 255);
-            comboBoxMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            comboBoxMembre.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxMembre.ForeColor = Color.FromArgb(68, 88, 112);
-            comboBoxMembre.ItemHeight = 30;
-            comboBoxMembre.Location = new Point(47, 43);
-            comboBoxMembre.Name = "comboBoxMembre";
-            comboBoxMembre.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            comboBoxMembre.Size = new Size(108, 36);
-            comboBoxMembre.TabIndex = 0;
-            comboBoxMembre.SelectedIndexChanged += comboBoxMembre_SelectedIndexChanged;
-            // 
-            // comboBoxNumeroMembre
-            // 
-            comboBoxNumeroMembre.Anchor = AnchorStyles.Top;
-            comboBoxNumeroMembre.BackColor = Color.Transparent;
-            comboBoxNumeroMembre.BorderRadius = 15;
-            comboBoxNumeroMembre.CustomizableEdges = customizableEdges3;
-            comboBoxNumeroMembre.DrawMode = DrawMode.OwnerDrawFixed;
-            comboBoxNumeroMembre.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxNumeroMembre.FocusedColor = Color.FromArgb(94, 148, 255);
-            comboBoxNumeroMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            comboBoxNumeroMembre.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxNumeroMembre.ForeColor = Color.FromArgb(68, 88, 112);
-            comboBoxNumeroMembre.ItemHeight = 30;
-            comboBoxNumeroMembre.Location = new Point(164, 43);
-            comboBoxNumeroMembre.Name = "comboBoxNumeroMembre";
-            comboBoxNumeroMembre.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            comboBoxNumeroMembre.Size = new Size(85, 36);
-            comboBoxNumeroMembre.TabIndex = 1;
             // 
             // txtBoxQuantite
             // 
             txtBoxQuantite.Anchor = AnchorStyles.Top;
             txtBoxQuantite.BorderRadius = 15;
-            txtBoxQuantite.CustomizableEdges = customizableEdges5;
+            txtBoxQuantite.CustomizableEdges = customizableEdges1;
             txtBoxQuantite.DefaultText = "";
             txtBoxQuantite.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxQuantite.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -135,7 +85,7 @@
             txtBoxQuantite.PasswordChar = '\0';
             txtBoxQuantite.PlaceholderText = "";
             txtBoxQuantite.SelectedText = "";
-            txtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtBoxQuantite.Size = new Size(80, 36);
             txtBoxQuantite.TabIndex = 4;
             // 
@@ -143,7 +93,7 @@
             // 
             txtBoxPrix.Anchor = AnchorStyles.Top;
             txtBoxPrix.BorderRadius = 15;
-            txtBoxPrix.CustomizableEdges = customizableEdges7;
+            txtBoxPrix.CustomizableEdges = customizableEdges3;
             txtBoxPrix.DefaultText = "";
             txtBoxPrix.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxPrix.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -157,7 +107,7 @@
             txtBoxPrix.PasswordChar = '\0';
             txtBoxPrix.PlaceholderText = "";
             txtBoxPrix.SelectedText = "";
-            txtBoxPrix.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtBoxPrix.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtBoxPrix.Size = new Size(109, 36);
             txtBoxPrix.TabIndex = 5;
             // 
@@ -219,8 +169,10 @@
             // 
             guna2GradientPanel1.Controls.Add(comboBoxDesignation);
             guna2GradientPanel1.Controls.Add(comboBoxNomMembre);
-            guna2GradientPanel1.Controls.Add(guna2HtmlLabel8);
             guna2GradientPanel1.Controls.Add(comboBoxTypeArticle);
+            guna2GradientPanel1.Controls.Add(comboBoxNumeroMembre);
+            guna2GradientPanel1.Controls.Add(comboBoxMembre);
+            guna2GradientPanel1.Controls.Add(guna2HtmlLabel8);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel7);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel6);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel5);
@@ -228,65 +180,72 @@
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel3);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel2);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel1);
-            guna2GradientPanel1.Controls.Add(txtBoxPU);
             guna2GradientPanel1.Controls.Add(guna2GradientButton3);
             guna2GradientPanel1.Controls.Add(guna2GradientButton2);
             guna2GradientPanel1.Controls.Add(guna2GradientButton1);
             guna2GradientPanel1.Controls.Add(dataGridViewPanier);
-            guna2GradientPanel1.Controls.Add(comboBoxMembre);
             guna2GradientPanel1.Controls.Add(txtBoxPrix);
-            guna2GradientPanel1.Controls.Add(comboBoxNumeroMembre);
             guna2GradientPanel1.Controls.Add(txtBoxQuantite);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges19;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges11;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2GradientPanel1.Size = new Size(715, 463);
             guna2GradientPanel1.TabIndex = 7;
             // 
+            // comboBoxDesignation
+            // 
+            comboBoxDesignation.FormattingEnabled = true;
+            comboBoxDesignation.Location = new Point(47, 127);
+            comboBoxDesignation.Name = "comboBoxDesignation";
+            comboBoxDesignation.Size = new Size(281, 23);
+            comboBoxDesignation.TabIndex = 28;
+            // 
             // comboBoxNomMembre
             // 
-            comboBoxNomMembre.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBoxNomMembre.AutoCompleteSource = AutoCompleteSource.ListItems;
-            comboBoxNomMembre.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxNomMembre.FormattingEnabled = true;
-            comboBoxNomMembre.Items.AddRange(new object[] { "A", "AABDG", "SKFFD", "FDJFSI", "ROHZOSD", "ZKHDAE", "FJZHEFI", "SDJEI" });
-            comboBoxNomMembre.Location = new Point(272, 43);
+            comboBoxNomMembre.Location = new Point(259, 48);
             comboBoxNomMembre.Name = "comboBoxNomMembre";
-            comboBoxNomMembre.Size = new Size(238, 28);
-            comboBoxNomMembre.TabIndex = 22;
+            comboBoxNomMembre.Size = new Size(242, 23);
+            comboBoxNomMembre.TabIndex = 27;
+            // 
+            // comboBoxTypeArticle
+            // 
+            comboBoxTypeArticle.FormattingEnabled = true;
+            comboBoxTypeArticle.Location = new Point(523, 48);
+            comboBoxTypeArticle.Name = "comboBoxTypeArticle";
+            comboBoxTypeArticle.Size = new Size(172, 23);
+            comboBoxTypeArticle.TabIndex = 26;
+            comboBoxTypeArticle.SelectedIndexChanged += comboBoxTypeArticle_SelectedIndexChanged;
+            // 
+            // comboBoxNumeroMembre
+            // 
+            comboBoxNumeroMembre.FormattingEnabled = true;
+            comboBoxNumeroMembre.Location = new Point(145, 45);
+            comboBoxNumeroMembre.Name = "comboBoxNumeroMembre";
+            comboBoxNumeroMembre.Size = new Size(101, 23);
+            comboBoxNumeroMembre.TabIndex = 25;
+            // 
+            // comboBoxMembre
+            // 
+            comboBoxMembre.FormattingEnabled = true;
+            comboBoxMembre.Location = new Point(47, 46);
+            comboBoxMembre.Name = "comboBoxMembre";
+            comboBoxMembre.Size = new Size(88, 23);
+            comboBoxMembre.TabIndex = 24;
+            comboBoxMembre.SelectedIndexChanged += comboBoxMembre_SelectedIndexChanged;
             // 
             // guna2HtmlLabel8
             // 
             guna2HtmlLabel8.Anchor = AnchorStyles.Top;
             guna2HtmlLabel8.BackColor = Color.Transparent;
             guna2HtmlLabel8.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel8.Location = new Point(529, 21);
+            guna2HtmlLabel8.Location = new Point(523, 21);
             guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             guna2HtmlLabel8.Size = new Size(95, 19);
             guna2HtmlLabel8.TabIndex = 19;
             guna2HtmlLabel8.Text = "Type d'article :";
-            // 
-            // comboBoxTypeArticle
-            // 
-            comboBoxTypeArticle.Anchor = AnchorStyles.Top;
-            comboBoxTypeArticle.BackColor = Color.Transparent;
-            comboBoxTypeArticle.BorderRadius = 15;
-            comboBoxTypeArticle.CustomizableEdges = customizableEdges9;
-            comboBoxTypeArticle.DrawMode = DrawMode.OwnerDrawFixed;
-            comboBoxTypeArticle.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTypeArticle.FocusedColor = Color.FromArgb(94, 148, 255);
-            comboBoxTypeArticle.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            comboBoxTypeArticle.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxTypeArticle.ForeColor = Color.FromArgb(68, 88, 112);
-            comboBoxTypeArticle.ItemHeight = 30;
-            comboBoxTypeArticle.Location = new Point(529, 43);
-            comboBoxTypeArticle.Name = "comboBoxTypeArticle";
-            comboBoxTypeArticle.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            comboBoxTypeArticle.Size = new Size(167, 36);
-            comboBoxTypeArticle.TabIndex = 18;
-            comboBoxTypeArticle.SelectedIndexChanged += comboBoxTypeArticle_SelectedIndexChanged;
             // 
             // guna2HtmlLabel7
             // 
@@ -348,7 +307,7 @@
             guna2HtmlLabel2.Anchor = AnchorStyles.Top;
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel2.Location = new Point(164, 20);
+            guna2HtmlLabel2.Location = new Point(146, 20);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(63, 19);
             guna2HtmlLabel2.TabIndex = 12;
@@ -365,33 +324,11 @@
             guna2HtmlLabel1.TabIndex = 11;
             guna2HtmlLabel1.Text = "Membre :";
             // 
-            // txtBoxPU
-            // 
-            txtBoxPU.Anchor = AnchorStyles.Top;
-            txtBoxPU.BorderRadius = 15;
-            txtBoxPU.CustomizableEdges = customizableEdges11;
-            txtBoxPU.DefaultText = "";
-            txtBoxPU.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtBoxPU.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtBoxPU.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtBoxPU.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtBoxPU.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPU.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxPU.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPU.Location = new Point(467, 125);
-            txtBoxPU.Name = "txtBoxPU";
-            txtBoxPU.PasswordChar = '\0';
-            txtBoxPU.PlaceholderText = "";
-            txtBoxPU.SelectedText = "";
-            txtBoxPU.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            txtBoxPU.Size = new Size(106, 36);
-            txtBoxPU.TabIndex = 10;
-            // 
             // guna2GradientButton3
             // 
             guna2GradientButton3.Anchor = AnchorStyles.Top;
             guna2GradientButton3.BorderRadius = 15;
-            guna2GradientButton3.CustomizableEdges = customizableEdges13;
+            guna2GradientButton3.CustomizableEdges = customizableEdges5;
             guna2GradientButton3.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton3.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -401,7 +338,7 @@
             guna2GradientButton3.ForeColor = Color.White;
             guna2GradientButton3.Location = new Point(479, 227);
             guna2GradientButton3.Name = "guna2GradientButton3";
-            guna2GradientButton3.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2GradientButton3.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2GradientButton3.Size = new Size(180, 45);
             guna2GradientButton3.TabIndex = 9;
             guna2GradientButton3.Text = "Valider l'Achat";
@@ -410,7 +347,7 @@
             // 
             guna2GradientButton2.Anchor = AnchorStyles.Top;
             guna2GradientButton2.BorderRadius = 15;
-            guna2GradientButton2.CustomizableEdges = customizableEdges15;
+            guna2GradientButton2.CustomizableEdges = customizableEdges7;
             guna2GradientButton2.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton2.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -420,7 +357,7 @@
             guna2GradientButton2.ForeColor = Color.White;
             guna2GradientButton2.Location = new Point(272, 227);
             guna2GradientButton2.Name = "guna2GradientButton2";
-            guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientButton2.Size = new Size(180, 45);
             guna2GradientButton2.TabIndex = 8;
             guna2GradientButton2.Text = "Supprimer du panier";
@@ -429,7 +366,7 @@
             // 
             guna2GradientButton1.Anchor = AnchorStyles.Top;
             guna2GradientButton1.BorderRadius = 15;
-            guna2GradientButton1.CustomizableEdges = customizableEdges17;
+            guna2GradientButton1.CustomizableEdges = customizableEdges9;
             guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -439,26 +376,10 @@
             guna2GradientButton1.ForeColor = Color.White;
             guna2GradientButton1.Location = new Point(66, 227);
             guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2GradientButton1.Size = new Size(180, 45);
             guna2GradientButton1.TabIndex = 7;
             guna2GradientButton1.Text = "Ajouter au panier";
-            // 
-            // guna2Elipse2
-            // 
-            guna2Elipse2.BorderRadius = 30;
-            // 
-            // comboBoxDesignation
-            // 
-            comboBoxDesignation.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBoxDesignation.AutoCompleteSource = AutoCompleteSource.ListItems;
-            comboBoxDesignation.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxDesignation.FormattingEnabled = true;
-            comboBoxDesignation.Items.AddRange(new object[] { "A", "AABDG", "SKFFD", "FDJFSI", "ROHZOSD", "ZKHDAE", "FJZHEFI", "SDJEI" });
-            comboBoxDesignation.Location = new Point(47, 133);
-            comboBoxDesignation.Name = "comboBoxDesignation";
-            comboBoxDesignation.Size = new Size(286, 28);
-            comboBoxDesignation.TabIndex = 23;
             // 
             // achat
             // 
@@ -477,8 +398,6 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2ComboBox comboBoxMembre;
-        private Guna.UI2.WinForms.Guna2ComboBox comboBoxNumeroMembre;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxQuantite;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxPrix;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewPanier;
@@ -493,11 +412,10 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2TextBox txtBoxPU;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
-        private Guna.UI2.WinForms.Guna2ComboBox comboBoxTypeArticle;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private ComboBox comboBoxMembre;
+        private ComboBox comboBoxTypeArticle;
+        private ComboBox comboBoxNumeroMembre;
         private ComboBox comboBoxNomMembre;
         private ComboBox comboBoxDesignation;
     }

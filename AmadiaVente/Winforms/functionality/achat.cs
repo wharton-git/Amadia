@@ -123,7 +123,7 @@ namespace AmadiaVente.Winforms.functionality
 
         private void comboBoxTypeArticle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBoxTypeArticle.SelectedItem != null && comboBoxTypeArticle.SelectedItem.ToString() == "Médicaments")
+            if (comboBoxTypeArticle.SelectedItem != null && comboBoxTypeArticle.SelectedItem.ToString() == "Médicaments")
             {
                 afficheMedicamentComboBox("Médicaments");
             }
