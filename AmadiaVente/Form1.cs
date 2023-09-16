@@ -77,7 +77,7 @@ namespace AmadiaVente
             this.Hide();
         }
 
-        //Evénement
+        //Evénements
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
