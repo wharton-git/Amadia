@@ -209,34 +209,6 @@ namespace AmadiaVente.Winforms.functionality
             btnSupprimerPanier.Visible = btnModifierPanier.Visible = true;
         }
 
-        private void creeCommande(int membre, string idMembre, int idResponsable, string date)
-        {
-            using (SqliteConnection connection = new SqliteConnection(cs))
-            {
-                connection.Open();
-                string query = "INSERT INTO commande (membre, id_membre, id_responsable, date_achat) VALUES(@membre, @idMembre, @idResponsable, @date)";
-
-                using (SqliteCommand command = new SqliteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@membre", membre);
-
-                    if (membre != 0)
-                    {
-                        command.Parameters.AddWithValue("@idMembre", idMembre);
-                    }
-                    else
-                    {
-                        command.Parameters.AddWithValue("@idMembre", DBNull.Value);
-                    }
-
-                    command.Parameters.AddWithValue("@idResponsable", idResponsable);
-                    command.Parameters.AddWithValue("@date", date);
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
         public string GetMemberId(string nomPrenomMembre)
         {
             string memberId = "";
@@ -271,6 +243,97 @@ namespace AmadiaVente.Winforms.functionality
             }
 
             return memberId;
+        }
+
+        private int GetArticleIdByDesignation(string designation)
+        {
+            int articleId = -1; 
+
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string query = "SELECT id_article FROM article WHERE designation = @designation";
+
+                using (SqliteCommand command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@designation", designation);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            articleId = reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+
+            return articleId;
+        }
+
+        private int RecupererIdCommande()
+        {
+            int commandeId = -1; 
+
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+                string query = "SELECT last_insert_rowid();";
+
+                using (SqliteCommand command = new SqliteCommand(query, connection))
+                {
+                    commandeId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return commandeId;
+        }
+
+        private void creeCommande(int membre, string idMembre, int idResponsable)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+                string query = "INSERT INTO commande (membre, id_membre, id_responsable, date_achat) VALUES(@membre, @idMembre, @idResponsable, CURRENT_TIMESTAMP)";
+
+                using (SqliteCommand command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@membre", membre);
+
+                    if (membre != 0)
+                    {
+                        command.Parameters.AddWithValue("@idMembre", idMembre);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@idMembre", DBNull.Value);
+                    }
+
+                    command.Parameters.AddWithValue("@idResponsable", idResponsable);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void validerAchat(int idArticle, int quantite, decimal prix, int idCommande)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+                string query = "INSERT INTO lignecommande (id_article, qte_acheter, prix, id_commande) VALUES(@idArticle, @quantite, @prix, @idCommande)";
+
+                using (SqliteCommand command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@idArticle", idArticle);
+                    command.Parameters.AddWithValue("@quantite", quantite);
+                    command.Parameters.AddWithValue("@prix", prix);
+                    command.Parameters.AddWithValue("@idCommande", idCommande);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         //Evénements
@@ -377,8 +440,6 @@ namespace AmadiaVente.Winforms.functionality
             int session = Convert.ToInt32(sessionId);
             string y_n_membre = comboBoxMembre.Text.ToString();
             int membre = 0;
-            DateTime aujourdhui = DateTime.Now;
-            string temps = aujourdhui.ToString("yyy-MM-dd");
             string idMembre = "";
             string nomMembre = comboBoxNomMembre.Text;
             if (y_n_membre == "Oui")
@@ -391,7 +452,22 @@ namespace AmadiaVente.Winforms.functionality
                 membre = membre;
                 idMembre = idMembre;
             }
-            creeCommande(membre, idMembre, session, temps);
+            creeCommande(membre, idMembre, session);
+            int idCommande = RecupererIdCommande();
+
+            foreach (DataGridViewRow row in dataGridViewPanier.Rows)
+            {
+                
+                string nomProduit = row.Cells["NomProduit"].Value.ToString();
+                int quantite = Convert.ToInt32(row.Cells["Quantite"].Value);
+                decimal prix = Convert.ToDecimal(row.Cells["Prix"].Value);
+
+                int artcileId = GetArticleIdByDesignation(nomProduit);
+
+                validerAchat(artcileId, quantite, prix, idCommande);
+            }
+
+
             reinitialiseAllFunction();
         }
 
