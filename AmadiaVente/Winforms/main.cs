@@ -73,7 +73,12 @@ namespace AmadiaVente.Winforms
         //Evénements
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            disconnectAction();
+            DialogResult confirm = MessageBox.Show("Voulez-vous vous déconnecter ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                disconnectAction();
+            }
         }
         private void main_Load(object sender, EventArgs e)
         {

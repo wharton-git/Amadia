@@ -482,50 +482,61 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnAnnulerAchat_Click(object sender, EventArgs e)
         {
-            reinitialiseAllFunction();
+            DialogResult confirm = MessageBox.Show("Etes-vous sûr de vouloir annuler ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                reinitialiseAllFunction();
+            }
         }
 
         private void btnValiderAchat_Click(object sender, EventArgs e)
         {
-            int session = Convert.ToInt32(sessionId);
-            string y_n_membre = comboBoxMembre.Text.ToString();
-            int membre = 0;
-            string idMembre = "";
-            string nomMembre = comboBoxNomMembre.Text;
-            if (y_n_membre == "Oui")
-            {
-                membre = 1;
-                idMembre = GetMemberId(nomMembre);
-            }
-            else
-            {
-                membre = membre;
-                idMembre = idMembre;
-            }
-            creeCommande(membre, idMembre, session);
-            int idCommande = RecupererIdCommande();
 
-            foreach (DataGridViewRow row in dataGridViewPanier.Rows)
-            {
+            DialogResult confirm = MessageBox.Show("Confirmer la transaction ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                string nomProduit = row.Cells["NomProduit"].Value.ToString();
-                int quantite = Convert.ToInt32(row.Cells["Quantite"].Value);
-                decimal prix = Convert.ToDecimal(row.Cells["Prix"].Value);
-
-                int artcileId = GetArticleIdByDesignation(nomProduit);
-
-                validerAchat(artcileId, quantite, prix, idCommande);
-            }
-            if (indicationErreurAchat)
+            if (confirm == DialogResult.Yes)
             {
-                reinitialiseAllFunction();
+                int session = Convert.ToInt32(sessionId);
+                string y_n_membre = comboBoxMembre.Text.ToString();
+                int membre = 0;
+                string idMembre = "";
+                string nomMembre = comboBoxNomMembre.Text;
+                if (y_n_membre == "Oui")
+                {
+                    membre = 1;
+                    idMembre = GetMemberId(nomMembre);
+                }
+                else
+                {
+                    membre = membre;
+                    idMembre = idMembre;
+                }
+                creeCommande(membre, idMembre, session);
+                int idCommande = RecupererIdCommande();
+
+                foreach (DataGridViewRow row in dataGridViewPanier.Rows)
+                {
+
+                    string nomProduit = row.Cells["NomProduit"].Value.ToString();
+                    int quantite = Convert.ToInt32(row.Cells["Quantite"].Value);
+                    decimal prix = Convert.ToDecimal(row.Cells["Prix"].Value);
+
+                    int artcileId = GetArticleIdByDesignation(nomProduit);
+
+                    validerAchat(artcileId, quantite, prix, idCommande);
+                }
+                if (indicationErreurAchat)
+                {
+                    reinitialiseAllFunction();
+                }
+                else
+                {
+                    reinitialiseAllFunction();
+                    MessageBox.Show("Achat Effectué !", "Réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                indicationErreurAchat = false;
             }
-            else
-            {
-                reinitialiseAllFunction();
-                MessageBox.Show("Achat Effectué !", "Réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            indicationErreurAchat = false;
         }
 
         private void txtBoxNumeroMembre_TextChanged(object sender, EventArgs e)
