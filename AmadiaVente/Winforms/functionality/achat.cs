@@ -21,6 +21,7 @@ namespace AmadiaVente.Winforms.functionality
         string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         string sessionId;
         private bool isSortedAscending = false;
+        private string whart;
 
         //Méthodes (fonctions)
         public achat()
