@@ -139,7 +139,8 @@ namespace AmadiaVente.Winforms.functionality
         {
             DisableAllFunction();
             comboBoxMembre.Enabled = true;
-            comboBoxMembre.Text = comboBoxDesignation.Text = comboBoxNomMembre.Text = txtBoxNumeroMembre.Text = comboBoxTypeArticle.Text = string.Empty;
+            comboBoxMembre.Text = comboBoxDesignation.Text = comboBoxNomMembre.Text = txtBoxNumeroMembre.Text = string.Empty;
+            comboBoxTypeArticle.SelectedItem = "Médicaments";
             txtBoxPrix.Text = txtBoxPU.Text = txtBoxQuantite.Text = labelStock.Text = string.Empty;
             cacherModifPanier();
             btnAjoutPanier.Enabled = true;
@@ -235,7 +236,6 @@ namespace AmadiaVente.Winforms.functionality
                 }
             }
         }
-
 
         public string GetMemberId(string nomPrenomMembre)
         {
