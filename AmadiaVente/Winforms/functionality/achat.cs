@@ -21,6 +21,7 @@ namespace AmadiaVente.Winforms.functionality
         string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         string sessionId;
         private bool isSortedAscending = false;
+        private bool indicationErreurAchat = false;
 
         //Méthodes (fonctions)
         public achat()
@@ -327,16 +328,54 @@ namespace AmadiaVente.Winforms.functionality
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
                 connection.Open();
-                string query = "INSERT INTO lignecommande (id_article, qte_acheter, prix, id_commande) VALUES(@idArticle, @quantite, @prix, @idCommande)";
 
-                using (SqliteCommand command = new SqliteCommand(query, connection))
+                string checkStockQuery = "SELECT nbr_stock, designation FROM article WHERE id_article = @idArticle";
+
+                using (SqliteCommand checkCommand = new SqliteCommand(checkStockQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@idArticle", idArticle);
-                    command.Parameters.AddWithValue("@quantite", quantite);
-                    command.Parameters.AddWithValue("@prix", prix);
-                    command.Parameters.AddWithValue("@idCommande", idCommande);
+                    checkCommand.Parameters.AddWithValue("@idArticle", idArticle);
 
-                    command.ExecuteNonQuery();
+                    using (SqliteDataReader reader = checkCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int quantiteEnStock = reader.GetInt32(0);
+                            string designationArticle = reader.GetString(1);
+                            
+                            if (quantiteEnStock >= quantite)
+                            {
+                                // Le stock est suffisant, procédez à l'achat...
+
+                                string insertLigneCommandeQuery = "INSERT INTO lignecommande (id_article, qte_acheter, prix, id_commande) VALUES(@idArticle, @quantite, @prix, @idCommande)";
+
+                                using (SqliteCommand insertCommand = new SqliteCommand(insertLigneCommandeQuery, connection))
+                                {
+                                    insertCommand.Parameters.AddWithValue("@idArticle", idArticle);
+                                    insertCommand.Parameters.AddWithValue("@quantite", quantite);
+                                    insertCommand.Parameters.AddWithValue("@prix", prix);
+                                    insertCommand.Parameters.AddWithValue("@idCommande", idCommande);
+
+                                    insertCommand.ExecuteNonQuery();
+                                }
+
+                                string updateStockQuery = "UPDATE article SET nbr_stock = nbr_stock - @quantite WHERE id_article = @idArticle";
+
+                                using (SqliteCommand updateCommand = new SqliteCommand(updateStockQuery, connection))
+                                {
+                                    updateCommand.Parameters.AddWithValue("@quantite", quantite);
+                                    updateCommand.Parameters.AddWithValue("@idArticle", idArticle);
+
+                                    updateCommand.ExecuteNonQuery();
+                                }
+                                
+                            }
+                            else
+                            {
+                                MessageBox.Show("Stock Insuffisant pour " + designationArticle + ".\nVeuillez vérifier le stock avant d'effectuer à nouveau la vente de cet article!\n\nLes autres achats du client vont quand même être enregistrer !", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                indicationErreurAchat = true;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -472,9 +511,16 @@ namespace AmadiaVente.Winforms.functionality
 
                 validerAchat(artcileId, quantite, prix, idCommande);
             }
-
-
-            reinitialiseAllFunction();
+            if (indicationErreurAchat)
+            {
+                reinitialiseAllFunction();
+            }
+            else
+            {
+                reinitialiseAllFunction();
+                MessageBox.Show("Achat Effectué !", "Réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            indicationErreurAchat = false;
         }
 
         private void txtBoxNumeroMembre_TextChanged(object sender, EventArgs e)
