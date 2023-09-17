@@ -359,6 +359,8 @@
             // comboBoxDesignation
             // 
             comboBoxDesignation.Anchor = AnchorStyles.Top;
+            comboBoxDesignation.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxDesignation.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBoxDesignation.BackColor = Color.White;
             comboBoxDesignation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxDesignation.ForeColor = Color.Black;
@@ -372,6 +374,8 @@
             // comboBoxNomMembre
             // 
             comboBoxNomMembre.Anchor = AnchorStyles.Top;
+            comboBoxNomMembre.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxNomMembre.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBoxNomMembre.BackColor = Color.White;
             comboBoxNomMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxNomMembre.ForeColor = Color.Black;
@@ -380,10 +384,13 @@
             comboBoxNomMembre.Name = "comboBoxNomMembre";
             comboBoxNomMembre.Size = new Size(318, 29);
             comboBoxNomMembre.TabIndex = 27;
+            comboBoxNomMembre.SelectedIndexChanged += comboBoxNomMembre_SelectedIndexChanged;
             // 
             // comboBoxTypeArticle
             // 
             comboBoxTypeArticle.Anchor = AnchorStyles.Top;
+            comboBoxTypeArticle.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxTypeArticle.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBoxTypeArticle.BackColor = Color.White;
             comboBoxTypeArticle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTypeArticle.ForeColor = Color.Black;
@@ -397,6 +404,8 @@
             // comboBoxMembre
             // 
             comboBoxMembre.Anchor = AnchorStyles.Top;
+            comboBoxMembre.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxMembre.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBoxMembre.BackColor = Color.White;
             comboBoxMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxMembre.ForeColor = Color.Black;

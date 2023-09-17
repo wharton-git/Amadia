@@ -249,7 +249,7 @@ namespace AmadiaVente.Winforms.functionality
 
         private int GetArticleIdByDesignation(string designation)
         {
-            int articleId = -1; 
+            int articleId = -1;
 
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
@@ -276,7 +276,7 @@ namespace AmadiaVente.Winforms.functionality
 
         private int RecupererIdCommande()
         {
-            int commandeId = -1; 
+            int commandeId = -1;
 
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
@@ -341,7 +341,7 @@ namespace AmadiaVente.Winforms.functionality
                         {
                             int quantiteEnStock = reader.GetInt32(0);
                             string designationArticle = reader.GetString(1);
-                            
+
                             if (quantiteEnStock >= quantite)
                             {
                                 // Le stock est suffisant, procédez à l'achat...
@@ -367,7 +367,7 @@ namespace AmadiaVente.Winforms.functionality
 
                                     updateCommand.ExecuteNonQuery();
                                 }
-                                
+
                             }
                             else
                             {
@@ -502,7 +502,7 @@ namespace AmadiaVente.Winforms.functionality
 
             foreach (DataGridViewRow row in dataGridViewPanier.Rows)
             {
-                
+
                 string nomProduit = row.Cells["NomProduit"].Value.ToString();
                 int quantite = Convert.ToInt32(row.Cells["Quantite"].Value);
                 decimal prix = Convert.ToDecimal(row.Cells["Prix"].Value);
@@ -687,6 +687,20 @@ namespace AmadiaVente.Winforms.functionality
                     dataGridViewPanier.Sort(dataGridViewPanier.Columns["Quantite"], ListSortDirection.Ascending);
                 }
                 isSortedAscending = !isSortedAscending;
+            }
+        }
+
+        private void comboBoxNomMembre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxNomMembre.SelectedItem != null)
+            {
+                string nomEtPrenom = comboBoxNomMembre.SelectedItem.ToString();
+                string idMembre = GetMemberId(nomEtPrenom);
+                txtBoxNumeroMembre.Text = idMembre;
+            }
+            else
+            {
+                txtBoxNumeroMembre.Text = null;
             }
         }
     }
