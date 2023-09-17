@@ -32,16 +32,16 @@ namespace AmadiaVente
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    
+
                     command.Parameters.AddWithValue("@username", username);
                     command.Parameters.AddWithValue("@password", password);
 
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                       
+
                         if (reader.HasRows)
                         {
-                            reader.Read(); 
+                            reader.Read();
 
                             int idUser = reader.GetInt32(0);
                             string nomUser = reader.GetString(1);

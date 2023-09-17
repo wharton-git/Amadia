@@ -84,6 +84,8 @@
             // txtBoxQuantite
             // 
             txtBoxQuantite.Anchor = AnchorStyles.Top;
+            txtBoxQuantite.BackColor = Color.White;
+            txtBoxQuantite.BorderColor = Color.Gray;
             txtBoxQuantite.CustomizableEdges = customizableEdges1;
             txtBoxQuantite.DefaultText = "";
             txtBoxQuantite.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -91,15 +93,18 @@
             txtBoxQuantite.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtBoxQuantite.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxQuantite.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxQuantite.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxQuantite.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxQuantite.ForeColor = Color.Black;
             txtBoxQuantite.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxQuantite.Location = new Point(361, 125);
+            txtBoxQuantite.Location = new Point(379, 127);
+            txtBoxQuantite.Margin = new Padding(4, 4, 4, 4);
             txtBoxQuantite.Name = "txtBoxQuantite";
             txtBoxQuantite.PasswordChar = '\0';
+            txtBoxQuantite.PlaceholderForeColor = Color.LightGray;
             txtBoxQuantite.PlaceholderText = "";
             txtBoxQuantite.SelectedText = "";
             txtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtBoxQuantite.Size = new Size(80, 25);
+            txtBoxQuantite.Size = new Size(103, 29);
             txtBoxQuantite.TabIndex = 4;
             txtBoxQuantite.TextChanged += txtBoxQuantite_TextChanged;
             txtBoxQuantite.KeyPress += txtBoxQuantite_KeyPress;
@@ -107,6 +112,8 @@
             // txtBoxPrix
             // 
             txtBoxPrix.Anchor = AnchorStyles.Top;
+            txtBoxPrix.BackColor = Color.White;
+            txtBoxPrix.BorderColor = Color.Gray;
             txtBoxPrix.CustomizableEdges = customizableEdges3;
             txtBoxPrix.DefaultText = "";
             txtBoxPrix.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -114,15 +121,18 @@
             txtBoxPrix.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtBoxPrix.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxPrix.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPrix.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPrix.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPrix.ForeColor = Color.Black;
             txtBoxPrix.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPrix.Location = new Point(586, 125);
+            txtBoxPrix.Location = new Point(662, 127);
+            txtBoxPrix.Margin = new Padding(4, 4, 4, 4);
             txtBoxPrix.Name = "txtBoxPrix";
             txtBoxPrix.PasswordChar = '\0';
+            txtBoxPrix.PlaceholderForeColor = Color.LightGray;
             txtBoxPrix.PlaceholderText = "";
             txtBoxPrix.SelectedText = "";
             txtBoxPrix.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtBoxPrix.Size = new Size(109, 25);
+            txtBoxPrix.Size = new Size(140, 29);
             txtBoxPrix.TabIndex = 5;
             txtBoxPrix.KeyPress += txtBoxPrix_KeyPress;
             // 
@@ -157,7 +167,7 @@
             dataGridViewPanier.ReadOnly = true;
             dataGridViewPanier.RowHeadersVisible = false;
             dataGridViewPanier.RowTemplate.Height = 25;
-            dataGridViewPanier.Size = new Size(673, 117);
+            dataGridViewPanier.Size = new Size(844, 132);
             dataGridViewPanier.TabIndex = 6;
             dataGridViewPanier.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridViewPanier.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -185,6 +195,7 @@
             // 
             // guna2GradientPanel1
             // 
+            guna2GradientPanel1.BackColor = Color.White;
             guna2GradientPanel1.Controls.Add(btnModifierPanier);
             guna2GradientPanel1.Controls.Add(labelAlertNumeroMembre);
             guna2GradientPanel1.Controls.Add(txtBoxNumeroMembre);
@@ -215,7 +226,7 @@
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2GradientPanel1.Size = new Size(715, 463);
+            guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 7;
             // 
             // btnModifierPanier
@@ -232,7 +243,7 @@
             btnModifierPanier.FillColor2 = Color.FromArgb(192, 192, 0);
             btnModifierPanier.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnModifierPanier.ForeColor = Color.White;
-            btnModifierPanier.Location = new Point(284, 227);
+            btnModifierPanier.Location = new Point(370, 227);
             btnModifierPanier.Name = "btnModifierPanier";
             btnModifierPanier.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnModifierPanier.Size = new Size(50, 45);
@@ -245,7 +256,7 @@
             labelAlertNumeroMembre.Anchor = AnchorStyles.Top;
             labelAlertNumeroMembre.BackColor = Color.Transparent;
             labelAlertNumeroMembre.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelAlertNumeroMembre.Location = new Point(146, 75);
+            labelAlertNumeroMembre.Location = new Point(175, 75);
             labelAlertNumeroMembre.Name = "labelAlertNumeroMembre";
             labelAlertNumeroMembre.Size = new Size(3, 2);
             labelAlertNumeroMembre.TabIndex = 35;
@@ -254,6 +265,8 @@
             // txtBoxNumeroMembre
             // 
             txtBoxNumeroMembre.Anchor = AnchorStyles.Top;
+            txtBoxNumeroMembre.BackColor = Color.White;
+            txtBoxNumeroMembre.BorderColor = Color.Gray;
             txtBoxNumeroMembre.CustomizableEdges = customizableEdges7;
             txtBoxNumeroMembre.DefaultText = "";
             txtBoxNumeroMembre.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -261,15 +274,18 @@
             txtBoxNumeroMembre.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtBoxNumeroMembre.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxNumeroMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxNumeroMembre.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxNumeroMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxNumeroMembre.ForeColor = Color.Black;
             txtBoxNumeroMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxNumeroMembre.Location = new Point(146, 44);
+            txtBoxNumeroMembre.Location = new Point(170, 46);
+            txtBoxNumeroMembre.Margin = new Padding(4, 4, 4, 4);
             txtBoxNumeroMembre.Name = "txtBoxNumeroMembre";
             txtBoxNumeroMembre.PasswordChar = '\0';
+            txtBoxNumeroMembre.PlaceholderForeColor = Color.LightGray;
             txtBoxNumeroMembre.PlaceholderText = "";
             txtBoxNumeroMembre.SelectedText = "";
             txtBoxNumeroMembre.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtBoxNumeroMembre.Size = new Size(83, 25);
+            txtBoxNumeroMembre.Size = new Size(107, 29);
             txtBoxNumeroMembre.TabIndex = 34;
             txtBoxNumeroMembre.TextChanged += txtBoxNumeroMembre_TextChanged;
             txtBoxNumeroMembre.KeyPress += txtBoxNumeroMembre_KeyPress;
@@ -279,7 +295,7 @@
             guna2HtmlLabel5.Anchor = AnchorStyles.Top;
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel5.Location = new Point(361, 100);
+            guna2HtmlLabel5.Location = new Point(390, 100);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(68, 19);
             guna2HtmlLabel5.TabIndex = 33;
@@ -290,7 +306,7 @@
             guna2HtmlLabel4.Anchor = AnchorStyles.Top;
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel4.Location = new Point(47, 102);
+            guna2HtmlLabel4.Location = new Point(76, 102);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(88, 19);
             guna2HtmlLabel4.TabIndex = 32;
@@ -310,7 +326,7 @@
             btnAnnulerAchat.FillColor2 = Color.FromArgb(255, 128, 128);
             btnAnnulerAchat.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnnulerAchat.ForeColor = Color.White;
-            btnAnnulerAchat.Location = new Point(510, 227);
+            btnAnnulerAchat.Location = new Point(596, 227);
             btnAnnulerAchat.Name = "btnAnnulerAchat";
             btnAnnulerAchat.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnAnnulerAchat.Size = new Size(140, 45);
@@ -323,7 +339,7 @@
             labelStock.Anchor = AnchorStyles.Top;
             labelStock.BackColor = Color.Transparent;
             labelStock.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelStock.Location = new Point(146, 173);
+            labelStock.Location = new Point(232, 173);
             labelStock.Name = "labelStock";
             labelStock.Size = new Size(3, 2);
             labelStock.TabIndex = 30;
@@ -334,7 +350,7 @@
             guna2HtmlLabel9.Anchor = AnchorStyles.Top;
             guna2HtmlLabel9.BackColor = Color.Transparent;
             guna2HtmlLabel9.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel9.Location = new Point(89, 173);
+            guna2HtmlLabel9.Location = new Point(175, 173);
             guna2HtmlLabel9.Name = "guna2HtmlLabel9";
             guna2HtmlLabel9.Size = new Size(51, 22);
             guna2HtmlLabel9.TabIndex = 29;
@@ -343,39 +359,51 @@
             // comboBoxDesignation
             // 
             comboBoxDesignation.Anchor = AnchorStyles.Top;
+            comboBoxDesignation.BackColor = Color.White;
+            comboBoxDesignation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxDesignation.ForeColor = Color.Black;
             comboBoxDesignation.FormattingEnabled = true;
-            comboBoxDesignation.Location = new Point(47, 127);
+            comboBoxDesignation.Location = new Point(76, 127);
             comboBoxDesignation.Name = "comboBoxDesignation";
-            comboBoxDesignation.Size = new Size(281, 23);
+            comboBoxDesignation.Size = new Size(281, 29);
             comboBoxDesignation.TabIndex = 28;
             comboBoxDesignation.SelectedIndexChanged += comboBoxDesignation_SelectedIndexChanged;
             // 
             // comboBoxNomMembre
             // 
             comboBoxNomMembre.Anchor = AnchorStyles.Top;
+            comboBoxNomMembre.BackColor = Color.White;
+            comboBoxNomMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxNomMembre.ForeColor = Color.Black;
             comboBoxNomMembre.FormattingEnabled = true;
-            comboBoxNomMembre.Location = new Point(235, 46);
+            comboBoxNomMembre.Location = new Point(283, 46);
             comboBoxNomMembre.Name = "comboBoxNomMembre";
-            comboBoxNomMembre.Size = new Size(271, 23);
+            comboBoxNomMembre.Size = new Size(318, 29);
             comboBoxNomMembre.TabIndex = 27;
             // 
             // comboBoxTypeArticle
             // 
             comboBoxTypeArticle.Anchor = AnchorStyles.Top;
+            comboBoxTypeArticle.BackColor = Color.White;
+            comboBoxTypeArticle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxTypeArticle.ForeColor = Color.Black;
             comboBoxTypeArticle.FormattingEnabled = true;
-            comboBoxTypeArticle.Location = new Point(523, 46);
+            comboBoxTypeArticle.Location = new Point(607, 46);
             comboBoxTypeArticle.Name = "comboBoxTypeArticle";
-            comboBoxTypeArticle.Size = new Size(172, 23);
+            comboBoxTypeArticle.Size = new Size(195, 29);
             comboBoxTypeArticle.TabIndex = 26;
             comboBoxTypeArticle.SelectedIndexChanged += comboBoxTypeArticle_SelectedIndexChanged;
             // 
             // comboBoxMembre
             // 
             comboBoxMembre.Anchor = AnchorStyles.Top;
+            comboBoxMembre.BackColor = Color.White;
+            comboBoxMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxMembre.ForeColor = Color.Black;
             comboBoxMembre.FormattingEnabled = true;
-            comboBoxMembre.Location = new Point(47, 46);
+            comboBoxMembre.Location = new Point(76, 46);
             comboBoxMembre.Name = "comboBoxMembre";
-            comboBoxMembre.Size = new Size(88, 23);
+            comboBoxMembre.Size = new Size(88, 29);
             comboBoxMembre.TabIndex = 24;
             comboBoxMembre.SelectedIndexChanged += comboBoxMembre_SelectedIndexChanged;
             // 
@@ -384,7 +412,7 @@
             guna2HtmlLabel8.Anchor = AnchorStyles.Top;
             guna2HtmlLabel8.BackColor = Color.Transparent;
             guna2HtmlLabel8.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel8.Location = new Point(523, 21);
+            guna2HtmlLabel8.Location = new Point(609, 21);
             guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             guna2HtmlLabel8.Size = new Size(95, 19);
             guna2HtmlLabel8.TabIndex = 19;
@@ -395,7 +423,7 @@
             guna2HtmlLabel7.Anchor = AnchorStyles.Top;
             guna2HtmlLabel7.BackColor = Color.Transparent;
             guna2HtmlLabel7.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel7.Location = new Point(586, 102);
+            guna2HtmlLabel7.Location = new Point(664, 102);
             guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             guna2HtmlLabel7.Size = new Size(32, 19);
             guna2HtmlLabel7.TabIndex = 17;
@@ -406,7 +434,7 @@
             guna2HtmlLabel6.Anchor = AnchorStyles.Top;
             guna2HtmlLabel6.BackColor = Color.Transparent;
             guna2HtmlLabel6.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel6.Location = new Point(467, 102);
+            guna2HtmlLabel6.Location = new Point(503, 102);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             guna2HtmlLabel6.Size = new Size(84, 19);
             guna2HtmlLabel6.TabIndex = 16;
@@ -417,7 +445,7 @@
             guna2HtmlLabel3.Anchor = AnchorStyles.Top;
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel3.Location = new Point(235, 21);
+            guna2HtmlLabel3.Location = new Point(285, 21);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(114, 19);
             guna2HtmlLabel3.TabIndex = 13;
@@ -428,7 +456,7 @@
             guna2HtmlLabel2.Anchor = AnchorStyles.Top;
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel2.Location = new Point(146, 20);
+            guna2HtmlLabel2.Location = new Point(175, 20);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(63, 19);
             guna2HtmlLabel2.TabIndex = 12;
@@ -439,7 +467,7 @@
             guna2HtmlLabel1.Anchor = AnchorStyles.Top;
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel1.Location = new Point(47, 21);
+            guna2HtmlLabel1.Location = new Point(76, 21);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(64, 19);
             guna2HtmlLabel1.TabIndex = 11;
@@ -448,6 +476,8 @@
             // txtBoxPU
             // 
             txtBoxPU.Anchor = AnchorStyles.Top;
+            txtBoxPU.BackColor = Color.White;
+            txtBoxPU.BorderColor = Color.Gray;
             txtBoxPU.CustomizableEdges = customizableEdges11;
             txtBoxPU.DefaultText = "";
             txtBoxPU.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -455,15 +485,18 @@
             txtBoxPU.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtBoxPU.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxPU.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPU.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPU.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPU.ForeColor = Color.Black;
             txtBoxPU.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPU.Location = new Point(467, 125);
+            txtBoxPU.Location = new Point(504, 127);
+            txtBoxPU.Margin = new Padding(4, 4, 4, 4);
             txtBoxPU.Name = "txtBoxPU";
             txtBoxPU.PasswordChar = '\0';
+            txtBoxPU.PlaceholderForeColor = Color.LightGray;
             txtBoxPU.PlaceholderText = "";
             txtBoxPU.SelectedText = "";
             txtBoxPU.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            txtBoxPU.Size = new Size(106, 25);
+            txtBoxPU.Size = new Size(136, 29);
             txtBoxPU.TabIndex = 10;
             // 
             // btnValiderAchat
@@ -480,7 +513,7 @@
             btnValiderAchat.FillColor2 = Color.MediumSeaGreen;
             btnValiderAchat.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnValiderAchat.ForeColor = Color.White;
-            btnValiderAchat.Location = new Point(361, 227);
+            btnValiderAchat.Location = new Point(447, 227);
             btnValiderAchat.Name = "btnValiderAchat";
             btnValiderAchat.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnValiderAchat.Size = new Size(140, 45);
@@ -502,7 +535,7 @@
             btnSupprimerPanier.FillColor2 = Color.Red;
             btnSupprimerPanier.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSupprimerPanier.ForeColor = Color.White;
-            btnSupprimerPanier.Location = new Point(218, 227);
+            btnSupprimerPanier.Location = new Point(304, 227);
             btnSupprimerPanier.Name = "btnSupprimerPanier";
             btnSupprimerPanier.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnSupprimerPanier.Size = new Size(50, 45);
@@ -522,7 +555,7 @@
             btnAjoutPanier.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnAjoutPanier.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAjoutPanier.ForeColor = Color.White;
-            btnAjoutPanier.Location = new Point(66, 227);
+            btnAjoutPanier.Location = new Point(152, 227);
             btnAjoutPanier.Name = "btnAjoutPanier";
             btnAjoutPanier.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btnAjoutPanier.Size = new Size(140, 45);
@@ -534,7 +567,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(715, 463);
+            ClientSize = new Size(886, 478);
             Controls.Add(guna2GradientPanel1);
             Name = "achat";
             Text = "achat";

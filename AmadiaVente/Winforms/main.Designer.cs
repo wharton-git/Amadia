@@ -43,6 +43,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelLeftMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            labelSession = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2GradientButton5 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton4 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -50,7 +51,6 @@
             btnDisconnect = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             panelMainChild = new Guna.UI2.WinForms.Guna2GradientPanel();
-            labelSession = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelLeftMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,8 +68,18 @@
             panelLeftMenu.Location = new Point(0, 0);
             panelLeftMenu.Name = "panelLeftMenu";
             panelLeftMenu.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            panelLeftMenu.Size = new Size(182, 502);
+            panelLeftMenu.Size = new Size(182, 517);
             panelLeftMenu.TabIndex = 0;
+            // 
+            // labelSession
+            // 
+            labelSession.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            labelSession.BackColor = Color.Transparent;
+            labelSession.Location = new Point(7, 415);
+            labelSession.Name = "labelSession";
+            labelSession.Size = new Size(0, 0);
+            labelSession.TabIndex = 6;
+            labelSession.Text = null;
             // 
             // guna2GradientButton5
             // 
@@ -151,7 +161,7 @@
             btnDisconnect.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnDisconnect.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnDisconnect.ForeColor = Color.White;
-            btnDisconnect.Location = new Point(1, 432);
+            btnDisconnect.Location = new Point(1, 447);
             btnDisconnect.Name = "btnDisconnect";
             btnDisconnect.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnDisconnect.Size = new Size(166, 45);
@@ -162,7 +172,7 @@
             // guna2Separator1
             // 
             guna2Separator1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            guna2Separator1.Location = new Point(8, 374);
+            guna2Separator1.Location = new Point(8, 389);
             guna2Separator1.Name = "guna2Separator1";
             guna2Separator1.Size = new Size(166, 13);
             guna2Separator1.TabIndex = 0;
@@ -174,23 +184,14 @@
             panelMainChild.Location = new Point(182, 0);
             panelMainChild.Name = "panelMainChild";
             panelMainChild.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            panelMainChild.Size = new Size(731, 502);
+            panelMainChild.Size = new Size(902, 517);
             panelMainChild.TabIndex = 1;
-            // 
-            // labelSession
-            // 
-            labelSession.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            labelSession.BackColor = Color.Transparent;
-            labelSession.Location = new Point(7, 400);
-            labelSession.Name = "labelSession";
-            labelSession.Size = new Size(3, 2);
-            labelSession.TabIndex = 6;
             // 
             // main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(913, 502);
+            ClientSize = new Size(1084, 517);
             Controls.Add(panelMainChild);
             Controls.Add(panelLeftMenu);
             Name = "main";

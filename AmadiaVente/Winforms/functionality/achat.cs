@@ -254,7 +254,7 @@ namespace AmadiaVente.Winforms.functionality
                 {
                     string nomMembre = parts[0];
                     string prenomMembre = parts[1];
-                    
+
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@nomMembre", nomMembre);
