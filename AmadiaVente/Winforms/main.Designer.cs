@@ -45,7 +45,7 @@
             panelLeftMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
             labelSession = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2GradientButton5 = new Guna.UI2.WinForms.Guna2GradientButton();
-            guna2GradientButton4 = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnCompteRendu = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
             btnAchat = new Guna.UI2.WinForms.Guna2GradientButton();
             btnDisconnect = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -58,7 +58,7 @@
             // 
             panelLeftMenu.Controls.Add(labelSession);
             panelLeftMenu.Controls.Add(guna2GradientButton5);
-            panelLeftMenu.Controls.Add(guna2GradientButton4);
+            panelLeftMenu.Controls.Add(btnCompteRendu);
             panelLeftMenu.Controls.Add(guna2GradientButton3);
             panelLeftMenu.Controls.Add(btnAchat);
             panelLeftMenu.Controls.Add(btnDisconnect);
@@ -77,7 +77,7 @@
             labelSession.BackColor = Color.Transparent;
             labelSession.Location = new Point(7, 415);
             labelSession.Name = "labelSession";
-            labelSession.Size = new Size(0, 0);
+            labelSession.Size = new Size(3, 2);
             labelSession.TabIndex = 6;
             labelSession.Text = null;
             // 
@@ -98,22 +98,23 @@
             guna2GradientButton5.TabIndex = 5;
             guna2GradientButton5.Text = "guna2GradientButton5";
             // 
-            // guna2GradientButton4
+            // btnCompteRendu
             // 
-            guna2GradientButton4.CustomizableEdges = customizableEdges3;
-            guna2GradientButton4.DisabledState.BorderColor = Color.DarkGray;
-            guna2GradientButton4.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2GradientButton4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2GradientButton4.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            guna2GradientButton4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2GradientButton4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2GradientButton4.ForeColor = Color.White;
-            guna2GradientButton4.Location = new Point(0, 228);
-            guna2GradientButton4.Name = "guna2GradientButton4";
-            guna2GradientButton4.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2GradientButton4.Size = new Size(166, 45);
-            guna2GradientButton4.TabIndex = 4;
-            guna2GradientButton4.Text = "guna2GradientButton4";
+            btnCompteRendu.CustomizableEdges = customizableEdges3;
+            btnCompteRendu.DisabledState.BorderColor = Color.DarkGray;
+            btnCompteRendu.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCompteRendu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCompteRendu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnCompteRendu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCompteRendu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCompteRendu.ForeColor = Color.White;
+            btnCompteRendu.Location = new Point(0, 228);
+            btnCompteRendu.Name = "btnCompteRendu";
+            btnCompteRendu.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnCompteRendu.Size = new Size(166, 45);
+            btnCompteRendu.TabIndex = 4;
+            btnCompteRendu.Text = "Compte Rendu";
+            btnCompteRendu.Click += btnCompteRendu_Click;
             // 
             // guna2GradientButton3
             // 
@@ -207,7 +208,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel panelLeftMenu;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton5;
-        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton4;
+        private Guna.UI2.WinForms.Guna2GradientButton btnCompteRendu;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton3;
         private Guna.UI2.WinForms.Guna2GradientButton btnAchat;
         private Guna.UI2.WinForms.Guna2GradientButton btnDisconnect;

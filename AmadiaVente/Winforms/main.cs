@@ -91,5 +91,10 @@ namespace AmadiaVente.Winforms
         {
             OpenChildForm(new functionality.achat(), sender);
         }
+
+        private void btnCompteRendu_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new functionality.rendu(), sender);
+        }
     }
 }
