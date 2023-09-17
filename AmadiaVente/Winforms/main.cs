@@ -16,7 +16,6 @@ namespace AmadiaVente.Winforms
         private Size originalSize;
         private Form activeForm;
         public string sessionUserId;
-        Form1 Session;
         String sessionNom;
         String sessionPrenom;
         String sessionFunction;

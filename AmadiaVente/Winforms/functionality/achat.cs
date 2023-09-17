@@ -208,6 +208,71 @@ namespace AmadiaVente.Winforms.functionality
             btnSupprimerPanier.Visible = btnModifierPanier.Visible = true;
         }
 
+        private void creeCommande(int membre, string idMembre, int idResponsable, string date)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+                string query = "INSERT INTO commande (membre, id_membre, id_responsable, date_achat) VALUES(@membre, @idMembre, @idResponsable, @date)";
+
+                using (SqliteCommand command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@membre", membre);
+
+                    if (membre != 0)
+                    {
+                        command.Parameters.AddWithValue("@idMembre", idMembre);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@idMembre", DBNull.Value);
+                    }
+
+                    command.Parameters.AddWithValue("@idResponsable", idResponsable);
+                    command.Parameters.AddWithValue("@date", date);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public string GetMemberId(string nomPrenomMembre)
+        {
+            string memberId = "";
+
+            using (SQLiteConnection connection = new SQLiteConnection(cs))
+            {
+                connection.Open();
+
+                string query = "SELECT id_membre FROM membre WHERE nom_membre = @nomMembre AND prenom_membre = @prenomMembre";
+
+                // Divisez la chaîne par le premier espace
+                string[] parts = nomPrenomMembre.Split(new char[] { ' ' }, 2);
+
+                if (parts.Length == 2)
+                {
+                    string nomMembre = parts[0];
+                    string prenomMembre = parts[1];
+                    
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nomMembre", nomMembre);
+                        command.Parameters.AddWithValue("@prenomMembre", prenomMembre);
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            memberId = result.ToString();
+                        }
+                    }
+                }
+            }
+
+            return memberId;
+        }
+
         //Evénements
         private void achat_Load(object sender, EventArgs e)
         {
@@ -309,6 +374,24 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnValiderAchat_Click(object sender, EventArgs e)
         {
+            int session = Convert.ToInt32(sessionId);
+            string y_n_membre = comboBoxMembre.Text.ToString();
+            int membre = 0;
+            DateTime aujourdhui = DateTime.Now;
+            string temps = aujourdhui.ToString("yyy-MM-dd");
+            string idMembre = "";
+            string nomMembre = comboBoxNomMembre.Text;
+            if (y_n_membre == "Oui")
+            {
+                membre = 1;
+                idMembre = GetMemberId(nomMembre);
+            }
+            else
+            {
+                membre = membre;
+                idMembre = idMembre;
+            }
+            creeCommande(membre, idMembre, session, temps);
             reinitialiseAllFunction();
         }
 
