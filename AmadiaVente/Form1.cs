@@ -81,22 +81,29 @@ namespace AmadiaVente
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            username = txtBoxUsername.Text;
-            password = txtBoxPassword.Text;
+            if (txtBoxUsername.Text != string.Empty && txtBoxPassword.Text != string.Empty)
+            {
+                username = txtBoxUsername.Text;
+                password = txtBoxPassword.Text;
 
-            string[] connection = VerifierLogin(username, password);
-            if (connection != null)
-            {
-                sessionNom = connection[0];
-                sessionPrenom = connection[1];
-                sessionFunction = connection[2];
-                sessionId = connection[3];
-                Classes.Storage.SessionId = sessionId;
-                connectAction();
+                string[] connection = VerifierLogin(username, password);
+                if (connection != null)
+                {
+                    sessionNom = connection[0];
+                    sessionPrenom = connection[1];
+                    sessionFunction = connection[2];
+                    sessionId = connection[3];
+                    Classes.Storage.SessionId = sessionId;
+                    connectAction();
+                }
+                else
+                {
+                    MessageBox.Show("Login ou Mot de Pass Incorrect !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            else 
             {
-                MessageBox.Show("Login ou Mot de Pass Incorrect !");
+                MessageBox.Show("Veuillez remplir correctement les champs !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

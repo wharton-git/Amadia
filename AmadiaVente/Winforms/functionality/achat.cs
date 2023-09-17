@@ -144,6 +144,7 @@ namespace AmadiaVente.Winforms.functionality
             txtBoxPrix.Text = txtBoxPU.Text = txtBoxQuantite.Text = labelStock.Text = string.Empty;
             cacherModifPanier();
             btnAjoutPanier.Enabled = true;
+            btnValiderAchat.Enabled = false;
             dataGridViewPanier.Rows.Clear();
         }
 
@@ -295,7 +296,7 @@ namespace AmadiaVente.Winforms.functionality
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
                 connection.Open();
-                string query = "INSERT INTO commande (membre, id_membre, id_responsable, date_achat) VALUES(@membre, @idMembre, @idResponsable, CURRENT_TIMESTAMP)";
+                string query = "INSERT INTO commande (membre, id_membre, id_responsable, date_achat) VALUES(@membre, @idMembre, @idResponsable, @date)";
 
                 using (SqliteCommand command = new SqliteCommand(query, connection))
                 {
@@ -309,8 +310,12 @@ namespace AmadiaVente.Winforms.functionality
                     {
                         command.Parameters.AddWithValue("@idMembre", DBNull.Value);
                     }
-
                     command.Parameters.AddWithValue("@idResponsable", idResponsable);
+
+                    DateTime dateHeureActuelles = DateTime.Now;
+                    string dateHeureFormattee = dateHeureActuelles.ToString("yyyy-MM-dd HH:mm:ss");
+
+                    command.Parameters.AddWithValue("@date", dateHeureFormattee);
 
                     command.ExecuteNonQuery();
                 }
@@ -347,6 +352,7 @@ namespace AmadiaVente.Winforms.functionality
             comboBoxTypeArticle.SelectedItem = "Médicaments";
 
             txtBoxPU.Enabled = false;
+            btnValiderAchat.Enabled = false;
 
             afficheMedicComboBoxLoad();
             afficheNomMembreLoad();
@@ -527,9 +533,12 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnAjoutPanier_Click(object sender, EventArgs e)
         {
-            txtBoxNumeroMembre.Enabled = comboBoxNomMembre.Enabled = false;
+
             if (comboBoxDesignation.SelectedItem != null && txtBoxPrix.Text != string.Empty && txtBoxQuantite.Text != string.Empty)
             {
+                btnValiderAchat.Enabled = true;
+                txtBoxNumeroMembre.Enabled = comboBoxNomMembre.Enabled = false;
+
                 string nomProduit = comboBoxDesignation.SelectedItem.ToString();
                 int quantite = int.Parse(txtBoxQuantite.Text);
                 int prixTotal = int.Parse(txtBoxPrix.Text);
@@ -541,6 +550,10 @@ namespace AmadiaVente.Winforms.functionality
                 txtBoxPU.Clear();
                 labelStock.Text = "";
                 txtBoxPrix.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir les informations nécessaires !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
