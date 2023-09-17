@@ -55,6 +55,8 @@
             txtBoxPrix = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewPanier = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            labelTotal = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnModifierPanier = new Guna.UI2.WinForms.Guna2GradientButton();
             labelAlertNumeroMembre = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtBoxNumeroMembre = new Guna.UI2.WinForms.Guna2TextBox();
@@ -196,6 +198,8 @@
             // guna2GradientPanel1
             // 
             guna2GradientPanel1.BackColor = Color.White;
+            guna2GradientPanel1.Controls.Add(labelTotal);
+            guna2GradientPanel1.Controls.Add(guna2HtmlLabel11);
             guna2GradientPanel1.Controls.Add(btnModifierPanier);
             guna2GradientPanel1.Controls.Add(labelAlertNumeroMembre);
             guna2GradientPanel1.Controls.Add(txtBoxNumeroMembre);
@@ -228,6 +232,28 @@
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 7;
+            // 
+            // labelTotal
+            // 
+            labelTotal.Anchor = AnchorStyles.Top;
+            labelTotal.BackColor = Color.Transparent;
+            labelTotal.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTotal.Location = new Point(570, 173);
+            labelTotal.Name = "labelTotal";
+            labelTotal.Size = new Size(3, 2);
+            labelTotal.TabIndex = 38;
+            labelTotal.Text = null;
+            // 
+            // guna2HtmlLabel11
+            // 
+            guna2HtmlLabel11.Anchor = AnchorStyles.Top;
+            guna2HtmlLabel11.BackColor = Color.Transparent;
+            guna2HtmlLabel11.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2HtmlLabel11.Location = new Point(430, 173);
+            guna2HtmlLabel11.Name = "guna2HtmlLabel11";
+            guna2HtmlLabel11.Size = new Size(134, 22);
+            guna2HtmlLabel11.TabIndex = 37;
+            guna2HtmlLabel11.Text = "Montant à Payer :";
             // 
             // btnModifierPanier
             // 
@@ -615,5 +641,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelAlertNumeroMembre;
         private Guna.UI2.WinForms.Guna2GradientButton btnModifierPanier;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelTotal;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
     }
 }

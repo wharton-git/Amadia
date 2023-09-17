@@ -22,6 +22,7 @@ namespace AmadiaVente.Winforms.functionality
         string sessionId;
         private bool isSortedAscending = false;
         private bool indicationErreurAchat = false;
+        int totalPayer = 0;
 
         //Méthodes (fonctions)
         public achat()
@@ -30,6 +31,8 @@ namespace AmadiaVente.Winforms.functionality
             dataGridViewPanier.Columns.Add("NomProduit", "Nom Du Produit"); // Colonne pour le nom du produit
             dataGridViewPanier.Columns.Add("Quantite", "Quantité"); // Colonne pour la quantité du produit
             dataGridViewPanier.Columns.Add("Prix", "Prix"); // Colonne pour le prix unitaire du produit
+
+            labelTotal.Text = totalPayer.ToString() + " Ar";
 
         }
 
@@ -144,6 +147,8 @@ namespace AmadiaVente.Winforms.functionality
             comboBoxTypeArticle.SelectedItem = "Médicaments";
             txtBoxPrix.Text = txtBoxPU.Text = txtBoxQuantite.Text = labelStock.Text = string.Empty;
             cacherModifPanier();
+            totalPayer = 0;
+            labelTotal.Text = totalPayer.ToString() + " Ar";
             btnAjoutPanier.Enabled = true;
             btnValiderAchat.Enabled = false;
             dataGridViewPanier.Rows.Clear();
@@ -596,6 +601,8 @@ namespace AmadiaVente.Winforms.functionality
                 txtBoxPU.Clear();
                 labelStock.Text = "";
                 txtBoxPrix.Clear();
+                totalPayer += prixTotal;
+                labelTotal.Text = totalPayer.ToString() + " Ar";
             }
             else
             {
@@ -637,6 +644,7 @@ namespace AmadiaVente.Winforms.functionality
                     {
                         // Ajoutez l'indice de la ligne à la liste des lignes à supprimer.
                         rowsToDelete.Add(rowIndex);
+
                     }
                 }
 
@@ -646,8 +654,11 @@ namespace AmadiaVente.Winforms.functionality
                 // Supprimez les lignes un par un, en partant de la fin
                 foreach (int rowIndex in rowsToDelete)
                 {
+                    int montantLigne = Convert.ToInt32(dataGridViewPanier.Rows[rowIndex].Cells["Prix"].Value);
                     dataGridViewPanier.Rows.RemoveAt(rowIndex);
+                    totalPayer -= montantLigne;
                 }
+                labelTotal.Text = totalPayer.ToString() + " Ar";
             }
 
             btnAjoutPanier.Enabled = true;
@@ -662,9 +673,15 @@ namespace AmadiaVente.Winforms.functionality
 
                 DataGridViewRow selectedRow = dataGridViewPanier.SelectedRows[0];
 
+                int montantLigne = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
+                totalPayer -= montantLigne;
+
                 selectedRow.Cells["NomProduit"].Value = comboBoxDesignation.SelectedItem;
                 selectedRow.Cells["Quantite"].Value = txtBoxQuantite.Text;
                 selectedRow.Cells["Prix"].Value = txtBoxPrix.Text;
+
+                int nouveauPrix = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
+                totalPayer += nouveauPrix;
 
                 comboBoxDesignation.SelectedItem = null;
                 txtBoxQuantite.Text = txtBoxPrix.Text = null;
@@ -672,6 +689,7 @@ namespace AmadiaVente.Winforms.functionality
             }
             btnAjoutPanier.Enabled = true;
             cacherModifPanier();
+            labelTotal.Text = totalPayer.ToString() + " Ar";
         }
 
         private void dataGridViewPanier_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
