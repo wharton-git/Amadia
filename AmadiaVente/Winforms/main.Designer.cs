@@ -132,7 +132,6 @@
             btnFournisseur.Size = new Size(166, 45);
             btnFournisseur.TabIndex = 3;
             btnFournisseur.Text = "Fournisseur";
-            btnFournisseur.Click += guna2GradientButton3_Click;
             // 
             // btnAchat
             // 
