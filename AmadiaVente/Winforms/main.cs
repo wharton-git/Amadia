@@ -96,5 +96,10 @@ namespace AmadiaVente.Winforms
         {
             OpenChildForm(new functionality.rendu(), sender);
         }
+
+        private void guna2GradientButton3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
