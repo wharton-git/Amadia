@@ -84,6 +84,7 @@ namespace AmadiaVente.Winforms
         {
             labelSession.Text = sessionId;
             sessionUserId = sessionId;
+            btnHidePanel.Visible = false;
             OpenChildForm(new functionality.achat(), sender);
         }
 
@@ -97,5 +98,18 @@ namespace AmadiaVente.Winforms
             OpenChildForm(new functionality.rendu(), sender);
         }
 
+        private void btnShowPanel_Click(object sender, EventArgs e)
+        {
+            btnShowPanel.Visible = false;
+            panelLeftMenu.Width = 175;
+            btnHidePanel.Visible = true;
+        }
+
+        private void btnHidePanel_Click(object sender, EventArgs e)
+        {
+            btnShowPanel.Visible = true;
+            panelLeftMenu.Width = 40;
+            btnHidePanel.Visible = false;
+        }
     }
 }
