@@ -30,6 +30,7 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -41,12 +42,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             panelLeftMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnShowPanel = new Guna.UI2.WinForms.Guna2GradientCircleButton();
             btnHidePanel = new Guna.UI2.WinForms.Guna2GradientCircleButton();
             labelSession = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2GradientButton5 = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -55,13 +56,8 @@
             btnAchat = new Guna.UI2.WinForms.Guna2GradientButton();
             btnDisconnect = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            btnShowPanel = new Guna.UI2.WinForms.Guna2GradientCircleButton();
             panelMainChild = new Guna.UI2.WinForms.Guna2GradientPanel();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            testSlide = new Guna.UI2.WinForms.Guna2Transition();
             panelLeftMenu.SuspendLayout();
-            panelMainChild.SuspendLayout();
             SuspendLayout();
             // 
             // panelLeftMenu
@@ -77,7 +73,6 @@
             panelLeftMenu.Controls.Add(btnDisconnect);
             panelLeftMenu.Controls.Add(guna2Separator1);
             panelLeftMenu.CustomizableEdges = customizableEdges13;
-            testSlide.SetDecoration(panelLeftMenu, Guna.UI2.AnimatorNS.DecorationType.None);
             panelLeftMenu.Dock = DockStyle.Left;
             panelLeftMenu.Location = new Point(0, 0);
             panelLeftMenu.Name = "panelLeftMenu";
@@ -85,10 +80,31 @@
             panelLeftMenu.Size = new Size(40, 517);
             panelLeftMenu.TabIndex = 0;
             // 
+            // btnShowPanel
+            // 
+            btnShowPanel.Animated = true;
+            btnShowPanel.BackColor = Color.Transparent;
+            btnShowPanel.DisabledState.BorderColor = Color.DarkGray;
+            btnShowPanel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnShowPanel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnShowPanel.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnShowPanel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnShowPanel.FillColor = SystemColors.ControlDarkDark;
+            btnShowPanel.FillColor2 = SystemColors.ControlDarkDark;
+            btnShowPanel.Font = new Font("Berlin Sans FB", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnShowPanel.ForeColor = Color.White;
+            btnShowPanel.Location = new Point(1, 380);
+            btnShowPanel.Name = "btnShowPanel";
+            btnShowPanel.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            btnShowPanel.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnShowPanel.Size = new Size(36, 35);
+            btnShowPanel.TabIndex = 2;
+            btnShowPanel.Text = ">";
+            btnShowPanel.Click += btnShowPanel_Click;
+            // 
             // btnHidePanel
             // 
             btnHidePanel.Animated = true;
-            testSlide.SetDecoration(btnHidePanel, Guna.UI2.AnimatorNS.DecorationType.None);
             btnHidePanel.DisabledState.BorderColor = Color.DarkGray;
             btnHidePanel.DisabledState.CustomBorderColor = Color.DarkGray;
             btnHidePanel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -109,7 +125,6 @@
             // 
             labelSession.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             labelSession.BackColor = Color.Transparent;
-            testSlide.SetDecoration(labelSession, Guna.UI2.AnimatorNS.DecorationType.None);
             labelSession.Location = new Point(7, 415);
             labelSession.Name = "labelSession";
             labelSession.Size = new Size(3, 2);
@@ -119,7 +134,6 @@
             // guna2GradientButton5
             // 
             guna2GradientButton5.CustomizableEdges = customizableEdges3;
-            testSlide.SetDecoration(guna2GradientButton5, Guna.UI2.AnimatorNS.DecorationType.None);
             guna2GradientButton5.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton5.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -137,7 +151,6 @@
             // btnCompteRendu
             // 
             btnCompteRendu.CustomizableEdges = customizableEdges5;
-            testSlide.SetDecoration(btnCompteRendu, Guna.UI2.AnimatorNS.DecorationType.None);
             btnCompteRendu.DisabledState.BorderColor = Color.DarkGray;
             btnCompteRendu.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCompteRendu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -156,7 +169,6 @@
             // btnFournisseur
             // 
             btnFournisseur.CustomizableEdges = customizableEdges7;
-            testSlide.SetDecoration(btnFournisseur, Guna.UI2.AnimatorNS.DecorationType.None);
             btnFournisseur.DisabledState.BorderColor = Color.DarkGray;
             btnFournisseur.DisabledState.CustomBorderColor = Color.DarkGray;
             btnFournisseur.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -174,7 +186,6 @@
             // btnAchat
             // 
             btnAchat.CustomizableEdges = customizableEdges9;
-            testSlide.SetDecoration(btnAchat, Guna.UI2.AnimatorNS.DecorationType.None);
             btnAchat.DisabledState.BorderColor = Color.DarkGray;
             btnAchat.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAchat.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -194,7 +205,6 @@
             // 
             btnDisconnect.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDisconnect.CustomizableEdges = customizableEdges11;
-            testSlide.SetDecoration(btnDisconnect, Guna.UI2.AnimatorNS.DecorationType.None);
             btnDisconnect.DisabledState.BorderColor = Color.DarkGray;
             btnDisconnect.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDisconnect.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -213,88 +223,20 @@
             // guna2Separator1
             // 
             guna2Separator1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            testSlide.SetDecoration(guna2Separator1, Guna.UI2.AnimatorNS.DecorationType.None);
             guna2Separator1.Location = new Point(8, 389);
             guna2Separator1.Name = "guna2Separator1";
             guna2Separator1.Size = new Size(24, 13);
             guna2Separator1.TabIndex = 0;
             // 
-            // btnShowPanel
-            // 
-            btnShowPanel.Animated = true;
-            btnShowPanel.BackColor = Color.Transparent;
-            testSlide.SetDecoration(btnShowPanel, Guna.UI2.AnimatorNS.DecorationType.None);
-            btnShowPanel.DisabledState.BorderColor = Color.DarkGray;
-            btnShowPanel.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnShowPanel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnShowPanel.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnShowPanel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnShowPanel.FillColor = SystemColors.ControlDarkDark;
-            btnShowPanel.FillColor2 = SystemColors.ControlDarkDark;
-            btnShowPanel.Font = new Font("Berlin Sans FB", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnShowPanel.ForeColor = Color.White;
-            btnShowPanel.Location = new Point(1, 380);
-            btnShowPanel.Name = "btnShowPanel";
-            btnShowPanel.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            btnShowPanel.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnShowPanel.Size = new Size(36, 35);
-            btnShowPanel.TabIndex = 2;
-            btnShowPanel.Text = ">";
-            btnShowPanel.Click += btnShowPanel_Click;
-            // 
             // panelMainChild
             // 
-            panelMainChild.Controls.Add(guna2HtmlLabel2);
-            panelMainChild.Controls.Add(guna2HtmlLabel1);
             panelMainChild.CustomizableEdges = customizableEdges15;
-            testSlide.SetDecoration(panelMainChild, Guna.UI2.AnimatorNS.DecorationType.None);
             panelMainChild.Dock = DockStyle.Fill;
             panelMainChild.Location = new Point(40, 0);
             panelMainChild.Name = "panelMainChild";
             panelMainChild.ShadowDecoration.CustomizableEdges = customizableEdges16;
             panelMainChild.Size = new Size(1044, 517);
             panelMainChild.TabIndex = 1;
-            // 
-            // guna2HtmlLabel2
-            // 
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            testSlide.SetDecoration(guna2HtmlLabel2, Guna.UI2.AnimatorNS.DecorationType.None);
-            guna2HtmlLabel2.Location = new Point(397, 160);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(39, 17);
-            guna2HtmlLabel2.TabIndex = 1;
-            guna2HtmlLabel2.Text = "42; 517";
-            // 
-            // guna2HtmlLabel1
-            // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            testSlide.SetDecoration(guna2HtmlLabel1, Guna.UI2.AnimatorNS.DecorationType.None);
-            guna2HtmlLabel1.Location = new Point(298, 111);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(45, 17);
-            guna2HtmlLabel1.TabIndex = 0;
-            guna2HtmlLabel1.Text = "176; 517";
-            // 
-            // testSlide
-            // 
-            testSlide.AnimationType = Guna.UI2.AnimatorNS.AnimationType.HorizSlide;
-            testSlide.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = (PointF)resources.GetObject("animation1.BlindCoeff");
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = (PointF)resources.GetObject("animation1.MosaicCoeff");
-            animation1.MosaicShift = (PointF)resources.GetObject("animation1.MosaicShift");
-            animation1.MosaicSize = 0;
-            animation1.Padding = new Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = (PointF)resources.GetObject("animation1.ScaleCoeff");
-            animation1.SlideCoeff = (PointF)resources.GetObject("animation1.SlideCoeff");
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            testSlide.DefaultAnimation = animation1;
             // 
             // main
             // 
@@ -303,14 +245,11 @@
             ClientSize = new Size(1084, 517);
             Controls.Add(panelMainChild);
             Controls.Add(panelLeftMenu);
-            testSlide.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             Name = "main";
             Text = "main";
             Load += main_Load;
             panelLeftMenu.ResumeLayout(false);
             panelLeftMenu.PerformLayout();
-            panelMainChild.ResumeLayout(false);
-            panelMainChild.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -325,10 +264,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnDisconnect;
         private Guna.UI2.WinForms.Guna2GradientPanel panelMainChild;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelSession;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2GradientCircleButton btnHidePanel;
         private Guna.UI2.WinForms.Guna2GradientCircleButton btnShowPanel;
-        private Guna.UI2.WinForms.Guna2Transition testSlide;
     }
 }
