@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtBoxEditNom = new Guna.UI2.WinForms.Guna2TextBox();
@@ -84,7 +84,7 @@
             // txtBoxEditNom
             // 
             txtBoxEditNom.BorderRadius = 10;
-            txtBoxEditNom.CustomizableEdges = customizableEdges17;
+            txtBoxEditNom.CustomizableEdges = customizableEdges1;
             txtBoxEditNom.DefaultText = "";
             txtBoxEditNom.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxEditNom.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -98,14 +98,14 @@
             txtBoxEditNom.PasswordChar = '\0';
             txtBoxEditNom.PlaceholderText = "Votre nom";
             txtBoxEditNom.SelectedText = "";
-            txtBoxEditNom.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtBoxEditNom.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtBoxEditNom.Size = new Size(200, 36);
             txtBoxEditNom.TabIndex = 2;
             // 
             // txtBoxEditPrenom
             // 
             txtBoxEditPrenom.BorderRadius = 10;
-            txtBoxEditPrenom.CustomizableEdges = customizableEdges19;
+            txtBoxEditPrenom.CustomizableEdges = customizableEdges3;
             txtBoxEditPrenom.DefaultText = "";
             txtBoxEditPrenom.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxEditPrenom.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -119,7 +119,7 @@
             txtBoxEditPrenom.PasswordChar = '\0';
             txtBoxEditPrenom.PlaceholderText = "Votre prénom";
             txtBoxEditPrenom.SelectedText = "";
-            txtBoxEditPrenom.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            txtBoxEditPrenom.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtBoxEditPrenom.Size = new Size(200, 36);
             txtBoxEditPrenom.TabIndex = 4;
             // 
@@ -136,7 +136,7 @@
             // txtBoxEditUsername
             // 
             txtBoxEditUsername.BorderRadius = 10;
-            txtBoxEditUsername.CustomizableEdges = customizableEdges21;
+            txtBoxEditUsername.CustomizableEdges = customizableEdges5;
             txtBoxEditUsername.DefaultText = "";
             txtBoxEditUsername.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxEditUsername.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -150,7 +150,7 @@
             txtBoxEditUsername.PasswordChar = '\0';
             txtBoxEditUsername.PlaceholderText = "Nom d'utilisateur";
             txtBoxEditUsername.SelectedText = "";
-            txtBoxEditUsername.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            txtBoxEditUsername.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtBoxEditUsername.Size = new Size(200, 36);
             txtBoxEditUsername.TabIndex = 6;
             // 
@@ -167,7 +167,7 @@
             // txtBoxEditCurrentMdp
             // 
             txtBoxEditCurrentMdp.BorderRadius = 10;
-            txtBoxEditCurrentMdp.CustomizableEdges = customizableEdges23;
+            txtBoxEditCurrentMdp.CustomizableEdges = customizableEdges7;
             txtBoxEditCurrentMdp.DefaultText = "";
             txtBoxEditCurrentMdp.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxEditCurrentMdp.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -181,14 +181,14 @@
             txtBoxEditCurrentMdp.PasswordChar = '\0';
             txtBoxEditCurrentMdp.PlaceholderText = "Mot de passe actuel";
             txtBoxEditCurrentMdp.SelectedText = "";
-            txtBoxEditCurrentMdp.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            txtBoxEditCurrentMdp.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtBoxEditCurrentMdp.Size = new Size(200, 36);
             txtBoxEditCurrentMdp.TabIndex = 7;
             // 
             // txtBoxEditNewMdp
             // 
             txtBoxEditNewMdp.BorderRadius = 10;
-            txtBoxEditNewMdp.CustomizableEdges = customizableEdges25;
+            txtBoxEditNewMdp.CustomizableEdges = customizableEdges9;
             txtBoxEditNewMdp.DefaultText = "";
             txtBoxEditNewMdp.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxEditNewMdp.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -202,14 +202,14 @@
             txtBoxEditNewMdp.PasswordChar = '\0';
             txtBoxEditNewMdp.PlaceholderText = "Nouveau mot de passe";
             txtBoxEditNewMdp.SelectedText = "";
-            txtBoxEditNewMdp.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            txtBoxEditNewMdp.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtBoxEditNewMdp.Size = new Size(200, 36);
             txtBoxEditNewMdp.TabIndex = 8;
             // 
             // txtBoxEditConfirmMdp
             // 
             txtBoxEditConfirmMdp.BorderRadius = 10;
-            txtBoxEditConfirmMdp.CustomizableEdges = customizableEdges27;
+            txtBoxEditConfirmMdp.CustomizableEdges = customizableEdges11;
             txtBoxEditConfirmMdp.DefaultText = "";
             txtBoxEditConfirmMdp.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxEditConfirmMdp.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -223,14 +223,14 @@
             txtBoxEditConfirmMdp.PasswordChar = '\0';
             txtBoxEditConfirmMdp.PlaceholderText = "Confirmer nouveau mot de passe";
             txtBoxEditConfirmMdp.SelectedText = "";
-            txtBoxEditConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            txtBoxEditConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtBoxEditConfirmMdp.Size = new Size(200, 36);
             txtBoxEditConfirmMdp.TabIndex = 9;
             // 
             // btnEditSave
             // 
             btnEditSave.BorderRadius = 10;
-            btnEditSave.CustomizableEdges = customizableEdges29;
+            btnEditSave.CustomizableEdges = customizableEdges13;
             btnEditSave.DisabledState.BorderColor = Color.DarkGray;
             btnEditSave.DisabledState.CustomBorderColor = Color.DarkGray;
             btnEditSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -240,7 +240,7 @@
             btnEditSave.ForeColor = Color.White;
             btnEditSave.Location = new Point(114, 484);
             btnEditSave.Name = "btnEditSave";
-            btnEditSave.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            btnEditSave.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnEditSave.Size = new Size(180, 45);
             btnEditSave.TabIndex = 10;
             btnEditSave.Text = "Enregister ";
@@ -276,10 +276,10 @@
             panelEditMdp.Controls.Add(txtBoxEditNewMdp);
             panelEditMdp.Controls.Add(txtBoxEditCurrentMdp);
             panelEditMdp.Controls.Add(txtBoxEditConfirmMdp);
-            panelEditMdp.CustomizableEdges = customizableEdges31;
+            panelEditMdp.CustomizableEdges = customizableEdges15;
             panelEditMdp.Location = new Point(59, 291);
             panelEditMdp.Name = "panelEditMdp";
-            panelEditMdp.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            panelEditMdp.ShadowDecoration.CustomizableEdges = customizableEdges16;
             panelEditMdp.Size = new Size(279, 187);
             panelEditMdp.TabIndex = 13;
             // 
@@ -301,6 +301,7 @@
             Controls.Add(guna2HtmlLabel2);
             Controls.Add(guna2HtmlLabel1);
             FormBorderStyle = FormBorderStyle.None;
+            MinimizeBox = false;
             Name = "popUpEditProfil";
             StartPosition = FormStartPosition.CenterParent;
             Text = "popUpEditProfil";

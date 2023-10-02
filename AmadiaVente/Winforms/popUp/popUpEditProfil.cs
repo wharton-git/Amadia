@@ -53,7 +53,7 @@ namespace AmadiaVente.Winforms.popUp
         }
 
 
-    private void popUpEditProfil_Load(object sender, EventArgs e)
+        private void popUpEditProfil_Load(object sender, EventArgs e)
         {
             panelEditMdp.Visible = false;
         }
