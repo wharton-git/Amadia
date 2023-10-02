@@ -31,17 +31,37 @@ namespace AmadiaVente.Winforms.popUp
         private void labelChangeMdp_MouseEnter(object sender, EventArgs e)
         {
             labelChangeMdp.ForeColor = Color.RoyalBlue;
+            labelChangeMdp.Cursor = Cursors.Hand;
         }
 
         private void labelChangeMdp_MouseLeave(object sender, EventArgs e)
         {
             labelChangeMdp.ForeColor = Color.Black;
+            labelChangeMdp.Cursor = Cursors.Default;
         }
 
         private void labelChangeMdp_Click(object sender, EventArgs e)
         {
-            panelEditMdp.Visible = true;
+           if (!panelEditMdp.Visible) {
+                panelEditMdp.Visible = true;
+                labelChangeMdp.Text = "Annuler modification du mot de passe ?";
+            }else
+            {
+                panelEditMdp.Visible = false;
+                labelChangeMdp.Text = "Changer le mot de passe ?";
+            }
         }
 
+        private void btnQuitPopUp_MouseEnter(object sender, EventArgs e)
+        {
+            btnQuitPopUp.Cursor = Cursors.Hand;
+            btnQuitPopUp.ForeColor = Color.Red;
+        }
+
+        private void btnQuitPopUp_MouseLeave(object sender, EventArgs e)
+        {
+            btnQuitPopUp.Cursor = Cursors.Default;
+            btnQuitPopUp.ForeColor = Color.Black;
+        }
     }
 }
