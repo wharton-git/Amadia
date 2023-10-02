@@ -42,10 +42,12 @@ namespace AmadiaVente.Winforms.popUp
 
         private void labelChangeMdp_Click(object sender, EventArgs e)
         {
-           if (!panelEditMdp.Visible) {
+            if (!panelEditMdp.Visible)
+            {
                 panelEditMdp.Visible = true;
                 labelChangeMdp.Text = "Annuler modification du mot de passe ?";
-            }else
+            }
+            else
             {
                 panelEditMdp.Visible = false;
                 labelChangeMdp.Text = "Changer le mot de passe ?";

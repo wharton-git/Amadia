@@ -249,7 +249,7 @@
             // 
             labelChangeMdp.BackColor = Color.Transparent;
             labelChangeMdp.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelChangeMdp.Location = new Point(109, 263);
+            labelChangeMdp.Location = new Point(12, 265);
             labelChangeMdp.Name = "labelChangeMdp";
             labelChangeMdp.Size = new Size(191, 20);
             labelChangeMdp.TabIndex = 11;
@@ -287,6 +287,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Silver;
             ClientSize = new Size(403, 561);
             Controls.Add(panelEditMdp);
             Controls.Add(btnQuitPopUp);
