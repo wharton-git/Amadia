@@ -111,5 +111,10 @@ namespace AmadiaVente.Winforms
             panelLeftMenu.Width = 40;
             btnHidePanel.Visible = false;
         }
+
+        private void btnProfil_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new functionality.profil(), sender);
+        }
     }
 }
