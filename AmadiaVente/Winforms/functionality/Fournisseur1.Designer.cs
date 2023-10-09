@@ -47,6 +47,8 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             labelTotal = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnModifierPanier = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -55,7 +57,6 @@
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnAnnulerAchat = new Guna.UI2.WinForms.Guna2GradientButton();
             labelStock = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             Medicament = new ComboBox();
             NomFournisseur = new ComboBox();
             TypeMedicament = new ComboBox();
@@ -70,6 +71,7 @@
             PrixMedicament = new Guna.UI2.WinForms.Guna2TextBox();
             QuantiteMedicament = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewPanier = new Guna.UI2.WinForms.Guna2DataGridView();
+            AjoutFournisseurPage = new Guna.UI2.WinForms.Guna2GradientButton();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPanier).BeginInit();
             SuspendLayout();
             // 
@@ -90,7 +92,7 @@
             guna2HtmlLabel11.Anchor = AnchorStyles.Top;
             guna2HtmlLabel11.BackColor = Color.Transparent;
             guna2HtmlLabel11.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel11.Location = new Point(610, 267);
+            guna2HtmlLabel11.Location = new Point(430, 267);
             guna2HtmlLabel11.Margin = new Padding(4, 5, 4, 5);
             guna2HtmlLabel11.Name = "guna2HtmlLabel11";
             guna2HtmlLabel11.Size = new Size(187, 31);
@@ -118,13 +120,14 @@
             btnModifierPanier.Size = new Size(71, 75);
             btnModifierPanier.TabIndex = 62;
             btnModifierPanier.Text = "Mod";
+            btnModifierPanier.Click += btnModifierPanier_Click;
             // 
             // labelAlertNumeroMembre
             // 
             labelAlertNumeroMembre.Anchor = AnchorStyles.Top;
             labelAlertNumeroMembre.BackColor = Color.Transparent;
             labelAlertNumeroMembre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelAlertNumeroMembre.Location = new Point(246, 104);
+            labelAlertNumeroMembre.Location = new Point(157, 113);
             labelAlertNumeroMembre.Margin = new Padding(4, 5, 4, 5);
             labelAlertNumeroMembre.Name = "labelAlertNumeroMembre";
             labelAlertNumeroMembre.Size = new Size(3, 2);
@@ -189,18 +192,6 @@
             labelStock.TabIndex = 56;
             labelStock.Text = null;
             // 
-            // guna2HtmlLabel9
-            // 
-            guna2HtmlLabel9.Anchor = AnchorStyles.Top;
-            guna2HtmlLabel9.BackColor = Color.Transparent;
-            guna2HtmlLabel9.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel9.Location = new Point(246, 267);
-            guna2HtmlLabel9.Margin = new Padding(4, 5, 4, 5);
-            guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            guna2HtmlLabel9.Size = new Size(179, 31);
-            guna2HtmlLabel9.TabIndex = 55;
-            guna2HtmlLabel9.Text = "Entrer en Stock :";
-            // 
             // Medicament
             // 
             Medicament.Anchor = AnchorStyles.Top;
@@ -225,7 +216,7 @@
             NomFournisseur.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             NomFournisseur.ForeColor = Color.Black;
             NomFournisseur.FormattingEnabled = true;
-            NomFournisseur.Location = new Point(231, 66);
+            NomFournisseur.Location = new Point(142, 75);
             NomFournisseur.Margin = new Padding(4, 5, 4, 5);
             NomFournisseur.Name = "NomFournisseur";
             NomFournisseur.Size = new Size(453, 40);
@@ -240,7 +231,7 @@
             TypeMedicament.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TypeMedicament.ForeColor = Color.Black;
             TypeMedicament.FormattingEnabled = true;
-            TypeMedicament.Location = new Point(694, 66);
+            TypeMedicament.Location = new Point(605, 75);
             TypeMedicament.Margin = new Padding(4, 5, 4, 5);
             TypeMedicament.Name = "TypeMedicament";
             TypeMedicament.Size = new Size(277, 40);
@@ -251,7 +242,7 @@
             guna2HtmlLabel8.Anchor = AnchorStyles.Top;
             guna2HtmlLabel8.BackColor = Color.Transparent;
             guna2HtmlLabel8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel8.Location = new Point(697, 24);
+            guna2HtmlLabel8.Location = new Point(608, 33);
             guna2HtmlLabel8.Margin = new Padding(4, 5, 4, 5);
             guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             guna2HtmlLabel8.Size = new Size(130, 27);
@@ -287,7 +278,7 @@
             guna2HtmlLabel3.Anchor = AnchorStyles.Top;
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel3.Location = new Point(234, 24);
+            guna2HtmlLabel3.Location = new Point(145, 33);
             guna2HtmlLabel3.Margin = new Padding(4, 5, 4, 5);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(163, 27);
@@ -341,6 +332,7 @@
             btnValiderAchat.Size = new Size(200, 75);
             btnValiderAchat.TabIndex = 43;
             btnValiderAchat.Text = "Valider le Nouveau Stock";
+            btnValiderAchat.Click += btnValiderAchat_Click;
             // 
             // btnSupprimerPanier
             // 
@@ -363,6 +355,7 @@
             btnSupprimerPanier.Size = new Size(71, 75);
             btnSupprimerPanier.TabIndex = 42;
             btnSupprimerPanier.Text = "Sup";
+            btnSupprimerPanier.Click += btnSupprimerPanier_Click;
             // 
             // btnAjoutPanier
             // 
@@ -493,12 +486,35 @@
             dataGridViewPanier.ThemeStyle.RowsStyle.Height = 25;
             dataGridViewPanier.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewPanier.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewPanier.CellContentClick += dataGridViewPanier_CellContentClick;
+            // 
+            // AjoutFournisseurPage
+            // 
+            AjoutFournisseurPage.Anchor = AnchorStyles.Top;
+            AjoutFournisseurPage.BorderRadius = 15;
+            AjoutFournisseurPage.CustomizableEdges = customizableEdges17;
+            AjoutFournisseurPage.DisabledState.BorderColor = Color.DarkGray;
+            AjoutFournisseurPage.DisabledState.CustomBorderColor = Color.DarkGray;
+            AjoutFournisseurPage.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            AjoutFournisseurPage.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            AjoutFournisseurPage.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            AjoutFournisseurPage.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AjoutFournisseurPage.ForeColor = Color.White;
+            AjoutFournisseurPage.Location = new Point(923, 33);
+            AjoutFournisseurPage.Margin = new Padding(4, 5, 4, 5);
+            AjoutFournisseurPage.Name = "AjoutFournisseurPage";
+            AjoutFournisseurPage.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            AjoutFournisseurPage.Size = new Size(200, 82);
+            AjoutFournisseurPage.TabIndex = 66;
+            AjoutFournisseurPage.Text = "Ajouter Nouveau Fournisseur";
+            AjoutFournisseurPage.Click += AjoutFournisseurPage_Click;
             // 
             // Fournisseur1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1246, 719);
+            Controls.Add(AjoutFournisseurPage);
             Controls.Add(dataGridViewPanier);
             Controls.Add(labelTotal);
             Controls.Add(guna2HtmlLabel11);
@@ -508,7 +524,6 @@
             Controls.Add(guna2HtmlLabel4);
             Controls.Add(btnAnnulerAchat);
             Controls.Add(labelStock);
-            Controls.Add(guna2HtmlLabel9);
             Controls.Add(Medicament);
             Controls.Add(NomFournisseur);
             Controls.Add(TypeMedicament);
@@ -539,7 +554,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2GradientButton btnAnnulerAchat;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelStock;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
         private ComboBox Medicament;
         private ComboBox NomFournisseur;
         private ComboBox TypeMedicament;
@@ -554,5 +568,6 @@
         private Guna.UI2.WinForms.Guna2TextBox PrixMedicament;
         private Guna.UI2.WinForms.Guna2TextBox QuantiteMedicament;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewPanier;
+        private Guna.UI2.WinForms.Guna2GradientButton AjoutFournisseurPage;
     }
 }
