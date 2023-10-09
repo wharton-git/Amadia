@@ -60,18 +60,20 @@
             // NomFournisseur
             // 
             NomFournisseur.BackColor = Color.Transparent;
-            NomFournisseur.Location = new Point(64, 57);
+            NomFournisseur.Location = new Point(91, 95);
+            NomFournisseur.Margin = new Padding(4, 5, 4, 5);
             NomFournisseur.Name = "NomFournisseur";
-            NomFournisseur.Size = new Size(94, 17);
+            NomFournisseur.Size = new Size(139, 27);
             NomFournisseur.TabIndex = 0;
             NomFournisseur.Text = "Nom Fournisseur";
             // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Location = new Point(64, 95);
+            guna2HtmlLabel1.Location = new Point(91, 158);
+            guna2HtmlLabel1.Margin = new Padding(4, 5, 4, 5);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(45, 17);
+            guna2HtmlLabel1.Size = new Size(64, 27);
             guna2HtmlLabel1.TabIndex = 1;
             guna2HtmlLabel1.Text = "Contact";
             // 
@@ -86,13 +88,14 @@
             NomFournisseurs.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             NomFournisseurs.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             NomFournisseurs.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            NomFournisseurs.Location = new Point(191, 47);
+            NomFournisseurs.Location = new Point(273, 78);
+            NomFournisseurs.Margin = new Padding(4, 5, 4, 5);
             NomFournisseurs.Name = "NomFournisseurs";
             NomFournisseurs.PasswordChar = '\0';
             NomFournisseurs.PlaceholderText = "";
             NomFournisseurs.SelectedText = "";
             NomFournisseurs.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            NomFournisseurs.Size = new Size(200, 36);
+            NomFournisseurs.Size = new Size(286, 60);
             NomFournisseurs.TabIndex = 2;
             // 
             // ContactFourisseur
@@ -106,21 +109,23 @@
             ContactFourisseur.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             ContactFourisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             ContactFourisseur.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            ContactFourisseur.Location = new Point(191, 89);
+            ContactFourisseur.Location = new Point(273, 148);
+            ContactFourisseur.Margin = new Padding(4, 5, 4, 5);
             ContactFourisseur.Name = "ContactFourisseur";
             ContactFourisseur.PasswordChar = '\0';
             ContactFourisseur.PlaceholderText = "";
             ContactFourisseur.SelectedText = "";
             ContactFourisseur.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            ContactFourisseur.Size = new Size(200, 36);
+            ContactFourisseur.Size = new Size(286, 60);
             ContactFourisseur.TabIndex = 2;
             // 
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Location = new Point(64, 133);
+            guna2HtmlLabel2.Location = new Point(91, 222);
+            guna2HtmlLabel2.Margin = new Padding(4, 5, 4, 5);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(32, 17);
+            guna2HtmlLabel2.Size = new Size(45, 27);
             guna2HtmlLabel2.TabIndex = 1;
             guna2HtmlLabel2.Text = "Email";
             // 
@@ -135,21 +140,23 @@
             EmailFournisseur.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             EmailFournisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             EmailFournisseur.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            EmailFournisseur.Location = new Point(191, 131);
+            EmailFournisseur.Location = new Point(273, 218);
+            EmailFournisseur.Margin = new Padding(4, 5, 4, 5);
             EmailFournisseur.Name = "EmailFournisseur";
             EmailFournisseur.PasswordChar = '\0';
             EmailFournisseur.PlaceholderText = "";
             EmailFournisseur.SelectedText = "";
             EmailFournisseur.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            EmailFournisseur.Size = new Size(200, 36);
+            EmailFournisseur.Size = new Size(286, 60);
             EmailFournisseur.TabIndex = 2;
             // 
             // guna2HtmlLabel3
             // 
             guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Location = new Point(64, 179);
+            guna2HtmlLabel3.Location = new Point(91, 298);
+            guna2HtmlLabel3.Margin = new Padding(4, 5, 4, 5);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(44, 17);
+            guna2HtmlLabel3.Size = new Size(66, 27);
             guna2HtmlLabel3.TabIndex = 1;
             guna2HtmlLabel3.Text = "Adresse";
             // 
@@ -164,13 +171,14 @@
             AdresseFournisseur.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             AdresseFournisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             AdresseFournisseur.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            AdresseFournisseur.Location = new Point(191, 173);
+            AdresseFournisseur.Location = new Point(273, 288);
+            AdresseFournisseur.Margin = new Padding(4, 5, 4, 5);
             AdresseFournisseur.Name = "AdresseFournisseur";
             AdresseFournisseur.PasswordChar = '\0';
             AdresseFournisseur.PlaceholderText = "";
             AdresseFournisseur.SelectedText = "";
             AdresseFournisseur.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            AdresseFournisseur.Size = new Size(200, 36);
+            AdresseFournisseur.Size = new Size(286, 60);
             AdresseFournisseur.TabIndex = 2;
             // 
             // TableFournisseur
@@ -199,12 +207,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             TableFournisseur.DefaultCellStyle = dataGridViewCellStyle3;
             TableFournisseur.GridColor = Color.FromArgb(231, 229, 255);
-            TableFournisseur.Location = new Point(12, 306);
+            TableFournisseur.Location = new Point(17, 510);
+            TableFournisseur.Margin = new Padding(4, 5, 4, 5);
             TableFournisseur.Name = "TableFournisseur";
             TableFournisseur.ReadOnly = true;
             TableFournisseur.RowHeadersVisible = false;
+            TableFournisseur.RowHeadersWidth = 62;
             TableFournisseur.RowTemplate.Height = 25;
-            TableFournisseur.Size = new Size(769, 132);
+            TableFournisseur.Size = new Size(1099, 220);
             TableFournisseur.TabIndex = 7;
             TableFournisseur.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TableFournisseur.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -242,12 +252,14 @@
             btnAjoutFornisseur.FillColor2 = Color.MediumSeaGreen;
             btnAjoutFornisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAjoutFornisseur.ForeColor = Color.White;
-            btnAjoutFornisseur.Location = new Point(191, 239);
+            btnAjoutFornisseur.Location = new Point(273, 398);
+            btnAjoutFornisseur.Margin = new Padding(4, 5, 4, 5);
             btnAjoutFornisseur.Name = "btnAjoutFornisseur";
             btnAjoutFornisseur.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnAjoutFornisseur.Size = new Size(140, 45);
+            btnAjoutFornisseur.Size = new Size(200, 75);
             btnAjoutFornisseur.TabIndex = 10;
             btnAjoutFornisseur.Text = "Ajouter";
+            btnAjoutFornisseur.Click += btnAjoutFornisseur_Click;
             // 
             // btnSupFournisseur
             // 
@@ -263,18 +275,20 @@
             btnSupFournisseur.FillColor2 = Color.FromArgb(255, 128, 128);
             btnSupFournisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSupFournisseur.ForeColor = Color.White;
-            btnSupFournisseur.Location = new Point(488, 239);
+            btnSupFournisseur.Location = new Point(697, 398);
+            btnSupFournisseur.Margin = new Padding(4, 5, 4, 5);
             btnSupFournisseur.Name = "btnSupFournisseur";
             btnSupFournisseur.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnSupFournisseur.Size = new Size(140, 45);
+            btnSupFournisseur.Size = new Size(200, 75);
             btnSupFournisseur.TabIndex = 32;
             btnSupFournisseur.Text = "Supprimer";
+            btnSupFournisseur.Click += btnSupFournisseur_Click;
             // 
             // Fournisseur
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1143, 750);
             Controls.Add(btnSupFournisseur);
             Controls.Add(btnAjoutFornisseur);
             Controls.Add(TableFournisseur);
@@ -286,6 +300,7 @@
             Controls.Add(guna2HtmlLabel2);
             Controls.Add(guna2HtmlLabel1);
             Controls.Add(NomFournisseur);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Fournisseur";
             Text = "Fournisseur";
             ((System.ComponentModel.ISupportInitialize)TableFournisseur).EndInit();
