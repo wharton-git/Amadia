@@ -89,6 +89,12 @@ namespace AmadiaVente.Winforms.functionality
 
         private void Medicament_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TypeMedicament.Enabled = true;
+            Medicament.Enabled = true;
+            PUMedicament.Enabled = true;
+            PrixMedicament.Enabled = true;
+            QuantiteMedicament.Enabled = true;
+
             if (Medicament.SelectedItem != null)
             {
                 string articleSelectionner = Medicament.SelectedItem.ToString();
@@ -106,6 +112,12 @@ namespace AmadiaVente.Winforms.functionality
 
         private void TypeMedicament_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TypeMedicament.Enabled = true;
+            Medicament.Enabled = true;
+            PUMedicament.Enabled = false;
+            PrixMedicament.Enabled = false;
+            QuantiteMedicament.Enabled = false;
+
             if (TypeMedicament.SelectedItem != null && TypeMedicament.SelectedItem.ToString() == "Médicaments")
             {
                 afficheMedicamentComboBox("Médicaments");
@@ -488,7 +500,7 @@ namespace AmadiaVente.Winforms.functionality
                 else
                 {
                     reinitialiseAllFunction();
-                    MessageBox.Show("Achat Effectué !", "Réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Ajout nouveau stock Effectué !", "Réussi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 indicationErreurAchat = false;
             }
@@ -545,10 +557,17 @@ namespace AmadiaVente.Winforms.functionality
         }
         private void NomFournisseur_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TypeMedicament.Enabled = true;
+            Medicament.Enabled = false;
+            PUMedicament.Enabled = false;
+            PrixMedicament.Enabled = false;
+            QuantiteMedicament.Enabled = false;
+
             if (NomFournisseur.SelectedItem != null)
             {
                 string nomEtPrenom = NomFournisseur.SelectedItem.ToString();
                 string idFournisseur = GetFournisseurId(nomEtPrenom);
+                
             }
             else
             {
@@ -560,14 +579,20 @@ namespace AmadiaVente.Winforms.functionality
         {
             TypeMedicament.Items.Add("Médicaments");
             TypeMedicament.Items.Add("Equipements");
-            TypeMedicament.SelectedItem = "Médicaments";
             PUMedicament.Enabled = false;
             btnValiderAchat.Enabled = false;
+
+            TypeMedicament.Enabled = false;
+            Medicament.Enabled = false;
+            PUMedicament.Enabled = false;
+            PrixMedicament.Enabled = false;
+            QuantiteMedicament.Enabled = false;
+
+
 
             afficheMedicComboBoxLoad();
             afficheNomMembreLoad();
 
-            //DisableAllFunction();
             sessionId = Classes.Storage.SessionId;
 
             cacherModifPanier();
