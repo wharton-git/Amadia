@@ -86,7 +86,6 @@
             txtBoxPassword.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtBoxPassword.Size = new Size(200, 36);
             txtBoxPassword.TabIndex = 1;
-            txtBoxPassword.KeyDown += txtBoxPassword_KeyDown;
             // 
             // btnConnect
             // 
