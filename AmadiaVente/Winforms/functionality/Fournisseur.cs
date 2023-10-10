@@ -45,7 +45,7 @@ namespace AmadiaVente.Winforms.functionality
 
                     // 5. Exécutez la commande SQL
                     co.ExecuteNonQuery();
-                    MessageBox.Show("Succes");
+                    MessageBox.Show("Successfully");
                 }
             }
         }
