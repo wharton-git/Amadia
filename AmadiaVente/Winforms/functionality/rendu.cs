@@ -49,7 +49,7 @@ namespace AmadiaVente.Winforms.functionality
 
         // Événements
 
-        private void rendu_Load(object sender, EventArgs e)
+        private void rendu_Load_1(object sender, EventArgs e)
         {
             DateTime dateActuelle = DateTime.Today;
             afficherRecetteDuJour(dateActuelle);
