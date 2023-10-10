@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
-using System.Data.SQLite;
 
 namespace AmadiaVente.Winforms.functionality
 {
