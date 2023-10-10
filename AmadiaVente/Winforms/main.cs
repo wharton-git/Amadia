@@ -119,7 +119,7 @@ namespace AmadiaVente.Winforms
 
         private void btnFournisseur_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new functionality.Fournisseur(), sender);
+            OpenChildForm(new functionality.Fournisseur1(), sender);
         }
     }
 }
