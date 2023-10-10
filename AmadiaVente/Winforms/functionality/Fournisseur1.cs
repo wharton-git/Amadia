@@ -411,6 +411,7 @@ namespace AmadiaVente.Winforms.functionality
                 PrixMedicament.Text = selectedRow.Cells["Prix"].Value.ToString();
             }
             btnAjoutPanier.Enabled = false;
+            afficherModifPanier();
         }
 
 
@@ -560,8 +561,8 @@ namespace AmadiaVente.Winforms.functionality
             TypeMedicament.Items.Add("Médicaments");
             TypeMedicament.Items.Add("Equipements");
             TypeMedicament.SelectedItem = "Médicaments";
-            /*PUMedicament.Enabled = false;
-            btnValiderAchat.Enabled = false;*/
+            PUMedicament.Enabled = false;
+            btnValiderAchat.Enabled = false;
 
             afficheMedicComboBoxLoad();
             afficheNomMembreLoad();
