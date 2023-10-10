@@ -27,7 +27,7 @@ namespace AmadiaVente.Winforms.functionality
                 connection.Open();
 
                 // 3. Créez une commande SQL d'insertion
-                string sql = "INSERT INTO Fournisseur (nomFournisseur, contact, email, adresse) VALUES (@NomFournisseur, @contact, @email, @adresse)";
+                string sql = "INSERT INTO fournisseur (nomFournisseur, contact, email, adresse) VALUES (@NomFournisseur, @contact, @email, @adresse)";
                 using (SQLiteCommand co = new SQLiteCommand(sql, connection))
                 {
                     // 4. Ajoutez des paramètres pour les valeurs que vous souhaitez insérer
