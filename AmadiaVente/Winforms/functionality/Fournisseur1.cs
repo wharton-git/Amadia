@@ -384,7 +384,7 @@ namespace AmadiaVente.Winforms.functionality
                 int montantLigne = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
                 totalPayer -= montantLigne;
 
-                selectedRow.Cells["NomProduit"].Value = Medicament.Items;
+                selectedRow.Cells["NomProduit"].Value = Medicament.SelectedItem;
                 selectedRow.Cells["Quantite"].Value = QuantiteMedicament.Text;
                 selectedRow.Cells["Prix"].Value = PrixMedicament.Text;
 
