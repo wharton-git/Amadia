@@ -366,6 +366,14 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
-       
+        private void btnAnnulerAchat_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Etes-vous sûr de vouloir annuler ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                reinitialiseAllFunction();
+            }
+        }
     }
 }

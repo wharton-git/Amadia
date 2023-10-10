@@ -27,14 +27,14 @@ namespace AmadiaVente.Winforms.functionality
                 connection.Open();
 
                 // 3. Créez une commande SQL d'insertion
-                string sql = "INSERT INTO Fournisseur (nomFournisseur, contact, email, adresse) VALUES (@NomFournisseur, @Contact, @Email, @Adresse)";
+                string sql = "INSERT INTO Fournisseur (nomFournisseur, contact, email, adresse) VALUES (@NomFournisseur, @contact, @email, @adresse)";
                 using (SQLiteCommand co = new SQLiteCommand(sql, connection))
                 {
                     // 4. Ajoutez des paramètres pour les valeurs que vous souhaitez insérer
-                    co.Parameters.AddWithValue("@NomFournisseur", NomFournisseur.Text); // Utilisez le contrôle NomFournisseur.Text ici
-                    co.Parameters.AddWithValue("@Contact", ContactFourisseur.Text); // Utilisez le contrôle ContactFourisseur.Text ici
-                    co.Parameters.AddWithValue("@Email", EmailFournisseur.Text); // Utilisez le contrôle EmailFournisseur.Text ici
-                    co.Parameters.AddWithValue("@Adresse", AdresseFournisseur.Text); // Utilisez le contrôle AdresseFournisseur.Text ici
+                    co.Parameters.AddWithValue("@nomFournisseur", NomFournisseur.Text); // Utilisez le contrôle NomFournisseur.Text ici
+                    co.Parameters.AddWithValue("@contact", ContactFourisseur.Text); // Utilisez le contrôle ContactFourisseur.Text ici
+                    co.Parameters.AddWithValue("@email", EmailFournisseur.Text); // Utilisez le contrôle EmailFournisseur.Text ici
+                    co.Parameters.AddWithValue("@adresse", AdresseFournisseur.Text); // Utilisez le contrôle AdresseFournisseur.Text ici
 
                     // 5. Exécutez la commande SQL
                     co.ExecuteNonQuery();

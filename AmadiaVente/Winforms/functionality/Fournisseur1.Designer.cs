@@ -179,6 +179,7 @@
             btnAnnulerAchat.Size = new Size(200, 75);
             btnAnnulerAchat.TabIndex = 57;
             btnAnnulerAchat.Text = "Annuler l'Achat";
+            btnAnnulerAchat.Click += btnAnnulerAchat_Click;
             // 
             // labelStock
             // 
