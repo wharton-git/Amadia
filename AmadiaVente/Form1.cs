@@ -101,9 +101,41 @@ namespace AmadiaVente
                     MessageBox.Show("Login ou Mot de Pass Incorrect !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("Veuillez remplir correctement les champs !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtBoxUsername.Text != string.Empty && txtBoxPassword.Text != string.Empty)
+                {
+                    username = txtBoxUsername.Text;
+                    password = txtBoxPassword.Text;
+
+                    string[] connection = VerifierLogin(username, password);
+                    if (connection != null)
+                    {
+                        sessionNom = connection[0];
+                        sessionPrenom = connection[1];
+                        sessionFunction = connection[2];
+                        sessionId = connection[3];
+                        Classes.Storage.SessionId = sessionId;
+                        connectAction();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login ou Mot de Pass Incorrect !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez remplir correctement les champs !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                e.SuppressKeyPress = true;
             }
         }
     }
