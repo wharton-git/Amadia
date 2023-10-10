@@ -15,30 +15,151 @@ namespace AmadiaVente.Winforms.functionality
     public partial class Fournisseur1 : Form
     {
         private Form activeForm;
-        string cs = "Data Source=mydatabase.db;Version=3;Password=myPassword;";
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         string sessionId;
         private int totalPayer;
         private bool indicationErreurAchat = false;
 
-        private void OpenChildForm(Form childForm, object btnSender)
+
+        public Fournisseur1()
         {
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
-            //ActivateButton(btnSender);
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            this.Controls.Add(childForm);
-            this.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
+
+            InitializeComponent();
+            dataGridViewPanier.Columns.Add("NomProduit", "Nom Du Produit"); // Colonne pour le nom du produit
+            dataGridViewPanier.Columns.Add("Quantite", "Quantité"); // Colonne pour la quantité du produit
+            dataGridViewPanier.Columns.Add("Prix", "Prix"); // Colonne pour le prix unitaire du produit
+
+            labelTotal.Text = totalPayer.ToString() + " Ar";
+
+
         }
-        private void AjoutFournisseurPage_Click(object sender, EventArgs e)
+
+        private void afficheMedicComboBoxLoad()
         {
-            OpenChildForm(new functionality.Fournisseur(), sender);
+            Medicament.Items.Clear();
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string selectMedicamentsQuery = "SELECT designation FROM article WHERE type_article = 'Médicaments'";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Medicament.Items.Add(reader["designation"].ToString());
+                        }
+                    }
+                }
+            }
+        }
+
+        private int[] AfficheArcticle(string article)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(cs))
+            {
+                connection.Open();
+
+                string query = "SELECT prix_article,nbr_stock FROM article WHERE designation=@article";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+
+                    command.Parameters.AddWithValue("@article", article);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                            int prixArticle = reader.GetInt32(0);
+                            int NombreStock = reader.GetInt32(1);
+
+                            return new int[] { prixArticle, NombreStock };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void Medicament_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Medicament.SelectedItem != null)
+            {
+                string articleSelectionner = Medicament.SelectedItem.ToString();
+                int prixArticle = AfficheArcticle(articleSelectionner)[0];
+                int resteStock = AfficheArcticle(articleSelectionner)[1];
+                PUMedicament.Text = prixArticle.ToString();
+                labelStock.Text = resteStock.ToString();
+                QuantiteMedicament.Text = string.Empty;
+            }
+            else
+            {
+                PUMedicament.Text = PrixMedicament.Text = labelStock.Text = null;
+            }
+        }
+
+        private void TypeMedicament_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TypeMedicament.SelectedItem != null && TypeMedicament.SelectedItem.ToString() == "Médicaments")
+            {
+                afficheMedicamentComboBox("Médicaments");
+            }
+            else if (TypeMedicament.SelectedItem != null && TypeMedicament.SelectedItem.ToString() == "Equipements")
+            {
+                afficheMedicamentComboBox("Equipements");
+            }
+        }
+
+        private void afficheMedicamentComboBox(string type)
+        {
+            Medicament.Items.Clear();
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string selectMedicamentsQuery = "SELECT designation FROM article WHERE type_article = @type";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@type", type);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Medicament.Items.Add(reader["designation"].ToString());
+                        }
+                    }
+                }
+            }
+        }
+
+        private void afficheNomMembreLoad()
+        {
+            Medicament.Items.Clear();
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string selectMedicamentsQuery = "SELECT nomFournisseur FROM fournisseur";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            NomFournisseur.Items.Add(reader["nomFournisseur"].ToString());
+                        }
+                    }
+                }
+            }
         }
 
         private void disableFunction()
@@ -74,18 +195,29 @@ namespace AmadiaVente.Winforms.functionality
             btnValiderAchat.Enabled = false;
             dataGridViewPanier.Rows.Clear();
         }
-        public Fournisseur1()
+
+        private void OpenChildForm(Form childForm, object btnSender)
         {
-
-            InitializeComponent();
-            dataGridViewPanier.Columns.Add("NomProduit", "Nom Du Produit"); // Colonne pour le nom du produit
-            dataGridViewPanier.Columns.Add("Quantite", "Quantité"); // Colonne pour la quantité du produit
-            dataGridViewPanier.Columns.Add("Prix", "Prix"); // Colonne pour le prix unitaire du produit
-
-            labelTotal.Text = totalPayer.ToString() + " Ar";
-
-
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            //ActivateButton(btnSender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.Controls.Add(childForm);
+            this.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
+        private void AjoutFournisseurPage_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new functionality.Fournisseur(), sender);
+        }
+
+
 
         private int GetArticleIdByDesignation(string designation)
         {
@@ -132,11 +264,11 @@ namespace AmadiaVente.Winforms.functionality
                             int quantiteEnStock = reader.GetInt32(0);
                             string designationArticle = reader.GetString(1);
 
-                            if (quantiteEnStock >= quantite)
+                            if (quantite >= 0)
                             {
                                 // Le stock est suffisant, procédez à l'achat...
 
-                                string insertLigneCommandeQuery = "INSERT INTO commandeFournisseur (nomFournisseur, quantiteMedicament, prixMedicament, id_commande) VALUES(@idArticle, @quantite, @prix, @idCommande)";
+                                string insertLigneCommandeQuery = "INSERT INTO ligneCommandeF (id_article, quantiteMedicament, prixMedicament, idCommandeF) VALUES (@idArticle, @quantite, @prix, @idCommande)";
 
                                 using (SqliteCommand insertCommand = new SqliteCommand(insertLigneCommandeQuery, connection))
                                 {
@@ -148,7 +280,7 @@ namespace AmadiaVente.Winforms.functionality
                                     insertCommand.ExecuteNonQuery();
                                 }
 
-                                string updateStockQuery = "UPDATE article SET nbr_stock = nbr_stock - @quantite WHERE id_article = @idArticle";
+                                string updateStockQuery = "UPDATE article SET nbr_stock = nbr_stock + @quantite WHERE id_article = @idArticle";
 
                                 using (SqliteCommand updateCommand = new SqliteCommand(updateStockQuery, connection))
                                 {
@@ -161,7 +293,7 @@ namespace AmadiaVente.Winforms.functionality
                             }
                             else
                             {
-                                MessageBox.Show("Stock Insuffisant pour " + designationArticle + ".\nVeuillez vérifier le stock avant d'effectuer à nouveau la vente de cet article!\n\nLes autres achats du client vont quand même être enregistrer !", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Impossible d'Ajouter cette nouveau Stock " + designationArticle + ".\nVeuillez vérifier les nombre de nouveau Article!\n\nLes autres achats du client vont quand même être enregistrer !", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 indicationErreurAchat = true;
                             }
                         }
@@ -173,12 +305,12 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnAjoutPanier_Click(object sender, EventArgs e)
         {
-            if (PrixMedicament.Text != string.Empty && QuantiteMedicament.Text != string.Empty)
+            if (Medicament.SelectedItem != null && PrixMedicament.Text != string.Empty && QuantiteMedicament.Text != string.Empty)
             {
                 btnValiderAchat.Enabled = true;
                 NomFournisseur.Enabled = TypeMedicament.Enabled = false;
 
-                string nomProduit = Medicament.Text.ToString();
+                string nomProduit = Medicament.SelectedItem.ToString();
                 int quantite = int.Parse(QuantiteMedicament.Text);
                 int prixTotal = int.Parse(PrixMedicament.Text);
                 int Pu = int.Parse(PUMedicament.Text);
@@ -238,6 +370,8 @@ namespace AmadiaVente.Winforms.functionality
                 PrixMedicament.Clear();
                 labelTotal.Text = totalPayer.ToString() + " Ar";
             }
+            btnAjoutPanier.Enabled = true;
+            cacherModifPanier();
         }
 
         private void btnModifierPanier_Click(object sender, EventArgs e)
@@ -250,17 +384,19 @@ namespace AmadiaVente.Winforms.functionality
                 int montantLigne = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
                 totalPayer -= montantLigne;
 
-                selectedRow.Cells["NomProduit"].Value = Medicament.Text;
+                selectedRow.Cells["NomProduit"].Value = Medicament.Items;
                 selectedRow.Cells["Quantite"].Value = QuantiteMedicament.Text;
                 selectedRow.Cells["Prix"].Value = PrixMedicament.Text;
 
                 int nouveauPrix = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
                 totalPayer += nouveauPrix;
 
-                Medicament.Text = null;
+                Medicament.SelectedItem = null;
                 QuantiteMedicament.Text = PrixMedicament.Text = null;
 
             }
+            btnAjoutPanier.Enabled = true;
+            cacherModifPanier();
             labelTotal.Text = totalPayer.ToString() + " Ar";
         }
 
@@ -270,7 +406,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 DataGridViewRow selectedRow = dataGridViewPanier.Rows[e.RowIndex];
 
-                Medicament.Text = selectedRow.Cells["NomProduit"].Value.ToString();
+                Medicament.SelectedItem = selectedRow.Cells["NomProduit"].Value.ToString();
                 QuantiteMedicament.Text = selectedRow.Cells["Quantite"].Value.ToString();
                 PrixMedicament.Text = selectedRow.Cells["Prix"].Value.ToString();
             }
@@ -296,25 +432,16 @@ namespace AmadiaVente.Winforms.functionality
             return commandeId;
         }
 
-        private void creeCommande(int membre, string idMembre, int idResponsable)
+        private void creeCommande(int FournisseurId, int idResponsable)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
                 connection.Open();
-                string query = "INSERT INTO commande (membre, id_membre, id_responsable, date_achat) VALUES(@membre, @idMembre, @idResponsable, @date)";
+                string query = "INSERT INTO commandeFournisseur (idFournisseur, id_responsable, date_commandeF) VALUES(@FournisseurId, @idResponsable, @date)";
 
                 using (SqliteCommand command = new SqliteCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@membre", membre);
-
-                    if (membre != 0)
-                    {
-                        command.Parameters.AddWithValue("@idMembre", idMembre);
-                    }
-                    else
-                    {
-                        command.Parameters.AddWithValue("@idMembre", DBNull.Value);
-                    }
+                    command.Parameters.AddWithValue("@FournisseurId", FournisseurId);
                     command.Parameters.AddWithValue("@idResponsable", idResponsable);
 
                     DateTime dateHeureActuelles = DateTime.Now;
@@ -327,6 +454,7 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+
         private void btnValiderAchat_Click(object sender, EventArgs e)
         {
 
@@ -334,12 +462,11 @@ namespace AmadiaVente.Winforms.functionality
 
             if (confirm == DialogResult.Yes)
             {
-                int session = Convert.ToInt32(sessionId);
-                string y_n_membre = NomFournisseur.Text.ToString();
-                int membre = 0;
-                string idMembre = "";
+                int idFournisseur = 2;
+                int IdResponsable = Convert.ToInt32(sessionId);
 
-                creeCommande(membre, idMembre, session);
+                creeCommande(idFournisseur, IdResponsable);
+
                 int idCommande = RecupererIdCommande();
 
                 foreach (DataGridViewRow row in dataGridViewPanier.Rows)
@@ -349,7 +476,7 @@ namespace AmadiaVente.Winforms.functionality
                     int quantite = Convert.ToInt32(row.Cells["Quantite"].Value);
                     decimal prix = Convert.ToDecimal(row.Cells["Prix"].Value);
 
-                    int artcileId = GetArticleIdByDesignation(nomProduit);
+                    int artcileId = GetArticleIdByDesignation(designation: nomProduit);
 
                     validerAchat(artcileId, quantite, prix, idCommande);
                 }
@@ -366,6 +493,13 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+
+        private void creeCommande(int session)
+        {
+            throw new NotImplementedException();
+        }
+
+
         private void btnAnnulerAchat_Click(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("Etes-vous sûr de vouloir annuler ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -373,6 +507,97 @@ namespace AmadiaVente.Winforms.functionality
             if (confirm == DialogResult.Yes)
             {
                 reinitialiseAllFunction();
+            }
+        }
+
+        public string GetFournisseurId(string nomFournisseurId)
+        {
+            string IdFournisseurF = "";
+
+            using (SQLiteConnection connection = new SQLiteConnection(cs))
+            {
+                connection.Open();
+
+                string query = "SELECT idFournisseur FROM fournisseur WHERE nomFournisseur = @NomF";
+
+                // Divisez la chaîne par le premier espace
+                string[] parts = nomFournisseurId.Split(new char[] { ' ' }, 2);
+
+                if (parts.Length == 2)
+                {
+                    string NomF = parts[0];
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NomF", NomF);
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            IdFournisseurF = result.ToString();
+                        }
+                    }
+                }
+            }
+
+            return IdFournisseurF;
+        }
+        private void NomFournisseur_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NomFournisseur.SelectedItem != null)
+            {
+                string nomEtPrenom = NomFournisseur.SelectedItem.ToString();
+                string idFournisseur = GetFournisseurId(nomEtPrenom);
+            }
+            else
+            {
+                NomFournisseur.Text = null;
+            }
+        }
+
+        private void Fournisseur1_Load(object sender, EventArgs e)
+        {
+            TypeMedicament.Items.Add("Médicaments");
+            TypeMedicament.Items.Add("Equipements");
+            TypeMedicament.SelectedItem = "Médicaments";
+            /*PUMedicament.Enabled = false;
+            btnValiderAchat.Enabled = false;*/
+
+            afficheMedicComboBoxLoad();
+            afficheNomMembreLoad();
+
+            //DisableAllFunction();
+            sessionId = Classes.Storage.SessionId;
+
+            cacherModifPanier();
+
+        }
+
+        private void QuantiteMedicament_TextChanged(object sender, EventArgs e)
+        {
+            if (QuantiteMedicament.Text != "")
+            {
+                string qteArticle = QuantiteMedicament.Text.ToString();
+                string articleSelect = Medicament.SelectedItem.ToString();
+                int prixUnit = AfficheArcticle(articleSelect)[0];
+                int stock = AfficheArcticle(articleSelect)[1];
+
+                int prixAPayer = prixUnit * Convert.ToInt32(qteArticle);
+
+                PrixMedicament.Text = prixAPayer.ToString();
+
+                if (stock < Convert.ToInt32(qteArticle))
+                {
+                    QuantiteMedicament.BackColor = Color.Red;
+                }
+                else
+                {
+                    QuantiteMedicament.BackColor = Color.LightGreen;
+                }
+            }
+            else
+            {
+                PrixMedicament.Text = "";
             }
         }
     }
