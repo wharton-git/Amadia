@@ -136,7 +136,7 @@ namespace AmadiaVente.Winforms.functionality
                             {
                                 // Le stock est suffisant, procédez à l'achat...
 
-                                string insertLigneCommandeQuery = "INSERT INTO lignecommandeFournisseur (id_article, qte_acheter, prix, id_commande) VALUES(@idArticle, @quantite, @prix, @idCommande)";
+                                string insertLigneCommandeQuery = "INSERT INTO commandeFournisseur (nomFournisseur, quantiteMedicament, prixMedicament, id_commande) VALUES(@idArticle, @quantite, @prix, @idCommande)";
 
                                 using (SqliteCommand insertCommand = new SqliteCommand(insertLigneCommandeQuery, connection))
                                 {
