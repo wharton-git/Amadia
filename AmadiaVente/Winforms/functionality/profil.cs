@@ -74,7 +74,7 @@ namespace AmadiaVente.Winforms.functionality
 
             Winforms.popUp.popUpEditProfil popup = new Winforms.popUp.popUpEditProfil();
 
-            // Affichez la fenêtre contextuelle en mode modal
+            // Affichez la fenêtre contextuelle en mode modal (PopUp)
             popup.ShowDialog();
 
             // Libérez les ressources de la fenêtre contextuelle après qu'elle a été fermée
