@@ -16,7 +16,7 @@ namespace AmadiaVente.Winforms.functionality
     {
         // Déclaration globale
         private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
-
+        int id_commande = 0;
         // Constructeur
         public rendu()
         {
@@ -30,7 +30,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT COALESCE(nom_membre, 'Non'),COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
+                string sqlQuery = "SELECT id_commande, COALESCE(nom_membre, 'Non'),COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -53,6 +53,25 @@ namespace AmadiaVente.Winforms.functionality
         {
             DateTime dateActuelle = DateTime.Today;
             afficherRecetteDuJour(dateActuelle);
+            btnInfoCommande.Enabled = false;
+        }
+
+        private void dataGridViewDashboard_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnInfoCommande.Enabled = true;
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow selectedRow = dataGridViewDashboard.Rows[e.RowIndex];
+
+                string idCommande = selectedRow.Cells["id_commande"].Value.ToString();
+                id_commande = Convert.ToInt32(idCommande);
+            }
+        }
+
+        private void btnInfoCommande_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,11 +32,13 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dateTimeDebutDashboard = new Guna.UI2.WinForms.Guna2DateTimePicker();
             dateTimeFinDashboard = new Guna.UI2.WinForms.Guna2DateTimePicker();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -44,6 +46,7 @@
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             dataGridViewDashboard = new Guna.UI2.WinForms.Guna2DataGridView();
+            btnInfoCommande = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDashboard).BeginInit();
             SuspendLayout();
@@ -110,15 +113,16 @@
             // 
             // guna2GradientPanel1
             // 
+            guna2GradientPanel1.Controls.Add(btnInfoCommande);
             guna2GradientPanel1.Controls.Add(dataGridViewDashboard);
             guna2GradientPanel1.Controls.Add(dateTimeDebutDashboard);
             guna2GradientPanel1.Controls.Add(dateTimeFinDashboard);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel2);
             guna2GradientPanel1.Controls.Add(guna2HtmlLabel1);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges5;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges7;
             guna2GradientPanel1.Location = new Point(21, 60);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientPanel1.Size = new Size(853, 406);
             guna2GradientPanel1.TabIndex = 5;
             // 
@@ -175,6 +179,26 @@
             dataGridViewDashboard.ThemeStyle.RowsStyle.Height = 25;
             dataGridViewDashboard.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewDashboard.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewDashboard.CellClick += dataGridViewDashboard_CellClick;
+            // 
+            // btnInfoCommande
+            // 
+            btnInfoCommande.BorderRadius = 10;
+            btnInfoCommande.CustomizableEdges = customizableEdges5;
+            btnInfoCommande.DisabledState.BorderColor = Color.DarkGray;
+            btnInfoCommande.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnInfoCommande.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnInfoCommande.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnInfoCommande.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnInfoCommande.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInfoCommande.ForeColor = Color.White;
+            btnInfoCommande.Location = new Point(498, 139);
+            btnInfoCommande.Name = "btnInfoCommande";
+            btnInfoCommande.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnInfoCommande.Size = new Size(180, 45);
+            btnInfoCommande.TabIndex = 5;
+            btnInfoCommande.Text = "Détailler";
+            btnInfoCommande.Click += btnInfoCommande_Click;
             // 
             // rendu
             // 
@@ -202,5 +226,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewDashboard;
+        private Guna.UI2.WinForms.Guna2GradientButton btnInfoCommande;
     }
 }
