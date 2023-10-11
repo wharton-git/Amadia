@@ -71,7 +71,13 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnInfoCommande_Click(object sender, EventArgs e)
         {
+            popUp.commandeDetails popup = new popUp.commandeDetails(id_commande);
 
+            // Affichez la fenêtre contextuelle en mode modal (PopUp)
+            popup.ShowDialog();
+
+            // Libérez les ressources de la fenêtre contextuelle après qu'elle a été fermée
+            popup.Dispose();
         }
     }
 }
