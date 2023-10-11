@@ -54,6 +54,7 @@ namespace AmadiaVente.Winforms.functionality
             DateTime dateActuelle = DateTime.Today;
             afficherRecetteDuJour(dateActuelle);
             btnInfoCommande.Enabled = false;
+            dateTimeDebutDashboard.CustomFormat = "yyyy";
         }
 
         private void dataGridViewDashboard_CellClick(object sender, DataGridViewCellEventArgs e)

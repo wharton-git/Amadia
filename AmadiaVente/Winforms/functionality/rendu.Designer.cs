@@ -34,19 +34,19 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dateTimeDebutDashboard = new Guna.UI2.WinForms.Guna2DateTimePicker();
             dateTimeFinDashboard = new Guna.UI2.WinForms.Guna2DateTimePicker();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            dataGridViewDashboard = new Guna.UI2.WinForms.Guna2DataGridView();
             btnInfoCommande = new Guna.UI2.WinForms.Guna2GradientButton();
+            dataGridViewDashboard = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDashboard).BeginInit();
             SuspendLayout();
@@ -56,7 +56,7 @@
             dateTimeDebutDashboard.Checked = true;
             dateTimeDebutDashboard.CustomizableEdges = customizableEdges1;
             dateTimeDebutDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimeDebutDashboard.Format = DateTimePickerFormat.Long;
+            dateTimeDebutDashboard.Format = DateTimePickerFormat.Custom;
             dateTimeDebutDashboard.Location = new Point(182, 14);
             dateTimeDebutDashboard.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateTimeDebutDashboard.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -126,6 +126,25 @@
             guna2GradientPanel1.Size = new Size(853, 406);
             guna2GradientPanel1.TabIndex = 5;
             // 
+            // btnInfoCommande
+            // 
+            btnInfoCommande.BorderRadius = 10;
+            btnInfoCommande.CustomizableEdges = customizableEdges5;
+            btnInfoCommande.DisabledState.BorderColor = Color.DarkGray;
+            btnInfoCommande.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnInfoCommande.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnInfoCommande.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnInfoCommande.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnInfoCommande.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInfoCommande.ForeColor = Color.White;
+            btnInfoCommande.Location = new Point(498, 139);
+            btnInfoCommande.Name = "btnInfoCommande";
+            btnInfoCommande.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnInfoCommande.Size = new Size(180, 45);
+            btnInfoCommande.TabIndex = 5;
+            btnInfoCommande.Text = "Détailler";
+            btnInfoCommande.Click += btnInfoCommande_Click;
+            // 
             // dataGridViewDashboard
             // 
             dataGridViewDashboard.AllowUserToAddRows = false;
@@ -180,25 +199,6 @@
             dataGridViewDashboard.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewDashboard.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewDashboard.CellClick += dataGridViewDashboard_CellClick;
-            // 
-            // btnInfoCommande
-            // 
-            btnInfoCommande.BorderRadius = 10;
-            btnInfoCommande.CustomizableEdges = customizableEdges5;
-            btnInfoCommande.DisabledState.BorderColor = Color.DarkGray;
-            btnInfoCommande.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnInfoCommande.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnInfoCommande.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnInfoCommande.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnInfoCommande.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInfoCommande.ForeColor = Color.White;
-            btnInfoCommande.Location = new Point(498, 139);
-            btnInfoCommande.Name = "btnInfoCommande";
-            btnInfoCommande.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnInfoCommande.Size = new Size(180, 45);
-            btnInfoCommande.TabIndex = 5;
-            btnInfoCommande.Text = "Détailler";
-            btnInfoCommande.Click += btnInfoCommande_Click;
             // 
             // rendu
             // 

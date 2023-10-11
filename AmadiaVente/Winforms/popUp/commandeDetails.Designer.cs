@@ -32,20 +32,10 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             dataGridViewDetail = new Guna.UI2.WinForms.Guna2DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDetail).BeginInit();
             SuspendLayout();
-            // 
-            // guna2HtmlLabel1
-            // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Location = new Point(93, 35);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(97, 17);
-            guna2HtmlLabel1.TabIndex = 0;
-            guna2HtmlLabel1.Text = "guna2HtmlLabel1";
             // 
             // guna2ImageButton1
             // 
@@ -78,7 +68,8 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridViewDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDetail.ColumnHeadersHeight = 4;
+            dataGridViewDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -106,7 +97,7 @@
             dataGridViewDetail.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewDetail.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewDetail.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dataGridViewDetail.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDetail.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewDetail.ThemeStyle.HeaderStyle.Height = 4;
             dataGridViewDetail.ThemeStyle.ReadOnly = true;
             dataGridViewDetail.ThemeStyle.RowsStyle.BackColor = Color.White;
@@ -125,7 +116,6 @@
             ClientSize = new Size(496, 529);
             Controls.Add(dataGridViewDetail);
             Controls.Add(guna2ImageButton1);
-            Controls.Add(guna2HtmlLabel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "commandeDetails";
             StartPosition = FormStartPosition.CenterParent;
@@ -133,12 +123,9 @@
             Load += commandeDetails_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewDetail).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewDetail;
     }
