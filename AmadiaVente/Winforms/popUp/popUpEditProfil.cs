@@ -58,11 +58,6 @@ namespace AmadiaVente.Winforms.popUp
             panelEditMdp.Visible = false;
         }
 
-        private void btnQuitPopUp_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void labelChangeMdp_MouseEnter(object sender, EventArgs e)
         {
             labelChangeMdp.ForeColor = Color.RoyalBlue;
@@ -89,16 +84,9 @@ namespace AmadiaVente.Winforms.popUp
             }
         }
 
-        private void btnQuitPopUp_MouseEnter(object sender, EventArgs e)
+        private void btnQuitPopUp_Click_1(object sender, EventArgs e)
         {
-            btnQuitPopUp.Cursor = Cursors.Hand;
-            btnQuitPopUp.ForeColor = Color.Red;
-        }
-
-        private void btnQuitPopUp_MouseLeave(object sender, EventArgs e)
-        {
-            btnQuitPopUp.Cursor = Cursors.Default;
-            btnQuitPopUp.ForeColor = Color.Black;
+            this.Close();
         }
     }
 }

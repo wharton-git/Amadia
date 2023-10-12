@@ -56,7 +56,7 @@
             dateTimeDebutDashboard.Checked = true;
             dateTimeDebutDashboard.CustomizableEdges = customizableEdges1;
             dateTimeDebutDashboard.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimeDebutDashboard.Format = DateTimePickerFormat.Custom;
+            dateTimeDebutDashboard.Format = DateTimePickerFormat.Long;
             dateTimeDebutDashboard.Location = new Point(182, 14);
             dateTimeDebutDashboard.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateTimeDebutDashboard.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);

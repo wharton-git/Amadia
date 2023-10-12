@@ -46,7 +46,7 @@
             guna2ImageButton1.ImageOffset = new Point(0, 0);
             guna2ImageButton1.ImageRotate = 0F;
             guna2ImageButton1.ImageSize = new Size(20, 20);
-            guna2ImageButton1.Location = new Point(467, 2);
+            guna2ImageButton1.Location = new Point(423, 2);
             guna2ImageButton1.Name = "guna2ImageButton1";
             guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges1;
@@ -79,12 +79,12 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewDetail.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewDetail.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridViewDetail.Location = new Point(12, 92);
+            dataGridViewDetail.Location = new Point(12, 157);
             dataGridViewDetail.Name = "dataGridViewDetail";
             dataGridViewDetail.ReadOnly = true;
             dataGridViewDetail.RowHeadersVisible = false;
             dataGridViewDetail.RowTemplate.Height = 25;
-            dataGridViewDetail.Size = new Size(472, 425);
+            dataGridViewDetail.Size = new Size(428, 360);
             dataGridViewDetail.TabIndex = 2;
             dataGridViewDetail.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridViewDetail.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -113,7 +113,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(496, 529);
+            ClientSize = new Size(452, 529);
             Controls.Add(dataGridViewDetail);
             Controls.Add(guna2ImageButton1);
             FormBorderStyle = FormBorderStyle.None;
