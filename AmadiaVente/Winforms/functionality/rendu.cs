@@ -317,8 +317,6 @@ namespace AmadiaVente.Winforms.functionality
             labelSomme.Text = "Somme : " + val[1] + " Ar";
         }
 
-
-
         // Événements
 
         private void rendu_Load_1(object sender, EventArgs e)
