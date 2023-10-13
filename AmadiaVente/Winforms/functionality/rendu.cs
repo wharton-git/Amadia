@@ -503,4 +503,4 @@ namespace AmadiaVente.Winforms.functionality
         }
     }
 }
-//fin li
+//fin l
