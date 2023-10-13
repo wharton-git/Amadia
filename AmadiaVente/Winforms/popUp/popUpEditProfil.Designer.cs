@@ -44,6 +44,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtBoxEditNom = new Guna.UI2.WinForms.Guna2TextBox();
@@ -56,8 +57,8 @@
             txtBoxEditConfirmMdp = new Guna.UI2.WinForms.Guna2TextBox();
             btnEditSave = new Guna.UI2.WinForms.Guna2GradientButton();
             labelChangeMdp = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            btnQuitPopUp = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelEditMdp = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnQuitPopUp = new Guna.UI2.WinForms.Guna2ImageButton();
             panelEditMdp.SuspendLayout();
             SuspendLayout();
             // 
@@ -258,19 +259,6 @@
             labelChangeMdp.MouseEnter += labelChangeMdp_MouseEnter;
             labelChangeMdp.MouseLeave += labelChangeMdp_MouseLeave;
             // 
-            // btnQuitPopUp
-            // 
-            btnQuitPopUp.BackColor = Color.Transparent;
-            btnQuitPopUp.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnQuitPopUp.Location = new Point(385, -5);
-            btnQuitPopUp.Name = "btnQuitPopUp";
-            btnQuitPopUp.Size = new Size(15, 32);
-            btnQuitPopUp.TabIndex = 12;
-            btnQuitPopUp.Text = "x";
-            btnQuitPopUp.Click += btnQuitPopUp_Click;
-            btnQuitPopUp.MouseEnter += btnQuitPopUp_MouseEnter;
-            btnQuitPopUp.MouseLeave += btnQuitPopUp_MouseLeave;
-            // 
             // panelEditMdp
             // 
             panelEditMdp.Controls.Add(txtBoxEditNewMdp);
@@ -283,14 +271,30 @@
             panelEditMdp.Size = new Size(279, 187);
             panelEditMdp.TabIndex = 13;
             // 
+            // btnQuitPopUp
+            // 
+            btnQuitPopUp.CheckedState.ImageSize = new Size(64, 64);
+            btnQuitPopUp.HoverState.ImageSize = new Size(22, 22);
+            btnQuitPopUp.Image = Properties.Resources.icons8_fermer_la_fenêtre_96;
+            btnQuitPopUp.ImageOffset = new Point(0, 0);
+            btnQuitPopUp.ImageRotate = 0F;
+            btnQuitPopUp.ImageSize = new Size(20, 20);
+            btnQuitPopUp.Location = new Point(380, -1);
+            btnQuitPopUp.Name = "btnQuitPopUp";
+            btnQuitPopUp.PressedState.ImageSize = new Size(64, 64);
+            btnQuitPopUp.ShadowDecoration.CustomizableEdges = customizableEdges17;
+            btnQuitPopUp.Size = new Size(22, 24);
+            btnQuitPopUp.TabIndex = 14;
+            btnQuitPopUp.Click += btnQuitPopUp_Click_1;
+            // 
             // popUpEditProfil
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(403, 561);
-            Controls.Add(panelEditMdp);
             Controls.Add(btnQuitPopUp);
+            Controls.Add(panelEditMdp);
             Controls.Add(labelChangeMdp);
             Controls.Add(btnEditSave);
             Controls.Add(txtBoxEditUsername);
@@ -325,7 +329,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBoxEditConfirmMdp;
         private Guna.UI2.WinForms.Guna2GradientButton btnEditSave;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelChangeMdp;
-        private Guna.UI2.WinForms.Guna2HtmlLabel btnQuitPopUp;
         private Guna.UI2.WinForms.Guna2GradientPanel panelEditMdp;
+        private Guna.UI2.WinForms.Guna2ImageButton btnQuitPopUp;
     }
 }
