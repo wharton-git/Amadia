@@ -34,19 +34,45 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtBoxUsername = new Guna.UI2.WinForms.Guna2TextBox();
             txtBoxPassword = new Guna.UI2.WinForms.Guna2TextBox();
             btnConnect = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2CheckBox1 = new Guna.UI2.WinForms.Guna2CheckBox();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            panelLigne1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2GradientPanel1.SuspendLayout();
+            guna2GradientPanel2.SuspendLayout();
+            guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtBoxUsername
             // 
             txtBoxUsername.Anchor = AnchorStyles.None;
-            txtBoxUsername.BorderRadius = 15;
+            txtBoxUsername.Animated = true;
+            txtBoxUsername.BackColor = Color.Transparent;
+            txtBoxUsername.BorderRadius = 5;
+            txtBoxUsername.BorderThickness = 0;
             txtBoxUsername.CustomizableEdges = customizableEdges1;
             txtBoxUsername.DefaultText = "";
             txtBoxUsername.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -56,7 +82,7 @@
             txtBoxUsername.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxUsername.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxUsername.Location = new Point(441, 175);
+            txtBoxUsername.Location = new Point(360, 133);
             txtBoxUsername.Name = "txtBoxUsername";
             txtBoxUsername.PasswordChar = '\0';
             txtBoxUsername.PlaceholderText = "Username";
@@ -68,7 +94,10 @@
             // txtBoxPassword
             // 
             txtBoxPassword.Anchor = AnchorStyles.None;
-            txtBoxPassword.BorderRadius = 15;
+            txtBoxPassword.Animated = true;
+            txtBoxPassword.BackColor = Color.Transparent;
+            txtBoxPassword.BorderRadius = 5;
+            txtBoxPassword.BorderThickness = 0;
             txtBoxPassword.CustomizableEdges = customizableEdges3;
             txtBoxPassword.DefaultText = "";
             txtBoxPassword.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -78,7 +107,7 @@
             txtBoxPassword.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxPassword.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPassword.Location = new Point(441, 229);
+            txtBoxPassword.Location = new Point(360, 187);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PasswordChar = '*';
             txtBoxPassword.PlaceholderText = "Password";
@@ -91,16 +120,19 @@
             // btnConnect
             // 
             btnConnect.Anchor = AnchorStyles.None;
-            btnConnect.BorderRadius = 15;
+            btnConnect.Animated = true;
+            btnConnect.BorderRadius = 10;
             btnConnect.CustomizableEdges = customizableEdges5;
             btnConnect.DisabledState.BorderColor = Color.DarkGray;
             btnConnect.DisabledState.CustomBorderColor = Color.DarkGray;
             btnConnect.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnConnect.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnConnect.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnConnect.FillColor = Color.FromArgb(23, 117, 197);
+            btnConnect.FillColor2 = Color.FromArgb(23, 117, 197);
             btnConnect.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnConnect.ForeColor = Color.White;
-            btnConnect.Location = new Point(452, 297);
+            btnConnect.Location = new Point(368, 292);
             btnConnect.Name = "btnConnect";
             btnConnect.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnConnect.Size = new Size(180, 45);
@@ -110,16 +142,124 @@
             // 
             // guna2GradientPanel1
             // 
-            guna2GradientPanel1.Controls.Add(btnConnect);
-            guna2GradientPanel1.Controls.Add(txtBoxUsername);
-            guna2GradientPanel1.Controls.Add(txtBoxPassword);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges7;
+            guna2GradientPanel1.Controls.Add(guna2GradientPanel2);
+            guna2GradientPanel1.CustomizableEdges = customizableEdges19;
             guna2GradientPanel1.Dock = DockStyle.Fill;
+            guna2GradientPanel1.FillColor = Color.FromArgb(191, 210, 255);
+            guna2GradientPanel1.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2GradientPanel1.Size = new Size(1084, 517);
             guna2GradientPanel1.TabIndex = 3;
+            // 
+            // guna2GradientPanel2
+            // 
+            guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            guna2GradientPanel2.BackColor = Color.Transparent;
+            guna2GradientPanel2.BorderRadius = 20;
+            guna2GradientPanel2.Controls.Add(guna2Panel2);
+            guna2GradientPanel2.CustomizableEdges = customizableEdges17;
+            guna2GradientPanel2.FillColor = Color.FromArgb(248, 250, 252);
+            guna2GradientPanel2.FillColor2 = Color.FromArgb(240, 241, 246);
+            guna2GradientPanel2.Location = new Point(100, 47);
+            guna2GradientPanel2.Name = "guna2GradientPanel2";
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2GradientPanel2.Size = new Size(878, 427);
+            guna2GradientPanel2.TabIndex = 3;
+            // 
+            // guna2Panel2
+            // 
+            guna2Panel2.Controls.Add(guna2CheckBox1);
+            guna2Panel2.Controls.Add(txtBoxUsername);
+            guna2Panel2.Controls.Add(guna2Panel1);
+            guna2Panel2.Controls.Add(btnConnect);
+            guna2Panel2.Controls.Add(panelLigne1);
+            guna2Panel2.Controls.Add(txtBoxPassword);
+            guna2Panel2.Controls.Add(guna2PictureBox2);
+            guna2Panel2.Controls.Add(guna2PictureBox1);
+            guna2Panel2.CustomizableEdges = customizableEdges15;
+            guna2Panel2.Dock = DockStyle.Fill;
+            guna2Panel2.Location = new Point(0, 0);
+            guna2Panel2.Name = "guna2Panel2";
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Panel2.Size = new Size(878, 427);
+            guna2Panel2.TabIndex = 7;
+            // 
+            // guna2CheckBox1
+            // 
+            guna2CheckBox1.Animated = true;
+            guna2CheckBox1.AutoSize = true;
+            guna2CheckBox1.BackColor = Color.Transparent;
+            guna2CheckBox1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            guna2CheckBox1.CheckedState.BorderColor = Color.White;
+            guna2CheckBox1.CheckedState.BorderRadius = 2;
+            guna2CheckBox1.CheckedState.BorderThickness = 2;
+            guna2CheckBox1.CheckedState.FillColor = Color.White;
+            guna2CheckBox1.CheckMarkColor = Color.FromArgb(23, 117, 197);
+            guna2CheckBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2CheckBox1.Location = new Point(383, 248);
+            guna2CheckBox1.Name = "guna2CheckBox1";
+            guna2CheckBox1.Size = new Size(153, 19);
+            guna2CheckBox1.TabIndex = 7;
+            guna2CheckBox1.Text = "Afficher le mot de passe";
+            guna2CheckBox1.UncheckedState.BorderColor = Color.White;
+            guna2CheckBox1.UncheckedState.BorderRadius = 2;
+            guna2CheckBox1.UncheckedState.BorderThickness = 2;
+            guna2CheckBox1.UncheckedState.FillColor = Color.White;
+            guna2CheckBox1.UseVisualStyleBackColor = false;
+            // 
+            // guna2Panel1
+            // 
+            guna2Panel1.Anchor = AnchorStyles.None;
+            guna2Panel1.BorderRadius = 2;
+            guna2Panel1.CustomizableEdges = customizableEdges7;
+            guna2Panel1.FillColor = Color.FromArgb(128, 128, 255);
+            guna2Panel1.Location = new Point(360, 218);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Panel1.Size = new Size(200, 5);
+            guna2Panel1.TabIndex = 6;
+            // 
+            // panelLigne1
+            // 
+            panelLigne1.Anchor = AnchorStyles.None;
+            panelLigne1.BorderRadius = 2;
+            panelLigne1.CustomizableEdges = customizableEdges9;
+            panelLigne1.FillColor = Color.FromArgb(128, 128, 255);
+            panelLigne1.Location = new Point(359, 170);
+            panelLigne1.Name = "panelLigne1";
+            panelLigne1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            panelLigne1.Size = new Size(200, 5);
+            panelLigne1.TabIndex = 5;
+            // 
+            // guna2PictureBox2
+            // 
+            guna2PictureBox2.Anchor = AnchorStyles.None;
+            guna2PictureBox2.CustomizableEdges = customizableEdges11;
+            guna2PictureBox2.Image = Properties.Resources.icons8_mot_de_passe_96;
+            guna2PictureBox2.ImageRotate = 0F;
+            guna2PictureBox2.Location = new Point(317, 189);
+            guna2PictureBox2.Name = "guna2PictureBox2";
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2PictureBox2.Size = new Size(37, 34);
+            guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox2.TabIndex = 4;
+            guna2PictureBox2.TabStop = false;
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.Anchor = AnchorStyles.None;
+            guna2PictureBox1.CustomizableEdges = customizableEdges13;
+            guna2PictureBox1.Image = Properties.Resources.icons8_utilisateur_sexe_neutre_96;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(317, 135);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2PictureBox1.Size = new Size(37, 34);
+            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox1.TabIndex = 3;
+            guna2PictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -130,6 +270,11 @@
             Name = "Form1";
             Text = "Form1";
             guna2GradientPanel1.ResumeLayout(false);
+            guna2GradientPanel2.ResumeLayout(false);
+            guna2Panel2.ResumeLayout(false);
+            guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -139,5 +284,12 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBoxPassword;
         private Guna.UI2.WinForms.Guna2GradientButton btnConnect;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
+        private Guna.UI2.WinForms.Guna2Panel panelLigne1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox1;
     }
 }

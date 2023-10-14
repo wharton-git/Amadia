@@ -109,7 +109,7 @@ namespace AmadiaVente
 
         private void txtBoxPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 if (txtBoxUsername.Text != string.Empty && txtBoxPassword.Text != string.Empty)
                 {
