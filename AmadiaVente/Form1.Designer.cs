@@ -54,7 +54,7 @@
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2CheckBox1 = new Guna.UI2.WinForms.Guna2CheckBox();
+            checkBoxAfficheMdp = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             panelLigne1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -109,7 +109,7 @@
             txtBoxPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxPassword.Location = new Point(360, 187);
             txtBoxPassword.Name = "txtBoxPassword";
-            txtBoxPassword.PasswordChar = '*';
+            txtBoxPassword.PasswordChar = '\0';
             txtBoxPassword.PlaceholderText = "Password";
             txtBoxPassword.SelectedText = "";
             txtBoxPassword.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -160,8 +160,8 @@
             guna2GradientPanel2.BorderRadius = 20;
             guna2GradientPanel2.Controls.Add(guna2Panel2);
             guna2GradientPanel2.CustomizableEdges = customizableEdges17;
-            guna2GradientPanel2.FillColor = Color.FromArgb(248, 250, 252);
-            guna2GradientPanel2.FillColor2 = Color.FromArgb(240, 241, 246);
+            guna2GradientPanel2.FillColor = Color.WhiteSmoke;
+            guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
             guna2GradientPanel2.Location = new Point(100, 47);
             guna2GradientPanel2.Name = "guna2GradientPanel2";
             guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges18;
@@ -170,7 +170,7 @@
             // 
             // guna2Panel2
             // 
-            guna2Panel2.Controls.Add(guna2CheckBox1);
+            guna2Panel2.Controls.Add(checkBoxAfficheMdp);
             guna2Panel2.Controls.Add(txtBoxUsername);
             guna2Panel2.Controls.Add(guna2Panel1);
             guna2Panel2.Controls.Add(btnConnect);
@@ -186,28 +186,29 @@
             guna2Panel2.Size = new Size(878, 427);
             guna2Panel2.TabIndex = 7;
             // 
-            // guna2CheckBox1
+            // checkBoxAfficheMdp
             // 
-            guna2CheckBox1.Animated = true;
-            guna2CheckBox1.AutoSize = true;
-            guna2CheckBox1.BackColor = Color.Transparent;
-            guna2CheckBox1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            guna2CheckBox1.CheckedState.BorderColor = Color.White;
-            guna2CheckBox1.CheckedState.BorderRadius = 2;
-            guna2CheckBox1.CheckedState.BorderThickness = 2;
-            guna2CheckBox1.CheckedState.FillColor = Color.White;
-            guna2CheckBox1.CheckMarkColor = Color.FromArgb(23, 117, 197);
-            guna2CheckBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2CheckBox1.Location = new Point(383, 248);
-            guna2CheckBox1.Name = "guna2CheckBox1";
-            guna2CheckBox1.Size = new Size(153, 19);
-            guna2CheckBox1.TabIndex = 7;
-            guna2CheckBox1.Text = "Afficher le mot de passe";
-            guna2CheckBox1.UncheckedState.BorderColor = Color.White;
-            guna2CheckBox1.UncheckedState.BorderRadius = 2;
-            guna2CheckBox1.UncheckedState.BorderThickness = 2;
-            guna2CheckBox1.UncheckedState.FillColor = Color.White;
-            guna2CheckBox1.UseVisualStyleBackColor = false;
+            checkBoxAfficheMdp.Anchor = AnchorStyles.None;
+            checkBoxAfficheMdp.Animated = true;
+            checkBoxAfficheMdp.BackColor = Color.Transparent;
+            checkBoxAfficheMdp.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            checkBoxAfficheMdp.CheckedState.BorderColor = Color.White;
+            checkBoxAfficheMdp.CheckedState.BorderRadius = 1;
+            checkBoxAfficheMdp.CheckedState.BorderThickness = 0;
+            checkBoxAfficheMdp.CheckedState.FillColor = Color.White;
+            checkBoxAfficheMdp.CheckMarkColor = Color.FromArgb(23, 117, 197);
+            checkBoxAfficheMdp.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBoxAfficheMdp.Location = new Point(383, 248);
+            checkBoxAfficheMdp.Name = "checkBoxAfficheMdp";
+            checkBoxAfficheMdp.Size = new Size(153, 19);
+            checkBoxAfficheMdp.TabIndex = 7;
+            checkBoxAfficheMdp.Text = "Afficher le mot de passe";
+            checkBoxAfficheMdp.UncheckedState.BorderColor = Color.White;
+            checkBoxAfficheMdp.UncheckedState.BorderRadius = 1;
+            checkBoxAfficheMdp.UncheckedState.BorderThickness = 0;
+            checkBoxAfficheMdp.UncheckedState.FillColor = Color.White;
+            checkBoxAfficheMdp.UseVisualStyleBackColor = false;
+            checkBoxAfficheMdp.CheckedChanged += checkBoxAfficheMdp_CheckedChanged;
             // 
             // guna2Panel1
             // 
@@ -269,10 +270,10 @@
             Controls.Add(guna2GradientPanel1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             guna2GradientPanel1.ResumeLayout(false);
             guna2GradientPanel2.ResumeLayout(false);
             guna2Panel2.ResumeLayout(false);
-            guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
@@ -290,6 +291,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox1;
+        private Guna.UI2.WinForms.Guna2CheckBox checkBoxAfficheMdp;
     }
 }

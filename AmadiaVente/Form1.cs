@@ -19,6 +19,7 @@ namespace AmadiaVente
         {
             InitializeComponent();
             originalSize = this.Size;
+            txtBoxPassword.UseSystemPasswordChar = true;
         }
 
         public string[] VerifierLogin(string username, string password)
@@ -136,6 +137,16 @@ namespace AmadiaVente
                     MessageBox.Show("Veuillez remplir correctement les champs !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            txtBoxPassword.UseSystemPasswordChar = true;
+        }
+
+        private void checkBoxAfficheMdp_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBoxPassword.UseSystemPasswordChar = !checkBoxAfficheMdp.Checked;
         }
     }
 }
