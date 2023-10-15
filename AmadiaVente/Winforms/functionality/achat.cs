@@ -598,22 +598,31 @@ namespace AmadiaVente.Winforms.functionality
 
             if (comboBoxDesignation.SelectedItem != null && txtBoxPrix.Text != string.Empty && txtBoxQuantite.Text != string.Empty)
             {
-                btnValiderAchat.Enabled = true;
-                txtBoxNumeroMembre.Enabled = comboBoxNomMembre.Enabled = false;
+                int quantitePiece = Convert.ToInt32(txtBoxQuantite.Text);
+                int stockPiece = Convert.ToInt32(labelStock.Text);
+                if (stockPiece >= quantitePiece)
+                {
+                    btnValiderAchat.Enabled = true;
+                    txtBoxNumeroMembre.Enabled = comboBoxNomMembre.Enabled = false;
 
-                string nomProduit = comboBoxDesignation.SelectedItem.ToString();
-                int quantite = int.Parse(txtBoxQuantite.Text);
-                int prixTotal = int.Parse(txtBoxPrix.Text);
+                    string nomProduit = comboBoxDesignation.SelectedItem.ToString();
+                    int quantite = int.Parse(txtBoxQuantite.Text);
+                    int prixTotal = int.Parse(txtBoxPrix.Text);
 
-                dataGridViewPanier.Rows.Add(nomProduit, quantite, prixTotal);
+                    dataGridViewPanier.Rows.Add(nomProduit, quantite, prixTotal);
 
-                comboBoxDesignation.SelectedIndex = -1;
-                txtBoxQuantite.Clear();
-                txtBoxPU.Clear();
-                labelStock.Text = "";
-                txtBoxPrix.Clear();
-                totalPayer += prixTotal;
-                labelTotal.Text = totalPayer.ToString() + " Ar";
+                    comboBoxDesignation.SelectedIndex = -1;
+                    txtBoxQuantite.Clear();
+                    txtBoxPU.Clear();
+                    labelStock.Text = "";
+                    txtBoxPrix.Clear();
+                    totalPayer += prixTotal;
+                    labelTotal.Text = totalPayer.ToString() + " Ar";
+                }
+                else
+                {
+                    MessageBox.Show("Le stock pour cette article est insuffisant.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
