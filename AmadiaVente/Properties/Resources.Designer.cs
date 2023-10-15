@@ -63,6 +63,36 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_checkmark_blue_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-checkmark-blue-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_effacer_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-effacer-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_fast_cart_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-fast-cart-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_fermer_la_fenêtre_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-fermer-la-fenêtre-96", resourceCulture);
@@ -86,6 +116,16 @@ namespace AmadiaVente.Properties {
         internal static System.Drawing.Bitmap icons8_utilisateur_sexe_neutre_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-utilisateur-sexe-neutre-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_vider_le_panier_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-vider-le-panier-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
