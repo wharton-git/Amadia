@@ -15,22 +15,13 @@ namespace AmadiaVente.Winforms
         //Déclaration Globale
         private Size originalSize;
         private Form activeForm;
-        public string sessionUserId;
-        String sessionNom;
-        String sessionPrenom;
-        String sessionFunction;
-        String sessionId;
 
         //Méthodes (fonctions)
-        public main(string sessionNom, string sessionPrenom, string sessionFunction, string sessionId)
+        public main()
         {
             InitializeComponent();
             originalSize = this.Size;
 
-            this.sessionNom = sessionNom;
-            this.sessionPrenom = sessionPrenom;
-            this.sessionFunction = sessionFunction;
-            this.sessionId = sessionId;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -82,44 +73,51 @@ namespace AmadiaVente.Winforms
         }
         private void main_Load(object sender, EventArgs e)
         {
-            labelSession.Text = sessionId;
-            sessionUserId = sessionId;
-            btnHidePanel.Visible = false;
             OpenChildForm(new functionality.achat(), sender);
         }
 
         private void btnAchat_Click(object sender, EventArgs e)
         {
             OpenChildForm(new functionality.achat(), sender);
+            btnAchat.FillColor = btnAchat.FillColor2 = Color.FromArgb(191, 210, 255);
+            btnAchat.ForeColor = Color.White;
+
+            btnCompteRendu.ForeColor = btnFournisseur.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
+            btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
+
         }
 
         private void btnCompteRendu_Click(object sender, EventArgs e)
         {
             OpenChildForm(new functionality.rendu(), sender);
-        }
+            btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = Color.FromArgb(191, 210, 255);
+            btnCompteRendu.ForeColor = Color.White;
 
-        private void btnShowPanel_Click(object sender, EventArgs e)
-        {
-            btnShowPanel.Visible = false;
-            panelLeftParent.Width = 197;
-            btnHidePanel.Visible = true;
-        }
+            btnAchat.ForeColor = btnFournisseur.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
+            btnAchat.FillColor = btnAchat.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
 
-        private void btnHidePanel_Click(object sender, EventArgs e)
-        {
-            btnShowPanel.Visible = true;
-            panelLeftParent.Width = 40;
-            btnHidePanel.Visible = false;
         }
 
         private void btnProfil_Click(object sender, EventArgs e)
         {
             OpenChildForm(new functionality.profil(), sender);
+            btnProfil.FillColor = btnProfil.FillColor2 = Color.FromArgb(191, 210, 255);
+            btnProfil.ForeColor = Color.White;
+
+            btnCompteRendu.ForeColor = btnFournisseur.ForeColor = btnAchat.ForeColor = Color.FromArgb(23, 117, 197);
+            btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = Color.WhiteSmoke;
+
         }
 
         private void btnFournisseur_Click(object sender, EventArgs e)
         {
             OpenChildForm(new functionality.Fournisseur1(), sender);
+            btnFournisseur.FillColor = btnFournisseur.FillColor2 = Color.FromArgb(191, 210, 255);
+            btnFournisseur.ForeColor = Color.White;
+
+            btnCompteRendu.ForeColor = btnAchat.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
+            btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
+
         }
     }
 }

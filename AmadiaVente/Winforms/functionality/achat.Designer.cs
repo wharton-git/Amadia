@@ -102,7 +102,7 @@
             txtBoxQuantite.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxQuantite.ForeColor = Color.Black;
             txtBoxQuantite.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxQuantite.Location = new Point(343, 120);
+            txtBoxQuantite.Location = new Point(354, 120);
             txtBoxQuantite.Margin = new Padding(4, 4, 4, 4);
             txtBoxQuantite.Name = "txtBoxQuantite";
             txtBoxQuantite.PasswordChar = '\0';
@@ -130,7 +130,7 @@
             txtBoxPrix.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxPrix.ForeColor = Color.Black;
             txtBoxPrix.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPrix.Location = new Point(626, 120);
+            txtBoxPrix.Location = new Point(637, 120);
             txtBoxPrix.Margin = new Padding(4, 4, 4, 4);
             txtBoxPrix.Name = "txtBoxPrix";
             txtBoxPrix.PasswordChar = '\0';
@@ -173,7 +173,7 @@
             dataGridViewPanier.ReadOnly = true;
             dataGridViewPanier.RowHeadersVisible = false;
             dataGridViewPanier.RowTemplate.Height = 25;
-            dataGridViewPanier.Size = new Size(761, 145);
+            dataGridViewPanier.Size = new Size(783, 145);
             dataGridViewPanier.TabIndex = 6;
             dataGridViewPanier.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridViewPanier.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -248,10 +248,10 @@
             guna2GradientPanel2.CustomizableEdges = customizableEdges19;
             guna2GradientPanel2.FillColor = Color.WhiteSmoke;
             guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
-            guna2GradientPanel2.Location = new Point(46, 24);
+            guna2GradientPanel2.Location = new Point(24, 24);
             guna2GradientPanel2.Name = "guna2GradientPanel2";
             guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2GradientPanel2.Size = new Size(799, 442);
+            guna2GradientPanel2.Size = new Size(821, 442);
             guna2GradientPanel2.TabIndex = 39;
             // 
             // guna2HtmlLabel7
@@ -259,7 +259,7 @@
             guna2HtmlLabel7.Anchor = AnchorStyles.Top;
             guna2HtmlLabel7.BackColor = Color.Transparent;
             guna2HtmlLabel7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel7.Location = new Point(626, 93);
+            guna2HtmlLabel7.Location = new Point(637, 93);
             guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             guna2HtmlLabel7.Size = new Size(31, 18);
             guna2HtmlLabel7.TabIndex = 17;
@@ -270,7 +270,7 @@
             labelTotal.Anchor = AnchorStyles.Top;
             labelTotal.BackColor = Color.Transparent;
             labelTotal.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTotal.Location = new Point(534, 166);
+            labelTotal.Location = new Point(545, 166);
             labelTotal.Name = "labelTotal";
             labelTotal.Size = new Size(3, 2);
             labelTotal.TabIndex = 38;
@@ -281,7 +281,7 @@
             guna2HtmlLabel11.Anchor = AnchorStyles.Top;
             guna2HtmlLabel11.BackColor = Color.Transparent;
             guna2HtmlLabel11.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel11.Location = new Point(394, 166);
+            guna2HtmlLabel11.Location = new Point(405, 166);
             guna2HtmlLabel11.Name = "guna2HtmlLabel11";
             guna2HtmlLabel11.Size = new Size(119, 20);
             guna2HtmlLabel11.TabIndex = 37;
@@ -304,7 +304,7 @@
             btnAjoutPanier.ForeColor = Color.White;
             btnAjoutPanier.Image = Properties.Resources.icons8_fast_cart_96;
             btnAjoutPanier.ImageSize = new Size(40, 40);
-            btnAjoutPanier.Location = new Point(147, 204);
+            btnAjoutPanier.Location = new Point(158, 204);
             btnAjoutPanier.Name = "btnAjoutPanier";
             btnAjoutPanier.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnAjoutPanier.Size = new Size(60, 55);
@@ -326,7 +326,7 @@
             btnModifierPanier.FillColor2 = Color.FromArgb(191, 210, 255);
             btnModifierPanier.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnModifierPanier.ForeColor = Color.White;
-            btnModifierPanier.Location = new Point(369, 204);
+            btnModifierPanier.Location = new Point(380, 204);
             btnModifierPanier.Name = "btnModifierPanier";
             btnModifierPanier.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnModifierPanier.Size = new Size(60, 55);
@@ -350,7 +350,7 @@
             btnSupprimerPanier.ForeColor = Color.White;
             btnSupprimerPanier.Image = Properties.Resources.icons8_vider_le_panier_96;
             btnSupprimerPanier.ImageSize = new Size(40, 40);
-            btnSupprimerPanier.Location = new Point(258, 204);
+            btnSupprimerPanier.Location = new Point(269, 204);
             btnSupprimerPanier.Name = "btnSupprimerPanier";
             btnSupprimerPanier.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnSupprimerPanier.Size = new Size(60, 55);
@@ -362,7 +362,7 @@
             labelAlertNumeroMembre.Anchor = AnchorStyles.Top;
             labelAlertNumeroMembre.BackColor = Color.Transparent;
             labelAlertNumeroMembre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelAlertNumeroMembre.Location = new Point(139, 68);
+            labelAlertNumeroMembre.Location = new Point(150, 68);
             labelAlertNumeroMembre.Name = "labelAlertNumeroMembre";
             labelAlertNumeroMembre.Size = new Size(3, 2);
             labelAlertNumeroMembre.TabIndex = 35;
@@ -386,7 +386,7 @@
             btnValiderAchat.ForeColor = Color.White;
             btnValiderAchat.Image = Properties.Resources.icons8_checkmark_blue_96;
             btnValiderAchat.ImageSize = new Size(30, 30);
-            btnValiderAchat.Location = new Point(480, 204);
+            btnValiderAchat.Location = new Point(491, 204);
             btnValiderAchat.Name = "btnValiderAchat";
             btnValiderAchat.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnValiderAchat.Size = new Size(60, 55);
@@ -408,7 +408,7 @@
             txtBoxNumeroMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxNumeroMembre.ForeColor = Color.Black;
             txtBoxNumeroMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxNumeroMembre.Location = new Point(134, 39);
+            txtBoxNumeroMembre.Location = new Point(145, 39);
             txtBoxNumeroMembre.Margin = new Padding(4, 4, 4, 4);
             txtBoxNumeroMembre.Name = "txtBoxNumeroMembre";
             txtBoxNumeroMembre.PasswordChar = '\0';
@@ -436,7 +436,7 @@
             txtBoxPU.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxPU.ForeColor = Color.Black;
             txtBoxPU.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPU.Location = new Point(467, 120);
+            txtBoxPU.Location = new Point(478, 120);
             txtBoxPU.Margin = new Padding(4, 4, 4, 4);
             txtBoxPU.Name = "txtBoxPU";
             txtBoxPU.PasswordChar = '\0';
@@ -452,7 +452,7 @@
             guna2HtmlLabel5.Anchor = AnchorStyles.Top;
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel5.Location = new Point(354, 93);
+            guna2HtmlLabel5.Location = new Point(365, 93);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(58, 18);
             guna2HtmlLabel5.TabIndex = 33;
@@ -463,7 +463,7 @@
             guna2HtmlLabel1.Anchor = AnchorStyles.Top;
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel1.Location = new Point(40, 14);
+            guna2HtmlLabel1.Location = new Point(51, 14);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(59, 18);
             guna2HtmlLabel1.TabIndex = 11;
@@ -474,7 +474,7 @@
             guna2HtmlLabel4.Anchor = AnchorStyles.Top;
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel4.Location = new Point(40, 95);
+            guna2HtmlLabel4.Location = new Point(51, 95);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(81, 18);
             guna2HtmlLabel4.TabIndex = 32;
@@ -485,7 +485,7 @@
             guna2HtmlLabel2.Anchor = AnchorStyles.Top;
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel2.Location = new Point(139, 13);
+            guna2HtmlLabel2.Location = new Point(150, 13);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(57, 18);
             guna2HtmlLabel2.TabIndex = 12;
@@ -509,7 +509,7 @@
             btnAnnulerAchat.ForeColor = Color.White;
             btnAnnulerAchat.Image = Properties.Resources.icons8_effacer_96;
             btnAnnulerAchat.ImageSize = new Size(30, 30);
-            btnAnnulerAchat.Location = new Point(591, 204);
+            btnAnnulerAchat.Location = new Point(602, 204);
             btnAnnulerAchat.Name = "btnAnnulerAchat";
             btnAnnulerAchat.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btnAnnulerAchat.Size = new Size(60, 55);
@@ -521,7 +521,7 @@
             guna2HtmlLabel3.Anchor = AnchorStyles.Top;
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel3.Location = new Point(249, 14);
+            guna2HtmlLabel3.Location = new Point(260, 14);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(102, 18);
             guna2HtmlLabel3.TabIndex = 13;
@@ -532,7 +532,7 @@
             labelStock.Anchor = AnchorStyles.Top;
             labelStock.BackColor = Color.Transparent;
             labelStock.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelStock.Location = new Point(196, 166);
+            labelStock.Location = new Point(207, 166);
             labelStock.Name = "labelStock";
             labelStock.Size = new Size(3, 2);
             labelStock.TabIndex = 30;
@@ -543,7 +543,7 @@
             guna2HtmlLabel6.Anchor = AnchorStyles.Top;
             guna2HtmlLabel6.BackColor = Color.Transparent;
             guna2HtmlLabel6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel6.Location = new Point(467, 95);
+            guna2HtmlLabel6.Location = new Point(478, 95);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             guna2HtmlLabel6.Size = new Size(80, 18);
             guna2HtmlLabel6.TabIndex = 16;
@@ -554,7 +554,7 @@
             guna2HtmlLabel9.Anchor = AnchorStyles.Top;
             guna2HtmlLabel9.BackColor = Color.Transparent;
             guna2HtmlLabel9.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel9.Location = new Point(139, 166);
+            guna2HtmlLabel9.Location = new Point(150, 166);
             guna2HtmlLabel9.Name = "guna2HtmlLabel9";
             guna2HtmlLabel9.Size = new Size(50, 20);
             guna2HtmlLabel9.TabIndex = 29;
@@ -565,7 +565,7 @@
             guna2HtmlLabel8.Anchor = AnchorStyles.Top;
             guna2HtmlLabel8.BackColor = Color.Transparent;
             guna2HtmlLabel8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel8.Location = new Point(573, 14);
+            guna2HtmlLabel8.Location = new Point(584, 14);
             guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             guna2HtmlLabel8.Size = new Size(91, 18);
             guna2HtmlLabel8.TabIndex = 19;
@@ -580,7 +580,7 @@
             comboBoxDesignation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxDesignation.ForeColor = Color.Black;
             comboBoxDesignation.FormattingEnabled = true;
-            comboBoxDesignation.Location = new Point(40, 120);
+            comboBoxDesignation.Location = new Point(51, 120);
             comboBoxDesignation.Name = "comboBoxDesignation";
             comboBoxDesignation.Size = new Size(281, 29);
             comboBoxDesignation.TabIndex = 28;
@@ -595,7 +595,7 @@
             comboBoxMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxMembre.ForeColor = Color.Black;
             comboBoxMembre.FormattingEnabled = true;
-            comboBoxMembre.Location = new Point(40, 39);
+            comboBoxMembre.Location = new Point(51, 39);
             comboBoxMembre.Name = "comboBoxMembre";
             comboBoxMembre.Size = new Size(88, 29);
             comboBoxMembre.TabIndex = 24;
@@ -610,7 +610,7 @@
             comboBoxNomMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxNomMembre.ForeColor = Color.Black;
             comboBoxNomMembre.FormattingEnabled = true;
-            comboBoxNomMembre.Location = new Point(247, 39);
+            comboBoxNomMembre.Location = new Point(258, 39);
             comboBoxNomMembre.Name = "comboBoxNomMembre";
             comboBoxNomMembre.Size = new Size(318, 29);
             comboBoxNomMembre.TabIndex = 27;
@@ -625,7 +625,7 @@
             comboBoxTypeArticle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTypeArticle.ForeColor = Color.Black;
             comboBoxTypeArticle.FormattingEnabled = true;
-            comboBoxTypeArticle.Location = new Point(571, 39);
+            comboBoxTypeArticle.Location = new Point(582, 39);
             comboBoxTypeArticle.Name = "comboBoxTypeArticle";
             comboBoxTypeArticle.Size = new Size(195, 29);
             comboBoxTypeArticle.TabIndex = 26;

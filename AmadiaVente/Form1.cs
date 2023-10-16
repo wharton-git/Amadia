@@ -60,7 +60,7 @@ namespace AmadiaVente
 
         private void connectAction()
         {
-            Winforms.main mainWin = new Winforms.main(sessionNom, sessionPrenom, sessionFunction, sessionId);
+            Winforms.main mainWin = new Winforms.main();
             mainWin.StartPosition = FormStartPosition.Manual;
             mainWin.Location = this.Location;
             mainWin.Size = this.Size;

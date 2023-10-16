@@ -103,6 +103,16 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_fournisseur_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-fournisseur-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_mot_de_passe_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-mot-de-passe-96", resourceCulture);
@@ -113,9 +123,49 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_panier_chargé {
+            get {
+                object obj = ResourceManager.GetObject("icons8-panier-chargé", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_panneau_de_contrôle_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-panneau-de-contrôle-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_sortie_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-sortie-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_utilisateur_sexe_neutre_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-utilisateur-sexe-neutre-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_utilisateur_sexe_neutre_961 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-utilisateur-sexe-neutre-961", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
