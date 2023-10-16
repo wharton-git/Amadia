@@ -101,14 +101,14 @@ namespace AmadiaVente.Winforms
         private void btnShowPanel_Click(object sender, EventArgs e)
         {
             btnShowPanel.Visible = false;
-            panelLeftMenu.Width = 175;
+            panelLeftParent.Width = 197;
             btnHidePanel.Visible = true;
         }
 
         private void btnHidePanel_Click(object sender, EventArgs e)
         {
             btnShowPanel.Visible = true;
-            panelLeftMenu.Width = 40;
+            panelLeftParent.Width = 40;
             btnHidePanel.Visible = false;
         }
 
