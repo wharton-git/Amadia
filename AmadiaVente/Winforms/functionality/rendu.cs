@@ -207,11 +207,11 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_commande, COALESCE(nom_membre, 'Non'), COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%Y', date_achat) = @annee";
+                string sqlQuery = "SELECT id_commande, COALESCE(nom_membre, 'Non'), COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%Y', date_achat) LIKE '%"+ annee +"%'";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@annee", annee);
+                    //command.Parameters.AddWithValue("@annee", annee);
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
@@ -324,11 +324,11 @@ namespace AmadiaVente.Winforms.functionality
             btnInfoCommande.Enabled = false;
 
             afficherRecetteDuJour(dateActuelle);
-            string[]val = compterCommandeAujourdhui(dateActuelle);
+            string[] val = compterCommandeAujourdhui(dateActuelle);
             int nbrCommande = dataGridViewDashboard.Rows.Count;
             labelCommande.Text = "Total commande : " + nbrCommande;
             labelSomme.Text = "Somme : " + val[1] + " Ar";
-  
+
 
             //comboBox
             comboBoxPeriode.Items.Add("Aujourd'hui");
@@ -345,21 +345,6 @@ namespace AmadiaVente.Winforms.functionality
 
             //disable visibility
             comboBoxMois.Visible = txtBoxAnnee.Visible = dateTimeJour.Visible = panel2Date.Visible = false;
-
-
-        }
-
-        private void dataGridViewDashboard_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnInfoCommande.Enabled = true;
-            if (e.RowIndex >= 0)
-            {
-
-                DataGridViewRow selectedRow = dataGridViewDashboard.Rows[e.RowIndex];
-
-                string idCommande = selectedRow.Cells["id_commande"].Value.ToString();
-                id_commande = Convert.ToInt32(idCommande);
-            }
         }
 
         private void btnInfoCommande_Click(object sender, EventArgs e)
@@ -500,6 +485,19 @@ namespace AmadiaVente.Winforms.functionality
             int nbrCommande = dataGridViewDashboard.Rows.Count;
             labelCommande.Text = "Total commande : " + nbrCommande;
             labelSomme.Text = "Somme : " + val[1] + " Ar";
+        }
+
+        private void dataGridViewDashboard_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnInfoCommande.Enabled = true;
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow selectedRow = dataGridViewDashboard.Rows[e.RowIndex];
+
+                string idCommande = selectedRow.Cells["id_commande"].Value.ToString();
+                id_commande = Convert.ToInt32(idCommande);
+            }
         }
     }
 }
