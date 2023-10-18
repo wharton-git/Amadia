@@ -207,7 +207,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_commande, COALESCE(nom_membre, 'Non'), COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%Y', date_achat) LIKE '%"+ annee +"%'";
+                string sqlQuery = "SELECT id_commande, COALESCE(nom_membre, 'Non'), COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%Y', date_achat) LIKE '%" + annee + "%'";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {

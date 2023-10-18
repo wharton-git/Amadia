@@ -113,11 +113,11 @@
             guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2TextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.IconLeft = Properties.Resources.icons8_panier_chargé;
+            guna2TextBox1.IconLeft = Properties.Resources.Search;
             guna2TextBox1.Location = new Point(459, 12);
             guna2TextBox1.Name = "guna2TextBox1";
             guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "Recherche";
+            guna2TextBox1.PlaceholderText = "Recherche par Nom ou Numero de commande";
             guna2TextBox1.SelectedText = "";
             guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2TextBox1.Size = new Size(310, 36);
