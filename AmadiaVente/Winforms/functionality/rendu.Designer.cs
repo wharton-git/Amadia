@@ -56,7 +56,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelRendu = new Guna.UI2.WinForms.Guna2GradientPanel();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtboxSearchRendu = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewDashboard = new Guna.UI2.WinForms.Guna2DataGridView();
             labelSomme = new Guna.UI2.WinForms.Guna2HtmlLabel();
             labelCommande = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -83,7 +83,7 @@
             // 
             panelRendu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelRendu.BackColor = Color.Transparent;
-            panelRendu.Controls.Add(guna2TextBox1);
+            panelRendu.Controls.Add(txtboxSearchRendu);
             panelRendu.Controls.Add(dataGridViewDashboard);
             panelRendu.Controls.Add(labelSomme);
             panelRendu.Controls.Add(labelCommande);
@@ -101,27 +101,28 @@
             panelRendu.Size = new Size(795, 432);
             panelRendu.TabIndex = 5;
             // 
-            // guna2TextBox1
+            // txtboxSearchRendu
             // 
-            guna2TextBox1.BorderRadius = 15;
-            guna2TextBox1.CustomizableEdges = customizableEdges1;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.IconLeft = Properties.Resources.icons8_panier_chargé;
-            guna2TextBox1.Location = new Point(459, 12);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "Recherche";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2TextBox1.Size = new Size(310, 36);
-            guna2TextBox1.TabIndex = 17;
+            txtboxSearchRendu.BorderRadius = 15;
+            txtboxSearchRendu.CustomizableEdges = customizableEdges1;
+            txtboxSearchRendu.DefaultText = "";
+            txtboxSearchRendu.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtboxSearchRendu.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtboxSearchRendu.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtboxSearchRendu.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtboxSearchRendu.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtboxSearchRendu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtboxSearchRendu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtboxSearchRendu.IconLeft = Properties.Resources.Search;
+            txtboxSearchRendu.Location = new Point(459, 12);
+            txtboxSearchRendu.Name = "txtboxSearchRendu";
+            txtboxSearchRendu.PasswordChar = '\0';
+            txtboxSearchRendu.PlaceholderText = "Recherche par Nom ou Numero de commande";
+            txtboxSearchRendu.SelectedText = "";
+            txtboxSearchRendu.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtboxSearchRendu.Size = new Size(310, 36);
+            txtboxSearchRendu.TabIndex = 17;
+            txtboxSearchRendu.TextChanged += txtboxSearchRendu_TextChanged;
             // 
             // dataGridViewDashboard
             // 
@@ -178,6 +179,7 @@
             dataGridViewDashboard.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewDashboard.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewDashboard.CellClick += dataGridViewDashboard_CellClick;
+            dataGridViewDashboard.DataError += dataGridViewDashboard_DataError;
             // 
             // labelSomme
             // 
@@ -434,6 +436,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewDashboard;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtboxSearchRendu;
     }
 }
