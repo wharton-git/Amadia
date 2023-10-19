@@ -39,6 +39,21 @@ namespace AmadiaVente.Winforms.functionality
         }
 
         //Méthodes
+        void hideParametre()
+        {
+            string valueToHide = "AMADIA";
+            int columnIndex = 0;
+
+            foreach (DataGridViewRow row in dataGridViewDashboard.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() == valueToHide)
+                {
+                    row.Visible = false;
+                }
+            }
+
+        }
+
         string[] compterCommandeAujourdhui(DateTime jour)
         {
             string[] result = new string[2];
@@ -201,39 +216,6 @@ namespace AmadiaVente.Winforms.functionality
                 }
             }
         }
-
-        private void ChargerDonnees(DateTime hier)
-        {
-            // Création d'un DataTable
-            DataTable dataTable = new DataTable();
-
-            DateTime dateNow = hier;
-
-            // Connexion à la base de données SQLite
-            using (SqliteConnection connection = new SqliteConnection(cs))
-            {
-                connection.Open();
-
-                // Requête SQL
-                string sqlQuery = "SELECT id_commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS nom_membre, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS prenom_membre, nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
-
-                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
-                {
-                    // Paramètre pour la date
-                    command.Parameters.AddWithValue("@dateNow", dateNow);
-
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        // Remplissage du DataTable avec les données de la base de données
-                        dataTable.Load(reader);
-                    }
-                }
-            }
-
-            // Liaison du DataTable au DataGridView
-            dataGridViewDashboard.DataSource = dataTable;
-        }
-
 
         void afficherRecetteDuJour(DateTime date)
         {
@@ -596,7 +578,17 @@ namespace AmadiaVente.Winforms.functionality
         private void txtboxSearchRendu_TextChanged(object sender, EventArgs e)
         {
             String searchValue = txtboxSearchRendu.Text;
-            afficheRechercheNomEtPrenom(searchValue);
+
+            if (!String.IsNullOrWhiteSpace(searchValue))
+            {
+                afficheRechercheNomEtPrenom(searchValue);
+            }
+            else
+            {
+                //Important, ne pas modifier ou supprimer sans connaissance de cause
+                initialiserDataGridRendu();
+                afficherRecetteDuJour(dateActuelle);
+            }
         }
 
         private void dataGridViewDashboard_DataError(object sender, DataGridViewDataErrorEventArgs e)
