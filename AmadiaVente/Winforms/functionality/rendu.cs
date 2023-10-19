@@ -430,6 +430,7 @@ namespace AmadiaVente.Winforms.functionality
 
             if (dataGridViewDashboard.Rows.Count == 0)
             {
+                //Important, ne pas modifier ou supprimer sans connaissance de cause
                 initialiserDataGridRendu();
                 afficherRecetteDuJour(dateActuelle);
             }
