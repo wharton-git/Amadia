@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using Microsoft.Data.Sqlite;
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
@@ -34,6 +35,7 @@ namespace AmadiaVente.Winforms.functionality
         public rendu()
         {
             InitializeComponent();
+
         }
 
         //Méthodes
@@ -178,13 +180,68 @@ namespace AmadiaVente.Winforms.functionality
             return result;
         }
 
+        void afficheRechercheNomEtPrenom(string nomPrenom)
+        {
+            String nom = nomPrenom;
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT id_commande, COALESCE(nom_membre, 'Non'), COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c INNER JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE m.nom_membre LIKE '%" + nom + "%' OR m.prenom_membre LIKE '%" + nom + "%'  OR id_commande LIKE '%" + nom + "%'";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewDashboard.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        private void ChargerDonnees(DateTime hier)
+        {
+            // Création d'un DataTable
+            DataTable dataTable = new DataTable();
+
+            DateTime dateNow = hier;
+
+            // Connexion à la base de données SQLite
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                // Requête SQL
+                string sqlQuery = "SELECT id_commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS nom_membre, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS prenom_membre, nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    // Paramètre pour la date
+                    command.Parameters.AddWithValue("@dateNow", dateNow);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        // Remplissage du DataTable avec les données de la base de données
+                        dataTable.Load(reader);
+                    }
+                }
+            }
+
+            // Liaison du DataTable au DataGridView
+            dataGridViewDashboard.DataSource = dataTable;
+        }
+
+
         void afficherRecetteDuJour(DateTime date)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_commande, COALESCE(nom_membre, 'Non'),COALESCE(prenom_membre, 'Membre'), nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
+                string sqlQuery = "SELECT id_commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS nom_membre, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS prenom_membre, nom_user, prenom_user, c.date_achat FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -195,8 +252,36 @@ namespace AmadiaVente.Winforms.functionality
                         DataTable dataTable = new DataTable();
                         dataTable.Load(reader);
 
+                        // Remplacez les valeurs nulles par des valeurs par défaut
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            row["nom_membre"] = row["nom_membre"] ?? "Non";
+                            row["prenom_membre"] = row["prenom_membre"] ?? "Membre";
+                        }
+
                         dataGridViewDashboard.DataSource = dataTable;
                     }
+                }
+            }
+
+        }
+
+        void initialiserDataGridRendu()
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                DateTime date = DateTime.Today;
+                String idCom = "1";
+                connection.Open();
+
+                string sqlQuery = "UPDATE commande SET date_achat = @nouvelleDateAchat WHERE id_commande = @idCommande";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@nouvelleDateAchat", date);
+                    command.Parameters.AddWithValue("@idCommande", idCom);
+
+                    command.ExecuteNonQuery();
                 }
             }
         }
@@ -321,8 +406,8 @@ namespace AmadiaVente.Winforms.functionality
 
         private void rendu_Load_1(object sender, EventArgs e)
         {
-            btnInfoCommande.Enabled = false;
 
+            btnInfoCommande.Enabled = false; 
             afficherRecetteDuJour(dateActuelle);
             string[] val = compterCommandeAujourdhui(dateActuelle);
             int nbrCommande = dataGridViewDashboard.Rows.Count;
@@ -342,6 +427,13 @@ namespace AmadiaVente.Winforms.functionality
             {
                 comboBoxMois.Items.Add(nomMois);
             }
+
+            if (dataGridViewDashboard.Rows.Count == 0)
+            {
+                initialiserDataGridRendu();
+                afficherRecetteDuJour(dateActuelle);
+            }
+
 
             //disable visibility
             comboBoxMois.Visible = txtBoxAnnee.Visible = dateTimeJour.Visible = panel2Date.Visible = false;
@@ -498,6 +590,17 @@ namespace AmadiaVente.Winforms.functionality
                 string idCommande = selectedRow.Cells["id_commande"].Value.ToString();
                 id_commande = Convert.ToInt32(idCommande);
             }
+        }
+
+        private void txtboxSearchRendu_TextChanged(object sender, EventArgs e)
+        {
+            String searchValue = txtboxSearchRendu.Text;
+            afficheRechercheNomEtPrenom(searchValue);
+        }
+
+        private void dataGridViewDashboard_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Format Incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
