@@ -39,21 +39,6 @@ namespace AmadiaVente.Winforms.functionality
         }
 
         //Méthodes
-        void hideParametre()
-        {
-            string valueToHide = "AMADIA";
-            int columnIndex = 0;
-
-            foreach (DataGridViewRow row in dataGridViewDashboard.Rows)
-            {
-                if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() == valueToHide)
-                {
-                    row.Visible = false;
-                }
-            }
-
-        }
-
         string[] compterCommandeAujourdhui(DateTime jour)
         {
             string[] result = new string[2];
