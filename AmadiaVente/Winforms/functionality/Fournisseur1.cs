@@ -567,7 +567,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 string nomEtPrenom = NomFournisseur.SelectedItem.ToString();
                 string idFournisseur = GetFournisseurId(nomEtPrenom);
-                
+
             }
             else
             {
