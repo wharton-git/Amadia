@@ -385,6 +385,11 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        public void makeHistory()
+        {
+
+        }
+
         //Evénements
         private void achat_Load(object sender, EventArgs e)
         {
