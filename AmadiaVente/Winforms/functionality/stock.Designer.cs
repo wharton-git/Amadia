@@ -30,15 +30,15 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-            labelStockTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             dataGridViewStock = new Guna.UI2.WinForms.Guna2DataGridView();
+            labelStockTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStock).BeginInit();
             SuspendLayout();
@@ -55,36 +55,6 @@
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2GradientPanel1.Size = new Size(893, 478);
             guna2GradientPanel1.TabIndex = 0;
-            // 
-            // guna2GradientButton1
-            // 
-            guna2GradientButton1.Anchor = AnchorStyles.Top;
-            guna2GradientButton1.Animated = true;
-            guna2GradientButton1.BorderRadius = 15;
-            guna2GradientButton1.CustomizableEdges = customizableEdges1;
-            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2GradientButton1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2GradientButton1.ForeColor = Color.White;
-            guna2GradientButton1.Location = new Point(143, 104);
-            guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2GradientButton1.Size = new Size(180, 45);
-            guna2GradientButton1.TabIndex = 1;
-            guna2GradientButton1.Text = "Voir liste de Stock";
-            // 
-            // labelStockTitle
-            // 
-            labelStockTitle.BackColor = Color.Transparent;
-            labelStockTitle.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelStockTitle.Location = new Point(23, 23);
-            labelStockTitle.Name = "labelStockTitle";
-            labelStockTitle.Size = new Size(391, 56);
-            labelStockTitle.TabIndex = 2;
-            labelStockTitle.Text = "Historique des Stock";
             // 
             // dataGridViewStock
             // 
@@ -141,6 +111,36 @@
             dataGridViewStock.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewStock.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
+            // labelStockTitle
+            // 
+            labelStockTitle.BackColor = Color.Transparent;
+            labelStockTitle.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            labelStockTitle.Location = new Point(23, 23);
+            labelStockTitle.Name = "labelStockTitle";
+            labelStockTitle.Size = new Size(391, 56);
+            labelStockTitle.TabIndex = 2;
+            labelStockTitle.Text = "Historique des Stock";
+            // 
+            // guna2GradientButton1
+            // 
+            guna2GradientButton1.Anchor = AnchorStyles.Top;
+            guna2GradientButton1.Animated = true;
+            guna2GradientButton1.BorderRadius = 15;
+            guna2GradientButton1.CustomizableEdges = customizableEdges1;
+            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2GradientButton1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2GradientButton1.ForeColor = Color.White;
+            guna2GradientButton1.Location = new Point(143, 104);
+            guna2GradientButton1.Name = "guna2GradientButton1";
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2GradientButton1.Size = new Size(180, 45);
+            guna2GradientButton1.TabIndex = 1;
+            guna2GradientButton1.Text = "Voir liste de Stock";
+            // 
             // stock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -149,6 +149,7 @@
             Controls.Add(guna2GradientPanel1);
             Name = "stock";
             Text = "stock";
+            Load += stock_Load;
             guna2GradientPanel1.ResumeLayout(false);
             guna2GradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStock).EndInit();

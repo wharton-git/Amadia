@@ -202,7 +202,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, c.date_achat AS Date FROM commande c INNER JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE m.nom_membre LIKE '%" + nom + "%' OR m.prenom_membre LIKE '%" + nom + "%'  OR id_commande LIKE '%" + nom + "%'";
+                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, strftime('%d/%m/%Y %H:%M', c.date_achat) AS Date FROM commande c INNER JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE m.nom_membre LIKE '%" + nom + "%' OR m.prenom_membre LIKE '%" + nom + "%'  OR id_commande LIKE '%" + nom + "%'";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -223,7 +223,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, c.date_achat AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
+                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, strftime('%d/%m/%Y %H:%M', c.date_achat) AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat > @dateNow";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -274,7 +274,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, c.date_achat AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%Y', date_achat) LIKE '%" + annee + "%'";
+                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, strftime('%d/%m/%Y %H:%M', c.date_achat) AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%Y', date_achat) LIKE '%" + annee + "%'";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -297,7 +297,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 con.Open();
 
-                string query = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, c.date_achat AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat BETWEEN @debut AND @fin";
+                string query = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, strftime('%d/%m/%Y %H:%M', c.date_achat) AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE date_achat BETWEEN @debut AND @fin";
 
                 using (SqliteCommand command = new SqliteCommand(query, con))
                 {
@@ -321,7 +321,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 con.Open();
 
-                string query = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, c.date_achat AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%m', date_achat) = @mois;";
+                string query = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, strftime('%d/%m/%Y %H:%M', c.date_achat) AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE strftime('%m', date_achat) = @mois;";
 
                 using (SqliteCommand command = new SqliteCommand(query, con))
                 {
@@ -344,7 +344,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, c.date_achat AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE STRFTIME('%Y-%m-%d', date_achat) = @jour";
+                string sqlQuery = "SELECT id_commande AS ID_Commande, COALESCE(CAST(nom_membre AS TEXT), 'Non') AS Nom_Client, COALESCE(CAST(prenom_membre AS TEXT), 'Membre') AS Prénom_Client, nom_user AS Nom_Responsable, prenom_user AS Prénom_Responsable, strftime('%d/%m/%Y %H:%M', c.date_achat) AS Date FROM commande c LEFT JOIN membre m ON m.id_membre = c.id_membre INNER JOIN user u ON u.id_user = c.id_responsable WHERE STRFTIME('%Y-%m-%d', date_achat) = @jour";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {

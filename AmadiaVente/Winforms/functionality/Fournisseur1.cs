@@ -314,6 +314,33 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        public void makeHistory(int idArticle, int quantite, int idfournisseur)
+        {
+            string mouvement = "Entrer";
+
+            DateTime dateHeureActuelles = DateTime.Now;
+            string date = dateHeureActuelles.ToString("yyyy-MM-dd HH:mm:ss");
+
+            using (SQLiteConnection connection = new SQLiteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "INSERT INTO stockHistoryEntrer (id_article, mouvement, quantite, id_source, date) VALUES (@idArticle, @mouvement, @quantite, @idFournisseur, @date)";
+
+                using (SQLiteCommand command = new SQLiteCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@idArticle", idArticle);
+                    command.Parameters.AddWithValue("@mouvement", mouvement);
+                    command.Parameters.AddWithValue("@quantite", quantite);
+                    command.Parameters.AddWithValue("@idFournisseur", idfournisseur);
+                    command.Parameters.AddWithValue("@date", date);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //Evenements
 
         private void btnAjoutPanier_Click(object sender, EventArgs e)
         {
@@ -492,6 +519,7 @@ namespace AmadiaVente.Winforms.functionality
                     int artcileId = GetArticleIdByDesignation(designation: nomProduit);
 
                     validerAchat(artcileId, quantite, prix, idCommande);
+                    makeHistory(artcileId, quantite, idCommande);
                 }
                 if (indicationErreurAchat)
                 {
