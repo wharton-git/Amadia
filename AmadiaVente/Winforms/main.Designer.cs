@@ -48,7 +48,7 @@
             btnProfil = new Guna.UI2.WinForms.Guna2GradientButton();
             btnCompteRendu = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            guna2GradientButton5 = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnStock = new Guna.UI2.WinForms.Guna2GradientButton();
             btnFournisseur = new Guna.UI2.WinForms.Guna2GradientButton();
             btnDisconnect = new Guna.UI2.WinForms.Guna2GradientButton();
             btnAchat = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -68,7 +68,7 @@
             panelLeftMenu.Controls.Add(btnProfil);
             panelLeftMenu.Controls.Add(btnCompteRendu);
             panelLeftMenu.Controls.Add(guna2Separator1);
-            panelLeftMenu.Controls.Add(guna2GradientButton5);
+            panelLeftMenu.Controls.Add(btnStock);
             panelLeftMenu.Controls.Add(btnFournisseur);
             panelLeftMenu.Controls.Add(btnDisconnect);
             panelLeftMenu.Controls.Add(btnAchat);
@@ -141,29 +141,30 @@
             guna2Separator1.Size = new Size(133, 13);
             guna2Separator1.TabIndex = 0;
             // 
-            // guna2GradientButton5
+            // btnStock
             // 
-            guna2GradientButton5.Animated = true;
-            guna2GradientButton5.BorderRadius = 15;
-            guna2GradientButton5.CustomizableEdges = customizableEdges5;
-            guna2GradientButton5.DisabledState.BorderColor = Color.DarkGray;
-            guna2GradientButton5.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2GradientButton5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2GradientButton5.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            guna2GradientButton5.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2GradientButton5.FillColor = SystemColors.ButtonFace;
-            guna2GradientButton5.FillColor2 = SystemColors.ButtonFace;
-            guna2GradientButton5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2GradientButton5.ForeColor = Color.FromArgb(23, 117, 197);
-            guna2GradientButton5.ImageAlign = HorizontalAlignment.Left;
-            guna2GradientButton5.ImageSize = new Size(30, 30);
-            guna2GradientButton5.Location = new Point(10, 203);
-            guna2GradientButton5.Name = "guna2GradientButton5";
-            guna2GradientButton5.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2GradientButton5.Size = new Size(144, 45);
-            guna2GradientButton5.TabIndex = 5;
-            guna2GradientButton5.Text = "guna2GradientButton5";
-            guna2GradientButton5.TextAlign = HorizontalAlignment.Left;
+            btnStock.Animated = true;
+            btnStock.BorderRadius = 15;
+            btnStock.CustomizableEdges = customizableEdges5;
+            btnStock.DisabledState.BorderColor = Color.DarkGray;
+            btnStock.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnStock.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnStock.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnStock.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnStock.FillColor = SystemColors.ButtonFace;
+            btnStock.FillColor2 = SystemColors.ButtonFace;
+            btnStock.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStock.ForeColor = Color.FromArgb(23, 117, 197);
+            btnStock.ImageAlign = HorizontalAlignment.Left;
+            btnStock.ImageSize = new Size(30, 30);
+            btnStock.Location = new Point(10, 203);
+            btnStock.Name = "btnStock";
+            btnStock.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnStock.Size = new Size(144, 45);
+            btnStock.TabIndex = 5;
+            btnStock.Text = "Stock";
+            btnStock.TextAlign = HorizontalAlignment.Left;
+            btnStock.Click += btnStock_Click;
             // 
             // btnFournisseur
             // 
@@ -294,7 +295,7 @@
 
         private Guna.UI2.WinForms.Guna2GradientPanel panelLeftMenu;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
-        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton5;
+        private Guna.UI2.WinForms.Guna2GradientButton btnStock;
         private Guna.UI2.WinForms.Guna2GradientButton btnCompteRendu;
         private Guna.UI2.WinForms.Guna2GradientButton btnFournisseur;
         private Guna.UI2.WinForms.Guna2GradientButton btnAchat;
