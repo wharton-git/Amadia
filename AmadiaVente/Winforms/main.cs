@@ -82,8 +82,8 @@ namespace AmadiaVente.Winforms
             btnAchat.FillColor = btnAchat.FillColor2 = Color.FromArgb(191, 210, 255);
             btnAchat.ForeColor = Color.White;
 
-            btnCompteRendu.ForeColor = btnStock.ForeColor = btnFournisseur.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
-            btnCompteRendu.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnCompteRendu.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
+            btnList.ForeColor = btnCompteRendu.ForeColor = btnStock.ForeColor = btnFournisseur.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
+            btnList.FillColor = btnList.FillColor2 = btnCompteRendu.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnCompteRendu.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
 
         }
 
@@ -93,8 +93,8 @@ namespace AmadiaVente.Winforms
             btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = Color.FromArgb(191, 210, 255);
             btnCompteRendu.ForeColor = Color.White;
 
-            btnAchat.ForeColor = btnStock.ForeColor = btnFournisseur.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
-            btnAchat.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnAchat.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
+            btnList.ForeColor = btnAchat.ForeColor = btnStock.ForeColor = btnFournisseur.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
+            btnList.FillColor = btnList.FillColor2 = btnAchat.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnAchat.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
 
         }
 
@@ -104,8 +104,8 @@ namespace AmadiaVente.Winforms
             btnProfil.FillColor = btnProfil.FillColor2 = Color.FromArgb(191, 210, 255);
             btnProfil.ForeColor = Color.White;
 
-            btnCompteRendu.ForeColor = btnStock.ForeColor = btnFournisseur.ForeColor = btnAchat.ForeColor = Color.FromArgb(23, 117, 197);
-            btnCompteRendu.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnCompteRendu.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = Color.WhiteSmoke;
+            btnList.ForeColor = btnCompteRendu.ForeColor = btnStock.ForeColor = btnFournisseur.ForeColor = btnAchat.ForeColor = Color.FromArgb(23, 117, 197);
+            btnList.FillColor = btnList.FillColor2 = btnCompteRendu.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnCompteRendu.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = Color.WhiteSmoke;
 
         }
 
@@ -115,8 +115,8 @@ namespace AmadiaVente.Winforms
             btnFournisseur.FillColor = btnFournisseur.FillColor2 = Color.FromArgb(191, 210, 255);
             btnFournisseur.ForeColor = Color.White;
 
-            btnCompteRendu.ForeColor = btnStock.ForeColor = btnAchat.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
-            btnCompteRendu.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnCompteRendu.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
+            btnList.ForeColor = btnCompteRendu.ForeColor = btnStock.ForeColor = btnAchat.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
+            btnList.FillColor = btnList.FillColor2 = btnCompteRendu.FillColor = btnStock.FillColor2 = btnStock.FillColor = btnCompteRendu.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
 
         }
 
@@ -126,9 +126,19 @@ namespace AmadiaVente.Winforms
             btnStock.FillColor = btnStock.FillColor2 = Color.FromArgb(191, 210, 255);
             btnStock.ForeColor = Color.White;
 
+            btnList.ForeColor = btnCompteRendu.ForeColor = btnAchat.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
+            btnList.FillColor = btnList.FillColor2 = btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
+
+        }
+
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new functionality.listeStock(), sender);
+            btnList.FillColor = btnList.FillColor2 = Color.FromArgb(191, 210, 255);
+            btnList.ForeColor = Color.White;
+
             btnCompteRendu.ForeColor = btnAchat.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
             btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
-
         }
     }
 }

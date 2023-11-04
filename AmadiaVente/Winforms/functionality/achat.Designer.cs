@@ -326,6 +326,8 @@
             btnModifierPanier.FillColor2 = Color.FromArgb(191, 210, 255);
             btnModifierPanier.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnModifierPanier.ForeColor = Color.White;
+            btnModifierPanier.Image = Properties.Resources.Compose;
+            btnModifierPanier.ImageSize = new Size(40, 40);
             btnModifierPanier.Location = new Point(380, 204);
             btnModifierPanier.Name = "btnModifierPanier";
             btnModifierPanier.ShadowDecoration.CustomizableEdges = customizableEdges8;

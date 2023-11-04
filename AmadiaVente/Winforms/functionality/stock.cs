@@ -29,7 +29,46 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT a.designation, mouvement, quantite, 'Commande' AS Source, id_source AS Numero, strftime('%d/%m/%Y %H:%M', date) AS date FROM stockHistorySortie shs INNER JOIN article a ON a.id_article = shs.id_article UNION ALL SELECT a.designation, mouvement, quantite, 'Fournisseur' AS Source, id_source AS Numero, strftime('%d/%m/%Y %H:%M', date) AS date FROM stockHistoryEntrer she INNER JOIN article a ON a.id_article = she.id_article ORDER BY date DESC";
+                string sqlQuery = "SELECT a.designation AS Désignation, mouvement as Mouvement, quantite AS Quantité, 'Client' AS 'Source Commande', id_source AS Numero, strftime('%d/%m/%Y %H:%M', date) AS date FROM stockHistorySortie shs INNER JOIN article a ON a.id_article = shs.id_article UNION ALL SELECT a.designation AS Désignation, mouvement AS Mouvement, quantite AS Quantité, 'Fournisseur' AS 'Source Commande', id_source AS Numero, strftime('%d/%m/%Y %H:%M', date) AS date FROM stockHistoryEntrer she INNER JOIN article a ON a.id_article = she.id_article ORDER BY date DESC";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewStock.DataSource = dataTable;
+                    }
+                }
+            }
+
+            dataGridViewStock.CellFormatting += (sender, e) =>
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewStock.Columns["mouvement"].Index)
+                {
+                    string sourceValue = dataGridViewStock.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+
+                    // Colorier les cellules différemment en fonction de la valeur de la colonne "Source"
+                    if (sourceValue == "Sortie")
+                    {
+                        e.CellStyle.BackColor = Color.LightBlue;
+                    }
+                    else if (sourceValue == "Entrer")
+                    {
+                        e.CellStyle.BackColor = Color.LightGreen;
+                    }
+                }
+            };
+        }
+
+        public void afficheListe()
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT id_article AS Id, designation AS Désignation, prix_article AS Prix, type_article AS Type, nbr_stock AS 'Qte en Stock' FROM article";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -44,10 +83,24 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+
+
         //Evenements
+
         private void stock_Load(object sender, EventArgs e)
         {
             afficheHistory();
+        }
+
+        private void btnSwitchListHistory_Click(object sender, EventArgs e)
+        {
+            if (btnSwitchListHistory.Text == "Voir liste de Stock")
+            {
+                afficheListe();
+            }else
+            {
+                afficheHistory();
+            }
         }
     }
 }
