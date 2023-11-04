@@ -76,12 +76,12 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewList.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewList.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridViewList.Location = new Point(32, 75);
+            dataGridViewList.Location = new Point(32, 104);
             dataGridViewList.Name = "dataGridViewList";
             dataGridViewList.ReadOnly = true;
             dataGridViewList.RowHeadersVisible = false;
             dataGridViewList.RowTemplate.Height = 25;
-            dataGridViewList.Size = new Size(830, 391);
+            dataGridViewList.Size = new Size(830, 347);
             dataGridViewList.TabIndex = 7;
             dataGridViewList.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridViewList.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -113,6 +113,7 @@
             Controls.Add(guna2GradientPanel1);
             Name = "listeStock";
             Text = "listeStock";
+            Load += listeStock_Load;
             guna2GradientPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewList).EndInit();
             ResumeLayout(false);

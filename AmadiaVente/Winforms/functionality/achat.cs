@@ -209,11 +209,13 @@ namespace AmadiaVente.Winforms.functionality
         private void cacherModifPanier()
         {
             btnSupprimerPanier.Visible = btnModifierPanier.Visible = false;
+            btnValiderAchat.Enabled = true;
         }
 
         private void afficherModifPanier()
         {
             btnSupprimerPanier.Visible = btnModifierPanier.Visible = true;
+            btnValiderAchat.Enabled = false;
         }
 
         public string GetMemberId(string nomPrenomMembre)

@@ -62,26 +62,7 @@ namespace AmadiaVente.Winforms.functionality
             };
         }
 
-        public void afficheListe()
-        {
-            using (SqliteConnection connection = new SqliteConnection(cs))
-            {
-                connection.Open();
 
-                string sqlQuery = "SELECT id_article AS Id, designation AS Désignation, prix_article AS Prix, type_article AS Type, nbr_stock AS 'Qte en Stock' FROM article";
-
-                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
-                {
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-
-                        dataGridViewStock.DataSource = dataTable;
-                    }
-                }
-            }
-        }
 
 
 
@@ -90,17 +71,6 @@ namespace AmadiaVente.Winforms.functionality
         private void stock_Load(object sender, EventArgs e)
         {
             afficheHistory();
-        }
-
-        private void btnSwitchListHistory_Click(object sender, EventArgs e)
-        {
-            if (btnSwitchListHistory.Text == "Voir liste de Stock")
-            {
-                afficheListe();
-            }else
-            {
-                afficheHistory();
-            }
         }
     }
 }

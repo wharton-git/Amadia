@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             dataGridViewStock = new Guna.UI2.WinForms.Guna2DataGridView();
             labelStockTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            btnSwitchListHistory = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStock).BeginInit();
             SuspendLayout();
@@ -47,12 +44,11 @@
             // 
             guna2GradientPanel1.Controls.Add(dataGridViewStock);
             guna2GradientPanel1.Controls.Add(labelStockTitle);
-            guna2GradientPanel1.Controls.Add(btnSwitchListHistory);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges3;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges1;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2GradientPanel1.Size = new Size(893, 478);
             guna2GradientPanel1.TabIndex = 0;
             // 
@@ -121,27 +117,6 @@
             labelStockTitle.TabIndex = 2;
             labelStockTitle.Text = "Historique des Stock";
             // 
-            // btnSwitchListHistory
-            // 
-            btnSwitchListHistory.Anchor = AnchorStyles.Top;
-            btnSwitchListHistory.Animated = true;
-            btnSwitchListHistory.BorderRadius = 15;
-            btnSwitchListHistory.CustomizableEdges = customizableEdges1;
-            btnSwitchListHistory.DisabledState.BorderColor = Color.DarkGray;
-            btnSwitchListHistory.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSwitchListHistory.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSwitchListHistory.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnSwitchListHistory.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSwitchListHistory.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSwitchListHistory.ForeColor = Color.White;
-            btnSwitchListHistory.Location = new Point(143, 104);
-            btnSwitchListHistory.Name = "btnSwitchListHistory";
-            btnSwitchListHistory.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnSwitchListHistory.Size = new Size(180, 45);
-            btnSwitchListHistory.TabIndex = 1;
-            btnSwitchListHistory.Text = "Voir liste de Stock";
-            btnSwitchListHistory.Click += btnSwitchListHistory_Click;
-            // 
             // stock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -161,7 +136,6 @@
 
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelStockTitle;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSwitchListHistory;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewStock;
     }
 }
