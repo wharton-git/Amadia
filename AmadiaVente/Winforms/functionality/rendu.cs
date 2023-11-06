@@ -593,17 +593,164 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnPdf_Click(object sender, EventArgs e)
         {
+
+            string dateDuJour = DateTime.Now.ToString("dd / MM / yyyy");
+
             string pdfLocation = System.IO.Path.Combine(Application.StartupPath, "Output/Recap_journalière_du_" + DateTime.Now.ToString("dd-MM-yyyy_HHmmss") + ".pdf");
 
-            iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(150f, 600f);
+            iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(PageSize.A5.Width, PageSize.A5.Height);
             Document doc = new Document(pageSize);
+
+            // Définissez les marges du document (en points)
+            float marginLeft = 10f; // Marge gauche (en points)
+            float marginRight = 10f; // Marge droite (en points)
+            float marginTop = 20f; // Marge supérieure (en points)
+            float marginBottom = 20f; // Marge inférieure (en points)
+
+            // Définissez les marges du document en utilisant la méthode SetMargins()
+            doc.SetMargins(marginLeft, marginRight, marginTop, marginBottom);
+
 
             try
             {
                 PdfWriter.GetInstance(doc, new FileStream(pdfLocation, FileMode.Create));
                 doc.Open();
-                Paragraph title = new Paragraph("C'est encore une test");
+                Paragraph title = new Paragraph("AMADIA");
+                title.Add("\n");
+                title.Add("RECETTE JOURNEE DU : " + dateDuJour);
+                title.Add("\n");
+
                 doc.Add(title);
+
+                // Créez un tableau avec 5 colonnes
+                PdfPTable table = new PdfPTable(6);
+
+                float[] columnWidths = { 20f, 5f, 5f, 10f, 10f, 10f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                table.SetWidths(columnWidths);
+
+                // Ajustez la marge externe du tableau
+                table.SpacingBefore = 5f; // Espace avant le tableau (en points)
+                table.SpacingAfter = 5f;
+
+                PdfPCell cellVideTeteMnM = new PdfPCell(new Phrase(""));
+                cellVideTeteMnM.BorderWidthLeft = 0f;
+
+                PdfPCell cellGlycemie = new PdfPCell(new Phrase("GLYCEMIE"));
+                cellGlycemie.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
+
+                PdfPCell cellVideNonMembre = new PdfPCell(new Phrase(""));
+                cellVideNonMembre.BorderWidthTop = 0f;
+
+                PdfPCell cellConsultation = new PdfPCell(new Phrase("CONSULTATION"));
+                cellConsultation.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
+
+
+                PdfPCell cellHB1AC = new PdfPCell(new Phrase("Hb1Ac"));
+                cellHB1AC.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
+
+
+                table.AddCell("");
+                table.AddCell(cellVideTeteMnM);
+                table.AddCell("Q");
+                table.AddCell("P.U");
+                table.AddCell("VALEUR");
+                table.AddCell("OBS");
+
+                table.AddCell(cellGlycemie);
+                table.AddCell("M");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell(cellVideNonMembre);
+                table.AddCell("NM");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+
+                table.AddCell(cellConsultation);
+                table.AddCell("M");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell(cellVideNonMembre);
+                table.AddCell("NM");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell("ADHESION");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell("COTISATION");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell("T.U");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell("T.G");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell("PANSEMENT");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell(cellHB1AC);
+                table.AddCell("M");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell(cellVideNonMembre);
+                table.AddCell("NM");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell("ECG");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell("TOTAL ACTIVITE");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                // Ajoutez le tableau au document
+                doc.Add(table);
+
                 doc.Close();
                 MessageBox.Show("Generation succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
