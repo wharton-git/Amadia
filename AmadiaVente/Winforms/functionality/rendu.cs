@@ -15,6 +15,9 @@ using System.Windows.Input;
 using Microsoft.Data.Sqlite;
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace AmadiaVente.Winforms.functionality
 {
@@ -39,20 +42,6 @@ namespace AmadiaVente.Winforms.functionality
         }
 
         //Méthodes
-        void hideParametre()
-        {
-            string valueToHide = "AMADIA";
-            int columnIndex = 0;
-
-            foreach (DataGridViewRow row in dataGridViewDashboard.Rows)
-            {
-                if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() == valueToHide)
-                {
-                    row.Visible = false;
-                }
-            }
-
-        }
 
         string[] compterCommandeAujourdhui(DateTime jour)
         {
@@ -233,14 +222,6 @@ namespace AmadiaVente.Winforms.functionality
                     {
                         DataTable dataTable = new DataTable();
                         dataTable.Load(reader);
-                        /*
-                        // Remplacez les valeurs nulles par des valeurs par défaut
-                        foreach (DataRow row in dataTable.Rows)
-                        {
-                            row["nom_membre"] = row["nom_membre"] ?? "Non";
-                            row["prenom_membre"] = row["prenom_membre"] ?? "Membre";
-                        }*/
-
                         dataGridViewDashboard.DataSource = dataTable;
                     }
                 }
@@ -389,7 +370,7 @@ namespace AmadiaVente.Winforms.functionality
         private void rendu_Load_1(object sender, EventArgs e)
         {
 
-            btnInfoCommande.Enabled = false; 
+            btnInfoCommande.Enabled = false;
             afficherRecetteDuJour(dateActuelle);
             string[] val = compterCommandeAujourdhui(dateActuelle);
             int nbrCommande = dataGridViewDashboard.Rows.Count;
@@ -595,5 +576,29 @@ namespace AmadiaVente.Winforms.functionality
         {
             MessageBox.Show("Format Incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void btnPdf_Click(object sender, EventArgs e)
+        {
+            string pdfLocation = System.IO.Path.Combine(Application.StartupPath, "Output/Recap_journalière_du_" + DateTime.Now.ToString("dd-MM-yyyy_HHmmss") + ".pdf");
+
+            iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(150f, 600f);
+            Document doc = new Document(pageSize);
+
+            try
+            {
+                PdfWriter.GetInstance(doc, new FileStream(pdfLocation, FileMode.Create));
+                doc.Open();
+                Paragraph title = new Paragraph("C'est encore une test");
+                doc.Add(title);
+                doc.Close();
+                MessageBox.Show("Generation succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Gérez les erreurs ici
+                MessageBox.Show("Une erreur s'est produite : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
+   
