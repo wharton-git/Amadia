@@ -184,6 +184,37 @@ namespace AmadiaVente.Winforms.functionality
             return result;
         }
 
+        void transitionVariable(SqliteDataReader reader)
+        {
+            // Créez des listes pour stocker les valeurs des colonnes
+            List<int> idCommandes = new List<int>();
+            List<string> nomsClients = new List<string>();
+            List<string> prenomsClients = new List<string>();
+            List<string> nomsResponsables = new List<string>();
+            List<string> prenomsResponsables = new List<string>();
+            List<string> dates = new List<string>();
+
+            dataGridViewDashboard.Rows.Clear();
+
+            dataGridViewDashboard.DataSource = null;
+            // Lisez les données depuis le DataReader et stockez-les dans les listes
+            while (reader.Read())
+            {
+                idCommandes.Add(reader.GetInt32(0));
+                nomsClients.Add(reader.GetString(1));
+                prenomsClients.Add(reader.GetString(2));
+                nomsResponsables.Add(reader.GetString(3));
+                prenomsResponsables.Add(reader.GetString(4));
+                dates.Add(reader.GetString(5));
+            }
+
+            // Ajoutez les valeurs des listes au DataGridView à l'aide d'une boucle
+            for (int i = 0; i < idCommandes.Count; i++)
+            {
+                dataGridViewDashboard.Rows.Add(idCommandes[i], nomsClients[i], prenomsClients[i], nomsResponsables[i], prenomsResponsables[i], dates[i]);
+            }
+        }
+
         void afficheRechercheNomEtPrenom(string nomPrenom)
         {
             String nom = nomPrenom;
@@ -197,10 +228,7 @@ namespace AmadiaVente.Winforms.functionality
                 {
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-
-                        dataGridViewDashboard.DataSource = dataTable;
+                        transitionVariable(reader);
                     }
                 }
             }
@@ -220,9 +248,7 @@ namespace AmadiaVente.Winforms.functionality
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-                        dataGridViewDashboard.DataSource = dataTable;
+                        transitionVariable(reader);
                     }
                 }
             }
@@ -259,18 +285,14 @@ namespace AmadiaVente.Winforms.functionality
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
-                    //command.Parameters.AddWithValue("@annee", annee);
-
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-
-                        dataGridViewDashboard.DataSource = dataTable;
+                        transitionVariable(reader);
                     }
                 }
             }
         }
+
 
         void afficheRecetteEntre2Dates(DateTime debut, DateTime fin)
         {
@@ -287,10 +309,7 @@ namespace AmadiaVente.Winforms.functionality
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-
-                        dataGridViewDashboard.DataSource = dataTable;
+                        transitionVariable(reader);
                     }
                 }
             }
@@ -310,14 +329,12 @@ namespace AmadiaVente.Winforms.functionality
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-
-                        dataGridViewDashboard.DataSource = dataTable;
+                        transitionVariable(reader);
                     }
                 }
             }
         }
+
 
         void afficheRecetteJour(string jour)
         {
@@ -333,14 +350,12 @@ namespace AmadiaVente.Winforms.functionality
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-
-                        dataGridViewDashboard.DataSource = dataTable;
+                        transitionVariable(reader);
                     }
                 }
             }
         }
+
 
         void change2date()
         {
@@ -395,7 +410,8 @@ namespace AmadiaVente.Winforms.functionality
             {
                 //Important, ne pas modifier ou supprimer sans connaissance de cause
                 //initialiserDataGridRendu();
-                afficherRecetteDuJour(dateActuelle);
+                //afficherRecetteDuJour(dateActuelle);
+
             }
 
 
@@ -551,7 +567,7 @@ namespace AmadiaVente.Winforms.functionality
 
                 DataGridViewRow selectedRow = dataGridViewDashboard.Rows[e.RowIndex];
 
-                string idCommande = selectedRow.Cells["id_commande"].Value.ToString();
+                string idCommande = selectedRow.Cells["id"].Value.ToString();
                 id_commande = Convert.ToInt32(idCommande);
             }
         }
@@ -566,8 +582,6 @@ namespace AmadiaVente.Winforms.functionality
             }
             else
             {
-                //Important, ne pas modifier ou supprimer sans connaissance de cause
-                //initialiserDataGridRendu();
                 afficherRecetteDuJour(dateActuelle);
             }
         }
@@ -601,4 +615,3 @@ namespace AmadiaVente.Winforms.functionality
         }
     }
 }
-   

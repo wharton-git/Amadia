@@ -30,6 +30,8 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
@@ -55,9 +57,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelRendu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnPdf = new Guna.UI2.WinForms.Guna2GradientButton();
             txtboxSearchRendu = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewDashboard = new Guna.UI2.WinForms.Guna2DataGridView();
             labelSomme = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -74,7 +75,12 @@
             btnInfoCommande = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            btnPdf = new Guna.UI2.WinForms.Guna2GradientButton();
+            id = new DataGridViewTextBoxColumn();
+            nom_client = new DataGridViewTextBoxColumn();
+            prenom_client = new DataGridViewTextBoxColumn();
+            nom_responsable = new DataGridViewTextBoxColumn();
+            prenom_responsable = new DataGridViewTextBoxColumn();
+            date = new DataGridViewTextBoxColumn();
             panelRendu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDashboard).BeginInit();
             panel2Date.SuspendLayout();
@@ -104,6 +110,29 @@
             panelRendu.ShadowDecoration.CustomizableEdges = customizableEdges22;
             panelRendu.Size = new Size(795, 432);
             panelRendu.TabIndex = 5;
+            // 
+            // btnPdf
+            // 
+            btnPdf.Anchor = AnchorStyles.Top;
+            btnPdf.BorderRadius = 15;
+            btnPdf.CustomizableEdges = customizableEdges1;
+            btnPdf.DisabledState.BorderColor = Color.DarkGray;
+            btnPdf.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnPdf.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnPdf.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnPdf.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnPdf.FillColor = Color.FromArgb(23, 117, 197);
+            btnPdf.FillColor2 = Color.FromArgb(23, 117, 197);
+            btnPdf.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPdf.ForeColor = Color.White;
+            btnPdf.Image = Properties.Resources.Print;
+            btnPdf.ImageSize = new Size(40, 40);
+            btnPdf.Location = new Point(627, 118);
+            btnPdf.Name = "btnPdf";
+            btnPdf.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnPdf.Size = new Size(76, 45);
+            btnPdf.TabIndex = 18;
+            btnPdf.Click += btnPdf_Click;
             // 
             // txtboxSearchRendu
             // 
@@ -145,6 +174,7 @@
             dataGridViewDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewDashboard.ColumnHeadersHeight = 30;
             dataGridViewDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewDashboard.Columns.AddRange(new DataGridViewColumn[] { id, nom_client, prenom_client, nom_responsable, prenom_responsable, date });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -404,28 +434,41 @@
             guna2GradientPanel2.Size = new Size(886, 478);
             guna2GradientPanel2.TabIndex = 7;
             // 
-            // btnPdf
+            // id
             // 
-            btnPdf.Anchor = AnchorStyles.Top;
-            btnPdf.BorderRadius = 15;
-            btnPdf.CustomizableEdges = customizableEdges1;
-            btnPdf.DisabledState.BorderColor = Color.DarkGray;
-            btnPdf.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnPdf.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnPdf.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnPdf.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnPdf.FillColor = Color.FromArgb(23, 117, 197);
-            btnPdf.FillColor2 = Color.FromArgb(23, 117, 197);
-            btnPdf.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPdf.ForeColor = Color.White;
-            btnPdf.Image = Properties.Resources.Print;
-            btnPdf.ImageSize = new Size(40, 40);
-            btnPdf.Location = new Point(627, 118);
-            btnPdf.Name = "btnPdf";
-            btnPdf.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnPdf.Size = new Size(76, 45);
-            btnPdf.TabIndex = 18;
-            btnPdf.Click += btnPdf_Click;
+            id.HeaderText = "ID";
+            id.Name = "id";
+            id.ReadOnly = true;
+            // 
+            // nom_client
+            // 
+            nom_client.HeaderText = "Nom Client";
+            nom_client.Name = "nom_client";
+            nom_client.ReadOnly = true;
+            // 
+            // prenom_client
+            // 
+            prenom_client.HeaderText = "Prénom Client";
+            prenom_client.Name = "prenom_client";
+            prenom_client.ReadOnly = true;
+            // 
+            // nom_responsable
+            // 
+            nom_responsable.HeaderText = "Nom Responsable";
+            nom_responsable.Name = "nom_responsable";
+            nom_responsable.ReadOnly = true;
+            // 
+            // prenom_responsable
+            // 
+            prenom_responsable.HeaderText = "Prénom Responsable";
+            prenom_responsable.Name = "prenom_responsable";
+            prenom_responsable.ReadOnly = true;
+            // 
+            // date
+            // 
+            date.HeaderText = "Date";
+            date.Name = "date";
+            date.ReadOnly = true;
             // 
             // rendu
             // 
@@ -465,5 +508,11 @@
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewDashboard;
         private Guna.UI2.WinForms.Guna2TextBox txtboxSearchRendu;
         private Guna.UI2.WinForms.Guna2GradientButton btnPdf;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn nom_client;
+        private DataGridViewTextBoxColumn prenom_client;
+        private DataGridViewTextBoxColumn nom_responsable;
+        private DataGridViewTextBoxColumn prenom_responsable;
+        private DataGridViewTextBoxColumn date;
     }
 }
