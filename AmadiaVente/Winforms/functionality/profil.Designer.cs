@@ -30,18 +30,23 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             labelProfilNom = new Guna.UI2.WinForms.Guna2HtmlLabel();
             labelProfilPrenom = new Guna.UI2.WinForms.Guna2HtmlLabel();
             labelProfilUsername = new Guna.UI2.WinForms.Guna2HtmlLabel();
             labelProfilId = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnEditProfil = new Guna.UI2.WinForms.Guna2GradientButton();
+            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // labelProfilNom
             // 
             labelProfilNom.BackColor = Color.Transparent;
             labelProfilNom.Font = new Font("Arial", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelProfilNom.Location = new Point(58, 153);
+            labelProfilNom.ForeColor = Color.White;
+            labelProfilNom.Location = new Point(32, 10);
             labelProfilNom.Name = "labelProfilNom";
             labelProfilNom.Size = new Size(246, 36);
             labelProfilNom.TabIndex = 0;
@@ -96,19 +101,36 @@
             btnEditProfil.Text = "Editer Mon Profil";
             btnEditProfil.Click += btnEditProfil_Click;
             // 
+            // guna2GradientPanel1
+            // 
+            guna2GradientPanel1.BorderRadius = 15;
+            guna2GradientPanel1.Controls.Add(labelProfilNom);
+            guna2GradientPanel1.CustomizableEdges = customizableEdges3;
+            guna2GradientPanel1.FillColor = Color.FromArgb(23, 117, 197);
+            guna2GradientPanel1.FillColor2 = Color.FromArgb(23, 117, 197);
+            guna2GradientPanel1.ForeColor = SystemColors.ButtonHighlight;
+            guna2GradientPanel1.Location = new Point(58, 141);
+            guna2GradientPanel1.Name = "guna2GradientPanel1";
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2GradientPanel1.Size = new Size(305, 58);
+            guna2GradientPanel1.TabIndex = 5;
+            // 
             // profil
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(893, 478);
+            Controls.Add(guna2GradientPanel1);
             Controls.Add(btnEditProfil);
             Controls.Add(labelProfilId);
             Controls.Add(labelProfilUsername);
             Controls.Add(labelProfilPrenom);
-            Controls.Add(labelProfilNom);
+            ForeColor = Color.White;
             Name = "profil";
             Text = "profil";
             Load += profil_Load;
+            guna2GradientPanel1.ResumeLayout(false);
+            guna2GradientPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -120,5 +142,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel labelProfilUsername;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelProfilId;
         private Guna.UI2.WinForms.Guna2GradientButton btnEditProfil;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
     }
 }

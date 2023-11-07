@@ -22,7 +22,7 @@ namespace AmadiaVente.Winforms.functionality
         public profil()
         {
             InitializeComponent();
-            
+
         }
 
         private string[] afficheDetail(string id)
