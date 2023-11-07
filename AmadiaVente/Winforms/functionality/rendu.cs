@@ -604,8 +604,8 @@ namespace AmadiaVente.Winforms.functionality
             // Définissez les marges du document (en points)
             float marginLeft = 10f; // Marge gauche (en points)
             float marginRight = 10f; // Marge droite (en points)
-            float marginTop = 20f; // Marge supérieure (en points)
-            float marginBottom = 20f; // Marge inférieure (en points)
+            float marginTop = 5f; // Marge supérieure (en points)
+            float marginBottom = 5f; // Marge inférieure (en points)
 
             // Définissez les marges du document en utilisant la méthode SetMargins()
             doc.SetMargins(marginLeft, marginRight, marginTop, marginBottom);
@@ -615,6 +615,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 PdfWriter.GetInstance(doc, new FileStream(pdfLocation, FileMode.Create));
                 doc.Open();
+
                 Paragraph title = new Paragraph("AMADIA");
                 title.Add("\n");
                 title.Add("RECETTE JOURNEE DU : " + dateDuJour);
@@ -625,12 +626,31 @@ namespace AmadiaVente.Winforms.functionality
                 // Créez un tableau avec 5 colonnes
                 PdfPTable table = new PdfPTable(6);
 
-                float[] columnWidths = { 20f, 5f, 5f, 10f, 10f, 10f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                table.WidthPercentage = 90;
+
+                float[] columnWidths = { 20f, 5f, 5f, 10f, 20f, 10f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
                 table.SetWidths(columnWidths);
 
-                // Ajustez la marge externe du tableau
-                table.SpacingBefore = 5f; // Espace avant le tableau (en points)
-                table.SpacingAfter = 5f;
+                PdfPCell cellVideTeteFirst = new PdfPCell(new Phrase(""));
+                cellVideTeteFirst.BorderWidthRight = 0f;
+
+                PdfPCell cellAdhesion = new PdfPCell(new Phrase("ADHESION"));
+                cellAdhesion.BorderWidthRight = 0f;
+
+                PdfPCell cellCotisation = new PdfPCell(new Phrase("COTISATION"));
+                cellCotisation.BorderWidthRight = 0f;
+
+                PdfPCell cellTU = new PdfPCell(new Phrase("T.U"));
+                cellTU.BorderWidthRight = 0f;
+
+                PdfPCell cellTG = new PdfPCell(new Phrase("T.G"));
+                cellTG.BorderWidthRight = 0f;
+
+                PdfPCell cellPansement = new PdfPCell(new Phrase("PANSEMENT"));
+                cellPansement.BorderWidthRight = 0f;
+
+                PdfPCell cellECG = new PdfPCell(new Phrase("ECG"));
+                cellECG.BorderWidthRight = 0f;
 
                 PdfPCell cellVideTeteMnM = new PdfPCell(new Phrase(""));
                 cellVideTeteMnM.BorderWidthLeft = 0f;
@@ -649,7 +669,7 @@ namespace AmadiaVente.Winforms.functionality
                 cellHB1AC.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
 
 
-                table.AddCell("");
+                table.AddCell(cellVideTeteFirst);
                 table.AddCell(cellVideTeteMnM);
                 table.AddCell("Q");
                 table.AddCell("P.U");
@@ -685,36 +705,36 @@ namespace AmadiaVente.Winforms.functionality
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell("ADHESION");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-
-                table.AddCell("COTISATION");
-                table.AddCell("");
+                table.AddCell(cellAdhesion);
+                table.AddCell(cellVideTeteMnM);
                 table.AddCell("");
                 table.AddCell("");
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell("T.U");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-
-                table.AddCell("T.G");
-                table.AddCell("");
+                table.AddCell(cellCotisation);
+                table.AddCell(cellVideTeteMnM);
                 table.AddCell("");
                 table.AddCell("");
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell("PANSEMENT");
+                table.AddCell(cellTU);
+                table.AddCell(cellVideTeteMnM);
                 table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell(cellTG);
+                table.AddCell(cellVideTeteMnM);
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell("");
+
+                table.AddCell(cellPansement);
+                table.AddCell(cellVideTeteMnM);
                 table.AddCell("");
                 table.AddCell("");
                 table.AddCell("");
@@ -734,8 +754,8 @@ namespace AmadiaVente.Winforms.functionality
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell("ECG");
-                table.AddCell("");
+                table.AddCell(cellECG);
+                table.AddCell(cellVideTeteMnM);
                 table.AddCell("");
                 table.AddCell("");
                 table.AddCell("");
@@ -748,7 +768,9 @@ namespace AmadiaVente.Winforms.functionality
                 table.AddCell("");
                 table.AddCell("");
 
-                // Ajoutez le tableau au document
+                table.SpacingBefore = 10f;
+                table.SpacingAfter = 10f;
+
                 doc.Add(table);
 
                 doc.Close();
