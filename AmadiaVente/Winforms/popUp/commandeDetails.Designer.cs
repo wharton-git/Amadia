@@ -39,6 +39,10 @@
             dataGridViewDetail = new Guna.UI2.WinForms.Guna2DataGridView();
             elipseFormulaire = new Guna.UI2.WinForms.Guna2Elipse(components);
             panelCommande = new Guna.UI2.WinForms.Guna2GradientPanel();
+            labelIdCommande = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            labelPrixDetail = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDetail).BeginInit();
             panelCommande.SuspendLayout();
             SuspendLayout();
@@ -75,7 +79,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridViewDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewDetail.ColumnHeadersHeight = 4;
+            dataGridViewDetail.ColumnHeadersHeight = 20;
             dataGridViewDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -86,7 +90,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewDetail.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewDetail.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridViewDetail.Location = new Point(12, 157);
+            dataGridViewDetail.Location = new Point(12, 130);
             dataGridViewDetail.Name = "dataGridViewDetail";
             dataGridViewDetail.ReadOnly = true;
             dataGridViewDetail.RowHeadersVisible = false;
@@ -105,7 +109,7 @@
             dataGridViewDetail.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewDetail.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dataGridViewDetail.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewDetail.ThemeStyle.HeaderStyle.Height = 4;
+            dataGridViewDetail.ThemeStyle.HeaderStyle.Height = 20;
             dataGridViewDetail.ThemeStyle.ReadOnly = true;
             dataGridViewDetail.ThemeStyle.RowsStyle.BackColor = Color.White;
             dataGridViewDetail.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -125,6 +129,11 @@
             panelCommande.BorderColor = Color.FromArgb(23, 117, 197);
             panelCommande.BorderRadius = 5;
             panelCommande.BorderThickness = 4;
+            panelCommande.Controls.Add(labelPrixDetail);
+            panelCommande.Controls.Add(guna2HtmlLabel2);
+            panelCommande.Controls.Add(dataGridViewDetail);
+            panelCommande.Controls.Add(labelIdCommande);
+            panelCommande.Controls.Add(guna2HtmlLabel1);
             panelCommande.Controls.Add(guna2ImageButton1);
             panelCommande.CustomizableEdges = customizableEdges2;
             panelCommande.Dock = DockStyle.Fill;
@@ -137,13 +146,51 @@
             panelCommande.MouseMove += panelCommande_MouseMove;
             panelCommande.MouseUp += panelCommande_MouseUp;
             // 
+            // labelIdCommande
+            // 
+            labelIdCommande.BackColor = Color.Transparent;
+            labelIdCommande.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            labelIdCommande.Location = new Point(308, 37);
+            labelIdCommande.Name = "labelIdCommande";
+            labelIdCommande.Size = new Size(29, 34);
+            labelIdCommande.TabIndex = 3;
+            labelIdCommande.Text = "ID";
+            // 
+            // guna2HtmlLabel1
+            // 
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2HtmlLabel1.Location = new Point(12, 37);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(290, 34);
+            guna2HtmlLabel1.TabIndex = 2;
+            guna2HtmlLabel1.Text = "Détail du commande N° :";
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Location = new Point(12, 107);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(58, 17);
+            guna2HtmlLabel2.TabIndex = 4;
+            guna2HtmlLabel2.Text = "Total Prix :";
+            // 
+            // labelPrixDetail
+            // 
+            labelPrixDetail.BackColor = Color.Transparent;
+            labelPrixDetail.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            labelPrixDetail.Location = new Point(76, 94);
+            labelPrixDetail.Name = "labelPrixDetail";
+            labelPrixDetail.Size = new Size(51, 34);
+            labelPrixDetail.TabIndex = 5;
+            labelPrixDetail.Text = "0 Ar";
+            // 
             // commandeDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(452, 529);
-            Controls.Add(dataGridViewDetail);
             Controls.Add(panelCommande);
             FormBorderStyle = FormBorderStyle.None;
             Name = "commandeDetails";
@@ -152,6 +199,7 @@
             Load += commandeDetails_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewDetail).EndInit();
             panelCommande.ResumeLayout(false);
+            panelCommande.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -160,5 +208,9 @@
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewDetail;
         private Guna.UI2.WinForms.Guna2Elipse elipseFormulaire;
         private Guna.UI2.WinForms.Guna2GradientPanel panelCommande;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelIdCommande;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelPrixDetail;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
     }
 }

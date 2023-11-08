@@ -65,7 +65,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT a.designation, qte_acheter, a.type_article, prix FROM ligneCommande lc INNER JOIN article a ON lc.id_article = a.id_article WHERE id_commande = @idCommande";
+                string sqlQuery = "SELECT a.designation AS Désignation, qte_acheter AS Quantité, a.type_article AS Type, prix AS PRIX FROM ligneCommande lc INNER JOIN article a ON lc.id_article = a.id_article WHERE id_commande = @idCommande";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -82,10 +82,40 @@ namespace AmadiaVente.Winforms.popUp
             }
         }
 
+        int TotalDetail(int idCmd)
+        {
+            int result;
+
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT SUM(prix) AS total FROM ligneCommande lc INNER JOIN article a ON lc.id_article = a.id_article WHERE id_commande = @idCommande";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@idCommande", idCmd);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetInt32(0);
+                            return result;
+                        }
+                    }
+                }
+            }
+            return 0;
+        }
+
         //Evénements
         private void commandeDetails_Load(object sender, EventArgs e)
         {
+            labelIdCommande.Text = idCommande.ToString();
             detailleCommande(idCommande);
+            string prixTotal = TotalDetail(idCommande).ToString();
+            labelPrixDetail.Text = prixTotal.ToString() + " Ar";
 
         }
 
