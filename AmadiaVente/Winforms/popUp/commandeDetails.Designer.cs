@@ -28,29 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             dataGridViewDetail = new Guna.UI2.WinForms.Guna2DataGridView();
+            elipseFormulaire = new Guna.UI2.WinForms.Guna2Elipse(components);
+            panelCommande = new Guna.UI2.WinForms.Guna2GradientPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDetail).BeginInit();
+            panelCommande.SuspendLayout();
             SuspendLayout();
             // 
             // guna2ImageButton1
             // 
             guna2ImageButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            guna2ImageButton1.BackColor = Color.Transparent;
             guna2ImageButton1.CheckedState.ImageSize = new Size(64, 64);
             guna2ImageButton1.HoverState.ImageSize = new Size(22, 22);
             guna2ImageButton1.Image = Properties.Resources.icons8_fermer_la_fenêtre_96;
             guna2ImageButton1.ImageOffset = new Point(0, 0);
             guna2ImageButton1.ImageRotate = 0F;
-            guna2ImageButton1.ImageSize = new Size(20, 20);
-            guna2ImageButton1.Location = new Point(423, 2);
+            guna2ImageButton1.ImageSize = new Size(30, 30);
+            guna2ImageButton1.Location = new Point(415, 12);
             guna2ImageButton1.Name = "guna2ImageButton1";
             guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
             guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            guna2ImageButton1.Size = new Size(27, 26);
+            guna2ImageButton1.Size = new Size(25, 24);
             guna2ImageButton1.TabIndex = 1;
             guna2ImageButton1.Click += guna2ImageButton1_Click;
             // 
@@ -108,6 +115,28 @@
             dataGridViewDetail.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewDetail.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
+            // elipseFormulaire
+            // 
+            elipseFormulaire.BorderRadius = 15;
+            elipseFormulaire.TargetControl = this;
+            // 
+            // panelCommande
+            // 
+            panelCommande.BorderColor = Color.FromArgb(23, 117, 197);
+            panelCommande.BorderRadius = 5;
+            panelCommande.BorderThickness = 4;
+            panelCommande.Controls.Add(guna2ImageButton1);
+            panelCommande.CustomizableEdges = customizableEdges2;
+            panelCommande.Dock = DockStyle.Fill;
+            panelCommande.Location = new Point(0, 0);
+            panelCommande.Name = "panelCommande";
+            panelCommande.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            panelCommande.Size = new Size(452, 529);
+            panelCommande.TabIndex = 3;
+            panelCommande.MouseDown += panelCommande_MouseDown;
+            panelCommande.MouseMove += panelCommande_MouseMove;
+            panelCommande.MouseUp += panelCommande_MouseUp;
+            // 
             // commandeDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -115,18 +144,21 @@
             BackColor = Color.White;
             ClientSize = new Size(452, 529);
             Controls.Add(dataGridViewDetail);
-            Controls.Add(guna2ImageButton1);
+            Controls.Add(panelCommande);
             FormBorderStyle = FormBorderStyle.None;
             Name = "commandeDetails";
             StartPosition = FormStartPosition.CenterParent;
             Text = "commandeDetails";
             Load += commandeDetails_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewDetail).EndInit();
+            panelCommande.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewDetail;
+        private Guna.UI2.WinForms.Guna2Elipse elipseFormulaire;
+        private Guna.UI2.WinForms.Guna2GradientPanel panelCommande;
     }
 }

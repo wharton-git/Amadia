@@ -93,5 +93,32 @@ namespace AmadiaVente.Winforms.popUp
         {
             this.Close();
         }
+
+        private void panelCommande_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                lastCursorPos = Cursor.Position;
+                lastFormPos = this.Location;
+            }
+        }
+
+        private void panelCommande_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point delta = new Point(Cursor.Position.X - lastCursorPos.X, Cursor.Position.Y - lastCursorPos.Y);
+                this.Location = new Point(lastFormPos.X + delta.X, lastFormPos.Y + delta.Y);
+            }
+        }
+
+        private void panelCommande_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
+        }
     }
 }
