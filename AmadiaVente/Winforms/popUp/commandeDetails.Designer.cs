@@ -39,10 +39,10 @@
             dataGridViewDetail = new Guna.UI2.WinForms.Guna2DataGridView();
             elipseFormulaire = new Guna.UI2.WinForms.Guna2Elipse(components);
             panelCommande = new Guna.UI2.WinForms.Guna2GradientPanel();
+            labelPrixDetail = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             labelIdCommande = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            labelPrixDetail = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDetail).BeginInit();
             panelCommande.SuspendLayout();
             SuspendLayout();
@@ -146,6 +146,25 @@
             panelCommande.MouseMove += panelCommande_MouseMove;
             panelCommande.MouseUp += panelCommande_MouseUp;
             // 
+            // labelPrixDetail
+            // 
+            labelPrixDetail.BackColor = Color.Transparent;
+            labelPrixDetail.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            labelPrixDetail.Location = new Point(76, 72);
+            labelPrixDetail.Name = "labelPrixDetail";
+            labelPrixDetail.Size = new Size(51, 34);
+            labelPrixDetail.TabIndex = 5;
+            labelPrixDetail.Text = "0 Ar";
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Location = new Point(12, 85);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(58, 17);
+            guna2HtmlLabel2.TabIndex = 4;
+            guna2HtmlLabel2.Text = "Total Prix :";
+            // 
             // labelIdCommande
             // 
             labelIdCommande.BackColor = Color.Transparent;
@@ -165,25 +184,6 @@
             guna2HtmlLabel1.Size = new Size(290, 34);
             guna2HtmlLabel1.TabIndex = 2;
             guna2HtmlLabel1.Text = "Détail du commande N° :";
-            // 
-            // guna2HtmlLabel2
-            // 
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Location = new Point(12, 107);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(58, 17);
-            guna2HtmlLabel2.TabIndex = 4;
-            guna2HtmlLabel2.Text = "Total Prix :";
-            // 
-            // labelPrixDetail
-            // 
-            labelPrixDetail.BackColor = Color.Transparent;
-            labelPrixDetail.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPrixDetail.Location = new Point(76, 94);
-            labelPrixDetail.Name = "labelPrixDetail";
-            labelPrixDetail.Size = new Size(51, 34);
-            labelPrixDetail.TabIndex = 5;
-            labelPrixDetail.Text = "0 Ar";
             // 
             // commandeDetails
             // 
