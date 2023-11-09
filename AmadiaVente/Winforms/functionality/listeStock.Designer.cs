@@ -28,27 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             dataGridViewList = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1.SuspendLayout();
+            guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewList).BeginInit();
             SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
-            guna2GradientPanel1.Controls.Add(dataGridViewList);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges1;
+            guna2GradientPanel1.Controls.Add(guna2GradientPanel2);
+            guna2GradientPanel1.CustomizableEdges = customizableEdges3;
             guna2GradientPanel1.Dock = DockStyle.Fill;
+            guna2GradientPanel1.FillColor = Color.FromArgb(191, 210, 255);
+            guna2GradientPanel1.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 0;
+            // 
+            // guna2GradientPanel2
+            // 
+            guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            guna2GradientPanel2.BackColor = Color.Transparent;
+            guna2GradientPanel2.BorderRadius = 15;
+            guna2GradientPanel2.Controls.Add(guna2HtmlLabel1);
+            guna2GradientPanel2.Controls.Add(dataGridViewList);
+            guna2GradientPanel2.CustomizableEdges = customizableEdges1;
+            guna2GradientPanel2.FillColor = Color.WhiteSmoke;
+            guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
+            guna2GradientPanel2.Location = new Point(33, 21);
+            guna2GradientPanel2.Name = "guna2GradientPanel2";
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2GradientPanel2.Size = new Size(821, 442);
+            guna2GradientPanel2.TabIndex = 8;
+            // 
+            // guna2HtmlLabel1
+            // 
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2HtmlLabel1.Location = new Point(30, 12);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(237, 47);
+            guna2HtmlLabel1.TabIndex = 8;
+            guna2HtmlLabel1.Text = "Liste des Stocks";
             // 
             // dataGridViewList
             // 
@@ -76,12 +109,12 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewList.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewList.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridViewList.Location = new Point(32, 104);
+            dataGridViewList.Location = new Point(30, 103);
             dataGridViewList.Name = "dataGridViewList";
             dataGridViewList.ReadOnly = true;
             dataGridViewList.RowHeadersVisible = false;
             dataGridViewList.RowTemplate.Height = 25;
-            dataGridViewList.Size = new Size(830, 347);
+            dataGridViewList.Size = new Size(763, 325);
             dataGridViewList.TabIndex = 7;
             dataGridViewList.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridViewList.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -115,6 +148,8 @@
             Text = "listeStock";
             Load += listeStock_Load;
             guna2GradientPanel1.ResumeLayout(false);
+            guna2GradientPanel2.ResumeLayout(false);
+            guna2GradientPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewList).EndInit();
             ResumeLayout(false);
         }
@@ -123,5 +158,7 @@
 
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewList;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }
