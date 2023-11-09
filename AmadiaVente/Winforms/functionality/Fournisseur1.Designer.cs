@@ -530,6 +530,7 @@
             // 
             // guna2GradientPanel2
             // 
+            guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel2.BackColor = Color.Transparent;
             guna2GradientPanel2.BorderRadius = 15;
             guna2GradientPanel2.Controls.Add(NomFournisseur);
