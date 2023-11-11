@@ -127,7 +127,7 @@
             // panelCommande
             // 
             panelCommande.BorderColor = Color.FromArgb(23, 117, 197);
-            panelCommande.BorderRadius = 5;
+            panelCommande.BorderRadius = 6;
             panelCommande.BorderThickness = 4;
             panelCommande.Controls.Add(labelPrixDetail);
             panelCommande.Controls.Add(guna2HtmlLabel2);
