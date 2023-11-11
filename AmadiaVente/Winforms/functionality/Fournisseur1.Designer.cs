@@ -144,7 +144,7 @@
             guna2HtmlLabel5.Anchor = AnchorStyles.Top;
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel5.Location = new Point(337, 77);
+            guna2HtmlLabel5.Location = new Point(337, 80);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(58, 18);
             guna2HtmlLabel5.TabIndex = 59;
@@ -155,7 +155,7 @@
             guna2HtmlLabel4.Anchor = AnchorStyles.Top;
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel4.Location = new Point(24, 78);
+            guna2HtmlLabel4.Location = new Point(24, 81);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(81, 18);
             guna2HtmlLabel4.TabIndex = 58;
@@ -203,12 +203,12 @@
             Medicament.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             Medicament.AutoCompleteSource = AutoCompleteSource.ListItems;
             Medicament.BackColor = Color.White;
-            Medicament.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Medicament.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Medicament.ForeColor = Color.Black;
             Medicament.FormattingEnabled = true;
             Medicament.Location = new Point(27, 105);
             Medicament.Name = "Medicament";
-            Medicament.Size = new Size(281, 29);
+            Medicament.Size = new Size(281, 33);
             Medicament.TabIndex = 54;
             Medicament.SelectedIndexChanged += Medicament_SelectedIndexChanged;
             // 
@@ -258,7 +258,7 @@
             guna2HtmlLabel7.Anchor = AnchorStyles.Top;
             guna2HtmlLabel7.BackColor = Color.Transparent;
             guna2HtmlLabel7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel7.Location = new Point(612, 79);
+            guna2HtmlLabel7.Location = new Point(612, 82);
             guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             guna2HtmlLabel7.Size = new Size(88, 18);
             guna2HtmlLabel7.TabIndex = 49;
@@ -269,7 +269,7 @@
             guna2HtmlLabel6.Anchor = AnchorStyles.Top;
             guna2HtmlLabel6.BackColor = Color.Transparent;
             guna2HtmlLabel6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel6.Location = new Point(451, 79);
+            guna2HtmlLabel6.Location = new Point(451, 82);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             guna2HtmlLabel6.Size = new Size(79, 18);
             guna2HtmlLabel6.TabIndex = 48;
@@ -280,7 +280,7 @@
             guna2HtmlLabel3.Anchor = AnchorStyles.Top;
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel3.Location = new Point(52, 9);
+            guna2HtmlLabel3.Location = new Point(27, 9);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(111, 18);
             guna2HtmlLabel3.TabIndex = 47;

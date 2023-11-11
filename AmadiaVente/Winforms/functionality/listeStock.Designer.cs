@@ -28,15 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnRemoveList = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnAddNewList = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             dataGridViewList = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1.SuspendLayout();
@@ -47,13 +53,13 @@
             // guna2GradientPanel1
             // 
             guna2GradientPanel1.Controls.Add(guna2GradientPanel2);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges3;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges15;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.FillColor = Color.FromArgb(191, 210, 255);
             guna2GradientPanel1.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 0;
             // 
@@ -62,16 +68,68 @@
             guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel2.BackColor = Color.Transparent;
             guna2GradientPanel2.BorderRadius = 15;
+            guna2GradientPanel2.Controls.Add(btnRemoveList);
+            guna2GradientPanel2.Controls.Add(btnAddNewList);
             guna2GradientPanel2.Controls.Add(guna2HtmlLabel1);
             guna2GradientPanel2.Controls.Add(dataGridViewList);
-            guna2GradientPanel2.CustomizableEdges = customizableEdges1;
+            guna2GradientPanel2.CustomizableEdges = customizableEdges13;
             guna2GradientPanel2.FillColor = Color.WhiteSmoke;
             guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
             guna2GradientPanel2.Location = new Point(33, 21);
             guna2GradientPanel2.Name = "guna2GradientPanel2";
-            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges14;
             guna2GradientPanel2.Size = new Size(821, 442);
             guna2GradientPanel2.TabIndex = 8;
+            // 
+            // btnRemoveList
+            // 
+            btnRemoveList.Animated = true;
+            btnRemoveList.AnimatedGIF = true;
+            btnRemoveList.BorderColor = Color.FromArgb(250, 90, 100);
+            btnRemoveList.BorderRadius = 15;
+            btnRemoveList.BorderThickness = 3;
+            btnRemoveList.CustomizableEdges = customizableEdges9;
+            btnRemoveList.DisabledState.BorderColor = Color.DarkGray;
+            btnRemoveList.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnRemoveList.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnRemoveList.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnRemoveList.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnRemoveList.FillColor = Color.Transparent;
+            btnRemoveList.FillColor2 = Color.Transparent;
+            btnRemoveList.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRemoveList.ForeColor = Color.White;
+            btnRemoveList.Image = Properties.Resources.Subtract;
+            btnRemoveList.ImageSize = new Size(40, 40);
+            btnRemoveList.Location = new Point(663, 42);
+            btnRemoveList.Name = "btnRemoveList";
+            btnRemoveList.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnRemoveList.Size = new Size(60, 55);
+            btnRemoveList.TabIndex = 10;
+            // 
+            // btnAddNewList
+            // 
+            btnAddNewList.Animated = true;
+            btnAddNewList.AnimatedGIF = true;
+            btnAddNewList.BorderColor = Color.FromArgb(151, 170, 205);
+            btnAddNewList.BorderRadius = 15;
+            btnAddNewList.BorderThickness = 3;
+            btnAddNewList.CustomizableEdges = customizableEdges11;
+            btnAddNewList.DisabledState.BorderColor = Color.DarkGray;
+            btnAddNewList.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAddNewList.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAddNewList.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnAddNewList.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddNewList.FillColor = Color.Transparent;
+            btnAddNewList.FillColor2 = Color.Transparent;
+            btnAddNewList.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddNewList.ForeColor = Color.White;
+            btnAddNewList.Image = Properties.Resources.Plus_Math;
+            btnAddNewList.ImageSize = new Size(40, 40);
+            btnAddNewList.Location = new Point(597, 42);
+            btnAddNewList.Name = "btnAddNewList";
+            btnAddNewList.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnAddNewList.Size = new Size(60, 55);
+            btnAddNewList.TabIndex = 9;
             // 
             // guna2HtmlLabel1
             // 
@@ -87,27 +145,27 @@
             // 
             dataGridViewList.AllowUserToAddRows = false;
             dataGridViewList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewList.ColumnHeadersHeight = 30;
             dataGridViewList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewList.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewList.GridColor = Color.FromArgb(231, 229, 255);
             dataGridViewList.Location = new Point(30, 103);
             dataGridViewList.Name = "dataGridViewList";
@@ -160,5 +218,7 @@
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewList;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnAddNewList;
+        private Guna.UI2.WinForms.Guna2GradientButton btnRemoveList;
     }
 }

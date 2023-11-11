@@ -28,28 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             dataGridViewStock = new Guna.UI2.WinForms.Guna2DataGridView();
             labelStockTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStock).BeginInit();
+            guna2GradientPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
-            guna2GradientPanel1.Controls.Add(dataGridViewStock);
-            guna2GradientPanel1.Controls.Add(labelStockTitle);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges1;
+            guna2GradientPanel1.Controls.Add(guna2GradientPanel2);
+            guna2GradientPanel1.CustomizableEdges = customizableEdges3;
             guna2GradientPanel1.Dock = DockStyle.Fill;
+            guna2GradientPanel1.FillColor = Color.FromArgb(191, 210, 255);
+            guna2GradientPanel1.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2GradientPanel1.Size = new Size(893, 478);
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 0;
             // 
             // dataGridViewStock
@@ -78,12 +83,12 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewStock.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewStock.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridViewStock.Location = new Point(23, 181);
+            dataGridViewStock.Location = new Point(39, 98);
             dataGridViewStock.Name = "dataGridViewStock";
             dataGridViewStock.ReadOnly = true;
             dataGridViewStock.RowHeadersVisible = false;
             dataGridViewStock.RowTemplate.Height = 25;
-            dataGridViewStock.Size = new Size(840, 274);
+            dataGridViewStock.Size = new Size(750, 325);
             dataGridViewStock.TabIndex = 7;
             dataGridViewStock.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridViewStock.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -111,24 +116,42 @@
             // 
             labelStockTitle.BackColor = Color.Transparent;
             labelStockTitle.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelStockTitle.Location = new Point(23, 23);
+            labelStockTitle.Location = new Point(39, 20);
             labelStockTitle.Name = "labelStockTitle";
-            labelStockTitle.Size = new Size(391, 56);
+            labelStockTitle.Size = new Size(409, 56);
             labelStockTitle.TabIndex = 2;
-            labelStockTitle.Text = "Historique des Stock";
+            labelStockTitle.Text = "Historique des Stocks";
+            // 
+            // guna2GradientPanel2
+            // 
+            guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            guna2GradientPanel2.BackColor = Color.Transparent;
+            guna2GradientPanel2.BorderColor = Color.FromArgb(0, 0, 0, 15);
+            guna2GradientPanel2.BorderRadius = 15;
+            guna2GradientPanel2.Controls.Add(dataGridViewStock);
+            guna2GradientPanel2.Controls.Add(labelStockTitle);
+            guna2GradientPanel2.CustomizableEdges = customizableEdges1;
+            guna2GradientPanel2.FillColor = Color.WhiteSmoke;
+            guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
+            guna2GradientPanel2.Location = new Point(28, 24);
+            guna2GradientPanel2.Name = "guna2GradientPanel2";
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2GradientPanel2.Size = new Size(821, 442);
+            guna2GradientPanel2.TabIndex = 8;
             // 
             // stock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(893, 478);
+            ClientSize = new Size(886, 478);
             Controls.Add(guna2GradientPanel1);
             Name = "stock";
             Text = "stock";
             Load += stock_Load;
             guna2GradientPanel1.ResumeLayout(false);
-            guna2GradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStock).EndInit();
+            guna2GradientPanel2.ResumeLayout(false);
+            guna2GradientPanel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -137,5 +160,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelStockTitle;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewStock;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
     }
 }

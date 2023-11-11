@@ -32,6 +32,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -44,10 +46,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelLeftMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
             btnProfil = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnList = new Guna.UI2.WinForms.Guna2GradientButton();
             btnCompteRendu = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             btnStock = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -57,7 +58,6 @@
             panelMainChild = new Guna.UI2.WinForms.Guna2GradientPanel();
             panelLeftParent = new Panel();
             panel4 = new Panel();
-            btnList = new Guna.UI2.WinForms.Guna2GradientButton();
             panelLeftMenu.SuspendLayout();
             panelLeftParent.SuspendLayout();
             panel4.SuspendLayout();
@@ -110,6 +110,32 @@
             btnProfil.Text = "Profil";
             btnProfil.TextAlign = HorizontalAlignment.Left;
             btnProfil.Click += btnProfil_Click;
+            // 
+            // btnList
+            // 
+            btnList.Animated = true;
+            btnList.BorderRadius = 15;
+            btnList.CustomizableEdges = customizableEdges3;
+            btnList.DisabledState.BorderColor = Color.DarkGray;
+            btnList.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnList.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnList.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnList.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnList.FillColor = SystemColors.ButtonFace;
+            btnList.FillColor2 = SystemColors.ButtonFace;
+            btnList.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnList.ForeColor = Color.FromArgb(23, 117, 197);
+            btnList.Image = Properties.Resources.List;
+            btnList.ImageAlign = HorizontalAlignment.Left;
+            btnList.ImageSize = new Size(30, 30);
+            btnList.Location = new Point(10, 235);
+            btnList.Name = "btnList";
+            btnList.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnList.Size = new Size(144, 45);
+            btnList.TabIndex = 9;
+            btnList.Text = "Liste Stock";
+            btnList.TextAlign = HorizontalAlignment.Left;
+            btnList.Click += btnList_Click;
             // 
             // btnCompteRendu
             // 
@@ -167,7 +193,7 @@
             btnStock.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnStock.Size = new Size(144, 45);
             btnStock.TabIndex = 5;
-            btnStock.Text = "Stock";
+            btnStock.Text = "Historique Stock";
             btnStock.TextAlign = HorizontalAlignment.Left;
             btnStock.Click += btnStock_Click;
             // 
@@ -227,6 +253,7 @@
             // btnAchat
             // 
             btnAchat.Animated = true;
+            btnAchat.AnimatedGIF = true;
             btnAchat.BorderRadius = 15;
             btnAchat.CustomizableEdges = customizableEdges13;
             btnAchat.DisabledState.BorderColor = Color.DarkGray;
@@ -280,32 +307,6 @@
             panel4.Size = new Size(805, 472);
             panel4.TabIndex = 10;
             // 
-            // btnList
-            // 
-            btnList.Animated = true;
-            btnList.BorderRadius = 15;
-            btnList.CustomizableEdges = customizableEdges3;
-            btnList.DisabledState.BorderColor = Color.DarkGray;
-            btnList.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnList.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnList.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnList.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnList.FillColor = SystemColors.ButtonFace;
-            btnList.FillColor2 = SystemColors.ButtonFace;
-            btnList.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnList.ForeColor = Color.FromArgb(23, 117, 197);
-            btnList.Image = Properties.Resources.List;
-            btnList.ImageAlign = HorizontalAlignment.Left;
-            btnList.ImageSize = new Size(30, 30);
-            btnList.Location = new Point(10, 235);
-            btnList.Name = "btnList";
-            btnList.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnList.Size = new Size(144, 45);
-            btnList.TabIndex = 9;
-            btnList.Text = "Liste Stock";
-            btnList.TextAlign = HorizontalAlignment.Left;
-            btnList.Click += btnList_Click;
-            // 
             // main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -314,7 +315,7 @@
             Controls.Add(panel4);
             Controls.Add(panelLeftParent);
             Name = "main";
-            Text = "main";
+            Text = "AMADIA";
             Load += main_Load;
             panelLeftMenu.ResumeLayout(false);
             panelLeftParent.ResumeLayout(false);
