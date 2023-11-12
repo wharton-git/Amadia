@@ -565,7 +565,7 @@
             txtBoxPrixdeVente.Margin = new Padding(4, 4, 4, 4);
             txtBoxPrixdeVente.Name = "txtBoxPrixdeVente";
             txtBoxPrixdeVente.PasswordChar = '\0';
-            txtBoxPrixdeVente.PlaceholderForeColor = Color.LightGray;
+            txtBoxPrixdeVente.PlaceholderForeColor = Color.DarkGray;
             txtBoxPrixdeVente.PlaceholderText = "";
             txtBoxPrixdeVente.SelectedText = "";
             txtBoxPrixdeVente.ShadowDecoration.CustomizableEdges = customizableEdges20;

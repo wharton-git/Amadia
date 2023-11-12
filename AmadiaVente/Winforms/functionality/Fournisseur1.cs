@@ -101,6 +101,8 @@ namespace AmadiaVente.Winforms.functionality
             {
                 string articleSelectionner = Medicament.SelectedItem.ToString();
                 QuantiteMedicament.Text = string.Empty;
+                int prixActuelle = AfficheArcticle(articleSelectionner)[0];
+                txtBoxPrixdeVente.PlaceholderText = prixActuelle.ToString();
             }
             else
             {
@@ -227,7 +229,9 @@ namespace AmadiaVente.Winforms.functionality
         }
         private void AjoutFournisseurPage_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new functionality.Fournisseur(), sender);
+            popUp.popUpNewFournisseur popUpAddFournisseur = new popUp.popUpNewFournisseur();
+            popUpAddFournisseur.ShowDialog();
+            popUpAddFournisseur.Dispose();
         }
 
 
@@ -499,7 +503,8 @@ namespace AmadiaVente.Winforms.functionality
 
             if (confirm == DialogResult.Yes)
             {
-                int idFournisseur = 2;
+                String nomFournisseur = NomFournisseur.SelectedItem.ToString();
+                int idFournisseur = Convert.ToInt32(GetFournisseurId(nomFournisseur));
                 int IdResponsable = Convert.ToInt32(sessionId);
 
                 creeCommande(idFournisseur, IdResponsable);
@@ -553,6 +558,7 @@ namespace AmadiaVente.Winforms.functionality
         public string GetFournisseurId(string nomFournisseurId)
         {
             string IdFournisseurF = "";
+            String NomF = nomFournisseurId;
 
             using (SQLiteConnection connection = new SQLiteConnection(cs))
             {
@@ -560,28 +566,23 @@ namespace AmadiaVente.Winforms.functionality
 
                 string query = "SELECT idFournisseur FROM fournisseur WHERE nomFournisseur = @NomF";
 
-                // Divisez la chaîne par le premier espace
-                string[] parts = nomFournisseurId.Split(new char[] { ' ' }, 2);
-
-                if (parts.Length == 2)
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    string NomF = parts[0];
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    command.Parameters.AddWithValue("@NomF", NomF);
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
                     {
-                        command.Parameters.AddWithValue("@NomF", NomF);
-
-                        object result = command.ExecuteScalar();
-
-                        if (result != null && result != DBNull.Value)
-                        {
-                            IdFournisseurF = result.ToString();
-                        }
+                        IdFournisseurF = result.ToString();
                     }
                 }
+
             }
 
             return IdFournisseurF;
         }
+
         private void NomFournisseur_SelectedIndexChanged(object sender, EventArgs e)
         {
             TypeMedicament.Enabled = true;
