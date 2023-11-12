@@ -152,7 +152,7 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
-        private void afficheNomMembreLoad()
+        private void afficheNomFournisseurLoad()
         {
             Medicament.Items.Clear();
             using (SqliteConnection connection = new SqliteConnection(cs))
@@ -211,29 +211,14 @@ namespace AmadiaVente.Winforms.functionality
             NomFournisseur.Enabled = true;
         }
 
-        private void OpenChildForm(Form childForm, object btnSender)
-        {
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
-            //ActivateButton(btnSender);
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            this.Controls.Add(childForm);
-            this.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-        }
         private void AjoutFournisseurPage_Click(object sender, EventArgs e)
         {
             popUp.popUpNewFournisseur popUpAddFournisseur = new popUp.popUpNewFournisseur();
             popUpAddFournisseur.ShowDialog();
             popUpAddFournisseur.Dispose();
+            NomFournisseur.Items.Clear();
+            afficheNomFournisseurLoad();
         }
-
 
 
         private int GetArticleIdByDesignation(string designation)
@@ -621,7 +606,7 @@ namespace AmadiaVente.Winforms.functionality
 
 
             afficheMedicComboBoxLoad();
-            afficheNomMembreLoad();
+            afficheNomFournisseurLoad();
 
             sessionId = Classes.Storage.SessionId;
 
