@@ -60,7 +60,6 @@
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnAnnulerAchat = new Guna.UI2.WinForms.Guna2GradientButton();
-            labelStock = new Guna.UI2.WinForms.Guna2HtmlLabel();
             Medicament = new ComboBox();
             NomFournisseur = new ComboBox();
             TypeMedicament = new ComboBox();
@@ -165,17 +164,6 @@
             btnAnnulerAchat.Size = new Size(60, 55);
             btnAnnulerAchat.TabIndex = 57;
             btnAnnulerAchat.Click += btnAnnulerAchat_Click;
-            // 
-            // labelStock
-            // 
-            labelStock.Anchor = AnchorStyles.Top;
-            labelStock.BackColor = Color.Transparent;
-            labelStock.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelStock.Location = new Point(266, 159);
-            labelStock.Name = "labelStock";
-            labelStock.Size = new Size(3, 2);
-            labelStock.TabIndex = 56;
-            labelStock.Text = null;
             // 
             // Medicament
             // 
@@ -291,6 +279,7 @@
             PUMedicament.ShadowDecoration.CustomizableEdges = customizableEdges6;
             PUMedicament.Size = new Size(136, 31);
             PUMedicament.TabIndex = 44;
+            PUMedicament.TextChanged += PUMedicament_TextChanged;
             PUMedicament.KeyPress += PUMedicament_KeyPress;
             // 
             // btnValiderAchat
@@ -590,7 +579,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(886, 478);
             Controls.Add(labelAlertNumeroMembre);
-            Controls.Add(labelStock);
             Controls.Add(guna2GradientPanel1);
             Margin = new Padding(2);
             Name = "Fournisseur1";
@@ -610,7 +598,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2GradientButton btnAnnulerAchat;
-        private Guna.UI2.WinForms.Guna2HtmlLabel labelStock;
         private ComboBox Medicament;
         private ComboBox NomFournisseur;
         private ComboBox TypeMedicament;

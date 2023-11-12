@@ -19,6 +19,7 @@ namespace AmadiaVente.Winforms.functionality
         string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         string sessionId;
         private bool indicationErreurAchat = false;
+        int prixAchat = 0;
 
         //Constructeur
         public Fournisseur1()
@@ -99,13 +100,11 @@ namespace AmadiaVente.Winforms.functionality
             if (Medicament.SelectedItem != null)
             {
                 string articleSelectionner = Medicament.SelectedItem.ToString();
-                int resteStock = AfficheArcticle(articleSelectionner)[1];
-                labelStock.Text = resteStock.ToString();
                 QuantiteMedicament.Text = string.Empty;
             }
             else
             {
-                PUMedicament.Text = PrixMedicament.Text = labelStock.Text = null;
+                PUMedicament.Text = PrixMedicament.Text = null;
             }
         }
 
@@ -198,7 +197,7 @@ namespace AmadiaVente.Winforms.functionality
         {
             DisableAllFunction();
             TypeMedicament.Text = "Médicaments";
-            PrixMedicament.Text = PUMedicament.Text = QuantiteMedicament.Text = labelStock.Text = string.Empty;
+            PrixMedicament.Text = PUMedicament.Text = QuantiteMedicament.Text = string.Empty;
             NomFournisseur.SelectedItem = TypeMedicament.SelectedItem = Medicament.SelectedItem = null;
             cacherModifPanier();
             btnAjoutPanier.Enabled = true;
@@ -259,7 +258,7 @@ namespace AmadiaVente.Winforms.functionality
 
             return articleId;
         }
-        public void validerAchat(int idArticle, int quantite, decimal prix, int idCommande)
+        public void validerAchat(int idArticle, int quantite, int prixVente, int prixAchat, int prix, int idCommande)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
@@ -282,14 +281,17 @@ namespace AmadiaVente.Winforms.functionality
                             {
                                 // Le stock est suffisant, procédez à l'achat...
 
-                                string insertLigneCommandeQuery = "INSERT INTO ligneCommandeF (id_article, quantiteMedicament, prixMedicament, idCommandeF) VALUES (@idArticle, @quantite, @prix, @idCommande)";
+                                string insertLigneCommandeQuery = "INSERT INTO ligneCommandeF (id_article, quantiteMedicament, prixVente, prixAchat, prixMedicament, idCommandeF) VALUES (@idArticle, @quantite, @prixVente, @prixAchat, @prix, @idCommande)";
 
                                 using (SqliteCommand insertCommand = new SqliteCommand(insertLigneCommandeQuery, connection))
                                 {
                                     insertCommand.Parameters.AddWithValue("@idArticle", idArticle);
                                     insertCommand.Parameters.AddWithValue("@quantite", quantite);
+                                    insertCommand.Parameters.AddWithValue("@prixVente", prixVente);
+                                    insertCommand.Parameters.AddWithValue("@prixAchat", prixAchat);
                                     insertCommand.Parameters.AddWithValue("@prix", prix);
                                     insertCommand.Parameters.AddWithValue("@idCommande", idCommande);
+
 
                                     insertCommand.ExecuteNonQuery();
                                 }
@@ -299,6 +301,16 @@ namespace AmadiaVente.Winforms.functionality
                                 using (SqliteCommand updateCommand = new SqliteCommand(updateStockQuery, connection))
                                 {
                                     updateCommand.Parameters.AddWithValue("@quantite", quantite);
+                                    updateCommand.Parameters.AddWithValue("@idArticle", idArticle);
+
+                                    updateCommand.ExecuteNonQuery();
+                                }
+
+                                string updatePrixQuery = "UPDATE article SET prix_article = @prixVente WHERE id_article = @idArticle";
+
+                                using (SqliteCommand updateCommand = new SqliteCommand(updatePrixQuery, connection))
+                                {
+                                    updateCommand.Parameters.AddWithValue("@prixVente", prixVente);
                                     updateCommand.Parameters.AddWithValue("@idArticle", idArticle);
 
                                     updateCommand.ExecuteNonQuery();
@@ -408,6 +420,7 @@ namespace AmadiaVente.Winforms.functionality
                 QuantiteMedicament.Clear();
                 PUMedicament.Clear();
                 PrixMedicament.Clear();
+                txtBoxPrixdeVente.Clear();
             }
             btnAjoutPanier.Enabled = true;
             cacherModifPanier();
@@ -498,11 +511,13 @@ namespace AmadiaVente.Winforms.functionality
 
                     string nomProduit = row.Cells["NomProduit"].Value.ToString();
                     int quantite = Convert.ToInt32(row.Cells["Quantite"].Value);
-                    decimal prix = Convert.ToDecimal(row.Cells["Prix"].Value);
+                    int prix = Convert.ToInt32(row.Cells["Prix"].Value);
+                    int prixAchat = Convert.ToInt32(row.Cells["prixDAchat"].Value.ToString());
+                    int prixVente = Convert.ToInt32(row.Cells["prixDeVente"].Value.ToString());
 
                     int artcileId = GetArticleIdByDesignation(designation: nomProduit);
 
-                    validerAchat(artcileId, quantite, prix, idCommande);
+                    validerAchat(artcileId, quantite, prixVente, prixAchat, prix, idCommande);
                     makeHistory(artcileId, quantite, idCommande);
                 }
                 if (indicationErreurAchat)
@@ -619,10 +634,13 @@ namespace AmadiaVente.Winforms.functionality
             {
                 string qteArticle = QuantiteMedicament.Text.ToString();
                 string articleSelect = Medicament.SelectedItem.ToString();
-                int prixUnit = AfficheArcticle(articleSelect)[0];
                 int stock = AfficheArcticle(articleSelect)[1];
+                if (!string.IsNullOrEmpty(PUMedicament.Text.ToString()))
+                {
+                    prixAchat = Convert.ToInt32(PUMedicament.Text.ToString());
+                }
 
-                int prixAPayer = prixUnit * Convert.ToInt32(qteArticle);
+                int prixAPayer = prixAchat * Convert.ToInt32(qteArticle);
 
                 PrixMedicament.Text = prixAPayer.ToString();
 
@@ -686,6 +704,44 @@ namespace AmadiaVente.Winforms.functionality
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void PUMedicament_TextChanged(object sender, EventArgs e)
+        {
+            int qteArticle = 0;
+
+            // Tentative de conversion de la chaîne en entier
+            if (int.TryParse(PUMedicament.Text, out prixAchat))
+            {
+                // Conversion réussie, procédez avec le reste
+                if (!string.IsNullOrEmpty(QuantiteMedicament.Text))
+                {
+                    // Tentative de conversion de la quantité en entier
+                    if (int.TryParse(QuantiteMedicament.Text, out qteArticle))
+                    {
+                        // Conversion réussie, calculez le prix à payer
+                        int prixAPayer = prixAchat * qteArticle;
+                        PrixMedicament.Text = prixAPayer.ToString();
+                    }
+                    else
+                    {
+                        // Gérer le cas où la conversion de la quantité échoue
+                        // (par exemple, QuantiteMedicament.Text n'est pas un entier)
+                        PrixMedicament.Text = "Erreur de quantité";
+                    }
+                }
+                else
+                {
+                    // Gérer le cas où la quantité est vide
+                    PrixMedicament.Text = "Quantité non spécifiée";
+                }
+            }
+            else
+            {
+                // Gérer le cas où la conversion du prix d'achat échoue
+                // (par exemple, PUMedicament.Text n'est pas un entier)
+                PrixMedicament.Text = "Erreur de prix d'achat";
             }
         }
     }
