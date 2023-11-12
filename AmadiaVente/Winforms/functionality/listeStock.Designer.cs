@@ -105,6 +105,7 @@
             btnRemoveList.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnRemoveList.Size = new Size(60, 55);
             btnRemoveList.TabIndex = 10;
+            btnRemoveList.Click += btnRemoveList_Click;
             // 
             // btnAddNewList
             // 

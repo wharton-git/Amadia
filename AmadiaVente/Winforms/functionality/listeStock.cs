@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
+using static iTextSharp.text.pdf.PdfDocument;
 
 namespace AmadiaVente.Winforms.functionality
 {
@@ -43,6 +44,28 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        private void removeList(string id)
+        {
+            try
+            {
+                using (SqliteConnection connection = new SqliteConnection(cs))
+                {
+                    connection.Open();
+                    string query = "DELETE from article WHERE id_article = @id";
+
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erreur lors de la suppression : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         //Evenements
         private void listeStock_Load(object sender, EventArgs e)
         {
@@ -55,6 +78,29 @@ namespace AmadiaVente.Winforms.functionality
 
             popup.ShowDialog();
             popup.Dispose();
+            afficheListe();
+        }
+
+        private void btnRemoveList_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewList.SelectedRows.Count > 0)
+            {
+                DialogResult confirm = MessageBox.Show("Confirmez-vous la suppression de cet article ?\nCette action est irréversible !", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.Yes)
+                {
+
+                    DataGridViewRow selectedRow = dataGridViewList.SelectedRows[0];
+                    String valeurCellule = selectedRow.Cells[0].Value.ToString();
+                    removeList(valeurCellule);
+                    afficheListe();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez Selectionner un article à Supprimer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        
+            }
         }
     }
 }
