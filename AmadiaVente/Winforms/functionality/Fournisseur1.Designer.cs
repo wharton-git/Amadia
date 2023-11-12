@@ -291,6 +291,7 @@
             PUMedicament.ShadowDecoration.CustomizableEdges = customizableEdges6;
             PUMedicament.Size = new Size(136, 31);
             PUMedicament.TabIndex = 44;
+            PUMedicament.KeyPress += PUMedicament_KeyPress;
             // 
             // btnValiderAchat
             // 
@@ -388,6 +389,7 @@
             PrixMedicament.ShadowDecoration.CustomizableEdges = customizableEdges14;
             PrixMedicament.Size = new Size(140, 31);
             PrixMedicament.TabIndex = 40;
+            PrixMedicament.KeyPress += PrixMedicament_KeyPress;
             // 
             // QuantiteMedicament
             // 
@@ -415,6 +417,7 @@
             QuantiteMedicament.Size = new Size(103, 31);
             QuantiteMedicament.TabIndex = 39;
             QuantiteMedicament.TextChanged += QuantiteMedicament_TextChanged;
+            QuantiteMedicament.KeyPress += QuantiteMedicament_KeyPress;
             // 
             // dataGridViewPanier
             // 
@@ -579,6 +582,7 @@
             txtBoxPrixdeVente.ShadowDecoration.CustomizableEdges = customizableEdges20;
             txtBoxPrixdeVente.Size = new Size(136, 31);
             txtBoxPrixdeVente.TabIndex = 67;
+            txtBoxPrixdeVente.KeyPress += txtBoxPrixdeVente_KeyPress;
             // 
             // Fournisseur1
             // 

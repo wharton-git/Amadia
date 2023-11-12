@@ -14,12 +14,13 @@ namespace AmadiaVente.Winforms.functionality
 {
     public partial class Fournisseur1 : Form
     {
+        //Déclaration Globale
         private Form activeForm;
         string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         string sessionId;
         private bool indicationErreurAchat = false;
 
-
+        //Constructeur
         public Fournisseur1()
         {
 
@@ -191,17 +192,22 @@ namespace AmadiaVente.Winforms.functionality
         private void DisableAllFunction()
         {
             disableFunction();
-            QuantiteMedicament.Enabled = Medicament.Enabled = TypeMedicament.Enabled = false;
+            txtBoxPrixdeVente.Enabled = QuantiteMedicament.Enabled = Medicament.Enabled = TypeMedicament.Enabled = txtBoxPrixdeVente.Enabled = false;
         }
         private void reinitialiseAllFunction()
         {
             DisableAllFunction();
             TypeMedicament.Text = "Médicaments";
             PrixMedicament.Text = PUMedicament.Text = QuantiteMedicament.Text = labelStock.Text = string.Empty;
+            NomFournisseur.SelectedItem = TypeMedicament.SelectedItem = Medicament.SelectedItem = null;
             cacherModifPanier();
             btnAjoutPanier.Enabled = true;
             btnValiderAchat.Enabled = false;
             dataGridViewPanier.Rows.Clear();
+            Medicament.Enabled = false;
+            TypeMedicament.Enabled = false;
+            txtBoxPrixdeVente.Enabled = false;
+            NomFournisseur.Enabled = true;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -649,6 +655,38 @@ namespace AmadiaVente.Winforms.functionality
             }
             btnAjoutPanier.Enabled = false;
             afficherModifPanier();
+        }
+
+        private void QuantiteMedicament_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void PUMedicament_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBoxPrixdeVente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void PrixMedicament_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

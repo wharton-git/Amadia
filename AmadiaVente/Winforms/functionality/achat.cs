@@ -209,7 +209,6 @@ namespace AmadiaVente.Winforms.functionality
         private void cacherModifPanier()
         {
             btnSupprimerPanier.Visible = btnModifierPanier.Visible = false;
-            btnValiderAchat.Enabled = true;
         }
 
         private void afficherModifPanier()
@@ -425,8 +424,7 @@ namespace AmadiaVente.Winforms.functionality
             comboBoxTypeArticle.SelectedItem = "Médicaments";
 
             txtBoxPU.Enabled = false;
-            btnValiderAchat.Enabled = false;
-
+            
             afficheMedicComboBoxLoad();
             afficheNomMembreLoad();
 
@@ -434,6 +432,7 @@ namespace AmadiaVente.Winforms.functionality
             sessionId = Classes.Storage.SessionId;
 
             cacherModifPanier();
+            btnValiderAchat.Enabled = false;
 
         }
 
@@ -483,29 +482,32 @@ namespace AmadiaVente.Winforms.functionality
 
         private void txtBoxQuantite_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxQuantite.Text != "")
+            if (comboBoxDesignation.SelectedItem != null)
             {
-                string qteArticle = txtBoxQuantite.Text.ToString();
-                string articleSelect = comboBoxDesignation.SelectedItem.ToString();
-                int prixUnit = AfficheArcticle(articleSelect)[0];
-                int stock = AfficheArcticle(articleSelect)[1];
-
-                int prixAPayer = prixUnit * Convert.ToInt32(qteArticle);
-
-                txtBoxPrix.Text = prixAPayer.ToString();
-
-                if (stock < Convert.ToInt32(qteArticle))
+                if (txtBoxQuantite.Text != "")
                 {
-                    txtBoxQuantite.BackColor = Color.Red;
+                    string qteArticle = txtBoxQuantite.Text.ToString();
+                    string articleSelect = comboBoxDesignation.SelectedItem.ToString();
+                    int prixUnit = AfficheArcticle(articleSelect)[0];
+                    int stock = AfficheArcticle(articleSelect)[1];
+
+                    int prixAPayer = prixUnit * Convert.ToInt32(qteArticle);
+
+                    txtBoxPrix.Text = prixAPayer.ToString();
+
+                    if (stock < Convert.ToInt32(qteArticle))
+                    {
+                        txtBoxQuantite.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        txtBoxQuantite.BackColor = Color.LightGreen;
+                    }
                 }
                 else
                 {
-                    txtBoxQuantite.BackColor = Color.LightGreen;
+                    txtBoxPrix.Text = "";
                 }
-            }
-            else
-            {
-                txtBoxPrix.Text = "";
             }
         }
 
@@ -626,14 +628,13 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnAjoutPanier_Click(object sender, EventArgs e)
         {
-
+            btnValiderAchat.Enabled = true;
             if (comboBoxDesignation.SelectedItem != null && txtBoxPrix.Text != string.Empty && txtBoxQuantite.Text != string.Empty)
             {
                 int quantitePiece = Convert.ToInt32(txtBoxQuantite.Text);
                 int stockPiece = Convert.ToInt32(labelStock.Text);
                 if (stockPiece >= quantitePiece)
                 {
-                    btnValiderAchat.Enabled = true;
                     txtBoxNumeroMembre.Enabled = comboBoxNomMembre.Enabled = false;
 
                     string nomProduit = comboBoxDesignation.SelectedItem.ToString();
@@ -712,8 +713,9 @@ namespace AmadiaVente.Winforms.functionality
                 labelTotal.Text = totalPayer.ToString() + " Ar";
             }
 
-            btnAjoutPanier.Enabled = true;
+            btnAjoutPanier.Enabled = btnValiderAchat.Enabled = true;
             cacherModifPanier();
+
         }
 
         private void btnModifierPanier_Click(object sender, EventArgs e)
@@ -738,7 +740,7 @@ namespace AmadiaVente.Winforms.functionality
                 txtBoxQuantite.Text = txtBoxPrix.Text = null;
 
             }
-            btnAjoutPanier.Enabled = true;
+            btnAjoutPanier.Enabled = btnValiderAchat.Enabled = true;
             cacherModifPanier();
             labelTotal.Text = totalPayer.ToString() + " Ar";
         }
