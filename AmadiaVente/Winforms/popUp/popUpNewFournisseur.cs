@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Text.RegularExpressions;
+using Microsoft.Data.Sqlite;
 
 namespace AmadiaVente.Winforms.popUp
 {
     public partial class popUpNewFournisseur : Form
     {
         //Declaration Globale
-        string connectionString = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         private bool isDragging = false;
         private Point lastCursorPos;
         private Point lastFormPos;
@@ -44,6 +45,69 @@ namespace AmadiaVente.Winforms.popUp
             }
         }
 
+        private void afficheListeFournisseur()
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT idFournisseur AS ID, nomFournisseur AS Nom, contact AS Contact, adresse AS Adresse, email AS Email FROM fournisseur ";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewListFournisseur.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        private void searchFunction(string searchTerme)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT idFournisseur AS ID, nomFournisseur AS Nom, contact AS Contact, adresse AS Adresse, email AS Email FROM fournisseur WHERE idFournisseur LIKE '%"+ searchTerme + "%' OR nomFournisseur LIKE '%"+ searchTerme + "%' OR contact LIKE '%"+ searchTerme + "%' OR adresse LIKE '%"+ searchTerme + "%' OR email LIKE '%"+ searchTerme +"%'";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewListFournisseur.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+        private void removeFournisseur(string id)
+        {
+            try
+            {
+                using (SqliteConnection connection = new SqliteConnection(cs))
+                {
+                    connection.Open();
+                    string query = "DELETE from fournisseur WHERE idFournisseur = @id";
+
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur lors de la suppression : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         //Evenement
         private void btnQuitList_Click(object sender, EventArgs e)
         {
@@ -54,9 +118,9 @@ namespace AmadiaVente.Winforms.popUp
         {
             if (NomFournisseurs.Text != string.Empty && ContactFourisseur.Text != string.Empty && AdresseFournisseur.Text != string.Empty)
             {
-                if (IsValidEmail(EmailFournisseur.Text))
+                if (string.IsNullOrEmpty(EmailFournisseur.Text) || IsValidEmail(EmailFournisseur.Text))
                 {
-                    using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                    using (SQLiteConnection connection = new SQLiteConnection(cs))
                     {
 
                         string nomF = NomFournisseurs.Text;
@@ -81,10 +145,7 @@ namespace AmadiaVente.Winforms.popUp
                             MessageBox.Show("Successfully");
                         }
                     }
-                }
-                else if (string.IsNullOrEmpty(EmailFournisseur.Text))
-                {
-
+                    afficheListeFournisseur();
                 }
                 else
                 {
@@ -99,20 +160,23 @@ namespace AmadiaVente.Winforms.popUp
 
         private void btnSupFournisseur_Click(object sender, EventArgs e)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            if (dataGridViewListFournisseur.SelectedRows.Count > 0)
             {
-                connection.Open();
+                DialogResult confirm = MessageBox.Show("Confirmez-vous la suppression de ce Fournisseur ?\nCette action est irréversible !", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // 3. Créez une commande SQL de suppression
-                string sql = "DELETE FROM Fournisseur WHERE NomFournisseur = @NomFournisseur";
-                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                if (confirm == DialogResult.Yes)
                 {
-                    // 4. Ajoutez un paramètre pour la valeur que vous souhaitez supprimer
-                    command.Parameters.AddWithValue("@NomFournisseur", NomFournisseur);
 
-                    // 5. Exécutez la commande SQL
-                    command.ExecuteNonQuery();
+                    DataGridViewRow selectedRow = dataGridViewListFournisseur.SelectedRows[0];
+                    String valeurCellule = selectedRow.Cells[0].Value.ToString();
+                    removeFournisseur(valeurCellule);
+                    afficheListeFournisseur();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez Selectionner le Fournisseur à Supprimer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
         }
 
@@ -169,6 +233,17 @@ namespace AmadiaVente.Winforms.popUp
             {
                 EmailFournisseur.FillColor = Color.White;
             }
+        }
+
+        private void popUpNewFournisseur_Load(object sender, EventArgs e)
+        {
+            afficheListeFournisseur();
+        }
+
+        private void txtBoxSearchFournisseur_TextChanged(object sender, EventArgs e)
+        {
+            string searchValueFournisseur = txtBoxSearchFournisseur.Text.ToString();
+            searchFunction(searchValueFournisseur);
         }
     }
 }
