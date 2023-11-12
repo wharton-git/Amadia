@@ -33,7 +33,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnQuitList = new Guna.UI2.WinForms.Guna2ImageButton();
-            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            panelAddList = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             SuspendLayout();
             // 
@@ -51,19 +51,23 @@
             btnQuitList.ShadowDecoration.CustomizableEdges = customizableEdges1;
             btnQuitList.Size = new Size(27, 26);
             btnQuitList.TabIndex = 0;
+            btnQuitList.Click += btnQuitList_Click;
             // 
-            // guna2GradientPanel1
+            // panelAddList
             // 
-            guna2GradientPanel1.BorderColor = Color.FromArgb(23, 117, 197);
-            guna2GradientPanel1.BorderRadius = 6;
-            guna2GradientPanel1.BorderThickness = 4;
-            guna2GradientPanel1.CustomizableEdges = customizableEdges2;
-            guna2GradientPanel1.Dock = DockStyle.Fill;
-            guna2GradientPanel1.Location = new Point(0, 0);
-            guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            guna2GradientPanel1.Size = new Size(455, 541);
-            guna2GradientPanel1.TabIndex = 1;
+            panelAddList.BorderColor = Color.FromArgb(23, 117, 197);
+            panelAddList.BorderRadius = 6;
+            panelAddList.BorderThickness = 4;
+            panelAddList.CustomizableEdges = customizableEdges2;
+            panelAddList.Dock = DockStyle.Fill;
+            panelAddList.Location = new Point(0, 0);
+            panelAddList.Name = "panelAddList";
+            panelAddList.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            panelAddList.Size = new Size(455, 541);
+            panelAddList.TabIndex = 1;
+            panelAddList.MouseDown += panelAddList_MouseDown;
+            panelAddList.MouseMove += panelAddList_MouseMove;
+            panelAddList.MouseUp += panelAddList_MouseUp;
             // 
             // guna2Elipse1
             // 
@@ -76,7 +80,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(455, 541);
             Controls.Add(btnQuitList);
-            Controls.Add(guna2GradientPanel1);
+            Controls.Add(panelAddList);
             FormBorderStyle = FormBorderStyle.None;
             Name = "popUpAddList";
             StartPosition = FormStartPosition.CenterParent;
@@ -87,7 +91,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2ImageButton btnQuitList;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2GradientPanel panelAddList;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

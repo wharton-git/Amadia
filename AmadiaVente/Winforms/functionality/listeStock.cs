@@ -49,5 +49,12 @@ namespace AmadiaVente.Winforms.functionality
             afficheListe();
         }
 
+        private void btnAddNewList_Click(object sender, EventArgs e)
+        {
+            popUp.popUpAddList popup = new popUp.popUpAddList();
+
+            popup.ShowDialog();
+            popup.Dispose();
+        }
     }
 }
