@@ -17,7 +17,6 @@ namespace AmadiaVente.Winforms.functionality
         private Form activeForm;
         string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         string sessionId;
-        private int totalPayer;
         private bool indicationErreurAchat = false;
 
 
@@ -27,9 +26,9 @@ namespace AmadiaVente.Winforms.functionality
             InitializeComponent();
             dataGridViewPanier.Columns.Add("NomProduit", "Nom Du Produit"); // Colonne pour le nom du produit
             dataGridViewPanier.Columns.Add("Quantite", "Quantité"); // Colonne pour la quantité du produit
-            dataGridViewPanier.Columns.Add("Prix", "Prix"); // Colonne pour le prix unitaire du produit
-
-            labelTotal.Text = totalPayer.ToString() + " Ar";
+            dataGridViewPanier.Columns.Add("prixDAchat", "Prix d'Achat");
+            dataGridViewPanier.Columns.Add("prixDeVente", "Prix de Vente");// Colonne pour le prix unitaire du produit
+            dataGridViewPanier.Columns.Add("Prix", "Prix");
 
 
         }
@@ -94,13 +93,12 @@ namespace AmadiaVente.Winforms.functionality
             PUMedicament.Enabled = true;
             PrixMedicament.Enabled = true;
             QuantiteMedicament.Enabled = true;
+            txtBoxPrixdeVente.Enabled = true;
 
             if (Medicament.SelectedItem != null)
             {
                 string articleSelectionner = Medicament.SelectedItem.ToString();
-                int prixArticle = AfficheArcticle(articleSelectionner)[0];
                 int resteStock = AfficheArcticle(articleSelectionner)[1];
-                PUMedicament.Text = prixArticle.ToString();
                 labelStock.Text = resteStock.ToString();
                 QuantiteMedicament.Text = string.Empty;
             }
@@ -201,8 +199,6 @@ namespace AmadiaVente.Winforms.functionality
             TypeMedicament.Text = "Médicaments";
             PrixMedicament.Text = PUMedicament.Text = QuantiteMedicament.Text = labelStock.Text = string.Empty;
             cacherModifPanier();
-            totalPayer = 0;
-            labelTotal.Text = totalPayer.ToString() + " Ar";
             btnAjoutPanier.Enabled = true;
             btnValiderAchat.Enabled = false;
             dataGridViewPanier.Rows.Clear();
@@ -353,16 +349,16 @@ namespace AmadiaVente.Winforms.functionality
                 int quantite = int.Parse(QuantiteMedicament.Text);
                 int prixTotal = int.Parse(PrixMedicament.Text);
                 int Pu = int.Parse(PUMedicament.Text);
+                int prixDeVente = int.Parse(txtBoxPrixdeVente.Text);
 
-                dataGridViewPanier.Rows.Add(nomProduit, quantite, prixTotal, Pu);
+                dataGridViewPanier.Rows.Add(nomProduit, quantite, Pu, prixDeVente, prixTotal);
 
                 Medicament.SelectedIndex = -1;
                 Medicament.Text = "";
                 QuantiteMedicament.Clear();
                 PUMedicament.Clear();
                 PrixMedicament.Clear();
-                totalPayer += prixTotal;
-                labelTotal.Text = totalPayer.ToString() + " Ar";
+                txtBoxPrixdeVente.Clear();
             }
             else
             {
@@ -400,14 +396,12 @@ namespace AmadiaVente.Winforms.functionality
                 {
                     int montantLigne = Convert.ToInt32(dataGridViewPanier.Rows[rowIndex].Cells["Prix"].Value);
                     dataGridViewPanier.Rows.RemoveAt(rowIndex);
-                    totalPayer -= montantLigne;
                 }
                 Medicament.SelectedIndex = -1;
                 Medicament.Text = "";
                 QuantiteMedicament.Clear();
                 PUMedicament.Clear();
                 PrixMedicament.Clear();
-                labelTotal.Text = totalPayer.ToString() + " Ar";
             }
             btnAjoutPanier.Enabled = true;
             cacherModifPanier();
@@ -421,38 +415,22 @@ namespace AmadiaVente.Winforms.functionality
                 DataGridViewRow selectedRow = dataGridViewPanier.SelectedRows[0];
 
                 int montantLigne = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
-                totalPayer -= montantLigne;
 
                 selectedRow.Cells["NomProduit"].Value = Medicament.SelectedItem;
                 selectedRow.Cells["Quantite"].Value = QuantiteMedicament.Text;
                 selectedRow.Cells["Prix"].Value = PrixMedicament.Text;
+                selectedRow.Cells["prixDeVente"].Value = txtBoxPrixdeVente.Text;
+                selectedRow.Cells["prixDAchat"].Value = PUMedicament.Text;
 
                 int nouveauPrix = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
-                totalPayer += nouveauPrix;
 
                 Medicament.SelectedItem = null;
-                QuantiteMedicament.Text = PrixMedicament.Text = null;
+                PrixMedicament.Text = QuantiteMedicament.Text = txtBoxPrixdeVente.Text = string.Empty;
 
             }
             btnAjoutPanier.Enabled = true;
             cacherModifPanier();
-            labelTotal.Text = totalPayer.ToString() + " Ar";
         }
-
-        private void dataGridViewPanier_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dataGridViewPanier.Rows[e.RowIndex];
-
-                Medicament.SelectedItem = selectedRow.Cells["NomProduit"].Value.ToString();
-                QuantiteMedicament.Text = selectedRow.Cells["Quantite"].Value.ToString();
-                PrixMedicament.Text = selectedRow.Cells["Prix"].Value.ToString();
-            }
-            btnAjoutPanier.Enabled = false;
-            afficherModifPanier();
-        }
-
 
         private int RecupererIdCommande()
         {
@@ -590,6 +568,7 @@ namespace AmadiaVente.Winforms.functionality
             PUMedicament.Enabled = false;
             PrixMedicament.Enabled = false;
             QuantiteMedicament.Enabled = false;
+            txtBoxPrixdeVente.Enabled = false;
 
             if (NomFournisseur.SelectedItem != null)
             {
@@ -609,6 +588,7 @@ namespace AmadiaVente.Winforms.functionality
             TypeMedicament.Items.Add("Equipements");
             PUMedicament.Enabled = false;
             btnValiderAchat.Enabled = false;
+            txtBoxPrixdeVente.Enabled = false;
 
             TypeMedicament.Enabled = false;
             Medicament.Enabled = false;
@@ -653,6 +633,22 @@ namespace AmadiaVente.Winforms.functionality
             {
                 PrixMedicament.Text = "";
             }
+        }
+
+        private void dataGridViewPanier_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewPanier.Rows[e.RowIndex];
+
+                Medicament.SelectedItem = selectedRow.Cells["NomProduit"].Value.ToString();
+                QuantiteMedicament.Text = selectedRow.Cells["Quantite"].Value.ToString();
+                PrixMedicament.Text = selectedRow.Cells["Prix"].Value.ToString();
+                txtBoxPrixdeVente.Text = selectedRow.Cells["prixDeVente"].Value.ToString();
+                PUMedicament.Text = selectedRow.Cells["prixDAchat"].Value.ToString();
+            }
+            btnAjoutPanier.Enabled = false;
+            afficherModifPanier();
         }
     }
 }
