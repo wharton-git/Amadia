@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.Sqlite;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace AmadiaVente.Winforms.popUp
@@ -58,15 +59,43 @@ namespace AmadiaVente.Winforms.popUp
         }
 
         //Methodes
-        private void afficheInfo(string id)
+        private string[] afficheInfo(string id)
         {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
 
+                string selectMedicamentsQuery = "SELECT username,password,nom_user,prenom_user,fonction_user FROM user WHERE id_user = @id";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                            string loginUser = reader.GetString(0);
+                            string passUser = reader.GetString(1);
+                            string nomUser = reader.GetString(2);
+                            string prenomUser = reader.GetString(3);
+                            string fonctionUser = reader.GetString(4);
+
+                            return new string[] { loginUser, passUser, nomUser, prenomUser, fonctionUser };
+                        }
+                    }
+                }
+            }
+            return null;
         }
 
         //Evénements
         private void popUpEditProfil_Load(object sender, EventArgs e)
         {
             panelEditMdp.Visible = false;
+            afficheInfo(userId);
         }
 
         private void labelChangeMdp_MouseEnter(object sender, EventArgs e)
