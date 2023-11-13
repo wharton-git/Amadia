@@ -17,6 +17,7 @@ namespace AmadiaVente.Winforms.popUp
     {
         //Declaration Globale
         string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string idFournisseur = "0";
         private bool isDragging = false;
         private Point lastCursorPos;
         private Point lastFormPos;
@@ -72,7 +73,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT idFournisseur AS ID, nomFournisseur AS Nom, contact AS Contact, adresse AS Adresse, email AS Email FROM fournisseur WHERE idFournisseur LIKE '%"+ searchTerme + "%' OR nomFournisseur LIKE '%"+ searchTerme + "%' OR contact LIKE '%"+ searchTerme + "%' OR adresse LIKE '%"+ searchTerme + "%' OR email LIKE '%"+ searchTerme +"%'";
+                string sqlQuery = "SELECT idFournisseur AS ID, nomFournisseur AS Nom, contact AS Contact, adresse AS Adresse, email AS Email FROM fournisseur WHERE idFournisseur LIKE '%" + searchTerme + "%' OR nomFournisseur LIKE '%" + searchTerme + "%' OR contact LIKE '%" + searchTerme + "%' OR adresse LIKE '%" + searchTerme + "%' OR email LIKE '%" + searchTerme + "%'";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -86,6 +87,7 @@ namespace AmadiaVente.Winforms.popUp
                 }
             }
         }
+
         private void removeFournisseur(string id)
         {
             try
@@ -106,6 +108,52 @@ namespace AmadiaVente.Winforms.popUp
             {
                 MessageBox.Show("Erreur lors de la suppression : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cacheActionModif()
+        {
+            btnValideModifFournisseur.Visible = btnAnnulerModifFournisseur.Visible = false;
+            btnModifierFournisseur.Visible = true;
+        }
+
+        private void showActionModif()
+        {
+            btnValideModifFournisseur.Visible = btnAnnulerModifFournisseur.Visible = true;
+            btnModifierFournisseur.Visible = false;
+        }
+
+        private void modifFournisseur(string id)
+        {
+            try
+            {
+                using (SqliteConnection connection = new SqliteConnection(cs))
+                {
+                    connection.Open();
+
+                    string query = "UPDATE fournisseur SET nomFournisseur = @nom, contact = @contact, adresse = @adresse, email = @email WHERE idFournisseur = @id";
+
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        command.Parameters.AddWithValue("@nom", NomFournisseurs.Text);
+                        command.Parameters.AddWithValue("@contact", ContactFourisseur.Text);
+                        command.Parameters.AddWithValue("@adresse", AdresseFournisseur.Text);
+                        command.Parameters.AddWithValue("@email", EmailFournisseur.Text);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Gérez l'exception ici (par exemple, affichez un message d'erreur)
+                Console.WriteLine("Erreur lors de la mise à jour : " + ex.Message);
+            }
+        }
+
+        private void clear()
+        {
+            NomFournisseurs.Text = ContactFourisseur.Text = AdresseFournisseur.Text = EmailFournisseur.Text = string.Empty;
         }
 
         //Evenement
@@ -146,6 +194,7 @@ namespace AmadiaVente.Winforms.popUp
                         }
                     }
                     afficheListeFournisseur();
+                    clear();
                 }
                 else
                 {
@@ -176,7 +225,6 @@ namespace AmadiaVente.Winforms.popUp
             else
             {
                 MessageBox.Show("Veuillez Selectionner le Fournisseur à Supprimer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
         }
 
@@ -215,6 +263,15 @@ namespace AmadiaVente.Winforms.popUp
             }
         }
 
+        private void ContactFourisseur_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Capture la touche Backspace (Suppression) et la touche Delete
+            if (e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete)
+            {
+                e.Handled = false; // Autorise la suppression
+            }
+        }
+
         private void EmailFournisseur_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(EmailFournisseur.Text))
@@ -238,6 +295,7 @@ namespace AmadiaVente.Winforms.popUp
         private void popUpNewFournisseur_Load(object sender, EventArgs e)
         {
             afficheListeFournisseur();
+            cacheActionModif();
         }
 
         private void txtBoxSearchFournisseur_TextChanged(object sender, EventArgs e)
@@ -245,5 +303,45 @@ namespace AmadiaVente.Winforms.popUp
             string searchValueFournisseur = txtBoxSearchFournisseur.Text.ToString();
             searchFunction(searchValueFournisseur);
         }
+
+        private void btnModifierFournisseur_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewListFournisseur.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewListFournisseur.SelectedRows[0];
+                idFournisseur = selectedRow.Cells[0].Value.ToString();
+                String nomFournisseur = selectedRow.Cells[1].Value.ToString();
+                String contactFournisseur = selectedRow.Cells[2].Value.ToString();
+                String adresseFournisseur = selectedRow.Cells[3].Value.ToString();
+                String emailFournisseur = selectedRow.Cells[4].Value.ToString();
+
+                NomFournisseurs.Text = nomFournisseur;
+                ContactFourisseur.Text = contactFournisseur;
+                AdresseFournisseur.Text = adresseFournisseur;
+                EmailFournisseur.Text = emailFournisseur;
+
+                showActionModif();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez Selectionner le Fournisseur à Modifier", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnAnnulerModifFournisseur_Click(object sender, EventArgs e)
+        {
+            cacheActionModif();
+            clear();
+        }
+
+        private void btnValideModifFournisseur_Click(object sender, EventArgs e)
+        {
+            modifFournisseur(idFournisseur);
+            cacheActionModif();
+            afficheListeFournisseur();
+            clear();
+
+        }
+
     }
 }
