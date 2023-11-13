@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
+using Microsoft.VisualBasic.Logging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace AmadiaVente.Winforms.popUp
@@ -123,15 +124,47 @@ namespace AmadiaVente.Winforms.popUp
             }
         }
 
+        private void updateMdp(string mdp, string id)
+        {
+            try
+            {
+                using (SqliteConnection con = new SqliteConnection(cs))
+                {
+                    con.Open();
+                    string updateInfoQuery = "UPDATE user SET password = @mdp WHERE id_user = @id";
+
+                    using (SqliteCommand comm = new SqliteCommand(updateInfoQuery, con))
+                    {
+                        comm.Parameters.AddWithValue("@mdp", mdp);
+                        comm.Parameters.AddWithValue("@id", id);
+
+                        comm.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Mot de passe Mis à Jour", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool sameMdp(string a, string b)
+        {
+            return (a == b);
+        }
+
         private bool isCurrentMdp(string mdp, string id)
         {
             string trueMdp = afficheInfo(id)[1];
-            return (trueMdp == mdp);
+            return sameMdp(trueMdp, mdp);
         }
+
 
         private void clearMdp()
         {
             txtBoxEditCurrentMdp.Text = txtBoxEditNewMdp.Text = txtBoxEditConfirmMdp.Text = string.Empty;
+            txtBoxEditConfirmMdp.FillColor = Color.White;
         }
 
         //Evénements
@@ -203,8 +236,16 @@ namespace AmadiaVente.Winforms.popUp
 
                         if (!string.IsNullOrEmpty(txtBoxEditNewMdp.Text) && !string.IsNullOrEmpty(txtBoxEditConfirmMdp.Text))
                         {
-                            //updateMpd
-                            updateInfo(nvUserName, nvNom, nvPrenom, nvFonction, userId);
+                            if (sameMdp(newPass, confirmPass))
+                            {
+                                updateMdp(newPass, userId);
+                                updateInfo(nvUserName, nvNom, nvPrenom, nvFonction, userId);
+                                clearMdp();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Les nouveaux Mot de passe ne se correspondent pas !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
@@ -297,6 +338,26 @@ namespace AmadiaVente.Winforms.popUp
             txtBoxEditConfirmMdp.UseSystemPasswordChar = true;
             btnShowConfirmMdp.Visible = true;
             btnHideConfirmMdp.Visible = false;
+        }
+
+        private void txtBoxEditConfirmMdp_TextChanged(object sender, EventArgs e)
+        {
+            string newMdp = txtBoxEditNewMdp.Text.ToString();
+            string confirmMdp = txtBoxEditConfirmMdp.Text.ToString();
+
+            if (sameMdp(newMdp, confirmMdp))
+            {
+                txtBoxEditConfirmMdp.FillColor = Color.PaleGreen;
+            }
+            else
+            {
+                txtBoxEditConfirmMdp.FillColor = Color.LightPink;
+            }
+
+            if (string.IsNullOrEmpty(txtBoxEditConfirmMdp.Text))
+            {
+                txtBoxEditConfirmMdp.FillColor = Color.White;
+            }
         }
     }
 }

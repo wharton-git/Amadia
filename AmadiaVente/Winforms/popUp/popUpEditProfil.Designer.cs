@@ -268,6 +268,7 @@
             txtBoxEditConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtBoxEditConfirmMdp.Size = new Size(200, 36);
             txtBoxEditConfirmMdp.TabIndex = 9;
+            txtBoxEditConfirmMdp.TextChanged += txtBoxEditConfirmMdp_TextChanged;
             // 
             // btnEditSave
             // 
