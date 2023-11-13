@@ -181,10 +181,10 @@ namespace AmadiaVente.Winforms.popUp
                         string sql = "INSERT INTO fournisseur (nomFournisseur, contact, email, adresse) VALUES (@NomFournisseur, @ContactFournisseur, @EmailFournisseur, @AdresseFournisseur)";
                         using (SQLiteCommand co = new SQLiteCommand(sql, connection))
                         {
-                            co.Parameters.AddWithValue("@NomFournisseur", nomF); 
-                            co.Parameters.AddWithValue("@ContactFournisseur", contact); 
-                            co.Parameters.AddWithValue("@EmailFournisseur", emailF); 
-                            co.Parameters.AddWithValue("@AdresseFournisseur", adresseF); 
+                            co.Parameters.AddWithValue("@NomFournisseur", nomF);
+                            co.Parameters.AddWithValue("@ContactFournisseur", contact);
+                            co.Parameters.AddWithValue("@EmailFournisseur", emailF);
+                            co.Parameters.AddWithValue("@AdresseFournisseur", adresseF);
 
                             co.ExecuteNonQuery();
                             MessageBox.Show("Successfully");

@@ -13,14 +13,19 @@ namespace AmadiaVente.Winforms.popUp
 {
     public partial class popUpEditProfil : Form
     {
-
+        //Declaration globale
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         private bool isDragging = false;
         private Point lastCursorPos;
         private Point lastFormPos;
+        string userId;
 
-        public popUpEditProfil()
+        //Constructeur
+        public popUpEditProfil(string id)
         {
+
             InitializeComponent();
+            userId = id;
 
             this.MouseDown += (sender, e) =>
             {
@@ -52,7 +57,13 @@ namespace AmadiaVente.Winforms.popUp
             };
         }
 
+        //Methodes
+        private void afficheInfo(string id)
+        {
 
+        }
+
+        //Evénements
         private void popUpEditProfil_Load(object sender, EventArgs e)
         {
             panelEditMdp.Visible = false;
@@ -87,6 +98,42 @@ namespace AmadiaVente.Winforms.popUp
         private void btnQuitPopUp_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEditSave_Click(object sender, EventArgs e)
+        {
+            string nvNom = txtBoxEditNom.Text.ToString();
+            string nvPrenom = txtBoxEditPrenom.Text.ToString();
+            string nvUserName = txtBoxEditUsername.Text.ToString();
+
+            MessageBox.Show(userId + " " + nvNom + nvPrenom + nvUserName);
+        }
+
+        private void guna2GradientPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                lastCursorPos = Cursor.Position;
+                lastFormPos = this.Location;
+            }
+        }
+
+        private void guna2GradientPanel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point delta = new Point(Cursor.Position.X - lastCursorPos.X, Cursor.Position.Y - lastCursorPos.Y);
+                this.Location = new Point(lastFormPos.X + delta.X, lastFormPos.Y + delta.Y);
+            }
+        }
+
+        private void guna2GradientPanel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
         }
     }
 }

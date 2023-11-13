@@ -72,7 +72,7 @@ namespace AmadiaVente.Winforms.functionality
         private void btnEditProfil_Click(object sender, EventArgs e)
         {
 
-            Winforms.popUp.popUpEditProfil popup = new Winforms.popUp.popUpEditProfil();
+            Winforms.popUp.popUpEditProfil popup = new Winforms.popUp.popUpEditProfil(sessionId);
 
             // Affichez la fenêtre contextuelle en mode modal (PopUp)
             popup.ShowDialog();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -45,6 +46,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtBoxEditNom = new Guna.UI2.WinForms.Guna2TextBox();
@@ -59,14 +62,17 @@
             labelChangeMdp = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelEditMdp = new Guna.UI2.WinForms.Guna2GradientPanel();
             btnQuitPopUp = new Guna.UI2.WinForms.Guna2ImageButton();
+            guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             panelEditMdp.SuspendLayout();
+            guna2GradientPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2HtmlLabel1.Location = new Point(82, 12);
+            guna2HtmlLabel1.Location = new Point(12, 12);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(234, 52);
             guna2HtmlLabel1.TabIndex = 0;
@@ -76,7 +82,7 @@
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel2.Location = new Point(46, 79);
+            guna2HtmlLabel2.Location = new Point(34, 70);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(57, 26);
             guna2HtmlLabel2.TabIndex = 1;
@@ -84,6 +90,7 @@
             // 
             // txtBoxEditNom
             // 
+            txtBoxEditNom.BackColor = Color.Transparent;
             txtBoxEditNom.BorderRadius = 10;
             txtBoxEditNom.CustomizableEdges = customizableEdges1;
             txtBoxEditNom.DefaultText = "";
@@ -94,7 +101,7 @@
             txtBoxEditNom.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxEditNom.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxEditNom.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxEditNom.Location = new Point(148, 74);
+            txtBoxEditNom.Location = new Point(134, 70);
             txtBoxEditNom.Name = "txtBoxEditNom";
             txtBoxEditNom.PasswordChar = '\0';
             txtBoxEditNom.PlaceholderText = "Votre nom";
@@ -105,6 +112,7 @@
             // 
             // txtBoxEditPrenom
             // 
+            txtBoxEditPrenom.BackColor = Color.Transparent;
             txtBoxEditPrenom.BorderRadius = 10;
             txtBoxEditPrenom.CustomizableEdges = customizableEdges3;
             txtBoxEditPrenom.DefaultText = "";
@@ -115,7 +123,7 @@
             txtBoxEditPrenom.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxEditPrenom.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxEditPrenom.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxEditPrenom.Location = new Point(148, 145);
+            txtBoxEditPrenom.Location = new Point(134, 141);
             txtBoxEditPrenom.Name = "txtBoxEditPrenom";
             txtBoxEditPrenom.PasswordChar = '\0';
             txtBoxEditPrenom.PlaceholderText = "Votre prénom";
@@ -128,7 +136,7 @@
             // 
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel3.Location = new Point(46, 150);
+            guna2HtmlLabel3.Location = new Point(34, 134);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(87, 26);
             guna2HtmlLabel3.TabIndex = 3;
@@ -136,6 +144,7 @@
             // 
             // txtBoxEditUsername
             // 
+            txtBoxEditUsername.BackColor = Color.Transparent;
             txtBoxEditUsername.BorderRadius = 10;
             txtBoxEditUsername.CustomizableEdges = customizableEdges5;
             txtBoxEditUsername.DefaultText = "";
@@ -146,7 +155,7 @@
             txtBoxEditUsername.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxEditUsername.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxEditUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxEditUsername.Location = new Point(148, 210);
+            txtBoxEditUsername.Location = new Point(134, 206);
             txtBoxEditUsername.Name = "txtBoxEditUsername";
             txtBoxEditUsername.PasswordChar = '\0';
             txtBoxEditUsername.PlaceholderText = "Nom d'utilisateur";
@@ -159,7 +168,7 @@
             // 
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel4.Location = new Point(46, 215);
+            guna2HtmlLabel4.Location = new Point(34, 199);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(66, 26);
             guna2HtmlLabel4.TabIndex = 5;
@@ -167,6 +176,7 @@
             // 
             // txtBoxEditCurrentMdp
             // 
+            txtBoxEditCurrentMdp.BackColor = Color.Transparent;
             txtBoxEditCurrentMdp.BorderRadius = 10;
             txtBoxEditCurrentMdp.CustomizableEdges = customizableEdges7;
             txtBoxEditCurrentMdp.DefaultText = "";
@@ -177,7 +187,7 @@
             txtBoxEditCurrentMdp.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxEditCurrentMdp.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxEditCurrentMdp.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxEditCurrentMdp.Location = new Point(40, 12);
+            txtBoxEditCurrentMdp.Location = new Point(40, 18);
             txtBoxEditCurrentMdp.Name = "txtBoxEditCurrentMdp";
             txtBoxEditCurrentMdp.PasswordChar = '\0';
             txtBoxEditCurrentMdp.PlaceholderText = "Mot de passe actuel";
@@ -188,6 +198,7 @@
             // 
             // txtBoxEditNewMdp
             // 
+            txtBoxEditNewMdp.BackColor = Color.Transparent;
             txtBoxEditNewMdp.BorderRadius = 10;
             txtBoxEditNewMdp.CustomizableEdges = customizableEdges9;
             txtBoxEditNewMdp.DefaultText = "";
@@ -209,6 +220,7 @@
             // 
             // txtBoxEditConfirmMdp
             // 
+            txtBoxEditConfirmMdp.BackColor = Color.Transparent;
             txtBoxEditConfirmMdp.BorderRadius = 10;
             txtBoxEditConfirmMdp.CustomizableEdges = customizableEdges11;
             txtBoxEditConfirmMdp.DefaultText = "";
@@ -230,6 +242,7 @@
             // 
             // btnEditSave
             // 
+            btnEditSave.BackColor = Color.Transparent;
             btnEditSave.BorderRadius = 10;
             btnEditSave.CustomizableEdges = customizableEdges13;
             btnEditSave.DisabledState.BorderColor = Color.DarkGray;
@@ -239,18 +252,19 @@
             btnEditSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnEditSave.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnEditSave.ForeColor = Color.White;
-            btnEditSave.Location = new Point(114, 484);
+            btnEditSave.Location = new Point(124, 485);
             btnEditSave.Name = "btnEditSave";
             btnEditSave.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnEditSave.Size = new Size(180, 45);
             btnEditSave.TabIndex = 10;
             btnEditSave.Text = "Enregister ";
+            btnEditSave.Click += btnEditSave_Click;
             // 
             // labelChangeMdp
             // 
             labelChangeMdp.BackColor = Color.Transparent;
             labelChangeMdp.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelChangeMdp.Location = new Point(12, 265);
+            labelChangeMdp.Location = new Point(12, 266);
             labelChangeMdp.Name = "labelChangeMdp";
             labelChangeMdp.Size = new Size(191, 20);
             labelChangeMdp.TabIndex = 11;
@@ -261,11 +275,12 @@
             // 
             // panelEditMdp
             // 
+            panelEditMdp.BackColor = Color.Transparent;
             panelEditMdp.Controls.Add(txtBoxEditNewMdp);
             panelEditMdp.Controls.Add(txtBoxEditCurrentMdp);
             panelEditMdp.Controls.Add(txtBoxEditConfirmMdp);
             panelEditMdp.CustomizableEdges = customizableEdges15;
-            panelEditMdp.Location = new Point(59, 291);
+            panelEditMdp.Location = new Point(70, 292);
             panelEditMdp.Name = "panelEditMdp";
             panelEditMdp.ShadowDecoration.CustomizableEdges = customizableEdges16;
             panelEditMdp.Size = new Size(279, 187);
@@ -273,13 +288,14 @@
             // 
             // btnQuitPopUp
             // 
+            btnQuitPopUp.BackColor = Color.Transparent;
             btnQuitPopUp.CheckedState.ImageSize = new Size(64, 64);
             btnQuitPopUp.HoverState.ImageSize = new Size(22, 22);
             btnQuitPopUp.Image = Properties.Resources.icons8_fermer_la_fenêtre_96;
             btnQuitPopUp.ImageOffset = new Point(0, 0);
             btnQuitPopUp.ImageRotate = 0F;
             btnQuitPopUp.ImageSize = new Size(20, 20);
-            btnQuitPopUp.Location = new Point(380, -1);
+            btnQuitPopUp.Location = new Point(369, 12);
             btnQuitPopUp.Name = "btnQuitPopUp";
             btnQuitPopUp.PressedState.ImageSize = new Size(64, 64);
             btnQuitPopUp.ShadowDecoration.CustomizableEdges = customizableEdges17;
@@ -287,23 +303,47 @@
             btnQuitPopUp.TabIndex = 14;
             btnQuitPopUp.Click += btnQuitPopUp_Click_1;
             // 
+            // guna2Elipse1
+            // 
+            guna2Elipse1.BorderRadius = 15;
+            guna2Elipse1.TargetControl = this;
+            // 
+            // guna2GradientPanel1
+            // 
+            guna2GradientPanel1.BorderColor = Color.FromArgb(23, 117, 197);
+            guna2GradientPanel1.BorderRadius = 6;
+            guna2GradientPanel1.BorderThickness = 4;
+            guna2GradientPanel1.Controls.Add(panelEditMdp);
+            guna2GradientPanel1.Controls.Add(labelChangeMdp);
+            guna2GradientPanel1.Controls.Add(btnQuitPopUp);
+            guna2GradientPanel1.Controls.Add(guna2HtmlLabel1);
+            guna2GradientPanel1.Controls.Add(guna2HtmlLabel2);
+            guna2GradientPanel1.Controls.Add(btnEditSave);
+            guna2GradientPanel1.Controls.Add(txtBoxEditNom);
+            guna2GradientPanel1.Controls.Add(txtBoxEditUsername);
+            guna2GradientPanel1.Controls.Add(guna2HtmlLabel3);
+            guna2GradientPanel1.Controls.Add(guna2HtmlLabel4);
+            guna2GradientPanel1.Controls.Add(txtBoxEditPrenom);
+            guna2GradientPanel1.CustomizableEdges = customizableEdges18;
+            guna2GradientPanel1.Dock = DockStyle.Fill;
+            guna2GradientPanel1.FillColor = Color.White;
+            guna2GradientPanel1.FillColor2 = Color.White;
+            guna2GradientPanel1.Location = new Point(0, 0);
+            guna2GradientPanel1.Name = "guna2GradientPanel1";
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges19;
+            guna2GradientPanel1.Size = new Size(403, 561);
+            guna2GradientPanel1.TabIndex = 15;
+            guna2GradientPanel1.MouseDown += guna2GradientPanel1_MouseDown;
+            guna2GradientPanel1.MouseMove += guna2GradientPanel1_MouseMove;
+            guna2GradientPanel1.MouseUp += guna2GradientPanel1_MouseUp;
+            // 
             // popUpEditProfil
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(403, 561);
-            Controls.Add(btnQuitPopUp);
-            Controls.Add(panelEditMdp);
-            Controls.Add(labelChangeMdp);
-            Controls.Add(btnEditSave);
-            Controls.Add(txtBoxEditUsername);
-            Controls.Add(guna2HtmlLabel4);
-            Controls.Add(txtBoxEditPrenom);
-            Controls.Add(guna2HtmlLabel3);
-            Controls.Add(txtBoxEditNom);
-            Controls.Add(guna2HtmlLabel2);
-            Controls.Add(guna2HtmlLabel1);
+            Controls.Add(guna2GradientPanel1);
             FormBorderStyle = FormBorderStyle.None;
             MinimizeBox = false;
             Name = "popUpEditProfil";
@@ -311,8 +351,9 @@
             Text = "popUpEditProfil";
             Load += popUpEditProfil_Load;
             panelEditMdp.ResumeLayout(false);
+            guna2GradientPanel1.ResumeLayout(false);
+            guna2GradientPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -331,5 +372,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel labelChangeMdp;
         private Guna.UI2.WinForms.Guna2GradientPanel panelEditMdp;
         private Guna.UI2.WinForms.Guna2ImageButton btnQuitPopUp;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
     }
 }

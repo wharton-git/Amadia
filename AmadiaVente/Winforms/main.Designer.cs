@@ -88,6 +88,7 @@
             // btnProfil
             // 
             btnProfil.Animated = true;
+            btnProfil.AnimatedGIF = true;
             btnProfil.BorderRadius = 15;
             btnProfil.CustomizableEdges = customizableEdges1;
             btnProfil.DisabledState.BorderColor = Color.DarkGray;
@@ -99,7 +100,7 @@
             btnProfil.FillColor2 = SystemColors.ButtonFace;
             btnProfil.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
-            btnProfil.Image = Properties.Resources.icons8_utilisateur_sexe_neutre_961;
+            btnProfil.Image = Properties.Resources.icons8_user;
             btnProfil.ImageAlign = HorizontalAlignment.Left;
             btnProfil.ImageSize = new Size(30, 30);
             btnProfil.Location = new Point(10, 287);
@@ -114,6 +115,7 @@
             // btnList
             // 
             btnList.Animated = true;
+            btnList.AnimatedGIF = true;
             btnList.BorderRadius = 15;
             btnList.CustomizableEdges = customizableEdges3;
             btnList.DisabledState.BorderColor = Color.DarkGray;
@@ -125,7 +127,7 @@
             btnList.FillColor2 = SystemColors.ButtonFace;
             btnList.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnList.ForeColor = Color.FromArgb(23, 117, 197);
-            btnList.Image = Properties.Resources.List;
+            btnList.Image = Properties.Resources.icons8_tasklist;
             btnList.ImageAlign = HorizontalAlignment.Left;
             btnList.ImageSize = new Size(30, 30);
             btnList.Location = new Point(10, 235);
@@ -151,7 +153,7 @@
             btnCompteRendu.FillColor2 = SystemColors.ButtonFace;
             btnCompteRendu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnCompteRendu.ForeColor = Color.FromArgb(23, 117, 197);
-            btnCompteRendu.Image = Properties.Resources.icons8_panneau_de_contrôle_96;
+            btnCompteRendu.Image = Properties.Resources.icons8_dashboard_layout_48;
             btnCompteRendu.ImageAlign = HorizontalAlignment.Left;
             btnCompteRendu.ImageSize = new Size(30, 30);
             btnCompteRendu.Location = new Point(10, 131);
@@ -174,6 +176,7 @@
             // btnStock
             // 
             btnStock.Animated = true;
+            btnStock.AnimatedGIF = true;
             btnStock.BorderRadius = 15;
             btnStock.CustomizableEdges = customizableEdges7;
             btnStock.DisabledState.BorderColor = Color.DarkGray;
@@ -185,7 +188,7 @@
             btnStock.FillColor2 = SystemColors.ButtonFace;
             btnStock.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnStock.ForeColor = Color.FromArgb(23, 117, 197);
-            btnStock.Image = Properties.Resources.Combo_Chart;
+            btnStock.Image = Properties.Resources.icons8_combo_chart;
             btnStock.ImageAlign = HorizontalAlignment.Left;
             btnStock.ImageSize = new Size(30, 30);
             btnStock.Location = new Point(10, 183);

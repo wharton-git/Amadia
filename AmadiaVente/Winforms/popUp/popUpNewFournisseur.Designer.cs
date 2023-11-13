@@ -105,43 +105,54 @@
             // 
             // btnAnnulerModifFournisseur
             // 
+            btnAnnulerModifFournisseur.Animated = true;
+            btnAnnulerModifFournisseur.BorderColor = Color.FromArgb(94, 148, 255);
             btnAnnulerModifFournisseur.BorderRadius = 15;
+            btnAnnulerModifFournisseur.BorderThickness = 3;
             btnAnnulerModifFournisseur.CustomizableEdges = customizableEdges1;
             btnAnnulerModifFournisseur.DisabledState.BorderColor = Color.DarkGray;
             btnAnnulerModifFournisseur.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAnnulerModifFournisseur.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAnnulerModifFournisseur.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAnnulerModifFournisseur.FillColor = Color.Transparent;
             btnAnnulerModifFournisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnnulerModifFournisseur.ForeColor = Color.White;
+            btnAnnulerModifFournisseur.Image = Properties.Resources.Close;
             btnAnnulerModifFournisseur.Location = new Point(355, 256);
             btnAnnulerModifFournisseur.Name = "btnAnnulerModifFournisseur";
             btnAnnulerModifFournisseur.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnAnnulerModifFournisseur.Size = new Size(44, 45);
             btnAnnulerModifFournisseur.TabIndex = 49;
-            btnAnnulerModifFournisseur.Text = "v";
             btnAnnulerModifFournisseur.Click += btnAnnulerModifFournisseur_Click;
             // 
             // btnValideModifFournisseur
             // 
+            btnValideModifFournisseur.Animated = true;
+            btnValideModifFournisseur.AnimatedGIF = true;
+            btnValideModifFournisseur.BorderColor = Color.FromArgb(94, 148, 255);
             btnValideModifFournisseur.BorderRadius = 15;
+            btnValideModifFournisseur.BorderThickness = 3;
             btnValideModifFournisseur.CustomizableEdges = customizableEdges3;
             btnValideModifFournisseur.DisabledState.BorderColor = Color.DarkGray;
             btnValideModifFournisseur.DisabledState.CustomBorderColor = Color.DarkGray;
             btnValideModifFournisseur.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnValideModifFournisseur.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnValideModifFournisseur.FillColor = Color.Transparent;
             btnValideModifFournisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnValideModifFournisseur.ForeColor = Color.White;
+            btnValideModifFournisseur.Image = Properties.Resources.icons8_ok__1_;
             btnValideModifFournisseur.Location = new Point(292, 256);
             btnValideModifFournisseur.Name = "btnValideModifFournisseur";
             btnValideModifFournisseur.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnValideModifFournisseur.Size = new Size(44, 45);
             btnValideModifFournisseur.TabIndex = 48;
-            btnValideModifFournisseur.Text = "v";
             btnValideModifFournisseur.Click += btnValideModifFournisseur_Click;
             // 
             // btnModifierFournisseur
             // 
             btnModifierFournisseur.Anchor = AnchorStyles.Top;
+            btnModifierFournisseur.Animated = true;
+            btnModifierFournisseur.AnimatedGIF = true;
             btnModifierFournisseur.BorderRadius = 15;
             btnModifierFournisseur.CustomizableEdges = customizableEdges5;
             btnModifierFournisseur.DisabledState.BorderColor = Color.DarkGray;
@@ -149,16 +160,17 @@
             btnModifierFournisseur.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnModifierFournisseur.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnModifierFournisseur.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnModifierFournisseur.FillColor = Color.FromArgb(255, 128, 128);
-            btnModifierFournisseur.FillColor2 = Color.FromArgb(255, 128, 128);
+            btnModifierFournisseur.FillColor = Color.FromArgb(200, 208, 255);
+            btnModifierFournisseur.FillColor2 = Color.FromArgb(200, 208, 255);
             btnModifierFournisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnModifierFournisseur.ForeColor = Color.White;
-            btnModifierFournisseur.Location = new Point(305, 256);
+            btnModifierFournisseur.Image = Properties.Resources.icons8_edit;
+            btnModifierFournisseur.ImageSize = new Size(40, 40);
+            btnModifierFournisseur.Location = new Point(314, 256);
             btnModifierFournisseur.Name = "btnModifierFournisseur";
             btnModifierFournisseur.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnModifierFournisseur.Size = new Size(75, 45);
+            btnModifierFournisseur.Size = new Size(62, 45);
             btnModifierFournisseur.TabIndex = 47;
-            btnModifierFournisseur.Text = "Modifier";
             btnModifierFournisseur.Click += btnModifierFournisseur_Click;
             // 
             // dataGridViewListFournisseur
@@ -252,6 +264,7 @@
             // btnSupFournisseur
             // 
             btnSupFournisseur.Anchor = AnchorStyles.Top;
+            btnSupFournisseur.Animated = true;
             btnSupFournisseur.BorderRadius = 15;
             btnSupFournisseur.CustomizableEdges = customizableEdges9;
             btnSupFournisseur.DisabledState.BorderColor = Color.DarkGray;
@@ -259,21 +272,23 @@
             btnSupFournisseur.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSupFournisseur.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnSupFournisseur.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSupFournisseur.FillColor = Color.FromArgb(255, 128, 128);
-            btnSupFournisseur.FillColor2 = Color.FromArgb(255, 128, 128);
+            btnSupFournisseur.FillColor = Color.FromArgb(200, 208, 255);
+            btnSupFournisseur.FillColor2 = Color.FromArgb(200, 208, 255);
             btnSupFournisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSupFournisseur.ForeColor = Color.White;
-            btnSupFournisseur.Location = new Point(197, 256);
+            btnSupFournisseur.Image = Properties.Resources.Remove;
+            btnSupFournisseur.ImageSize = new Size(40, 40);
+            btnSupFournisseur.Location = new Point(204, 256);
             btnSupFournisseur.Name = "btnSupFournisseur";
             btnSupFournisseur.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnSupFournisseur.Size = new Size(75, 45);
+            btnSupFournisseur.Size = new Size(62, 45);
             btnSupFournisseur.TabIndex = 43;
-            btnSupFournisseur.Text = "Supprimer";
             btnSupFournisseur.Click += btnSupFournisseur_Click;
             // 
             // btnAjoutFornisseur
             // 
             btnAjoutFornisseur.Anchor = AnchorStyles.Top;
+            btnAjoutFornisseur.Animated = true;
             btnAjoutFornisseur.BorderRadius = 15;
             btnAjoutFornisseur.CustomizableEdges = customizableEdges11;
             btnAjoutFornisseur.DisabledState.BorderColor = Color.DarkGray;
@@ -281,16 +296,17 @@
             btnAjoutFornisseur.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAjoutFornisseur.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnAjoutFornisseur.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAjoutFornisseur.FillColor = Color.MediumSeaGreen;
-            btnAjoutFornisseur.FillColor2 = Color.MediumSeaGreen;
+            btnAjoutFornisseur.FillColor = Color.FromArgb(200, 208, 255);
+            btnAjoutFornisseur.FillColor2 = Color.FromArgb(200, 208, 255);
             btnAjoutFornisseur.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAjoutFornisseur.ForeColor = Color.White;
+            btnAjoutFornisseur.Image = Properties.Resources.Done;
+            btnAjoutFornisseur.ImageSize = new Size(40, 40);
             btnAjoutFornisseur.Location = new Point(94, 256);
             btnAjoutFornisseur.Name = "btnAjoutFornisseur";
             btnAjoutFornisseur.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnAjoutFornisseur.Size = new Size(75, 45);
+            btnAjoutFornisseur.Size = new Size(62, 45);
             btnAjoutFornisseur.TabIndex = 42;
-            btnAjoutFornisseur.Text = "Ajouter";
             btnAjoutFornisseur.Click += btnAjoutFornisseur_Click;
             // 
             // AdresseFournisseur
