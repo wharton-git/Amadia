@@ -180,35 +180,6 @@ namespace AmadiaVente.Winforms.popUp
             btnHideCurrentMdp.Visible = btnHideNewMdp.Visible = btnHideConfirmMdp.Visible = false;
         }
 
-        private void labelChangeMdp_MouseEnter(object sender, EventArgs e)
-        {
-            labelChangeMdp.ForeColor = Color.RoyalBlue;
-            labelChangeMdp.Cursor = Cursors.Hand;
-        }
-
-        private void labelChangeMdp_MouseLeave(object sender, EventArgs e)
-        {
-            labelChangeMdp.ForeColor = Color.Black;
-            labelChangeMdp.Cursor = Cursors.Default;
-        }
-
-        private void labelChangeMdp_Click(object sender, EventArgs e)
-        {
-            if (!panelEditMdp.Visible)
-            {
-                panelEditMdp.Visible = true;
-                labelChangeMdp.Text = "Annuler modification du mot de passe ?";
-                clearMdp();
-            }
-            else
-            {
-                panelEditMdp.Visible = false;
-                labelChangeMdp.Text = "Changer le mot de passe ?";
-                clearMdp();
-
-            }
-        }
-
         private void btnQuitPopUp_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -358,6 +329,32 @@ namespace AmadiaVente.Winforms.popUp
             {
                 txtBoxEditConfirmMdp.FillColor = Color.White;
             }
+        }
+
+        private void btnChangeMdp_Click(object sender, EventArgs e)
+        {
+            if (!panelEditMdp.Visible)
+            {
+                panelEditMdp.Visible = true;
+                btnChangeMdp.Text = "Annuler modification du mot de passe ?";
+                clearMdp();
+            }
+            else
+            {
+                panelEditMdp.Visible = false;
+                btnChangeMdp.Text = "Changer le mot de passe ?";
+                clearMdp();
+            }
+        }
+
+        private void btnChangeMdp_MouseEnter(object sender, EventArgs e)
+        {
+            btnChangeMdp.ForeColor = Color.RoyalBlue;
+        }
+
+        private void btnChangeMdp_MouseLeave(object sender, EventArgs e)
+        {
+            btnChangeMdp.ForeColor = Color.Black;
         }
     }
 }

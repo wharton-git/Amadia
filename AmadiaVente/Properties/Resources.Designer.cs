@@ -123,6 +123,16 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_automation {
+            get {
+                object obj = ResourceManager.GetObject("icons8-automation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_checkmark_blue_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-checkmark-blue-96", resourceCulture);
@@ -296,6 +306,16 @@ namespace AmadiaVente.Properties {
         internal static System.Drawing.Bitmap icons8_vider_le_panier_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-vider-le-panier-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_window_settings {
+            get {
+                object obj = ResourceManager.GetObject("icons8-window-settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

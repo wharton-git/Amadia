@@ -40,10 +40,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -81,10 +81,12 @@
             txtBoxUsername.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxUsername.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxUsername.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxUsername.ForeColor = Color.Black;
             txtBoxUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxUsername.Location = new Point(360, 133);
             txtBoxUsername.Name = "txtBoxUsername";
             txtBoxUsername.PasswordChar = '\0';
+            txtBoxUsername.PlaceholderForeColor = Color.Gray;
             txtBoxUsername.PlaceholderText = "Username";
             txtBoxUsername.SelectedText = "";
             txtBoxUsername.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -106,10 +108,12 @@
             txtBoxPassword.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxPassword.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxPassword.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPassword.ForeColor = Color.Black;
             txtBoxPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxPassword.Location = new Point(360, 187);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PasswordChar = '\0';
+            txtBoxPassword.PlaceholderForeColor = Color.Gray;
             txtBoxPassword.PlaceholderText = "Password";
             txtBoxPassword.SelectedText = "";
             txtBoxPassword.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -170,11 +174,11 @@
             // 
             // guna2Panel2
             // 
+            guna2Panel2.Controls.Add(panelLigne1);
             guna2Panel2.Controls.Add(checkBoxAfficheMdp);
             guna2Panel2.Controls.Add(txtBoxUsername);
             guna2Panel2.Controls.Add(guna2Panel1);
             guna2Panel2.Controls.Add(btnConnect);
-            guna2Panel2.Controls.Add(panelLigne1);
             guna2Panel2.Controls.Add(txtBoxPassword);
             guna2Panel2.Controls.Add(guna2PictureBox2);
             guna2Panel2.Controls.Add(guna2PictureBox1);
@@ -206,7 +210,7 @@
             checkBoxAfficheMdp.UncheckedState.BorderColor = Color.White;
             checkBoxAfficheMdp.UncheckedState.BorderRadius = 1;
             checkBoxAfficheMdp.UncheckedState.BorderThickness = 0;
-            checkBoxAfficheMdp.UncheckedState.FillColor = Color.White;
+            checkBoxAfficheMdp.UncheckedState.FillColor = Color.FromArgb(151, 170, 205);
             checkBoxAfficheMdp.UseVisualStyleBackColor = false;
             checkBoxAfficheMdp.CheckedChanged += checkBoxAfficheMdp_CheckedChanged;
             // 
@@ -214,11 +218,11 @@
             // 
             guna2Panel1.Anchor = AnchorStyles.None;
             guna2Panel1.BorderRadius = 2;
-            guna2Panel1.CustomizableEdges = customizableEdges7;
-            guna2Panel1.FillColor = Color.FromArgb(128, 128, 255);
+            guna2Panel1.CustomizableEdges = customizableEdges9;
+            guna2Panel1.FillColor = Color.FromArgb(23, 117, 197);
             guna2Panel1.Location = new Point(360, 218);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Panel1.Size = new Size(200, 5);
             guna2Panel1.TabIndex = 6;
             // 
@@ -226,11 +230,11 @@
             // 
             panelLigne1.Anchor = AnchorStyles.None;
             panelLigne1.BorderRadius = 2;
-            panelLigne1.CustomizableEdges = customizableEdges9;
-            panelLigne1.FillColor = Color.FromArgb(128, 128, 255);
-            panelLigne1.Location = new Point(359, 170);
+            panelLigne1.CustomizableEdges = customizableEdges7;
+            panelLigne1.FillColor = Color.FromArgb(23, 117, 197);
+            panelLigne1.Location = new Point(359, 166);
             panelLigne1.Name = "panelLigne1";
-            panelLigne1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            panelLigne1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             panelLigne1.Size = new Size(200, 5);
             panelLigne1.TabIndex = 5;
             // 

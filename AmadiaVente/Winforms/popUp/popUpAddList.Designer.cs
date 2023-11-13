@@ -38,14 +38,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnQuitList = new Guna.UI2.WinForms.Guna2ImageButton();
             panelAddList = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnAddList = new Guna.UI2.WinForms.Guna2GradientButton();
             radioEquipement = new Guna.UI2.WinForms.Guna2RadioButton();
             radioMedicament = new Guna.UI2.WinForms.Guna2RadioButton();
             txtBoxNomArticle = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelAddList.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             btnQuitList.ImageOffset = new Point(0, 0);
             btnQuitList.ImageRotate = 0F;
             btnQuitList.ImageSize = new Size(30, 30);
-            btnQuitList.Location = new Point(312, 12);
+            btnQuitList.Location = new Point(257, 12);
             btnQuitList.Name = "btnQuitList";
             btnQuitList.PressedState.ImageSize = new Size(64, 64);
             btnQuitList.ShadowDecoration.CustomizableEdges = customizableEdges1;
@@ -85,11 +85,41 @@
             panelAddList.Location = new Point(0, 0);
             panelAddList.Name = "panelAddList";
             panelAddList.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            panelAddList.Size = new Size(351, 541);
+            panelAddList.Size = new Size(296, 384);
             panelAddList.TabIndex = 1;
             panelAddList.MouseDown += panelAddList_MouseDown;
             panelAddList.MouseMove += panelAddList_MouseMove;
             panelAddList.MouseUp += panelAddList_MouseUp;
+            // 
+            // guna2HtmlLabel3
+            // 
+            guna2HtmlLabel3.BackColor = Color.Transparent;
+            guna2HtmlLabel3.Font = new Font("Segoe UI Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2HtmlLabel3.Location = new Point(12, 12);
+            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            guna2HtmlLabel3.Size = new Size(193, 39);
+            guna2HtmlLabel3.TabIndex = 10;
+            guna2HtmlLabel3.Text = "Nouvel Article";
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2HtmlLabel2.Location = new Point(23, 170);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(56, 27);
+            guna2HtmlLabel2.TabIndex = 9;
+            guna2HtmlLabel2.Text = "Type :";
+            // 
+            // guna2HtmlLabel1
+            // 
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2HtmlLabel1.Location = new Point(23, 80);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(120, 27);
+            guna2HtmlLabel1.TabIndex = 8;
+            guna2HtmlLabel1.Text = "Désignation :";
             // 
             // btnAddList
             // 
@@ -100,25 +130,27 @@
             btnAddList.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAddList.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnAddList.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddList.FillColor = Color.FromArgb(23, 117, 197);
+            btnAddList.FillColor2 = Color.FromArgb(23, 117, 197);
             btnAddList.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddList.ForeColor = Color.White;
-            btnAddList.Location = new Point(148, 261);
+            btnAddList.Location = new Point(58, 285);
             btnAddList.Name = "btnAddList";
             btnAddList.ShadowDecoration.CustomizableEdges = customizableEdges3;
             btnAddList.Size = new Size(180, 45);
             btnAddList.TabIndex = 7;
-            btnAddList.Text = "Ajouter List";
+            btnAddList.Text = "Ajouter l'Article";
             btnAddList.Click += btnAddList_Click;
             // 
             // radioEquipement
             // 
+            radioEquipement.Animated = true;
             radioEquipement.AutoSize = true;
-            radioEquipement.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            radioEquipement.CheckedState.BorderColor = Color.FromArgb(192, 192, 255);
             radioEquipement.CheckedState.BorderThickness = 0;
-            radioEquipement.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            radioEquipement.CheckedState.InnerColor = Color.White;
-            radioEquipement.CheckedState.InnerOffset = -4;
-            radioEquipement.Location = new Point(142, 214);
+            radioEquipement.CheckedState.FillColor = Color.FromArgb(192, 192, 255);
+            radioEquipement.CheckedState.InnerColor = Color.MediumBlue;
+            radioEquipement.Location = new Point(157, 219);
             radioEquipement.Name = "radioEquipement";
             radioEquipement.Size = new Size(94, 19);
             radioEquipement.TabIndex = 6;
@@ -131,13 +163,13 @@
             // 
             // radioMedicament
             // 
+            radioMedicament.Animated = true;
             radioMedicament.AutoSize = true;
-            radioMedicament.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            radioMedicament.CheckedState.BorderColor = Color.FromArgb(192, 192, 255);
             radioMedicament.CheckedState.BorderThickness = 0;
-            radioMedicament.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            radioMedicament.CheckedState.InnerColor = Color.White;
-            radioMedicament.CheckedState.InnerOffset = -4;
-            radioMedicament.Location = new Point(23, 214);
+            radioMedicament.CheckedState.FillColor = Color.FromArgb(192, 192, 255);
+            radioMedicament.CheckedState.InnerColor = Color.MediumBlue;
+            radioMedicament.Location = new Point(38, 219);
             radioMedicament.Name = "radioMedicament";
             radioMedicament.Size = new Size(97, 19);
             radioMedicament.TabIndex = 5;
@@ -159,10 +191,12 @@
             txtBoxNomArticle.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxNomArticle.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxNomArticle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxNomArticle.ForeColor = Color.Black;
             txtBoxNomArticle.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxNomArticle.Location = new Point(23, 113);
+            txtBoxNomArticle.Location = new Point(48, 113);
             txtBoxNomArticle.Name = "txtBoxNomArticle";
             txtBoxNomArticle.PasswordChar = '\0';
+            txtBoxNomArticle.PlaceholderForeColor = Color.Gray;
             txtBoxNomArticle.PlaceholderText = "Article à ajouter";
             txtBoxNomArticle.SelectedText = "";
             txtBoxNomArticle.ShadowDecoration.CustomizableEdges = customizableEdges5;
@@ -174,41 +208,11 @@
             guna2Elipse1.BorderRadius = 15;
             guna2Elipse1.TargetControl = this;
             // 
-            // guna2HtmlLabel1
-            // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2HtmlLabel1.Location = new Point(23, 80);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(120, 27);
-            guna2HtmlLabel1.TabIndex = 8;
-            guna2HtmlLabel1.Text = "Désignation :";
-            // 
-            // guna2HtmlLabel2
-            // 
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2HtmlLabel2.Location = new Point(23, 170);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(56, 27);
-            guna2HtmlLabel2.TabIndex = 9;
-            guna2HtmlLabel2.Text = "Type :";
-            // 
-            // guna2HtmlLabel3
-            // 
-            guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Font = new Font("Segoe UI Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2HtmlLabel3.Location = new Point(12, 12);
-            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(193, 39);
-            guna2HtmlLabel3.TabIndex = 10;
-            guna2HtmlLabel3.Text = "Nouvel Article";
-            // 
             // popUpAddList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(351, 541);
+            ClientSize = new Size(296, 384);
             Controls.Add(panelAddList);
             FormBorderStyle = FormBorderStyle.None;
             Name = "popUpAddList";

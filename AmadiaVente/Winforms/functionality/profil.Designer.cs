@@ -89,6 +89,8 @@
             // btnEditProfil
             // 
             btnEditProfil.Anchor = AnchorStyles.Bottom;
+            btnEditProfil.Animated = true;
+            btnEditProfil.AnimatedGIF = true;
             btnEditProfil.BackColor = Color.Transparent;
             btnEditProfil.BorderRadius = 10;
             btnEditProfil.CustomizableEdges = customizableEdges1;
@@ -97,16 +99,17 @@
             btnEditProfil.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnEditProfil.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnEditProfil.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnEditProfil.FillColor = Color.FromArgb(23, 117, 197);
-            btnEditProfil.FillColor2 = Color.FromArgb(23, 117, 197);
+            btnEditProfil.FillColor = Color.Transparent;
+            btnEditProfil.FillColor2 = Color.Transparent;
             btnEditProfil.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnEditProfil.ForeColor = Color.White;
-            btnEditProfil.Location = new Point(327, 362);
+            btnEditProfil.Image = Properties.Resources.icons8_window_settings;
+            btnEditProfil.ImageSize = new Size(50, 50);
+            btnEditProfil.Location = new Point(734, 335);
             btnEditProfil.Name = "btnEditProfil";
             btnEditProfil.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnEditProfil.Size = new Size(180, 45);
+            btnEditProfil.Size = new Size(62, 55);
             btnEditProfil.TabIndex = 4;
-            btnEditProfil.Text = "Editer Mon Profil";
             btnEditProfil.Click += btnEditProfil_Click;
             // 
             // guna2GradientPanel1

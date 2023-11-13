@@ -41,7 +41,7 @@ namespace AmadiaVente.Winforms.popUp
         {
             int prix = 0;
             int nbrStock = 0;
-            
+
             try
             {
                 using (SqliteConnection connection = new SqliteConnection(cs))
