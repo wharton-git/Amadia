@@ -113,6 +113,16 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hidden_eye_close_hide_icon_232825 {
+            get {
+                object obj = ResourceManager.GetObject("hidden_eye_close_hide_icon_232825", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_checkmark_blue_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-checkmark-blue-96", resourceCulture);
@@ -336,6 +346,16 @@ namespace AmadiaVente.Properties {
         internal static System.Drawing.Bitmap Search {
             get {
                 object obj = ResourceManager.GetObject("Search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap show_icon_184023 {
+            get {
+                object obj = ResourceManager.GetObject("show_icon_184023", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

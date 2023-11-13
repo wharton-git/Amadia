@@ -28,6 +28,10 @@ namespace AmadiaVente.Winforms.popUp
             InitializeComponent();
             userId = id;
 
+            txtBoxEditCurrentMdp.UseSystemPasswordChar = true;
+            txtBoxEditNewMdp.UseSystemPasswordChar = true;
+            txtBoxEditConfirmMdp.UseSystemPasswordChar = true;
+
             this.MouseDown += (sender, e) =>
             {
                 if (e.Button == MouseButtons.Left)
@@ -91,11 +95,56 @@ namespace AmadiaVente.Winforms.popUp
             return null;
         }
 
+        private void updateInfo(string login, string nom, string prenom, string fonction, string id)
+        {
+            try
+            {
+                using (SqliteConnection con = new SqliteConnection(cs))
+                {
+                    con.Open();
+                    string updateInfoQuery = "UPDATE user SET username = @login, nom_user = @nom, prenom_user = @prenom, fonction_user = @fonction WHERE id_user = @id";
+
+                    using (SqliteCommand comm = new SqliteCommand(updateInfoQuery, con))
+                    {
+                        comm.Parameters.AddWithValue("@login", login);
+                        comm.Parameters.AddWithValue("@nom", nom);
+                        comm.Parameters.AddWithValue("@prenom", prenom);
+                        comm.Parameters.AddWithValue("@fonction", fonction);
+                        comm.Parameters.AddWithValue("@id", id);
+
+                        comm.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Information de Profil Mis à Jour", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool isCurrentMdp(string mdp, string id)
+        {
+            string trueMdp = afficheInfo(id)[1];
+            return (trueMdp == mdp);
+        }
+
+        private void clearMdp()
+        {
+            txtBoxEditCurrentMdp.Text = txtBoxEditNewMdp.Text = txtBoxEditConfirmMdp.Text = string.Empty;
+        }
+
         //Evénements
         private void popUpEditProfil_Load(object sender, EventArgs e)
         {
+            string[] info = afficheInfo(userId);
             panelEditMdp.Visible = false;
-            afficheInfo(userId);
+            txtBoxEditNom.Text = info[2];
+            txtBoxEditPrenom.Text = info[3];
+            txtBoxNewFonction.Text = info[4];
+            txtBoxEditUsername.Text = info[0];
+
+            btnHideCurrentMdp.Visible = btnHideNewMdp.Visible = btnHideConfirmMdp.Visible = false;
         }
 
         private void labelChangeMdp_MouseEnter(object sender, EventArgs e)
@@ -116,11 +165,14 @@ namespace AmadiaVente.Winforms.popUp
             {
                 panelEditMdp.Visible = true;
                 labelChangeMdp.Text = "Annuler modification du mot de passe ?";
+                clearMdp();
             }
             else
             {
                 panelEditMdp.Visible = false;
                 labelChangeMdp.Text = "Changer le mot de passe ?";
+                clearMdp();
+
             }
         }
 
@@ -134,8 +186,48 @@ namespace AmadiaVente.Winforms.popUp
             string nvNom = txtBoxEditNom.Text.ToString();
             string nvPrenom = txtBoxEditPrenom.Text.ToString();
             string nvUserName = txtBoxEditUsername.Text.ToString();
+            string nvFonction = txtBoxNewFonction.Text.ToString();
 
-            MessageBox.Show(userId + " " + nvNom + nvPrenom + nvUserName);
+            if (!string.IsNullOrEmpty(txtBoxEditNom.Text) && !string.IsNullOrEmpty(txtBoxEditPrenom.Text) && !string.IsNullOrEmpty(txtBoxEditUsername.Text) && !string.IsNullOrEmpty(txtBoxNewFonction.Text))
+            {
+
+                if (!string.IsNullOrEmpty(txtBoxEditCurrentMdp.Text))
+                {
+                    string currentPass = txtBoxEditCurrentMdp.Text.ToString();
+                    string newPass = txtBoxEditNewMdp.Text.ToString();
+                    string confirmPass = txtBoxEditConfirmMdp.Text.ToString();
+
+
+                    if (isCurrentMdp(currentPass, userId))
+                    {
+
+                        if (!string.IsNullOrEmpty(txtBoxEditNewMdp.Text) && !string.IsNullOrEmpty(txtBoxEditConfirmMdp.Text))
+                        {
+                            //updateMpd
+                            updateInfo(nvUserName, nvNom, nvPrenom, nvFonction, userId);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Veuillez Completer les champs !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vérifier votre mot de passe actuel", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else
+                {
+                    updateInfo(nvUserName, nvNom, nvPrenom, nvFonction, userId);
+                }
+;
+            }
+            else
+            {
+                MessageBox.Show("Veuillez Remplir les champs", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void guna2GradientPanel1_MouseDown(object sender, MouseEventArgs e)
@@ -163,6 +255,48 @@ namespace AmadiaVente.Winforms.popUp
             {
                 isDragging = false;
             }
+        }
+
+        private void btnShowCurrentMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxEditCurrentMdp.UseSystemPasswordChar = false;
+            btnShowCurrentMdp.Visible = false;
+            btnHideCurrentMdp.Visible = true;
+        }
+
+        private void btnShowNewMpd_Click(object sender, EventArgs e)
+        {
+            txtBoxEditNewMdp.UseSystemPasswordChar = false;
+            btnShowNewMpd.Visible = false;
+            btnHideNewMdp.Visible = true;
+        }
+
+        private void btnShowConfirmMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxEditConfirmMdp.UseSystemPasswordChar = false;
+            btnShowConfirmMdp.Visible = false;
+            btnHideConfirmMdp.Visible = true;
+        }
+
+        private void btnHideCurrentMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxEditCurrentMdp.UseSystemPasswordChar = true;
+            btnShowCurrentMdp.Visible = true;
+            btnHideCurrentMdp.Visible = false;
+        }
+
+        private void btnHideNewMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxEditNewMdp.UseSystemPasswordChar = true;
+            btnShowNewMpd.Visible = true;
+            btnHideNewMdp.Visible = false;
+        }
+
+        private void btnHideConfirmMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxEditConfirmMdp.UseSystemPasswordChar = true;
+            btnShowConfirmMdp.Visible = true;
+            btnHideConfirmMdp.Visible = false;
         }
     }
 }

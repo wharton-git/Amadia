@@ -79,6 +79,13 @@ namespace AmadiaVente.Winforms.functionality
 
             // Libérez les ressources de la fenêtre contextuelle après qu'elle a été fermée
             popup.Dispose();
+
+            sessionId = Classes.Storage.SessionId;
+            string[] info = afficheDetail(sessionId);
+            labelProfilId.Text = "Id : " + info[0];
+            labelProfilUsername.Text = "Nom d'utilisateur : " + info[1];
+            labelProfilNom.Text = info[3];
+            labelProfilPrenom.Text = info[4] + "( " + info[5] + " )";
         }
     }
 }
