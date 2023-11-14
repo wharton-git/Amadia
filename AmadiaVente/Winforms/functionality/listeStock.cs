@@ -60,7 +60,7 @@ namespace AmadiaVente.Winforms.functionality
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show("Erreur lors de la suppression : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -99,7 +99,7 @@ namespace AmadiaVente.Winforms.functionality
             else
             {
                 MessageBox.Show("Veuillez Selectionner un article à Supprimer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        
+
             }
         }
     }

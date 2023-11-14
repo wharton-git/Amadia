@@ -135,7 +135,7 @@
             btnList.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnList.Size = new Size(144, 45);
             btnList.TabIndex = 9;
-            btnList.Text = "Liste Stock";
+            btnList.Text = "Liste Article";
             btnList.TextAlign = HorizontalAlignment.Left;
             btnList.Click += btnList_Click;
             // 
@@ -196,7 +196,7 @@
             btnStock.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnStock.Size = new Size(144, 45);
             btnStock.TabIndex = 5;
-            btnStock.Text = "Historique Stock";
+            btnStock.Text = "Historique";
             btnStock.TextAlign = HorizontalAlignment.Left;
             btnStock.Click += btnStock_Click;
             // 

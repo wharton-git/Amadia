@@ -598,12 +598,18 @@ namespace AmadiaVente.Winforms.functionality
 
             string pdfLocation = System.IO.Path.Combine(Application.StartupPath, "Output/Recap_journalière_du_" + DateTime.Now.ToString("dd-MM-yyyy_HHmmss") + ".pdf");
 
-            iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(PageSize.A5.Width, PageSize.A5.Height);
+            float largeurEnCm = 10f;
+            float hauteurEnCm = 30f;
+
+            float largeurEnPoints = largeurEnCm * 28.35f; // 1 cm ≈ 28.35 points
+            float hauteurEnPoints = hauteurEnCm * 28.35f;
+
+            iTextSharp.text.Rectangle pageSize = new iTextSharp.text.Rectangle(largeurEnPoints, hauteurEnPoints);
             Document doc = new Document(pageSize);
 
             // Définissez les marges du document (en points)
-            float marginLeft = 10f; // Marge gauche (en points)
-            float marginRight = 10f; // Marge droite (en points)
+            float marginLeft = 5f; // Marge gauche (en points)
+            float marginRight = 5f; // Marge droite (en points)
             float marginTop = 5f; // Marge supérieure (en points)
             float marginBottom = 5f; // Marge inférieure (en points)
 
@@ -626,9 +632,9 @@ namespace AmadiaVente.Winforms.functionality
                 // Créez un tableau avec 5 colonnes
                 PdfPTable table = new PdfPTable(6);
 
-                table.WidthPercentage = 90;
+                table.WidthPercentage = 98;
 
-                float[] columnWidths = { 20f, 5f, 5f, 10f, 20f, 10f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                float[] columnWidths = { 26f, 7f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
                 table.SetWidths(columnWidths);
 
                 PdfPCell cellVideTeteFirst = new PdfPCell(new Phrase(""));
@@ -642,6 +648,9 @@ namespace AmadiaVente.Winforms.functionality
 
                 PdfPCell cellTU = new PdfPCell(new Phrase("T.U"));
                 cellTU.BorderWidthRight = 0f;
+
+                PdfPCell cellCarnet = new PdfPCell(new Phrase("CARNET"));
+                cellCarnet.BorderWidthRight = 0f;
 
                 PdfPCell cellTG = new PdfPCell(new Phrase("T.G"));
                 cellTG.BorderWidthRight = 0f;
@@ -657,6 +666,15 @@ namespace AmadiaVente.Winforms.functionality
 
                 PdfPCell cellGlycemie = new PdfPCell(new Phrase("GLYCEMIE"));
                 cellGlycemie.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
+
+                PdfPCell cellGlucometre = new PdfPCell(new Phrase("GLUCOMETRE"));
+                cellGlucometre.BorderWidthBottom = 0f;
+
+                PdfPCell cellTensiometre = new PdfPCell(new Phrase("TENSIOMETRE"));
+                cellTensiometre.BorderWidthBottom = 0f;
+
+                PdfPCell cellBandelette = new PdfPCell(new Phrase("BANDELETTE"));
+                cellBandelette.BorderWidthBottom = 0f;
 
                 PdfPCell cellVideNonMembre = new PdfPCell(new Phrase(""));
                 cellVideNonMembre.BorderWidthTop = 0f;
@@ -772,6 +790,146 @@ namespace AmadiaVente.Winforms.functionality
                 table.SpacingAfter = 10f;
 
                 doc.Add(table);
+                //2nd partie Tableau
+
+                PdfPTable table2 = new PdfPTable(6);
+
+                table2.WidthPercentage = 98;
+
+                float[] columnWidths2 = { 26f, 7f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                table2.SetWidths(columnWidths2);
+
+                table2.AddCell(cellGlucometre);
+                table2.AddCell("M");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.AddCell(cellVideNonMembre);
+                table2.AddCell("NM");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.AddCell(cellTensiometre);
+                table2.AddCell("M");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.AddCell(cellVideNonMembre);
+                table2.AddCell("NM");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.AddCell(cellBandelette);
+                table2.AddCell("M");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.AddCell(cellVideNonMembre);
+                table2.AddCell("NM");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.AddCell(cellCarnet);
+                table2.AddCell(cellVideTeteMnM);
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.AddCell("TOTAL CONSOMABLE");
+                table2.AddCell(cellVideTeteMnM);
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+                table2.AddCell("");
+
+                table2.SpacingAfter = 10f;
+
+                doc.Add(table2);
+
+
+                PdfPTable table3 = new PdfPTable(2);
+
+                table3.WidthPercentage = 98;
+
+                float[] columnWidths3 = { 27f, 13f };
+                table3.SetWidths(columnWidths3);
+
+                table3.AddCell("TOTAL MEDICAMENTS");
+                table3.AddCell("");
+
+                table3.AddCell(" ");
+                table3.AddCell(" ");
+
+                table3.AddCell("TOTAL GENERAL");
+                table3.AddCell("");
+
+                table3.AddCell("DEPENSE");
+                table3.AddCell("");
+
+                table3.AddCell("VERSEMENT");
+                table3.AddCell("");
+
+                doc.Add(table3);
+
+                doc.NewPage();
+
+                Paragraph titlePg2 = new Paragraph("MEDICAMENTS");
+
+                doc.Add(titlePg2);
+
+                PdfPTable tablePg2 = new PdfPTable(5);
+
+                tablePg2.WidthPercentage = 98;
+
+                float[] columnWidthsPg2 = { 26f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                tablePg2.SetWidths(columnWidthsPg2);
+
+                tablePg2.AddCell("DESIGNATION");
+                tablePg2.AddCell("Q");
+                tablePg2.AddCell("P.U");
+                tablePg2.AddCell("VALEUR");
+                tablePg2.AddCell("OBS");
+
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+                tablePg2.AddCell(" ");
+
+                tablePg2.SpacingBefore = 10f;
+
+                doc.Add(tablePg2);
+
+                PdfPTable tablePg2_1 = new PdfPTable(2);
+
+                tablePg2_1.WidthPercentage = 98;
+
+                float[] columnWidthsPg2_1 = { 23f, 13f };
+                tablePg2_1.SetWidths(columnWidthsPg2_1);
+
+                tablePg2_1.AddCell("TOTAL MEDICAMENTS");
+                tablePg2_1.AddCell(" ");
+
+                doc.Add(tablePg2_1);
 
                 doc.Close();
                 MessageBox.Show("Generation succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);

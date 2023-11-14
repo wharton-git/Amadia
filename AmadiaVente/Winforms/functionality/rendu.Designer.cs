@@ -61,6 +61,12 @@
             btnPdf = new Guna.UI2.WinForms.Guna2GradientButton();
             txtboxSearchRendu = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewDashboard = new Guna.UI2.WinForms.Guna2DataGridView();
+            id = new DataGridViewTextBoxColumn();
+            nom_client = new DataGridViewTextBoxColumn();
+            prenom_client = new DataGridViewTextBoxColumn();
+            nom_responsable = new DataGridViewTextBoxColumn();
+            prenom_responsable = new DataGridViewTextBoxColumn();
+            date = new DataGridViewTextBoxColumn();
             labelSomme = new Guna.UI2.WinForms.Guna2HtmlLabel();
             labelCommande = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel2Date = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -75,12 +81,6 @@
             btnInfoCommande = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            id = new DataGridViewTextBoxColumn();
-            nom_client = new DataGridViewTextBoxColumn();
-            prenom_client = new DataGridViewTextBoxColumn();
-            nom_responsable = new DataGridViewTextBoxColumn();
-            prenom_responsable = new DataGridViewTextBoxColumn();
-            date = new DataGridViewTextBoxColumn();
             panelRendu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDashboard).BeginInit();
             panel2Date.SuspendLayout();
@@ -127,7 +127,7 @@
             btnPdf.ForeColor = Color.White;
             btnPdf.Image = Properties.Resources.Print;
             btnPdf.ImageSize = new Size(40, 40);
-            btnPdf.Location = new Point(627, 118);
+            btnPdf.Location = new Point(627, 126);
             btnPdf.Name = "btnPdf";
             btnPdf.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnPdf.Size = new Size(76, 45);
@@ -214,6 +214,42 @@
             dataGridViewDashboard.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewDashboard.CellClick += dataGridViewDashboard_CellClick;
             dataGridViewDashboard.DataError += dataGridViewDashboard_DataError;
+            // 
+            // id
+            // 
+            id.HeaderText = "ID";
+            id.Name = "id";
+            id.ReadOnly = true;
+            // 
+            // nom_client
+            // 
+            nom_client.HeaderText = "Nom Client";
+            nom_client.Name = "nom_client";
+            nom_client.ReadOnly = true;
+            // 
+            // prenom_client
+            // 
+            prenom_client.HeaderText = "Prénom Client";
+            prenom_client.Name = "prenom_client";
+            prenom_client.ReadOnly = true;
+            // 
+            // nom_responsable
+            // 
+            nom_responsable.HeaderText = "Nom Responsable";
+            nom_responsable.Name = "nom_responsable";
+            nom_responsable.ReadOnly = true;
+            // 
+            // prenom_responsable
+            // 
+            prenom_responsable.HeaderText = "Prénom Responsable";
+            prenom_responsable.Name = "prenom_responsable";
+            prenom_responsable.ReadOnly = true;
+            // 
+            // date
+            // 
+            date.HeaderText = "Date";
+            date.Name = "date";
+            date.ReadOnly = true;
             // 
             // labelSomme
             // 
@@ -397,12 +433,12 @@
             btnInfoCommande.FillColor2 = Color.FromArgb(23, 117, 197);
             btnInfoCommande.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnInfoCommande.ForeColor = Color.White;
-            btnInfoCommande.Location = new Point(426, 118);
+            btnInfoCommande.Location = new Point(487, 126);
             btnInfoCommande.Name = "btnInfoCommande";
             btnInfoCommande.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btnInfoCommande.Size = new Size(180, 45);
+            btnInfoCommande.Size = new Size(119, 45);
             btnInfoCommande.TabIndex = 5;
-            btnInfoCommande.Text = "Détailler";
+            btnInfoCommande.Text = "Détail";
             btnInfoCommande.Click += btnInfoCommande_Click;
             // 
             // guna2GradientPanel1
@@ -433,42 +469,6 @@
             guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges26;
             guna2GradientPanel2.Size = new Size(886, 478);
             guna2GradientPanel2.TabIndex = 7;
-            // 
-            // id
-            // 
-            id.HeaderText = "ID";
-            id.Name = "id";
-            id.ReadOnly = true;
-            // 
-            // nom_client
-            // 
-            nom_client.HeaderText = "Nom Client";
-            nom_client.Name = "nom_client";
-            nom_client.ReadOnly = true;
-            // 
-            // prenom_client
-            // 
-            prenom_client.HeaderText = "Prénom Client";
-            prenom_client.Name = "prenom_client";
-            prenom_client.ReadOnly = true;
-            // 
-            // nom_responsable
-            // 
-            nom_responsable.HeaderText = "Nom Responsable";
-            nom_responsable.Name = "nom_responsable";
-            nom_responsable.ReadOnly = true;
-            // 
-            // prenom_responsable
-            // 
-            prenom_responsable.HeaderText = "Prénom Responsable";
-            prenom_responsable.Name = "prenom_responsable";
-            prenom_responsable.ReadOnly = true;
-            // 
-            // date
-            // 
-            date.HeaderText = "Date";
-            date.Name = "date";
-            date.ReadOnly = true;
             // 
             // rendu
             // 

@@ -139,9 +139,9 @@
             guna2HtmlLabel1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             guna2HtmlLabel1.Location = new Point(30, 12);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(237, 47);
+            guna2HtmlLabel1.Size = new Size(252, 47);
             guna2HtmlLabel1.TabIndex = 8;
-            guna2HtmlLabel1.Text = "Liste des Stocks";
+            guna2HtmlLabel1.Text = "Liste des Articles";
             // 
             // dataGridViewList
             // 
