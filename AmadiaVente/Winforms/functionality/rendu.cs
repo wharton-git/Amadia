@@ -18,6 +18,7 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.Globalization;
 
 namespace AmadiaVente.Winforms.functionality
 {
@@ -26,6 +27,7 @@ namespace AmadiaVente.Winforms.functionality
         // Déclaration globale
         private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
         int id_commande = 0;
+        int total = 0;
         DateTime dateActuelle = DateTime.Today;
 
         List<string> mois = new List<string>
@@ -255,26 +257,6 @@ namespace AmadiaVente.Winforms.functionality
 
         }
 
-        /*void initialiserDataGridRendu()
-        {
-            using (SqliteConnection connection = new SqliteConnection(cs))
-            {
-                DateTime date = DateTime.Today;
-                String idCom = "1";
-                connection.Open();
-
-                string sqlQuery = "UPDATE commande SET date_achat = @nouvelleDateAchat WHERE id_commande = @idCommande";
-
-                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@nouvelleDateAchat", date);
-                    command.Parameters.AddWithValue("@idCommande", idCom);
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }*/
-
         void afficheRecetteAnnee(string annee)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
@@ -378,6 +360,76 @@ namespace AmadiaVente.Winforms.functionality
             int nbrCommande = dataGridViewDashboard.Rows.Count;
             labelCommande.Text = "Total commande : " + nbrCommande;
             labelSomme.Text = "Somme : " + val[1] + " Ar";
+        }
+
+        private List<string> GetMedicIds(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Médicaments'";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private string[] checkListIdMedic(string id, string connectionString)
+        {
+            String[] result = new string[5];
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT lc.id_article, designation, SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE lc.id_article = @id";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                result[i] = reader[i].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        static string FormatteSommeArgent(long montant)
+        {
+            // Utilisation de la classe NumberFormatInfo pour obtenir le séparateur de milliers
+            NumberFormatInfo formatInfo = CultureInfo.CurrentCulture.NumberFormat;
+            string separator = formatInfo.NumberGroupSeparator;
+
+            // Convertir le montant en une chaîne formatée
+            string formattedAmount = montant.ToString("N0");
+
+            // Remplacer le séparateur de milliers par un espace
+            formattedAmount = formattedAmount.Replace(separator, " ");
+
+            return formattedAmount;
         }
 
         // Événements
@@ -779,17 +831,24 @@ namespace AmadiaVente.Winforms.functionality
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell("TOTAL ACTIVITE");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                doc.Add(table);
+
+                PdfPTable table_1 = new PdfPTable(2);
+
+                table_1.WidthPercentage = 98;
+
+                float[] columnWidths_1 = { 27f, 13f };
+                table_1.SetWidths(columnWidths_1);
+
+                table_1.AddCell("TOTAL CONSOMMABLE");
+                table_1.AddCell("");
+
+                table_1.SpacingAfter = 10f;
+
+                doc.Add(table_1);
 
                 table.SpacingBefore = 10f;
-                table.SpacingAfter = 10f;
 
-                doc.Add(table);
                 //2nd partie Tableau
 
                 PdfPTable table2 = new PdfPTable(6);
@@ -848,16 +907,21 @@ namespace AmadiaVente.Winforms.functionality
                 table2.AddCell("");
                 table2.AddCell("");
 
-                table2.AddCell("TOTAL CONSOMABLE");
-                table2.AddCell(cellVideTeteMnM);
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-
-                table2.SpacingAfter = 10f;
-
                 doc.Add(table2);
+
+                PdfPTable table2_1 = new PdfPTable(2);
+
+                table2_1.WidthPercentage = 98;
+
+                float[] columnWidths2_1 = { 27f, 13f };
+                table2_1.SetWidths(columnWidths2_1);
+
+                table2_1.AddCell("TOTAL CONSOMMABLE");
+                table2_1.AddCell("");
+
+                table2_1.SpacingAfter = 10f;
+
+                doc.Add(table2_1);
 
 
                 PdfPTable table3 = new PdfPTable(2);
@@ -867,8 +931,31 @@ namespace AmadiaVente.Winforms.functionality
                 float[] columnWidths3 = { 27f, 13f };
                 table3.SetWidths(columnWidths3);
 
+                int totalPseudo = 0;
+                List<String> idListPseudo = new List<String>();
+                idListPseudo = GetMedicIds(cs);
+                foreach (String id in idListPseudo)
+                {
+                    String[] infoDesign = checkListIdMedic(id, cs);
+
+                    // Vérifiez que la longueur de infoDesign est au moins de 5 éléments avant d'accéder à infoDesign[i+1]
+                    if (infoDesign.Length >= 5)
+                    {
+                        int totalInter = 0;
+                        for (int i = 1; i < 5; i++)
+                        {
+                            totalInter = int.Parse(infoDesign[4]);
+                        }
+                        totalPseudo += totalInter;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur de ligne pseudo");
+                    }
+                }
+
                 table3.AddCell("TOTAL MEDICAMENTS");
-                table3.AddCell("");
+                table3.AddCell(FormatteSommeArgent(totalPseudo) + " AR");
 
                 table3.AddCell(" ");
                 table3.AddCell(" ");
@@ -903,17 +990,31 @@ namespace AmadiaVente.Winforms.functionality
                 tablePg2.AddCell("VALEUR");
                 tablePg2.AddCell("OBS");
 
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
+                List<String> idList = new List<String>();
+                idList = GetMedicIds(cs);
+                foreach (String id in idList)
+                {
+                    String[] infoDesign = checkListIdMedic(id, cs);
 
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
-                tablePg2.AddCell(" ");
+                    // Vérifiez que la longueur de infoDesign est au moins de 5 éléments avant d'accéder à infoDesign[i+1]
+                    if (infoDesign.Length >= 5)
+                    {
+                        int totalInter = 0;
+                        for (int i = 1; i < 5; i++)
+                        {
+                            tablePg2.AddCell(infoDesign[i]);
+                            totalInter = int.Parse(infoDesign[4]);
+                        }
+                        total += totalInter;
+                    }
+                    else
+                    { 
+                        MessageBox.Show("Erreur de ligne");
+                    }
+
+                    tablePg2.AddCell(" ");
+                }
+
 
                 tablePg2.SpacingBefore = 10f;
 
@@ -927,7 +1028,7 @@ namespace AmadiaVente.Winforms.functionality
                 tablePg2_1.SetWidths(columnWidthsPg2_1);
 
                 tablePg2_1.AddCell("TOTAL MEDICAMENTS");
-                tablePg2_1.AddCell(" ");
+                tablePg2_1.AddCell(FormatteSommeArgent(total) + " AR");
 
                 doc.Add(tablePg2_1);
 
