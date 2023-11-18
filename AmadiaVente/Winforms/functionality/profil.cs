@@ -15,7 +15,7 @@ namespace AmadiaVente.Winforms.functionality
     {
         //declaration global
         string sessionId;
-        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
 
 
         //Méthodes

@@ -6,7 +6,7 @@ namespace AmadiaVente
     {
         //Déclaration Globale
         private Size originalSize;
-        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
         private string username;
         private string password;
         public string sessionNom;

@@ -15,7 +15,7 @@ namespace AmadiaVente.Winforms.popUp
     public partial class popUpAddList : Form
     {
         //Declaration globale
-        private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
 
         private bool isDragging = false;
         private Point lastCursorPos;
@@ -40,6 +40,7 @@ namespace AmadiaVente.Winforms.popUp
         private void addArticle(string designation, string type)
         {
             int prix = 0;
+            int prixMembre = 0;
             int nbrStock = 0;
 
             try
@@ -47,12 +48,13 @@ namespace AmadiaVente.Winforms.popUp
                 using (SqliteConnection connection = new SqliteConnection(cs))
                 {
                     connection.Open();
-                    string query = "INSERT INTO article (designation, prix_article, type_article, nbr_stock) VALUES(@designation, @prixArticle, @typeArticle, @nbrStock)";
+                    string query = "INSERT INTO article (designation, prix_article, prix_membre, type_article, nbr_stock) VALUES(@designation, @prixArticle,  @prixArticleMembre, @typeArticle, @nbrStock)";
 
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@designation", designation);
                         command.Parameters.AddWithValue("@prixArticle", prix);
+                        command.Parameters.AddWithValue("@prixArticleMembre", prixMembre);
                         command.Parameters.AddWithValue("@typeArticle", type);
                         command.Parameters.AddWithValue("@nbrStock", nbrStock);
                         command.ExecuteNonQuery();

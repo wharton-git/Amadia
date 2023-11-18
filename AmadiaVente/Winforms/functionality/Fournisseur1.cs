@@ -16,7 +16,7 @@ namespace AmadiaVente.Winforms.functionality
     {
         //Déclaration Globale
         private Form activeForm;
-        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
         string sessionId;
         private bool indicationErreurAchat = false;
         int prixAchat = 0;
@@ -30,6 +30,7 @@ namespace AmadiaVente.Winforms.functionality
             dataGridViewPanier.Columns.Add("Quantite", "Quantité"); // Colonne pour la quantité du produit
             dataGridViewPanier.Columns.Add("prixDAchat", "Prix d'Achat");
             dataGridViewPanier.Columns.Add("prixDeVente", "Prix de Vente");// Colonne pour le prix unitaire du produit
+            dataGridViewPanier.Columns.Add("prixDeVenteMembre", "PV Membre");// Colonne pour le prix unitaire du produit
             dataGridViewPanier.Columns.Add("Prix", "Prix");
 
 
@@ -209,6 +210,7 @@ namespace AmadiaVente.Winforms.functionality
             TypeMedicament.Enabled = false;
             txtBoxPrixdeVente.Enabled = false;
             NomFournisseur.Enabled = true;
+            txtBoxPrixDeVenteMembre.Clear();
         }
 
         private void AjoutFournisseurPage_Click(object sender, EventArgs e)
@@ -247,7 +249,7 @@ namespace AmadiaVente.Winforms.functionality
 
             return articleId;
         }
-        public void validerAchat(int idArticle, int quantite, int prixVente, int prixAchat, int prix, int idCommande)
+        public void validerAchat(int idArticle, int quantite, int prixVente, int prixVenteMembre, int prixAchat, int prix, int idCommande)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
@@ -270,13 +272,14 @@ namespace AmadiaVente.Winforms.functionality
                             {
                                 // Le stock est suffisant, procédez à l'achat...
 
-                                string insertLigneCommandeQuery = "INSERT INTO ligneCommandeF (id_article, quantiteMedicament, prixVente, prixAchat, prixMedicament, idCommandeF) VALUES (@idArticle, @quantite, @prixVente, @prixAchat, @prix, @idCommande)";
+                                string insertLigneCommandeQuery = "INSERT INTO ligneCommandeF (id_article, quantiteMedicament, prixVente,prixVenteMembre, prixAchat, prixMedicament, idCommandeF) VALUES (@idArticle, @quantite, @prixVente, @prixVenteMembre, @prixAchat, @prix, @idCommande)";
 
                                 using (SqliteCommand insertCommand = new SqliteCommand(insertLigneCommandeQuery, connection))
                                 {
                                     insertCommand.Parameters.AddWithValue("@idArticle", idArticle);
                                     insertCommand.Parameters.AddWithValue("@quantite", quantite);
                                     insertCommand.Parameters.AddWithValue("@prixVente", prixVente);
+                                    insertCommand.Parameters.AddWithValue("@prixVenteMembre", prixVenteMembre);
                                     insertCommand.Parameters.AddWithValue("@prixAchat", prixAchat);
                                     insertCommand.Parameters.AddWithValue("@prix", prix);
                                     insertCommand.Parameters.AddWithValue("@idCommande", idCommande);
@@ -295,11 +298,12 @@ namespace AmadiaVente.Winforms.functionality
                                     updateCommand.ExecuteNonQuery();
                                 }
 
-                                string updatePrixQuery = "UPDATE article SET prix_article = @prixVente WHERE id_article = @idArticle";
+                                string updatePrixQuery = "UPDATE article SET prix_article = @prixVente, prix_membre = @prixVenteMembre  WHERE id_article = @idArticle";
 
                                 using (SqliteCommand updateCommand = new SqliteCommand(updatePrixQuery, connection))
                                 {
                                     updateCommand.Parameters.AddWithValue("@prixVente", prixVente);
+                                    updateCommand.Parameters.AddWithValue("@prixVenteMembre", prixVenteMembre);
                                     updateCommand.Parameters.AddWithValue("@idArticle", idArticle);
 
                                     updateCommand.ExecuteNonQuery();
@@ -357,8 +361,14 @@ namespace AmadiaVente.Winforms.functionality
                 int prixTotal = int.Parse(PrixMedicament.Text);
                 int Pu = int.Parse(PUMedicament.Text);
                 int prixDeVente = int.Parse(txtBoxPrixdeVente.Text);
+                int prixDeVenteMembre = 0;
 
-                dataGridViewPanier.Rows.Add(nomProduit, quantite, Pu, prixDeVente, prixTotal);
+                if (!string.IsNullOrEmpty(txtBoxPrixDeVenteMembre.Text))
+                {
+                    prixDeVenteMembre = int.Parse(txtBoxPrixDeVenteMembre.Text);
+                }
+
+                dataGridViewPanier.Rows.Add(nomProduit, quantite, Pu, prixDeVente, prixDeVenteMembre, prixTotal);
 
                 Medicament.SelectedIndex = -1;
                 Medicament.Text = "";
@@ -366,6 +376,7 @@ namespace AmadiaVente.Winforms.functionality
                 PUMedicament.Clear();
                 PrixMedicament.Clear();
                 txtBoxPrixdeVente.Clear();
+                txtBoxPrixDeVenteMembre.Clear();
             }
             else
             {
@@ -428,12 +439,14 @@ namespace AmadiaVente.Winforms.functionality
                 selectedRow.Cells["Quantite"].Value = QuantiteMedicament.Text;
                 selectedRow.Cells["Prix"].Value = PrixMedicament.Text;
                 selectedRow.Cells["prixDeVente"].Value = txtBoxPrixdeVente.Text;
+                selectedRow.Cells["prixDeVenteMembre"].Value = txtBoxPrixDeVenteMembre.Text;
                 selectedRow.Cells["prixDAchat"].Value = PUMedicament.Text;
 
                 int nouveauPrix = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
 
                 Medicament.SelectedItem = null;
                 PrixMedicament.Text = QuantiteMedicament.Text = txtBoxPrixdeVente.Text = string.Empty;
+                txtBoxPrixDeVenteMembre.Clear();
 
             }
             btnAjoutPanier.Enabled = true;
@@ -504,10 +517,11 @@ namespace AmadiaVente.Winforms.functionality
                     int prix = Convert.ToInt32(row.Cells["Prix"].Value);
                     int prixAchat = Convert.ToInt32(row.Cells["prixDAchat"].Value.ToString());
                     int prixVente = Convert.ToInt32(row.Cells["prixDeVente"].Value.ToString());
+                    int prixVenteMembre = Convert.ToInt32(row.Cells["prixDeVenteMembre"].Value.ToString());
 
                     int artcileId = GetArticleIdByDesignation(designation: nomProduit);
 
-                    validerAchat(artcileId, quantite, prixVente, prixAchat, prix, idCommande);
+                    validerAchat(artcileId, quantite, prixVente, prixVenteMembre, prixAchat, prix, idCommande);
                     makeHistory(artcileId, quantite, idCommande);
                 }
                 if (indicationErreurAchat)
@@ -655,6 +669,7 @@ namespace AmadiaVente.Winforms.functionality
                 QuantiteMedicament.Text = selectedRow.Cells["Quantite"].Value.ToString();
                 PrixMedicament.Text = selectedRow.Cells["Prix"].Value.ToString();
                 txtBoxPrixdeVente.Text = selectedRow.Cells["prixDeVente"].Value.ToString();
+                txtBoxPrixDeVenteMembre.Text = selectedRow.Cells["prixDeVenteMembre"].Value.ToString();
                 PUMedicament.Text = selectedRow.Cells["prixDAchat"].Value.ToString();
             }
             btnAjoutPanier.Enabled = false;

@@ -18,7 +18,7 @@ namespace AmadiaVente.Winforms.functionality
     public partial class achat : Form
     {
         //Déclaration Globale
-        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
         string sessionId;
         private bool isSortedAscending = false;
         private bool indicationErreurAchat = false;
@@ -30,6 +30,7 @@ namespace AmadiaVente.Winforms.functionality
             InitializeComponent();
             dataGridViewPanier.Columns.Add("NomProduit", "Nom Du Produit"); // Colonne pour le nom du produit
             dataGridViewPanier.Columns.Add("Quantite", "Quantité"); // Colonne pour la quantité du produit
+            dataGridViewPanier.Columns.Add("PrixUnitaire", "P.U."); // Colonne pour le prix unitaire du produit
             dataGridViewPanier.Columns.Add("Prix", "Prix"); // Colonne pour le prix unitaire du produit
 
             labelTotal.Text = totalPayer.ToString() + " Ar";
@@ -102,7 +103,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string query = "SELECT prix_article,nbr_stock FROM article WHERE designation=@article";
+                string query = "SELECT prix_article, prix_membre, nbr_stock FROM article WHERE designation=@article";
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
@@ -117,9 +118,10 @@ namespace AmadiaVente.Winforms.functionality
                             reader.Read();
 
                             int prixArticle = reader.GetInt32(0);
-                            int NombreStock = reader.GetInt32(1);
+                            int prixArticleMembre = reader.GetInt32(1);
+                            int NombreStock = reader.GetInt32(2);
 
-                            return new int[] { prixArticle, NombreStock };
+                            return new int[] { prixArticle, prixArticleMembre, NombreStock };
                         }
                     }
                 }
@@ -329,7 +331,7 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
-        public void validerAchat(int idArticle, int quantite, decimal prix, int idCommande)
+        public void validerAchat(int idArticle, int quantite, decimal pu, decimal prix, int idCommande)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
@@ -352,12 +354,13 @@ namespace AmadiaVente.Winforms.functionality
                             {
                                 // Le stock est suffisant, procédez à l'achat...
 
-                                string insertLigneCommandeQuery = "INSERT INTO lignecommande (id_article, qte_acheter, prix, id_commande) VALUES(@idArticle, @quantite, @prix, @idCommande)";
+                                string insertLigneCommandeQuery = "INSERT INTO lignecommande (id_article, qte_acheter, pu, prix, id_commande) VALUES(@idArticle, @quantite, @pu, @prix, @idCommande)";
 
                                 using (SqliteCommand insertCommand = new SqliteCommand(insertLigneCommandeQuery, connection))
                                 {
                                     insertCommand.Parameters.AddWithValue("@idArticle", idArticle);
                                     insertCommand.Parameters.AddWithValue("@quantite", quantite);
+                                    insertCommand.Parameters.AddWithValue("@pu", pu);
                                     insertCommand.Parameters.AddWithValue("@prix", prix);
                                     insertCommand.Parameters.AddWithValue("@idCommande", idCommande);
 
@@ -469,7 +472,18 @@ namespace AmadiaVente.Winforms.functionality
             {
                 string articleSelectionner = comboBoxDesignation.SelectedItem.ToString();
                 int prixArticle = AfficheArcticle(articleSelectionner)[0];
-                int resteStock = AfficheArcticle(articleSelectionner)[1];
+
+                if (comboBoxMembre.SelectedItem != null && comboBoxMembre.SelectedItem.ToString() == "Oui")
+                {
+                   int prixArticleTrans = AfficheArcticle(articleSelectionner)[1];
+
+                    if(prixArticleTrans != 0)
+                    {
+                        prixArticle = AfficheArcticle(articleSelectionner)[1];
+                    }
+                }
+
+                int resteStock = AfficheArcticle(articleSelectionner)[2];
                 txtBoxPU.Text = prixArticle.ToString();
                 labelStock.Text = resteStock.ToString();
                 txtBoxQuantite.Text = string.Empty;
@@ -489,7 +503,19 @@ namespace AmadiaVente.Winforms.functionality
                     string qteArticle = txtBoxQuantite.Text.ToString();
                     string articleSelect = comboBoxDesignation.SelectedItem.ToString();
                     int prixUnit = AfficheArcticle(articleSelect)[0];
-                    int stock = AfficheArcticle(articleSelect)[1];
+
+                    if (comboBoxMembre.SelectedItem != null && comboBoxMembre.SelectedItem.ToString() == "Oui")
+                    {
+                        prixUnit = AfficheArcticle(articleSelect)[1];
+                        int prixArticleTrans = AfficheArcticle(articleSelect)[1];
+
+                        if (prixArticleTrans != 0)
+                        {
+                            prixUnit = AfficheArcticle(articleSelect)[1];
+                        }
+                    }
+
+                    int stock = AfficheArcticle(articleSelect)[2];
 
                     int prixAPayer = prixUnit * Convert.ToInt32(qteArticle);
 
@@ -551,11 +577,12 @@ namespace AmadiaVente.Winforms.functionality
 
                     string nomProduit = row.Cells["NomProduit"].Value.ToString();
                     int quantite = Convert.ToInt32(row.Cells["Quantite"].Value);
+                    decimal pu = Convert.ToDecimal(row.Cells["PrixUnitaire"].Value);
                     decimal prix = Convert.ToDecimal(row.Cells["Prix"].Value);
 
                     int artcileId = GetArticleIdByDesignation(nomProduit);
 
-                    validerAchat(artcileId, quantite, prix, idCommande);
+                    validerAchat(artcileId, quantite, pu, prix, idCommande);
                     makeHistory(artcileId, quantite, idCommande);
 
                 }
@@ -639,9 +666,11 @@ namespace AmadiaVente.Winforms.functionality
 
                     string nomProduit = comboBoxDesignation.SelectedItem.ToString();
                     int quantite = int.Parse(txtBoxQuantite.Text);
+                    int pu = int.Parse(txtBoxPU.Text);
                     int prixTotal = int.Parse(txtBoxPrix.Text);
 
-                    dataGridViewPanier.Rows.Add(nomProduit, quantite, prixTotal);
+
+                    dataGridViewPanier.Rows.Add(nomProduit, quantite, pu, prixTotal);
 
                     comboBoxDesignation.SelectedIndex = -1;
                     txtBoxQuantite.Clear();
@@ -672,6 +701,7 @@ namespace AmadiaVente.Winforms.functionality
 
                 comboBoxDesignation.SelectedItem = selectedRow.Cells["NomProduit"].Value.ToString();
                 txtBoxQuantite.Text = selectedRow.Cells["Quantite"].Value.ToString();
+                txtBoxPU.Text = selectedRow.Cells["PrixUnitaire"].Value.ToString();
                 txtBoxPrix.Text = selectedRow.Cells["Prix"].Value.ToString();
 
             }
@@ -731,6 +761,7 @@ namespace AmadiaVente.Winforms.functionality
 
                 selectedRow.Cells["NomProduit"].Value = comboBoxDesignation.SelectedItem;
                 selectedRow.Cells["Quantite"].Value = txtBoxQuantite.Text;
+                selectedRow.Cells["PrixUnitaire"].Value = txtBoxPU.Text;
                 selectedRow.Cells["Prix"].Value = txtBoxPrix.Text;
 
                 int nouveauPrix = Convert.ToInt32(selectedRow.Cells["Prix"].Value);

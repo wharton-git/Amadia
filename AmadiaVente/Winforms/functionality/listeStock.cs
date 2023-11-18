@@ -15,7 +15,7 @@ namespace AmadiaVente.Winforms.functionality
     public partial class listeStock : Form
     {
         //Declaration Globale
-        private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
 
         //COnstructeur
         public listeStock()
@@ -29,7 +29,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_article AS Id, designation AS Désignation, prix_article AS Prix, type_article AS Type, nbr_stock AS 'Qte en Stock' FROM article";
+                string sqlQuery = "SELECT id_article AS Id, designation AS Désignation, prix_article AS Prix, prix_membre AS Prix (Membre), type_article AS Type, nbr_stock AS 'Qte en Stock' FROM article";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {

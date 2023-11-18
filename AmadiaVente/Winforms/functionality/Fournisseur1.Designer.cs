@@ -49,6 +49,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -79,6 +81,8 @@
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtBoxPrixdeVente = new Guna.UI2.WinForms.Guna2TextBox();
+            txtBoxPrixDeVenteMembre = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPanier).BeginInit();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
@@ -123,7 +127,7 @@
             guna2HtmlLabel5.Anchor = AnchorStyles.Top;
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel5.Location = new Point(268, 79);
+            guna2HtmlLabel5.Location = new Point(30, 79);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(58, 18);
             guna2HtmlLabel5.TabIndex = 59;
@@ -134,7 +138,7 @@
             guna2HtmlLabel4.Anchor = AnchorStyles.Top;
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel4.Location = new Point(24, 79);
+            guna2HtmlLabel4.Location = new Point(400, 9);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(81, 18);
             guna2HtmlLabel4.TabIndex = 58;
@@ -171,12 +175,12 @@
             Medicament.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             Medicament.AutoCompleteSource = AutoCompleteSource.ListItems;
             Medicament.BackColor = Color.White;
-            Medicament.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Medicament.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Medicament.ForeColor = Color.Black;
             Medicament.FormattingEnabled = true;
-            Medicament.Location = new Point(27, 102);
+            Medicament.Location = new Point(403, 33);
             Medicament.Name = "Medicament";
-            Medicament.Size = new Size(227, 33);
+            Medicament.Size = new Size(227, 29);
             Medicament.TabIndex = 54;
             Medicament.SelectedIndexChanged += Medicament_SelectedIndexChanged;
             // 
@@ -189,9 +193,9 @@
             NomFournisseur.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             NomFournisseur.ForeColor = Color.Black;
             NomFournisseur.FormattingEnabled = true;
-            NomFournisseur.Location = new Point(27, 32);
+            NomFournisseur.Location = new Point(27, 33);
             NomFournisseur.Name = "NomFournisseur";
-            NomFournisseur.Size = new Size(318, 29);
+            NomFournisseur.Size = new Size(169, 29);
             NomFournisseur.TabIndex = 53;
             NomFournisseur.SelectedIndexChanged += NomFournisseur_SelectedIndexChanged;
             // 
@@ -204,7 +208,7 @@
             TypeMedicament.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TypeMedicament.ForeColor = Color.Black;
             TypeMedicament.FormattingEnabled = true;
-            TypeMedicament.Location = new Point(379, 32);
+            TypeMedicament.Location = new Point(202, 33);
             TypeMedicament.Name = "TypeMedicament";
             TypeMedicament.Size = new Size(195, 29);
             TypeMedicament.TabIndex = 52;
@@ -215,7 +219,7 @@
             guna2HtmlLabel8.Anchor = AnchorStyles.Top;
             guna2HtmlLabel8.BackColor = Color.Transparent;
             guna2HtmlLabel8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel8.Location = new Point(376, 9);
+            guna2HtmlLabel8.Location = new Point(199, 9);
             guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             guna2HtmlLabel8.Size = new Size(91, 18);
             guna2HtmlLabel8.TabIndex = 50;
@@ -226,7 +230,7 @@
             guna2HtmlLabel7.Anchor = AnchorStyles.Top;
             guna2HtmlLabel7.BackColor = Color.Transparent;
             guna2HtmlLabel7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel7.Location = new Point(526, 79);
+            guna2HtmlLabel7.Location = new Point(332, 79);
             guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             guna2HtmlLabel7.Size = new Size(88, 18);
             guna2HtmlLabel7.TabIndex = 49;
@@ -237,7 +241,7 @@
             guna2HtmlLabel6.Anchor = AnchorStyles.Top;
             guna2HtmlLabel6.BackColor = Color.Transparent;
             guna2HtmlLabel6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel6.Location = new Point(388, 79);
+            guna2HtmlLabel6.Location = new Point(163, 79);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             guna2HtmlLabel6.Size = new Size(79, 18);
             guna2HtmlLabel6.TabIndex = 48;
@@ -269,7 +273,7 @@
             PUMedicament.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             PUMedicament.ForeColor = Color.Black;
             PUMedicament.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            PUMedicament.Location = new Point(379, 104);
+            PUMedicament.Location = new Point(163, 104);
             PUMedicament.Margin = new Padding(4, 4, 4, 4);
             PUMedicament.Name = "PUMedicament";
             PUMedicament.PasswordChar = '\0';
@@ -368,7 +372,7 @@
             PrixMedicament.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             PrixMedicament.ForeColor = Color.Black;
             PrixMedicament.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            PrixMedicament.Location = new Point(673, 104);
+            PrixMedicament.Location = new Point(670, 104);
             PrixMedicament.Margin = new Padding(4, 4, 4, 4);
             PrixMedicament.Name = "PrixMedicament";
             PrixMedicament.PasswordChar = '\0';
@@ -395,7 +399,7 @@
             QuantiteMedicament.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             QuantiteMedicament.ForeColor = Color.Black;
             QuantiteMedicament.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            QuantiteMedicament.Location = new Point(265, 104);
+            QuantiteMedicament.Location = new Point(27, 104);
             QuantiteMedicament.Margin = new Padding(4, 4, 4, 4);
             QuantiteMedicament.Name = "QuantiteMedicament";
             QuantiteMedicament.PasswordChar = '\0';
@@ -490,13 +494,13 @@
             // guna2GradientPanel1
             // 
             guna2GradientPanel1.Controls.Add(guna2GradientPanel2);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges23;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges25;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.FillColor = Color.FromArgb(191, 210, 255);
             guna2GradientPanel1.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges26;
             guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 67;
             // 
@@ -505,6 +509,8 @@
             guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel2.BackColor = Color.Transparent;
             guna2GradientPanel2.BorderRadius = 15;
+            guna2GradientPanel2.Controls.Add(txtBoxPrixDeVenteMembre);
+            guna2GradientPanel2.Controls.Add(guna2HtmlLabel2);
             guna2GradientPanel2.Controls.Add(guna2HtmlLabel1);
             guna2GradientPanel2.Controls.Add(txtBoxPrixdeVente);
             guna2GradientPanel2.Controls.Add(NomFournisseur);
@@ -526,12 +532,12 @@
             guna2GradientPanel2.Controls.Add(guna2HtmlLabel6);
             guna2GradientPanel2.Controls.Add(PUMedicament);
             guna2GradientPanel2.Controls.Add(guna2HtmlLabel3);
-            guna2GradientPanel2.CustomizableEdges = customizableEdges21;
+            guna2GradientPanel2.CustomizableEdges = customizableEdges23;
             guna2GradientPanel2.FillColor = Color.WhiteSmoke;
             guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
             guna2GradientPanel2.Location = new Point(27, 26);
             guna2GradientPanel2.Name = "guna2GradientPanel2";
-            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges24;
             guna2GradientPanel2.Size = new Size(842, 432);
             guna2GradientPanel2.TabIndex = 0;
             // 
@@ -551,7 +557,7 @@
             txtBoxPrixdeVente.Anchor = AnchorStyles.Top;
             txtBoxPrixdeVente.BackColor = Color.White;
             txtBoxPrixdeVente.BorderColor = Color.Gray;
-            txtBoxPrixdeVente.CustomizableEdges = customizableEdges19;
+            txtBoxPrixdeVente.CustomizableEdges = customizableEdges21;
             txtBoxPrixdeVente.DefaultText = "";
             txtBoxPrixdeVente.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxPrixdeVente.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -561,17 +567,54 @@
             txtBoxPrixdeVente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxPrixdeVente.ForeColor = Color.Black;
             txtBoxPrixdeVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxPrixdeVente.Location = new Point(526, 104);
+            txtBoxPrixdeVente.Location = new Point(332, 104);
             txtBoxPrixdeVente.Margin = new Padding(4, 4, 4, 4);
             txtBoxPrixdeVente.Name = "txtBoxPrixdeVente";
             txtBoxPrixdeVente.PasswordChar = '\0';
             txtBoxPrixdeVente.PlaceholderForeColor = Color.DarkGray;
             txtBoxPrixdeVente.PlaceholderText = "";
             txtBoxPrixdeVente.SelectedText = "";
-            txtBoxPrixdeVente.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            txtBoxPrixdeVente.ShadowDecoration.CustomizableEdges = customizableEdges22;
             txtBoxPrixdeVente.Size = new Size(136, 31);
             txtBoxPrixdeVente.TabIndex = 67;
             txtBoxPrixdeVente.KeyPress += txtBoxPrixdeVente_KeyPress;
+            // 
+            // txtBoxPrixDeVenteMembre
+            // 
+            txtBoxPrixDeVenteMembre.Anchor = AnchorStyles.Top;
+            txtBoxPrixDeVenteMembre.BackColor = Color.White;
+            txtBoxPrixDeVenteMembre.BorderColor = Color.Gray;
+            txtBoxPrixDeVenteMembre.CustomizableEdges = customizableEdges19;
+            txtBoxPrixDeVenteMembre.DefaultText = "";
+            txtBoxPrixDeVenteMembre.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtBoxPrixDeVenteMembre.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtBoxPrixDeVenteMembre.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxPrixDeVenteMembre.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxPrixDeVenteMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxPrixDeVenteMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxPrixDeVenteMembre.ForeColor = Color.Black;
+            txtBoxPrixDeVenteMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxPrixDeVenteMembre.Location = new Point(501, 104);
+            txtBoxPrixDeVenteMembre.Margin = new Padding(4, 4, 4, 4);
+            txtBoxPrixDeVenteMembre.Name = "txtBoxPrixDeVenteMembre";
+            txtBoxPrixDeVenteMembre.PasswordChar = '\0';
+            txtBoxPrixDeVenteMembre.PlaceholderForeColor = Color.DarkGray;
+            txtBoxPrixDeVenteMembre.PlaceholderText = "";
+            txtBoxPrixDeVenteMembre.SelectedText = "";
+            txtBoxPrixDeVenteMembre.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            txtBoxPrixDeVenteMembre.Size = new Size(136, 31);
+            txtBoxPrixDeVenteMembre.TabIndex = 70;
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.Anchor = AnchorStyles.Top;
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2HtmlLabel2.Location = new Point(501, 79);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(149, 18);
+            guna2HtmlLabel2.TabIndex = 69;
+            guna2HtmlLabel2.Text = "Prix de Vente (Membre) :";
             // 
             // Fournisseur1
             // 
@@ -617,5 +660,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxPrixdeVente;
+        private Guna.UI2.WinForms.Guna2TextBox txtBoxPrixDeVenteMembre;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
     }
 }

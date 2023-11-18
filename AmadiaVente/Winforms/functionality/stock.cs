@@ -14,7 +14,7 @@ namespace AmadiaVente.Winforms.functionality
     public partial class stock : Form
     {
         //declaration global
-        private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
 
         //Constructeur
         public stock()

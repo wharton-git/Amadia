@@ -16,7 +16,7 @@ namespace AmadiaVente.Winforms.popUp
     public partial class popUpEditProfil : Form
     {
         //Declaration globale
-        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
         private bool isDragging = false;
         private Point lastCursorPos;
         private Point lastFormPos;

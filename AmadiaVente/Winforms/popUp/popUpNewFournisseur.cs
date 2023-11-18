@@ -16,7 +16,7 @@ namespace AmadiaVente.Winforms.popUp
     public partial class popUpNewFournisseur : Form
     {
         //Declaration Globale
-        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "../../../database.db");
+        string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
         string idFournisseur = "0";
         private bool isDragging = false;
         private Point lastCursorPos;
