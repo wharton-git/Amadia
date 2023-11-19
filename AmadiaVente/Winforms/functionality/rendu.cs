@@ -387,15 +387,15 @@ namespace AmadiaVente.Winforms.functionality
             return listId;
         }
 
-        private string[] checkListIdMedic(string id, string connectionString)
+        private string[] checkListIdMedicMembre(string id, string connectionString)
         {
-            String[] result = new string[5];
+            String[] result = new string[6];
 
             using (SqliteConnection connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT lc.id_article, designation, SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE lc.id_article = @id";
+                string sqlQuery2 = "SELECT lc.id_article, designation, 'M' as Membre, SUM(qte_acheter) AS QTE, CASE WHEN prix_membre = 0 THEN prix_article ELSE prix_membre END AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE lc.id_article = @id AND c.id_membre IS NOT NULL";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
@@ -405,9 +405,10 @@ namespace AmadiaVente.Winforms.functionality
                     {
                         if (reader.Read())
                         {
-                            for (int i = 0; i < 5; i++)
+                            for (int i = 0; i < 6; i++)
                             {
-                                result[i] = reader[i].ToString();
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+
                             }
                         }
                     }
@@ -416,6 +417,65 @@ namespace AmadiaVente.Winforms.functionality
 
             return result;
         }
+
+        private string[] checkListIdMedicNonMembre(string id, string connectionString)
+        {
+            String[] result = new string[6];
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT lc.id_article, designation, 'NM' as 'Non Membre', SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande  WHERE lc.id_article = @id AND c.id_membre IS NULL";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 6; i++)
+                            {
+                                // Vérifiez si la valeur de la colonne est NULL avant de l'ajouter au tableau
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private string totalPrixArticle(string id, string cs)
+        {
+            string result = null; // Initialisez result à une valeur par défaut, par exemple, null
+
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE lc.id_article = @id";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Assurez-vous de convertir la valeur en chaîne si nécessaire
+                            result = reader["VALEUR"].ToString();
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
 
         static string FormatteSommeArgent(long montant)
         {
@@ -443,7 +503,6 @@ namespace AmadiaVente.Winforms.functionality
             int nbrCommande = dataGridViewDashboard.Rows.Count;
             labelCommande.Text = "Total commande : " + nbrCommande;
             labelSomme.Text = "Somme : " + val[1] + " Ar";
-
 
             //comboBox
             comboBoxPeriode.Items.Add("Aujourd'hui");
@@ -645,7 +704,7 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnPdf_Click(object sender, EventArgs e)
         {
-
+            total = 0;
             string dateDuJour = DateTime.Now.ToString("dd / MM / yyyy");
 
             string pdfLocation = System.IO.Path.Combine(Application.StartupPath, "Output/Recap_journalière_du_" + DateTime.Now.ToString("dd-MM-yyyy_HHmmss") + ".pdf");
@@ -931,20 +990,20 @@ namespace AmadiaVente.Winforms.functionality
                 float[] columnWidths3 = { 27f, 13f };
                 table3.SetWidths(columnWidths3);
 
-                int totalPseudo = 0;
+               /* int totalPseudo = 0;
                 List<String> idListPseudo = new List<String>();
                 idListPseudo = GetMedicIds(cs);
                 foreach (String id in idListPseudo)
                 {
-                    String[] infoDesign = checkListIdMedic(id, cs);
+                    String[] infoDesign = checkListIdMedicMembre(id, cs);
 
                     // Vérifiez que la longueur de infoDesign est au moins de 5 éléments avant d'accéder à infoDesign[i+1]
-                    if (infoDesign.Length >= 5)
+                    if (infoDesign.Length >= 6)
                     {
                         int totalInter = 0;
-                        for (int i = 1; i < 5; i++)
+                        for (int i = 1; i < 6; i++)
                         {
-                            totalInter = int.Parse(infoDesign[4]);
+                            totalInter = int.Parse(infoDesign[6]);
                         }
                         totalPseudo += totalInter;
                     }
@@ -952,11 +1011,11 @@ namespace AmadiaVente.Winforms.functionality
                     {
                         MessageBox.Show("Erreur de ligne pseudo");
                     }
-                }
+                }*/
 
                 table3.AddCell("TOTAL MEDICAMENTS");
-                table3.AddCell(FormatteSommeArgent(totalPseudo) + " AR");
-
+                //table3.AddCell(FormatteSommeArgent(totalPseudo) + " AR");
+                table3.AddCell(" ");
                 table3.AddCell(" ");
                 table3.AddCell(" ");
 
@@ -977,14 +1036,15 @@ namespace AmadiaVente.Winforms.functionality
 
                 doc.Add(titlePg2);
 
-                PdfPTable tablePg2 = new PdfPTable(5);
+                PdfPTable tablePg2 = new PdfPTable(6);
 
                 tablePg2.WidthPercentage = 98;
 
-                float[] columnWidthsPg2 = { 26f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                float[] columnWidthsPg2 = { 26f, 10f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
                 tablePg2.SetWidths(columnWidthsPg2);
 
                 tablePg2.AddCell("DESIGNATION");
+                tablePg2.AddCell("");
                 tablePg2.AddCell("Q");
                 tablePg2.AddCell("P.U");
                 tablePg2.AddCell("VALEUR");
@@ -992,29 +1052,65 @@ namespace AmadiaVente.Winforms.functionality
 
                 List<String> idList = new List<String>();
                 idList = GetMedicIds(cs);
+
+                int totalMembre = 0;
+                int totalNonMembre = 0;
+
                 foreach (String id in idList)
                 {
-                    String[] infoDesign = checkListIdMedic(id, cs);
+                    String[] infoDesign = checkListIdMedicMembre(id, cs);
+                    String[] infoDesignNM = checkListIdMedicNonMembre(id, cs);
+                    String totalPrixString = totalPrixArticle(id, cs);
+                    int totalPrix = int.Parse(totalPrixString);
 
-                    // Vérifiez que la longueur de infoDesign est au moins de 5 éléments avant d'accéder à infoDesign[i+1]
-                    if (infoDesign.Length >= 5)
+                    // Vérifiez que la longueur de infoDesign est au moins de 6 éléments avant d'accéder à infoDesign[i]
+                    if (infoDesign.Length >= 6)
                     {
-                        int totalInter = 0;
-                        for (int i = 1; i < 5; i++)
+                        int totalInterMembre = 0;
+                        int totalInterNM = 0;
+
+                        for (int i = 1; i < 6; i++)
                         {
                             tablePg2.AddCell(infoDesign[i]);
-                            totalInter = int.Parse(infoDesign[4]);
+
+                            // Utilisez int.TryParse pour gérer les valeurs potentiellement nulles
+                            if (int.TryParse(infoDesign[5], out int parsedValue))
+                            {
+                                totalInterMembre = parsedValue;
+                            }
+                            else
+                            {
+                                totalInterMembre = 0;
+                            }
                         }
-                        total += totalInter;
+                        totalMembre += totalInterMembre;
+                        
+                        tablePg2.AddCell(" ");
+
+                        for (int i = 1; i < 6; i++)
+                        {
+                            tablePg2.AddCell(infoDesignNM[i]);
+
+                            // Utilisez int.TryParse pour gérer les valeurs potentiellement nulles
+                            if (int.TryParse(infoDesignNM[5], out int parsedValue))
+                            {
+                                totalInterNM = parsedValue;
+                            }
+                            else
+                            {
+                                totalInterNM = 0;
+                            }
+                        }
+
+                        tablePg2.AddCell(" ");
+                        totalNonMembre += totalInterNM;
                     }
                     else
-                    { 
+                    {
                         MessageBox.Show("Erreur de ligne");
                     }
-
-                    tablePg2.AddCell(" ");
                 }
-
+                int totalPrixRendu = totalMembre + totalNonMembre;
 
                 tablePg2.SpacingBefore = 10f;
 
@@ -1028,7 +1124,7 @@ namespace AmadiaVente.Winforms.functionality
                 tablePg2_1.SetWidths(columnWidthsPg2_1);
 
                 tablePg2_1.AddCell("TOTAL MEDICAMENTS");
-                tablePg2_1.AddCell(FormatteSommeArgent(total) + " AR");
+                tablePg2_1.AddCell(FormatteSommeArgent(totalPrixRendu) + " AR");
 
                 doc.Add(tablePg2_1);
 

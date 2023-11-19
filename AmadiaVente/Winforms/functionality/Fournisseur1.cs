@@ -351,7 +351,7 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnAjoutPanier_Click(object sender, EventArgs e)
         {
-            if (Medicament.SelectedItem != null && PrixMedicament.Text != string.Empty && QuantiteMedicament.Text != string.Empty)
+            if (Medicament.SelectedItem != null && PrixMedicament.Text != string.Empty && txtBoxPrixdeVente.Text != string.Empty && QuantiteMedicament.Text != string.Empty)
             {
                 btnValiderAchat.Enabled = true;
                 NomFournisseur.Enabled = TypeMedicament.Enabled = false;
