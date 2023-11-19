@@ -449,6 +449,31 @@ namespace AmadiaVente.Winforms.functionality
             return result;
         }
 
+        private string prixTotalMedic()
+        {
+            String result = null;
+           
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery2 = " SELECT SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            result = reader["VALEUR"].ToString();
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
         private string totalPrixArticle(string id, string cs)
         {
             string result = null; // Initialisez result à une valeur par défaut, par exemple, null
@@ -899,6 +924,8 @@ namespace AmadiaVente.Winforms.functionality
                 float[] columnWidths_1 = { 27f, 13f };
                 table_1.SetWidths(columnWidths_1);
 
+                int totalConsomable = 0;
+
                 table_1.AddCell("TOTAL CONSOMMABLE");
                 table_1.AddCell("");
 
@@ -975,6 +1002,8 @@ namespace AmadiaVente.Winforms.functionality
                 float[] columnWidths2_1 = { 27f, 13f };
                 table2_1.SetWidths(columnWidths2_1);
 
+                int totalConsomable2 = 0;
+
                 table2_1.AddCell("TOTAL CONSOMMABLE");
                 table2_1.AddCell("");
 
@@ -989,44 +1018,28 @@ namespace AmadiaVente.Winforms.functionality
 
                 float[] columnWidths3 = { 27f, 13f };
                 table3.SetWidths(columnWidths3);
-
-               /* int totalPseudo = 0;
-                List<String> idListPseudo = new List<String>();
-                idListPseudo = GetMedicIds(cs);
-                foreach (String id in idListPseudo)
-                {
-                    String[] infoDesign = checkListIdMedicMembre(id, cs);
-
-                    // Vérifiez que la longueur de infoDesign est au moins de 5 éléments avant d'accéder à infoDesign[i+1]
-                    if (infoDesign.Length >= 6)
-                    {
-                        int totalInter = 0;
-                        for (int i = 1; i < 6; i++)
-                        {
-                            totalInter = int.Parse(infoDesign[6]);
-                        }
-                        totalPseudo += totalInter;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erreur de ligne pseudo");
-                    }
-                }*/
+                String prixMed = prixTotalMedic();
+                int totalPrixMedic = int.Parse(prixMed);
 
                 table3.AddCell("TOTAL MEDICAMENTS");
-                //table3.AddCell(FormatteSommeArgent(totalPseudo) + " AR");
-                table3.AddCell(" ");
+                table3.AddCell(FormatteSommeArgent(totalPrixMedic) + " AR");
                 table3.AddCell(" ");
                 table3.AddCell(" ");
 
+                int totalGen = totalConsomable + totalConsomable2 + totalPrixMedic;
+
                 table3.AddCell("TOTAL GENERAL");
-                table3.AddCell("");
+                table3.AddCell(FormatteSommeArgent(totalGen) + " AR");
+
+                int depense = 0; //à definir
 
                 table3.AddCell("DEPENSE");
                 table3.AddCell("");
 
+                int versement = totalGen - depense;
+
                 table3.AddCell("VERSEMENT");
-                table3.AddCell("");
+                table3.AddCell(FormatteSommeArgent(versement) + " AR");
 
                 doc.Add(table3);
 
@@ -1040,7 +1053,7 @@ namespace AmadiaVente.Winforms.functionality
 
                 tablePg2.WidthPercentage = 98;
 
-                float[] columnWidthsPg2 = { 26f, 10f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                float[] columnWidthsPg2 = { 26f, 10f, 5f, 9f, 15f, 8f };
                 tablePg2.SetWidths(columnWidthsPg2);
 
                 tablePg2.AddCell("DESIGNATION");
@@ -1063,7 +1076,6 @@ namespace AmadiaVente.Winforms.functionality
                     String totalPrixString = totalPrixArticle(id, cs);
                     int totalPrix = int.Parse(totalPrixString);
 
-                    // Vérifiez que la longueur de infoDesign est au moins de 6 éléments avant d'accéder à infoDesign[i]
                     if (infoDesign.Length >= 6)
                     {
                         int totalInterMembre = 0;
@@ -1073,7 +1085,6 @@ namespace AmadiaVente.Winforms.functionality
                         {
                             tablePg2.AddCell(infoDesign[i]);
 
-                            // Utilisez int.TryParse pour gérer les valeurs potentiellement nulles
                             if (int.TryParse(infoDesign[5], out int parsedValue))
                             {
                                 totalInterMembre = parsedValue;
@@ -1091,7 +1102,6 @@ namespace AmadiaVente.Winforms.functionality
                         {
                             tablePg2.AddCell(infoDesignNM[i]);
 
-                            // Utilisez int.TryParse pour gérer les valeurs potentiellement nulles
                             if (int.TryParse(infoDesignNM[5], out int parsedValue))
                             {
                                 totalInterNM = parsedValue;
@@ -1133,7 +1143,6 @@ namespace AmadiaVente.Winforms.functionality
             }
             catch (Exception ex)
             {
-                // Gérez les erreurs ici
                 MessageBox.Show("Une erreur s'est produite : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
