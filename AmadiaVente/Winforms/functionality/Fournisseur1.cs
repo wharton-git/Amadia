@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using Microsoft.Data.Sqlite;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace AmadiaVente.Winforms.functionality
 {
@@ -32,7 +33,10 @@ namespace AmadiaVente.Winforms.functionality
             dataGridViewPanier.Columns.Add("prixDeVente", "Prix de Vente");// Colonne pour le prix unitaire du produit
             dataGridViewPanier.Columns.Add("prixDeVenteMembre", "PV Membre");// Colonne pour le prix unitaire du produit
             dataGridViewPanier.Columns.Add("Prix", "Prix");
-
+            dataGridViewPanier.Columns.Add("prixUtil", "Utilisation");
+            dataGridViewPanier.Columns.Add("radioGlyc", "Glycemie");
+            dataGridViewPanier.Columns.Add("radioTU", "TU");
+            dataGridViewPanier.Columns.Add("radioTG", "TG");
 
         }
 
@@ -95,6 +99,7 @@ namespace AmadiaVente.Winforms.functionality
             Medicament.Enabled = true;
             PUMedicament.Enabled = true;
             PrixMedicament.Enabled = true;
+            txtBoxPrixDeVenteMembre.Enabled = true;
             QuantiteMedicament.Enabled = true;
             txtBoxPrixdeVente.Enabled = true;
 
@@ -179,6 +184,7 @@ namespace AmadiaVente.Winforms.functionality
         {
             NomFournisseur.Enabled = false;
             PrixMedicament.Enabled = false;
+            txtBoxPrixDeVenteMembre.Enabled = false;
         }
 
         private void cacherModifPanier()
@@ -211,6 +217,8 @@ namespace AmadiaVente.Winforms.functionality
             txtBoxPrixdeVente.Enabled = false;
             NomFournisseur.Enabled = true;
             txtBoxPrixDeVenteMembre.Clear();
+            txtBoxPrixUtil.Clear();
+            checkBoxAffichePanelRadioUtil.Checked = false;
         }
 
         private void AjoutFournisseurPage_Click(object sender, EventArgs e)
@@ -347,8 +355,6 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
-        //Evenements
-
         private void btnAjoutPanier_Click(object sender, EventArgs e)
         {
             if (Medicament.SelectedItem != null && PrixMedicament.Text != string.Empty && txtBoxPrixdeVente.Text != string.Empty && QuantiteMedicament.Text != string.Empty)
@@ -362,13 +368,35 @@ namespace AmadiaVente.Winforms.functionality
                 int Pu = int.Parse(PUMedicament.Text);
                 int prixDeVente = int.Parse(txtBoxPrixdeVente.Text);
                 int prixDeVenteMembre = 0;
+                bool tu = false;
+                bool tg = false;
+                bool glyc = false;
+                string prixUtil = "N/A";
+
+                if (checkBoxAffichePanelRadioUtil.Checked == true)
+                {
+                    prixUtil = txtBoxPrixUtil.Text.ToString();
+                }
+
+                if (radioTU.Checked == true)
+                {
+                    tu = true;
+                }
+                if (radioTG.Checked == true)
+                {
+                    tg = true;
+                }
+                if (radioGlycemie.Checked == true)
+                {
+                    glyc = true;
+                }
 
                 if (!string.IsNullOrEmpty(txtBoxPrixDeVenteMembre.Text))
                 {
                     prixDeVenteMembre = int.Parse(txtBoxPrixDeVenteMembre.Text);
                 }
 
-                dataGridViewPanier.Rows.Add(nomProduit, quantite, Pu, prixDeVente, prixDeVenteMembre, prixTotal);
+                dataGridViewPanier.Rows.Add(nomProduit, quantite, Pu, prixDeVente, prixDeVenteMembre, prixTotal, prixUtil, glyc, tu, tg);
 
                 Medicament.SelectedIndex = -1;
                 Medicament.Text = "";
@@ -377,6 +405,9 @@ namespace AmadiaVente.Winforms.functionality
                 PrixMedicament.Clear();
                 txtBoxPrixdeVente.Clear();
                 txtBoxPrixDeVenteMembre.Clear();
+                txtBoxPrixUtil.Clear();
+                checkBoxAffichePanelRadioUtil.Checked = false;
+                txtBoxPrixUtil.Enabled = false;
             }
             else
             {
@@ -440,13 +471,46 @@ namespace AmadiaVente.Winforms.functionality
                 selectedRow.Cells["Prix"].Value = PrixMedicament.Text;
                 selectedRow.Cells["prixDeVente"].Value = txtBoxPrixdeVente.Text;
                 selectedRow.Cells["prixDeVenteMembre"].Value = txtBoxPrixDeVenteMembre.Text;
-                selectedRow.Cells["prixDAchat"].Value = PUMedicament.Text;
+
+                if (checkBoxAffichePanelRadioUtil.Checked == true)
+                {
+                    string prixUtil = txtBoxPrixUtil.Text.ToString();
+                    selectedRow.Cells["prixUtil"].Value = prixUtil;
+                }else
+                {
+                    selectedRow.Cells["prixUtil"].Value = "N/A";
+                    selectedRow.Cells["radioTU"].Value = "False";
+                    selectedRow.Cells["radioTG"].Value = "False";
+                    selectedRow.Cells["radioGlyc"].Value = "False";
+                }
+
+                if (radioTU.Checked == true)
+                {
+                    selectedRow.Cells["radioTU"].Value = "True";
+                    selectedRow.Cells["radioTG"].Value = "False";
+                    selectedRow.Cells["radioGlyc"].Value = "False"; 
+                }
+                if (radioTG.Checked == true)
+                {
+                    selectedRow.Cells["radioTG"].Value = "True";
+                    selectedRow.Cells["radioGlyc"].Value = "False";
+                    selectedRow.Cells["radioTU"].Value = "False";
+                }
+                if (radioGlycemie.Checked == true)
+                {
+                    selectedRow.Cells["radioGlyc"].Value = "True";
+                    selectedRow.Cells["radioTG"].Value = "False";
+                    selectedRow.Cells["radioTU"].Value = "False";
+                }
+
 
                 int nouveauPrix = Convert.ToInt32(selectedRow.Cells["Prix"].Value);
 
                 Medicament.SelectedItem = null;
                 PrixMedicament.Text = QuantiteMedicament.Text = txtBoxPrixdeVente.Text = string.Empty;
                 txtBoxPrixDeVenteMembre.Clear();
+                txtBoxPrixUtil.Clear();
+                checkBoxAffichePanelRadioUtil.Checked = false;
 
             }
             btnAjoutPanier.Enabled = true;
@@ -617,7 +681,10 @@ namespace AmadiaVente.Winforms.functionality
             PrixMedicament.Enabled = false;
             QuantiteMedicament.Enabled = false;
 
+            txtBoxPrixDeVenteMembre.Enabled = false;
 
+            panelRadioUtil.Visible = false;
+            txtBoxPrixUtil.Enabled = false;
 
             afficheMedicComboBoxLoad();
             afficheNomFournisseurLoad();
@@ -671,6 +738,37 @@ namespace AmadiaVente.Winforms.functionality
                 txtBoxPrixdeVente.Text = selectedRow.Cells["prixDeVente"].Value.ToString();
                 txtBoxPrixDeVenteMembre.Text = selectedRow.Cells["prixDeVenteMembre"].Value.ToString();
                 PUMedicament.Text = selectedRow.Cells["prixDAchat"].Value.ToString();
+
+                string util = selectedRow.Cells["prixUtil"].Value.ToString();
+                if (util != "N/A")
+                {
+                    checkBoxAffichePanelRadioUtil.Checked = true;
+                    txtBoxPrixUtil.Text = util;
+
+                    string glycCheck = selectedRow.Cells["radioGlyc"].Value.ToString();
+                    string tuCheck = selectedRow.Cells["radioTU"].Value.ToString();
+                    string tgCheck = selectedRow.Cells["radioTG"].Value.ToString();
+
+                    if (glycCheck == "True")
+                    {
+                        radioGlycemie.Checked = true;
+                        radioTU.Checked = false;
+                        radioTG.Checked = false;
+                    }
+                    if (tuCheck == "True")
+                    {
+                        radioTU.Checked = true;
+                        radioGlycemie.Checked = false;
+                        radioTG.Checked = false;
+                    }
+                    if (tgCheck == "True")
+                    {
+                        radioTG.Checked = true;
+                        radioTU.Checked = false;
+                        radioGlycemie.Checked = false;
+                    }
+                }
+
             }
             btnAjoutPanier.Enabled = false;
             afficherModifPanier();
@@ -743,6 +841,51 @@ namespace AmadiaVente.Winforms.functionality
                 // Gérer le cas où la conversion du prix d'achat échoue
                 // (par exemple, PUMedicament.Text n'est pas un entier)
                 PrixMedicament.Text = "Erreur de prix d'achat";
+            }
+        }
+
+        private void checkBoxAffichePanelRadioUtil_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxAffichePanelRadioUtil.Checked == true)
+            {
+                panelRadioUtil.Visible = true;
+                txtBoxPrixUtil.Enabled = true;
+            }
+            else
+            {
+                txtBoxPrixUtil.Clear();
+                txtBoxPrixUtil.Enabled = false;
+                panelRadioUtil.Visible = false;
+                radioTU.Checked = false;
+                radioTG.Checked = false;
+                radioGlycemie.Checked = false;
+            }
+        }
+
+        private void radioGlycemie_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioGlycemie.Checked == true)
+            {
+                radioTG.Checked = false;
+                radioTU.Checked = false;
+            }
+        }
+
+        private void radioTU_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioTU.Checked == true)
+            {
+                radioTG.Checked = false;
+                radioGlycemie.Checked = false;
+            }
+        }
+
+        private void radioTG_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioTG.Checked == true)
+            {
+                radioGlycemie.Checked = false;
+                radioTU.Checked = false;
             }
         }
     }
