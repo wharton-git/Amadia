@@ -38,6 +38,12 @@ namespace AmadiaVente.Winforms.functionality
             dataGridViewPanier.Columns.Add("radioTU", "TU");
             dataGridViewPanier.Columns.Add("radioTG", "TG");
 
+            // Cacher les colonnes
+            dataGridViewPanier.Columns["prixUtil"].Visible = false;
+            dataGridViewPanier.Columns["radioGlyc"].Visible = false;
+            dataGridViewPanier.Columns["radioTU"].Visible = false;
+            dataGridViewPanier.Columns["radioTG"].Visible = false;
+
         }
 
         private void afficheMedicComboBoxLoad()
@@ -257,7 +263,7 @@ namespace AmadiaVente.Winforms.functionality
 
             return articleId;
         }
-        public void validerAchat(int idArticle, int quantite, int prixVente, int prixVenteMembre, int prixAchat, int prix, int idCommande)
+        public void validerAchat(int idArticle, int quantite, int prixVente, int prixVenteMembre, int prixAchat, int prix, int prixUtil, bool util, bool glyc, bool tu, bool tg, int idCommande)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
@@ -306,12 +312,17 @@ namespace AmadiaVente.Winforms.functionality
                                     updateCommand.ExecuteNonQuery();
                                 }
 
-                                string updatePrixQuery = "UPDATE article SET prix_article = @prixVente, prix_membre = @prixVenteMembre  WHERE id_article = @idArticle";
+                                string updatePrixQuery = "UPDATE article SET prix_article = @prixVente, prix_membre = @prixVenteMembre, prix_utilisable = @prix_util, util = @util, glycemie = @glyc, tu = @tu, tg = @tg  WHERE id_article = @idArticle";
 
                                 using (SqliteCommand updateCommand = new SqliteCommand(updatePrixQuery, connection))
                                 {
                                     updateCommand.Parameters.AddWithValue("@prixVente", prixVente);
                                     updateCommand.Parameters.AddWithValue("@prixVenteMembre", prixVenteMembre);
+                                    updateCommand.Parameters.AddWithValue("@prix_util", prixUtil);
+                                    updateCommand.Parameters.AddWithValue("@util", util);
+                                    updateCommand.Parameters.AddWithValue("@glyc", glyc);
+                                    updateCommand.Parameters.AddWithValue("@tu", tu);
+                                    updateCommand.Parameters.AddWithValue("@tg", tg);
                                     updateCommand.Parameters.AddWithValue("@idArticle", idArticle);
 
                                     updateCommand.ExecuteNonQuery();
@@ -476,7 +487,8 @@ namespace AmadiaVente.Winforms.functionality
                 {
                     string prixUtil = txtBoxPrixUtil.Text.ToString();
                     selectedRow.Cells["prixUtil"].Value = prixUtil;
-                }else
+                }
+                else
                 {
                     selectedRow.Cells["prixUtil"].Value = "N/A";
                     selectedRow.Cells["radioTU"].Value = "False";
@@ -488,7 +500,7 @@ namespace AmadiaVente.Winforms.functionality
                 {
                     selectedRow.Cells["radioTU"].Value = "True";
                     selectedRow.Cells["radioTG"].Value = "False";
-                    selectedRow.Cells["radioGlyc"].Value = "False"; 
+                    selectedRow.Cells["radioGlyc"].Value = "False";
                 }
                 if (radioTG.Checked == true)
                 {
@@ -583,9 +595,41 @@ namespace AmadiaVente.Winforms.functionality
                     int prixVente = Convert.ToInt32(row.Cells["prixDeVente"].Value.ToString());
                     int prixVenteMembre = Convert.ToInt32(row.Cells["prixDeVenteMembre"].Value.ToString());
 
+                    int prixUtil = 0;
+                    bool util = false;
+                    bool glyc = false;
+                    bool tu = false;
+                    bool tg = false;
+
+                    String checkUtil = row.Cells["prixUtil"].Value.ToString();
+                    String checkGlyc = row.Cells["radioGlyc"].Value.ToString();
+                    String checkTu = row.Cells["radioTU"].Value.ToString();
+                    String checkTg = row.Cells["radioTG"].Value.ToString();
+
+                    if (checkUtil != "N/A")
+                    {
+                        prixUtil = Convert.ToInt32(row.Cells["prixUtil"].Value.ToString());
+                        util = true;
+                    }
+
+                    if (checkGlyc == "True")
+                    {
+                        glyc = true;
+                    }
+
+                    if (checkTu == "True")
+                    {
+                        tu = true;
+                    }
+
+                    if (checkTg == "True")
+                    {
+                        tg = true;
+                    }
+
                     int artcileId = GetArticleIdByDesignation(designation: nomProduit);
 
-                    validerAchat(artcileId, quantite, prixVente, prixVenteMembre, prixAchat, prix, idCommande);
+                    validerAchat(artcileId, quantite, prixVente, prixVenteMembre, prixAchat, prix, prixUtil, util, glyc, tu, tg, idCommande);
                     makeHistory(artcileId, quantite, idCommande);
                 }
                 if (indicationErreurAchat)
@@ -697,33 +741,38 @@ namespace AmadiaVente.Winforms.functionality
 
         private void QuantiteMedicament_TextChanged(object sender, EventArgs e)
         {
-            if (QuantiteMedicament.Text != "")
+
+            if (Medicament.SelectedItem != null)
             {
-                string qteArticle = QuantiteMedicament.Text.ToString();
-                string articleSelect = Medicament.SelectedItem.ToString();
-                int stock = AfficheArcticle(articleSelect)[1];
-                if (!string.IsNullOrEmpty(PUMedicament.Text.ToString()))
+                if (QuantiteMedicament.Text != "")
                 {
-                    prixAchat = Convert.ToInt32(PUMedicament.Text.ToString());
-                }
+                    string qteArticle = QuantiteMedicament.Text.ToString();
+                    string articleSelect = Medicament.SelectedItem.ToString();
+                    int stock = AfficheArcticle(articleSelect)[1];
+                    if (!string.IsNullOrEmpty(PUMedicament.Text.ToString()))
+                    {
+                        prixAchat = Convert.ToInt32(PUMedicament.Text.ToString());
+                    }
 
-                int prixAPayer = prixAchat * Convert.ToInt32(qteArticle);
+                    int prixAPayer = prixAchat * Convert.ToInt32(qteArticle);
 
-                PrixMedicament.Text = prixAPayer.ToString();
+                    PrixMedicament.Text = prixAPayer.ToString();
 
-                if (stock < Convert.ToInt32(qteArticle))
-                {
-                    QuantiteMedicament.BackColor = Color.Red;
+                    if (stock < Convert.ToInt32(qteArticle))
+                    {
+                        QuantiteMedicament.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        QuantiteMedicament.BackColor = Color.LightGreen;
+                    }
                 }
                 else
                 {
-                    QuantiteMedicament.BackColor = Color.LightGreen;
+                    PrixMedicament.Text = "";
                 }
             }
-            else
-            {
-                PrixMedicament.Text = "";
-            }
+
         }
 
         private void dataGridViewPanier_CellClick(object sender, DataGridViewCellEventArgs e)

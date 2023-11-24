@@ -193,7 +193,7 @@
             Medicament.Location = new Point(395, 33);
             Medicament.Name = "Medicament";
             Medicament.Size = new Size(227, 29);
-            Medicament.TabIndex = 54;
+            Medicament.TabIndex = 3;
             Medicament.SelectedIndexChanged += Medicament_SelectedIndexChanged;
             // 
             // NomFournisseur
@@ -208,7 +208,7 @@
             NomFournisseur.Location = new Point(19, 33);
             NomFournisseur.Name = "NomFournisseur";
             NomFournisseur.Size = new Size(169, 29);
-            NomFournisseur.TabIndex = 53;
+            NomFournisseur.TabIndex = 1;
             NomFournisseur.SelectedIndexChanged += NomFournisseur_SelectedIndexChanged;
             // 
             // TypeMedicament
@@ -223,7 +223,7 @@
             TypeMedicament.Location = new Point(194, 33);
             TypeMedicament.Name = "TypeMedicament";
             TypeMedicament.Size = new Size(195, 29);
-            TypeMedicament.TabIndex = 52;
+            TypeMedicament.TabIndex = 2;
             TypeMedicament.SelectedIndexChanged += TypeMedicament_SelectedIndexChanged;
             // 
             // guna2HtmlLabel8
@@ -294,7 +294,7 @@
             PUMedicament.SelectedText = "";
             PUMedicament.ShadowDecoration.CustomizableEdges = customizableEdges6;
             PUMedicament.Size = new Size(136, 31);
-            PUMedicament.TabIndex = 44;
+            PUMedicament.TabIndex = 5;
             PUMedicament.TextChanged += PUMedicament_TextChanged;
             PUMedicament.KeyPress += PUMedicament_KeyPress;
             // 
@@ -393,7 +393,7 @@
             PrixMedicament.SelectedText = "";
             PrixMedicament.ShadowDecoration.CustomizableEdges = customizableEdges14;
             PrixMedicament.Size = new Size(140, 31);
-            PrixMedicament.TabIndex = 40;
+            PrixMedicament.TabIndex = 8;
             PrixMedicament.KeyPress += PrixMedicament_KeyPress;
             // 
             // QuantiteMedicament
@@ -420,7 +420,7 @@
             QuantiteMedicament.SelectedText = "";
             QuantiteMedicament.ShadowDecoration.CustomizableEdges = customizableEdges16;
             QuantiteMedicament.Size = new Size(72, 31);
-            QuantiteMedicament.TabIndex = 39;
+            QuantiteMedicament.TabIndex = 4;
             QuantiteMedicament.TextChanged += QuantiteMedicament_TextChanged;
             QuantiteMedicament.KeyPress += QuantiteMedicament_KeyPress;
             // 
@@ -686,7 +686,7 @@
             txtBoxPrixUtil.SelectedText = "";
             txtBoxPrixUtil.ShadowDecoration.CustomizableEdges = customizableEdges22;
             txtBoxPrixUtil.Size = new Size(140, 31);
-            txtBoxPrixUtil.TabIndex = 71;
+            txtBoxPrixUtil.TabIndex = 9;
             // 
             // txtBoxPrixDeVenteMembre
             // 
@@ -712,7 +712,7 @@
             txtBoxPrixDeVenteMembre.SelectedText = "";
             txtBoxPrixDeVenteMembre.ShadowDecoration.CustomizableEdges = customizableEdges24;
             txtBoxPrixDeVenteMembre.Size = new Size(136, 31);
-            txtBoxPrixDeVenteMembre.TabIndex = 70;
+            txtBoxPrixDeVenteMembre.TabIndex = 7;
             // 
             // guna2HtmlLabel2
             // 
@@ -760,7 +760,7 @@
             txtBoxPrixdeVente.SelectedText = "";
             txtBoxPrixdeVente.ShadowDecoration.CustomizableEdges = customizableEdges26;
             txtBoxPrixdeVente.Size = new Size(136, 31);
-            txtBoxPrixdeVente.TabIndex = 67;
+            txtBoxPrixdeVente.TabIndex = 6;
             txtBoxPrixdeVente.KeyPress += txtBoxPrixdeVente_KeyPress;
             // 
             // Fournisseur1
