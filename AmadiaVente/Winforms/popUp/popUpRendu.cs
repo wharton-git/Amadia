@@ -11,6 +11,11 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Microsoft.Data.Sqlite;
 using System.Globalization;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using Document = iTextSharp.text.Document;
+using Paragraph = iTextSharp.text.Paragraph;
 
 namespace AmadiaVente.Winforms.popUp
 {
@@ -96,6 +101,137 @@ namespace AmadiaVente.Winforms.popUp
             }
 
             return listId;
+        }
+
+        private List<String> GetBandeletteIds(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation LIKE 'BANDELETTE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private List<String> GetTesniometreIds(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation LIKE 'TENSIOMETRE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private List<String> GetGlucometreIds(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation LIKE 'GLUCOMETRE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private List<String> GetOtherConsommableIds(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation NOT LIKE 'GLUCOMETRE%' AND a.designation NOT LIKE 'TENSIOMETRE%' AND a.designation NOT LIKE 'BANDELETTE%'  AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private string[] checkListIdMedic(string id, string connectionString)
+        {
+            String[] result = new string[6];
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT lc.id_article, designation, 'NM' as 'Non Membre', SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande  WHERE lc.id_article = @id";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 6; i++)
+                            {
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
 
         private string[] checkListIdMedicMembre(string id, string connectionString)
@@ -253,10 +389,10 @@ namespace AmadiaVente.Winforms.popUp
 
             try
             {
-                PdfWriter.GetInstance(doc, new FileStream(pdfLocation, FileMode.Create));
+                iTextSharp.text.pdf.PdfWriter.GetInstance(doc, new FileStream(pdfLocation, FileMode.Create));
                 doc.Open();
 
-                Paragraph title = new Paragraph("AMADIA");
+                iTextSharp.text.Paragraph title = new iTextSharp.text.Paragraph("AMADIA");
                 title.Add("\n");
                 title.Add("RECETTE JOURNEE DU : " + dateDuJour);
                 title.Add("\n");
@@ -300,15 +436,6 @@ namespace AmadiaVente.Winforms.popUp
 
                 PdfPCell cellGlycemie = new PdfPCell(new Phrase("GLYCEMIE"));
                 cellGlycemie.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
-
-                PdfPCell cellGlucometre = new PdfPCell(new Phrase("GLUCOMETRE"));
-                cellGlucometre.BorderWidthBottom = 0f;
-
-                PdfPCell cellTensiometre = new PdfPCell(new Phrase("TENSIOMETRE"));
-                cellTensiometre.BorderWidthBottom = 0f;
-
-                PdfPCell cellBandelette = new PdfPCell(new Phrase("BANDELETTE"));
-                cellBandelette.BorderWidthBottom = 0f;
 
                 PdfPCell cellVideNonMembre = new PdfPCell(new Phrase(""));
                 cellVideNonMembre.BorderWidthTop = 0f;
@@ -439,50 +566,124 @@ namespace AmadiaVente.Winforms.popUp
 
                 table2.WidthPercentage = 98;
 
-                float[] columnWidths2 = { 26f, 7f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                float[] columnWidths2 = { 26f, 7f, 5f, 11f, 14f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
                 table2.SetWidths(columnWidths2);
 
-                table2.AddCell(cellGlucometre);
-                table2.AddCell("M");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
+                List<String> idListGlucometre = new List<String>();
+                idListGlucometre = GetGlucometreIds(cs);
 
-                table2.AddCell(cellVideNonMembre);
-                table2.AddCell("NM");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
+                foreach (String id in idListGlucometre)
+                {
+                    String[] infoConsommableMembre = checkListIdMedicMembre(id, cs);
+                    String[] infoConsommableNonMembre = checkListIdMedicNonMembre(id, cs);
 
-                table2.AddCell(cellTensiometre);
-                table2.AddCell("M");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
+                    String Designation = infoConsommableMembre[1];
+                    if (string.IsNullOrEmpty(Designation))
+                    {
+                        Designation = infoConsommableNonMembre[1];
+                    }
 
-                table2.AddCell(cellVideNonMembre);
-                table2.AddCell("NM");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
+                    var cellGlucometre = new PdfPCell(new Phrase(Designation));
+                    cellGlucometre.Rowspan = 2;
 
-                table2.AddCell(cellBandelette);
-                table2.AddCell("M");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
+                    table2.AddCell(cellGlucometre);
+                    table2.AddCell("M");
+                    table2.AddCell(infoConsommableMembre[3]);
+                    table2.AddCell(infoConsommableMembre[4]);
+                    table2.AddCell(infoConsommableMembre[5]);
+                    table2.AddCell("");
 
-                table2.AddCell(cellVideNonMembre);
-                table2.AddCell("NM");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
+                    table2.AddCell("NM");
+                    table2.AddCell(infoConsommableNonMembre[3]);
+                    table2.AddCell(infoConsommableNonMembre[4]);
+                    table2.AddCell(infoConsommableNonMembre[5]);
+                    table2.AddCell("");
+
+                }
+
+                List<String> idListTensiometre = new List<String>();
+                idListTensiometre = GetTesniometreIds(cs);
+
+                foreach (String id in idListTensiometre)
+                {
+                    String[] infoConsommableMembre = checkListIdMedicMembre(id, cs);
+                    String[] infoConsommableNonMembre = checkListIdMedicNonMembre(id, cs);
+
+                    String Designation = infoConsommableMembre[1];
+                    if (string.IsNullOrEmpty(Designation))
+                    {
+                        Designation = infoConsommableNonMembre[1];
+                    }
+
+                    var cellTensiometre = new PdfPCell(new Phrase(Designation));
+                    cellTensiometre.Rowspan = 2;
+
+                    table2.AddCell(cellTensiometre);
+                    table2.AddCell("M");
+                    table2.AddCell(infoConsommableMembre[3]);
+                    table2.AddCell(infoConsommableMembre[4]);
+                    table2.AddCell(infoConsommableMembre[5]);
+                    table2.AddCell("");
+
+                    table2.AddCell("NM");
+                    table2.AddCell(infoConsommableNonMembre[3]);
+                    table2.AddCell(infoConsommableNonMembre[4]);
+                    table2.AddCell(infoConsommableNonMembre[5]);
+                    table2.AddCell("");
+
+                }
+
+                List<String> idListBandelette = new List<String>();
+                idListBandelette = GetBandeletteIds(cs);
+
+                foreach (String id in idListBandelette)
+                {
+                    String[] infoConsommableMembre = checkListIdMedicMembre(id, cs);
+                    String[] infoConsommableNonMembre = checkListIdMedicNonMembre(id, cs);
+
+                    String Designation = infoConsommableMembre[1];
+                    if (string.IsNullOrEmpty(Designation))
+                    {
+                        Designation = infoConsommableNonMembre[1];
+                    }
+
+                    var cellBandelette = new PdfPCell(new Phrase(Designation));
+                    cellBandelette.Rowspan = 2;
+
+                    table2.AddCell(cellBandelette);
+                    table2.AddCell("M");
+                    table2.AddCell(infoConsommableMembre[3]);
+                    table2.AddCell(infoConsommableMembre[4]);
+                    table2.AddCell(infoConsommableMembre[5]);
+                    table2.AddCell("");
+
+                    //table2.AddCell(cellVideNonMembre);
+                    table2.AddCell("NM");
+                    table2.AddCell(infoConsommableNonMembre[3]);
+                    table2.AddCell(infoConsommableNonMembre[4]);
+                    table2.AddCell(infoConsommableNonMembre[5]);
+                    table2.AddCell("");
+                }
+
+                List<String> idListConsommable = new List<String>();
+                idListConsommable = GetOtherConsommableIds(cs);
+
+                foreach (String id in idListConsommable)
+                {
+                    String[] infoConsommable = checkListIdMedic(id, cs);
+
+                    String Designation = infoConsommable[1];
+
+                    var cellConsomable = new PdfPCell(new Phrase(Designation));
+                    cellConsomable.Colspan = 2;
+
+                    table2.AddCell(cellConsomable);
+                    table2.AddCell(infoConsommable[3]);
+                    table2.AddCell(infoConsommable[4]);
+                    table2.AddCell(infoConsommable[5]);
+                    table2.AddCell("");
+
+                }
 
                 table2.AddCell(cellCarnet);
                 table2.AddCell(cellVideTeteMnM);
