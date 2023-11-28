@@ -508,10 +508,9 @@ namespace AmadiaVente.Winforms.functionality
                     {
                         //prixUnit = AfficheArcticle(articleSelect)[1];
                         int prixArticleTrans = AfficheArcticle(articleSelect)[1];
-                        MessageBox.Show("Là");
+
                         if (prixArticleTrans != 0)
                         {
-                            MessageBox.Show("Ici");
                             prixUnit = AfficheArcticle(articleSelect)[1];
                         }
                     }
