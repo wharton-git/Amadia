@@ -31,22 +31,22 @@
             components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelPopUpRendu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnGenererPdf = new Guna.UI2.WinForms.Guna2Button();
+            btnRetour = new Guna.UI2.WinForms.Guna2Button();
+            btnSuivant = new Guna.UI2.WinForms.Guna2Button();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             btnQuitList = new Guna.UI2.WinForms.Guna2ImageButton();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
-            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            btnSuivant = new Guna.UI2.WinForms.Guna2Button();
-            btnRetour = new Guna.UI2.WinForms.Guna2Button();
-            btnGenererPdf = new Guna.UI2.WinForms.Guna2Button();
             panelPopUpRendu.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,6 +72,66 @@
             panelPopUpRendu.MouseMove += panelPopUpRendu_MouseMove;
             panelPopUpRendu.MouseUp += panelPopUpRendu_MouseUp;
             // 
+            // btnGenererPdf
+            // 
+            btnGenererPdf.CustomizableEdges = customizableEdges1;
+            btnGenererPdf.DisabledState.BorderColor = Color.DarkGray;
+            btnGenererPdf.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnGenererPdf.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnGenererPdf.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnGenererPdf.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGenererPdf.ForeColor = Color.White;
+            btnGenererPdf.Location = new Point(682, 391);
+            btnGenererPdf.Name = "btnGenererPdf";
+            btnGenererPdf.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnGenererPdf.Size = new Size(180, 45);
+            btnGenererPdf.TabIndex = 5;
+            btnGenererPdf.Text = "PDF";
+            btnGenererPdf.Click += btnGenererPdf_Click;
+            // 
+            // btnRetour
+            // 
+            btnRetour.CustomizableEdges = customizableEdges3;
+            btnRetour.DisabledState.BorderColor = Color.DarkGray;
+            btnRetour.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnRetour.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnRetour.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnRetour.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRetour.ForeColor = Color.White;
+            btnRetour.Location = new Point(451, 317);
+            btnRetour.Name = "btnRetour";
+            btnRetour.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnRetour.Size = new Size(180, 45);
+            btnRetour.TabIndex = 4;
+            btnRetour.Text = "retour";
+            btnRetour.Click += btnRetour_Click;
+            // 
+            // btnSuivant
+            // 
+            btnSuivant.CustomizableEdges = customizableEdges5;
+            btnSuivant.DisabledState.BorderColor = Color.DarkGray;
+            btnSuivant.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSuivant.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSuivant.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSuivant.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSuivant.ForeColor = Color.White;
+            btnSuivant.Location = new Point(653, 317);
+            btnSuivant.Name = "btnSuivant";
+            btnSuivant.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnSuivant.Size = new Size(180, 45);
+            btnSuivant.TabIndex = 3;
+            btnSuivant.Text = "Suivant";
+            btnSuivant.Click += btnSuivant_Click;
+            // 
+            // guna2Panel1
+            // 
+            guna2Panel1.CustomizableEdges = customizableEdges7;
+            guna2Panel1.Location = new Point(51, 44);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Panel1.Size = new Size(793, 267);
+            guna2Panel1.TabIndex = 2;
+            // 
             // btnQuitList
             // 
             btnQuitList.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -93,66 +153,6 @@
             // 
             guna2Elipse1.BorderRadius = 15;
             guna2Elipse1.TargetControl = this;
-            // 
-            // guna2Panel1
-            // 
-            guna2Panel1.CustomizableEdges = customizableEdges7;
-            guna2Panel1.Location = new Point(51, 44);
-            guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Panel1.Size = new Size(793, 267);
-            guna2Panel1.TabIndex = 2;
-            // 
-            // btnSuivant
-            // 
-            btnSuivant.CustomizableEdges = customizableEdges5;
-            btnSuivant.DisabledState.BorderColor = Color.DarkGray;
-            btnSuivant.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSuivant.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSuivant.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSuivant.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSuivant.ForeColor = Color.White;
-            btnSuivant.Location = new Point(653, 317);
-            btnSuivant.Name = "btnSuivant";
-            btnSuivant.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnSuivant.Size = new Size(180, 45);
-            btnSuivant.TabIndex = 3;
-            btnSuivant.Text = "Suivant";
-            btnSuivant.Click += btnSuivant_Click;
-            // 
-            // btnRetour
-            // 
-            btnRetour.CustomizableEdges = customizableEdges3;
-            btnRetour.DisabledState.BorderColor = Color.DarkGray;
-            btnRetour.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnRetour.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnRetour.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnRetour.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRetour.ForeColor = Color.White;
-            btnRetour.Location = new Point(451, 317);
-            btnRetour.Name = "btnRetour";
-            btnRetour.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnRetour.Size = new Size(180, 45);
-            btnRetour.TabIndex = 4;
-            btnRetour.Text = "retour";
-            btnRetour.Click += btnRetour_Click;
-            // 
-            // btnGenererPdf
-            // 
-            btnGenererPdf.CustomizableEdges = customizableEdges1;
-            btnGenererPdf.DisabledState.BorderColor = Color.DarkGray;
-            btnGenererPdf.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnGenererPdf.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnGenererPdf.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnGenererPdf.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnGenererPdf.ForeColor = Color.White;
-            btnGenererPdf.Location = new Point(682, 391);
-            btnGenererPdf.Name = "btnGenererPdf";
-            btnGenererPdf.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnGenererPdf.Size = new Size(180, 45);
-            btnGenererPdf.TabIndex = 5;
-            btnGenererPdf.Text = "PDF";
-            btnGenererPdf.Click += btnGenererPdf_Click;
             // 
             // popUpRendu
             // 
