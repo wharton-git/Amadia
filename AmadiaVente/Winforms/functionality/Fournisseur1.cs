@@ -386,7 +386,15 @@ namespace AmadiaVente.Winforms.functionality
 
                 if (checkBoxAffichePanelRadioUtil.Checked == true)
                 {
-                    prixUtil = txtBoxPrixUtil.Text.ToString();
+                    string prixUtilisation = txtBoxPrixUtil.Text.ToString();
+                    if (!string.IsNullOrEmpty(prixUtilisation))
+                    {
+                        prixUtil = prixUtilisation;
+                    }
+                    else
+                    {
+                        prixUtil = Convert.ToString(Pu);
+                    }
                 }
 
                 if (radioTU.Checked == true)
@@ -891,6 +899,12 @@ namespace AmadiaVente.Winforms.functionality
                 // (par exemple, PUMedicament.Text n'est pas un entier)
                 PrixMedicament.Text = "Erreur de prix d'achat";
             }
+
+            if(checkBoxAffichePanelRadioUtil.Checked)
+            {
+                string pu = PUMedicament.Text.ToString();
+                txtBoxPrixUtil.Text = pu;
+            }
         }
 
         private void checkBoxAffichePanelRadioUtil_CheckedChanged(object sender, EventArgs e)
@@ -899,6 +913,11 @@ namespace AmadiaVente.Winforms.functionality
             {
                 panelRadioUtil.Visible = true;
                 txtBoxPrixUtil.Enabled = true;
+                string pu = PUMedicament.Text.ToString();
+                if (!string.IsNullOrEmpty(pu))
+                {
+                    txtBoxPrixUtil.Text = pu;
+                }
             }
             else
             {

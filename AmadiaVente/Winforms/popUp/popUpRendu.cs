@@ -203,6 +203,80 @@ namespace AmadiaVente.Winforms.popUp
             return listId;
         }
 
+        private List<String> GetTU(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 1";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private List<String> GetTG(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 1 AND a.tu = 0";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private List<String> GetGlyc(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.glycemie = 1 AND a.tg = 0 AND a.tu = 0";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+            return listId;
+        }
+
         private string[] checkListIdMedic(string id, string connectionString)
         {
             String[] result = new string[6];
@@ -415,14 +489,8 @@ namespace AmadiaVente.Winforms.popUp
                 PdfPCell cellCotisation = new PdfPCell(new Phrase("COTISATION"));
                 cellCotisation.BorderWidthRight = 0f;
 
-                PdfPCell cellTU = new PdfPCell(new Phrase("T.U"));
-                cellTU.BorderWidthRight = 0f;
-
                 PdfPCell cellCarnet = new PdfPCell(new Phrase("CARNET"));
                 cellCarnet.BorderWidthRight = 0f;
-
-                PdfPCell cellTG = new PdfPCell(new Phrase("T.G"));
-                cellTG.BorderWidthRight = 0f;
 
                 PdfPCell cellPansement = new PdfPCell(new Phrase("PANSEMENT"));
                 cellPansement.BorderWidthRight = 0f;
@@ -454,20 +522,37 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell("VALEUR");
                 table.AddCell("OBS");
 
-                table.AddCell(cellGlycemie);
-                table.AddCell("M");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                List<String> idListGlycemie = new List<String>();
+                idListGlycemie = GetGlyc(cs);
 
-                table.AddCell(cellVideNonMembre);
-                table.AddCell("NM");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                foreach (String id in idListGlycemie)
+                {
+                    String[] infoConsommableMembre = checkListIdMedicMembre(id, cs);
+                    String[] infoConsommableNonMembre = checkListIdMedicNonMembre(id, cs);
 
+                    String Designation = "GLYCEMIE";
+                    if (string.IsNullOrEmpty(Designation))
+                    {
+                        Designation = Designation = "GLYCEMIE";
+                    }
+
+                    var cellGlucometre = new PdfPCell(new Phrase(Designation));
+                    cellGlucometre.Rowspan = 2;
+
+                    table.AddCell(cellGlucometre);
+                    table.AddCell("M");
+                    table.AddCell(infoConsommableMembre[3]);
+                    table.AddCell(infoConsommableMembre[4]);
+                    table.AddCell(infoConsommableMembre[5]);
+                    table.AddCell("");
+
+                    table.AddCell("NM");
+                    table.AddCell(infoConsommableNonMembre[3]);
+                    table.AddCell(infoConsommableNonMembre[4]);
+                    table.AddCell(infoConsommableNonMembre[5]);
+                    table.AddCell("");
+
+                }
 
                 table.AddCell(cellConsultation);
                 table.AddCell("M");
@@ -497,19 +582,45 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell(cellTU);
-                table.AddCell(cellVideTeteMnM);
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                List<String> idListTu = new List<String>();
+                idListTu = GetTU(cs);
 
-                table.AddCell(cellTG);
-                table.AddCell(cellVideTeteMnM);
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                foreach (String id in idListTu)
+                {
+                    String[] infoTU = checkListIdMedic(id, cs);
+
+                    String Designation = infoTU[1];
+
+                    var cellTU = new PdfPCell(new Phrase(Designation));
+                    cellTU.Colspan = 2;
+
+                    table.AddCell(cellTU);
+                    table.AddCell(infoTU[3]);
+                    table.AddCell(infoTU[4]);
+                    table.AddCell(infoTU[5]);
+                    table.AddCell("");
+
+                }
+
+                List<String> idListTg = new List<String>();
+                idListTg = GetTG(cs);
+
+                foreach (String id in idListTg)
+                {
+                    String[] infoTg = checkListIdMedic(id, cs);
+
+                    String Designation = infoTg[1];
+
+                    var cellTG = new PdfPCell(new Phrase(Designation));
+                    cellTG.Colspan = 2;
+
+                    table.AddCell(cellTG);
+                    table.AddCell(infoTg[3]);
+                    table.AddCell(infoTg[4]);
+                    table.AddCell(infoTg[5]);
+                    table.AddCell("");
+
+                }
 
                 table.AddCell(cellPansement);
                 table.AddCell(cellVideTeteMnM);
