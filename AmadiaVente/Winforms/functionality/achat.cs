@@ -427,7 +427,7 @@ namespace AmadiaVente.Winforms.functionality
             comboBoxTypeArticle.SelectedItem = "Médicaments";
 
             txtBoxPU.Enabled = false;
-            
+
             afficheMedicComboBoxLoad();
             afficheNomMembreLoad();
 
@@ -475,9 +475,9 @@ namespace AmadiaVente.Winforms.functionality
 
                 if (comboBoxMembre.SelectedItem != null && comboBoxMembre.SelectedItem.ToString() == "Oui")
                 {
-                   int prixArticleTrans = AfficheArcticle(articleSelectionner)[1];
+                    int prixArticleTrans = AfficheArcticle(articleSelectionner)[1];
 
-                    if(prixArticleTrans != 0)
+                    if (prixArticleTrans != 0)
                     {
                         prixArticle = AfficheArcticle(articleSelectionner)[1];
                     }

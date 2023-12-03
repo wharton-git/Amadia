@@ -103,6 +103,31 @@ namespace AmadiaVente.Winforms.popUp
             return listId;
         }
 
+        private List<String> GetHB1ACids(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.designation LIKE 'HB1AC'";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
         private List<String> GetBandeletteIds(string connectionString)
         {
             List<string> listId = new List<string>();
@@ -629,19 +654,37 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell(cellHB1AC);
-                table.AddCell("M");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                List<String> idListHB1AC = new List<String>();
+                idListHB1AC = GetHB1ACids(cs);
 
-                table.AddCell(cellVideNonMembre);
-                table.AddCell("NM");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                foreach (String id in idListHB1AC)
+                {
+                    String[] infoConsommableMembre = checkListIdMedicMembre(id, cs);
+                    String[] infoConsommableNonMembre = checkListIdMedicNonMembre(id, cs);
+
+                    String Designation = infoConsommableMembre[1];
+                    if (string.IsNullOrEmpty(Designation))
+                    {
+                        Designation = infoConsommableNonMembre[1];
+                    }
+
+                    var cellBandelette = new PdfPCell(new Phrase(Designation));
+                    cellBandelette.Rowspan = 2;
+
+                    table.AddCell(cellBandelette);
+                    table.AddCell("M");
+                    table.AddCell(infoConsommableMembre[3]);
+                    table.AddCell(infoConsommableMembre[4]);
+                    table.AddCell(infoConsommableMembre[5]);
+                    table.AddCell("");
+
+                    //table2.AddCell(cellVideNonMembre);
+                    table.AddCell("NM");
+                    table.AddCell(infoConsommableNonMembre[3]);
+                    table.AddCell(infoConsommableNonMembre[4]);
+                    table.AddCell(infoConsommableNonMembre[5]);
+                    table.AddCell("");
+                }
 
                 table.AddCell(cellECG);
                 table.AddCell(cellVideTeteMnM);
