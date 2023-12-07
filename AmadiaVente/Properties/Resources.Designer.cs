@@ -123,9 +123,29 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_ajouter_un_groupe_d_utilisateurs_femme_homme_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-ajouter-un-groupe-d\'utilisateurs-femme-homme-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_automation {
             get {
                 object obj = ResourceManager.GetObject("icons8-automation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_boucle_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-boucle-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +276,16 @@ namespace AmadiaVente.Properties {
         internal static System.Drawing.Bitmap icons8_sortie_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-sortie-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_supprimer_l_utilisateur_homme_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-supprimer-l\'utilisateur-homme-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

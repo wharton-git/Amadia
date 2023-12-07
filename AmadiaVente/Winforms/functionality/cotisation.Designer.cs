@@ -32,6 +32,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
@@ -47,10 +48,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cotisation));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnChangeCotisation = new Guna.UI2.WinForms.Guna2ImageButton();
             labelAlertNumeroMembre = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelCotisation = new Guna.UI2.WinForms.Guna2GradientPanel();
             comboBoxAnneeCot = new ComboBox();
@@ -67,7 +67,6 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             comboBoxNomMembre = new ComboBox();
-            btnChangeCotisation = new Guna.UI2.WinForms.Guna2ImageButton();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
             panelCotisation.SuspendLayout();
@@ -114,6 +113,24 @@
             guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges15;
             guna2GradientPanel2.Size = new Size(842, 432);
             guna2GradientPanel2.TabIndex = 0;
+            // 
+            // btnChangeCotisation
+            // 
+            btnChangeCotisation.AccessibleDescription = "Modifier la valeur de la Somme de Cotisation";
+            btnChangeCotisation.AccessibleName = "Boutton Modifier Cotisation";
+            btnChangeCotisation.CheckedState.ImageSize = new Size(64, 64);
+            btnChangeCotisation.HoverState.ImageSize = new Size(64, 64);
+            btnChangeCotisation.Image = Properties.Resources.icons8_boucle_96;
+            btnChangeCotisation.ImageOffset = new Point(0, 0);
+            btnChangeCotisation.ImageRotate = 0F;
+            btnChangeCotisation.ImageSize = new Size(30, 30);
+            btnChangeCotisation.Location = new Point(785, 84);
+            btnChangeCotisation.Name = "btnChangeCotisation";
+            btnChangeCotisation.PressedState.ImageSize = new Size(64, 64);
+            btnChangeCotisation.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            btnChangeCotisation.Size = new Size(32, 23);
+            btnChangeCotisation.TabIndex = 63;
+            btnChangeCotisation.Click += btnChangeCotisation_Click;
             // 
             // labelAlertNumeroMembre
             // 
@@ -421,21 +438,6 @@
             comboBoxNomMembre.Size = new Size(318, 29);
             comboBoxNomMembre.TabIndex = 37;
             comboBoxNomMembre.SelectedIndexChanged += comboBoxNomMembre_SelectedIndexChanged;
-            // 
-            // btnChangeCotisation
-            // 
-            btnChangeCotisation.CheckedState.ImageSize = new Size(64, 64);
-            btnChangeCotisation.HoverState.ImageSize = new Size(64, 64);
-            btnChangeCotisation.Image = (Image)resources.GetObject("btnChangeCotisation.Image");
-            btnChangeCotisation.ImageOffset = new Point(0, 0);
-            btnChangeCotisation.ImageRotate = 0F;
-            btnChangeCotisation.Location = new Point(785, 84);
-            btnChangeCotisation.Name = "btnChangeCotisation";
-            btnChangeCotisation.PressedState.ImageSize = new Size(64, 64);
-            btnChangeCotisation.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            btnChangeCotisation.Size = new Size(32, 23);
-            btnChangeCotisation.TabIndex = 63;
-            btnChangeCotisation.Click += btnChangeCotisation_Click;
             // 
             // cotisation
             // 

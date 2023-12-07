@@ -28,22 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnEditMember = new Guna.UI2.WinForms.Guna2GradientButton();
+            dataGridViewListMember = new Guna.UI2.WinForms.Guna2DataGridView();
             btnAddMember = new Guna.UI2.WinForms.Guna2GradientButton();
             btnDeleteMember = new Guna.UI2.WinForms.Guna2GradientButton();
-            dataGridViewListMember = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewListMember).BeginInit();
@@ -53,13 +56,13 @@
             // 
             guna2GradientPanel1.BackColor = Color.White;
             guna2GradientPanel1.Controls.Add(guna2GradientPanel2);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges7;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges9;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.FillColor = Color.FromArgb(191, 210, 255);
             guna2GradientPanel1.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 8;
             // 
@@ -68,67 +71,45 @@
             guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel2.BackColor = Color.Transparent;
             guna2GradientPanel2.BorderRadius = 15;
+            guna2GradientPanel2.Controls.Add(btnEditMember);
             guna2GradientPanel2.Controls.Add(dataGridViewListMember);
             guna2GradientPanel2.Controls.Add(btnAddMember);
             guna2GradientPanel2.Controls.Add(btnDeleteMember);
-            guna2GradientPanel2.CustomizableEdges = customizableEdges5;
+            guna2GradientPanel2.CustomizableEdges = customizableEdges7;
             guna2GradientPanel2.FillColor = Color.WhiteSmoke;
             guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
             guna2GradientPanel2.Location = new Point(24, 24);
             guna2GradientPanel2.Name = "guna2GradientPanel2";
-            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientPanel2.Size = new Size(821, 442);
             guna2GradientPanel2.TabIndex = 40;
             // 
-            // btnAddMember
+            // btnEditMember
             // 
-            btnAddMember.Anchor = AnchorStyles.Top;
-            btnAddMember.BorderColor = Color.FromArgb(191, 210, 255);
-            btnAddMember.BorderRadius = 15;
-            btnAddMember.BorderThickness = 2;
-            btnAddMember.CustomizableEdges = customizableEdges1;
-            btnAddMember.DisabledState.BorderColor = Color.DarkGray;
-            btnAddMember.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAddMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAddMember.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnAddMember.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddMember.FillColor = Color.Transparent;
-            btnAddMember.FillColor2 = Color.Transparent;
-            btnAddMember.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddMember.ForeColor = Color.White;
-            btnAddMember.Image = Properties.Resources.icons8_checkmark_blue_96;
-            btnAddMember.ImageSize = new Size(30, 30);
-            btnAddMember.Location = new Point(134, 88);
-            btnAddMember.Name = "btnAddMember";
-            btnAddMember.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnAddMember.Size = new Size(60, 55);
-            btnAddMember.TabIndex = 32;
-            btnAddMember.Click += btnAddMember_Click;
-            // 
-            // btnDeleteMember
-            // 
-            btnDeleteMember.Anchor = AnchorStyles.Top;
-            btnDeleteMember.BorderColor = Color.FromArgb(191, 210, 255);
-            btnDeleteMember.BorderRadius = 15;
-            btnDeleteMember.BorderThickness = 2;
-            btnDeleteMember.CustomizableEdges = customizableEdges3;
-            btnDeleteMember.DisabledState.BorderColor = Color.DarkGray;
-            btnDeleteMember.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnDeleteMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnDeleteMember.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnDeleteMember.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnDeleteMember.FillColor = Color.Transparent;
-            btnDeleteMember.FillColor2 = Color.Transparent;
-            btnDeleteMember.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDeleteMember.ForeColor = Color.White;
-            btnDeleteMember.Image = Properties.Resources.icons8_effacer_96;
-            btnDeleteMember.ImageSize = new Size(30, 30);
-            btnDeleteMember.Location = new Point(218, 88);
-            btnDeleteMember.Name = "btnDeleteMember";
-            btnDeleteMember.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnDeleteMember.Size = new Size(60, 55);
-            btnDeleteMember.TabIndex = 33;
-            btnDeleteMember.Click += btnDeleteMember_Click;
+            btnEditMember.Anchor = AnchorStyles.Top;
+            btnEditMember.Animated = true;
+            btnEditMember.AnimatedGIF = true;
+            btnEditMember.BorderColor = Color.FromArgb(191, 210, 255);
+            btnEditMember.BorderRadius = 15;
+            btnEditMember.BorderThickness = 2;
+            btnEditMember.CustomizableEdges = customizableEdges1;
+            btnEditMember.DisabledState.BorderColor = Color.DarkGray;
+            btnEditMember.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnEditMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnEditMember.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnEditMember.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnEditMember.FillColor = Color.Transparent;
+            btnEditMember.FillColor2 = Color.Transparent;
+            btnEditMember.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEditMember.ForeColor = Color.White;
+            btnEditMember.Image = Properties.Resources.icons8_edit;
+            btnEditMember.ImageSize = new Size(40, 40);
+            btnEditMember.Location = new Point(312, 88);
+            btnEditMember.Name = "btnEditMember";
+            btnEditMember.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnEditMember.Size = new Size(60, 55);
+            btnEditMember.TabIndex = 35;
+            btnEditMember.Click += btnEditMember_Click;
             // 
             // dataGridViewListMember
             // 
@@ -184,6 +165,57 @@
             dataGridViewListMember.ThemeStyle.RowsStyle.Height = 25;
             dataGridViewListMember.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewListMember.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewListMember.CellClick += dataGridViewListMember_CellClick;
+            // 
+            // btnAddMember
+            // 
+            btnAddMember.Anchor = AnchorStyles.Top;
+            btnAddMember.BorderColor = Color.FromArgb(191, 210, 255);
+            btnAddMember.BorderRadius = 15;
+            btnAddMember.BorderThickness = 2;
+            btnAddMember.CustomizableEdges = customizableEdges3;
+            btnAddMember.DisabledState.BorderColor = Color.DarkGray;
+            btnAddMember.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAddMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAddMember.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnAddMember.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddMember.FillColor = Color.Transparent;
+            btnAddMember.FillColor2 = Color.Transparent;
+            btnAddMember.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddMember.ForeColor = Color.White;
+            btnAddMember.Image = Properties.Resources.icons8_ajouter_un_groupe_d_utilisateurs_femme_homme_96;
+            btnAddMember.ImageSize = new Size(40, 40);
+            btnAddMember.Location = new Point(134, 88);
+            btnAddMember.Name = "btnAddMember";
+            btnAddMember.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnAddMember.Size = new Size(60, 55);
+            btnAddMember.TabIndex = 32;
+            btnAddMember.Click += btnAddMember_Click;
+            // 
+            // btnDeleteMember
+            // 
+            btnDeleteMember.Anchor = AnchorStyles.Top;
+            btnDeleteMember.BorderColor = Color.FromArgb(191, 210, 255);
+            btnDeleteMember.BorderRadius = 15;
+            btnDeleteMember.BorderThickness = 2;
+            btnDeleteMember.CustomizableEdges = customizableEdges5;
+            btnDeleteMember.DisabledState.BorderColor = Color.DarkGray;
+            btnDeleteMember.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnDeleteMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnDeleteMember.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnDeleteMember.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnDeleteMember.FillColor = Color.Transparent;
+            btnDeleteMember.FillColor2 = Color.Transparent;
+            btnDeleteMember.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteMember.ForeColor = Color.White;
+            btnDeleteMember.Image = Properties.Resources.icons8_supprimer_l_utilisateur_homme_96;
+            btnDeleteMember.ImageSize = new Size(40, 40);
+            btnDeleteMember.Location = new Point(223, 88);
+            btnDeleteMember.Name = "btnDeleteMember";
+            btnDeleteMember.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnDeleteMember.Size = new Size(60, 55);
+            btnDeleteMember.TabIndex = 33;
+            btnDeleteMember.Click += btnDeleteMember_Click;
             // 
             // gestionMembre
             // 
@@ -207,5 +239,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnAddMember;
         private Guna.UI2.WinForms.Guna2GradientButton btnDeleteMember;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewListMember;
+        private Guna.UI2.WinForms.Guna2GradientButton btnEditMember;
     }
 }

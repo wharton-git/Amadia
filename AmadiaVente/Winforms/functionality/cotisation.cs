@@ -276,7 +276,6 @@ namespace AmadiaVente.Winforms.functionality
 
             DateTime currentMonth = DateTime.Today;
             String numMois = currentMonth.ToString("MM");
-            MessageBox.Show(currentMonth.Month.ToString("MM"));
             string moisSelect = string.Empty;
             switch (numMois)
             {
