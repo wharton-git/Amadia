@@ -302,6 +302,7 @@ namespace AmadiaVente.Winforms.popUp
             return listId;
         }
 
+
         private string[] checkListIdMedic(string id, string connectionString)
         {
             String[] result = new string[6];
@@ -321,6 +322,39 @@ namespace AmadiaVente.Winforms.popUp
                         if (reader.Read())
                         {
                             for (int i = 0; i < 6; i++)
+                            {
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private string[] countCotisation(string connectionString)
+        {
+            String[] result = new string[6];
+
+            string today = DateTime.Today.ToString("yyyy-MM-dd");
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT COUNT(numero_membre), somme ,SUM(payee) FROM cotisation WHERE date_payement = @today ";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@today", today);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 3; i++)
                             {
                                 result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
 
@@ -502,7 +536,7 @@ namespace AmadiaVente.Winforms.popUp
 
                 table.WidthPercentage = 98;
 
-                float[] columnWidths = { 26f, 7f, 5f, 9f, 15f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
+                float[] columnWidths = { 26f, 7f, 5f, 11f, 14f, 8f };
                 table.SetWidths(columnWidths);
 
                 PdfPCell cellVideTeteFirst = new PdfPCell(new Phrase(""));
@@ -510,9 +544,6 @@ namespace AmadiaVente.Winforms.popUp
 
                 PdfPCell cellAdhesion = new PdfPCell(new Phrase("ADHESION"));
                 cellAdhesion.BorderWidthRight = 0f;
-
-                PdfPCell cellCotisation = new PdfPCell(new Phrase("COTISATION"));
-                cellCotisation.BorderWidthRight = 0f;
 
                 PdfPCell cellCarnet = new PdfPCell(new Phrase("CARNET"));
                 cellCarnet.BorderWidthRight = 0f;
@@ -600,12 +631,17 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell(cellCotisation);
-                table.AddCell(cellVideTeteMnM);
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                    String[] infoCotisation = countCotisation(cs);
+
+                    var cellCot = new PdfPCell(new Phrase("COTISATION"));
+                    cellCot.Colspan = 2;
+
+                    table.AddCell(cellCot);
+                    table.AddCell(infoCotisation[0]);
+                    table.AddCell(infoCotisation[1]);
+                    table.AddCell(infoCotisation[2]);
+                    table.AddCell("");
+                
 
                 List<String> idListTu = new List<String>();
                 idListTu = GetTU(cs);

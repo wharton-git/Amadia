@@ -143,7 +143,7 @@ namespace AmadiaVente.Winforms
 
         private void btnAddMember_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new functionality.cotisation(), sender);
+            OpenChildForm(new functionality.gestionMembre(), sender);
             btnList.ForeColor = btnStock.ForeColor = btnFournisseur.ForeColor = btnCompteRendu.ForeColor = btnAchat.ForeColor = btnProfil.ForeColor = Color.FromArgb(23, 117, 197);
             btnList.FillColor = btnList.FillColor2 = btnStock.FillColor = btnStock.FillColor2 = btnFournisseur.FillColor = btnFournisseur.FillColor2 = btnCompteRendu.FillColor = btnCompteRendu.FillColor2 = btnAchat.FillColor = btnAchat.FillColor2 = btnProfil.FillColor = btnProfil.FillColor2 = Color.WhiteSmoke;
         }

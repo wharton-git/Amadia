@@ -54,6 +54,51 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        private void reset()
+        {
+            comboBoxNomMembre.SelectedItem = null;
+            txtBoxNumeroMembre.Clear();
+            txtBoxSommeCot.Clear();
+            comboBoxMoisCot.SelectedItem = null;
+        }
+
+        private void AfficherInformationsCotisation(string mois, int annee)
+        {
+            try
+            {
+                using (SqliteConnection connection = new SqliteConnection(cs))
+                {
+                    connection.Open();
+
+                    // Sélectionnez toutes les colonnes de la table "cotisation"
+                    string query = "SELECT numero_membre AS 'Numéro', m.nom_membre AS Nom, m.prenom_membre AS Prénom, periode AS 'Mois', date_payement AS 'Payé le', payee AS Payée, restant AS Restant FROM cotisation c INNER JOIN membre m ON c.numero_membre = m.id_membre WHERE periode = @periode AND annee = @annee;";
+
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@periode", mois);
+                        command.Parameters.AddWithValue("@annee", annee);
+
+                        using (SqliteDataReader reader = command.ExecuteReader())
+                        {
+                            // Créez une DataTable pour stocker les résultats
+                            DataTable dataTable = new DataTable();
+
+                            // Remplissez la DataTable avec les résultats du lecteur
+                            dataTable.Load(reader);
+
+                            // Assurez-vous que votre DataGridView est nommé dataGridView1 (vous pouvez ajuster selon le nom réel)
+                            dataGridViewCotisationStatus.DataSource = dataTable;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public string GetMemberId(string nomPrenomMembre)
         {
             string memberId = "";
@@ -119,6 +164,87 @@ namespace AmadiaVente.Winforms.functionality
             return null;
         }
 
+        private void validerCotisation(string idMembre, string periode, string payee, int annee)
+        {
+            bool statut = true;
+            string datePayement = DateTime.Today.ToString("yyyy-MM-dd");
+            int somme = 20000;
+            int restant = somme - Convert.ToInt32(payee);
+
+            try
+            {
+                using (SqliteConnection connection = new SqliteConnection(cs))
+                {
+                    connection.Open();
+
+                    // Vérifiez si un enregistrement existe déjà pour le même membre et la même période
+                    string checkExistingQuery = "SELECT COUNT(*) FROM cotisation WHERE numero_membre = @numero_membre AND periode = @periode";
+
+                    using (SqliteCommand checkExistingCommand = new SqliteCommand(checkExistingQuery, connection))
+                    {
+                        checkExistingCommand.Parameters.AddWithValue("@numero_membre", idMembre);
+                        checkExistingCommand.Parameters.AddWithValue("@periode", periode);
+
+                        int existingRecordsCount = Convert.ToInt32(checkExistingCommand.ExecuteScalar());
+
+                        // Si un enregistrement existe déjà, affichez un message d'erreur
+                        if (existingRecordsCount > 0)
+                        {
+                            MessageBox.Show("Cet utilisateur a déjà payé pour cette période.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    // Si aucun enregistrement n'existe, effectuez l'insertion
+                    string insertQuery = "INSERT INTO cotisation (numero_membre, status, periode, annee, date_payement, somme, payee, restant) VALUES (@numero_membre, @statut, @periode, @annee, @date_payement, @somme, @payee, @restant)";
+
+                    using (SqliteCommand command = new SqliteCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@numero_membre", idMembre);
+                        command.Parameters.AddWithValue("@statut", statut);
+                        command.Parameters.AddWithValue("@periode", periode);
+                        command.Parameters.AddWithValue("@annee", annee);
+                        command.Parameters.AddWithValue("@date_payement", datePayement);
+                        command.Parameters.AddWithValue("@somme", somme);
+                        command.Parameters.AddWithValue("@payee", payee);
+                        command.Parameters.AddWithValue("@restant", restant);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Cotisation Validée", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public string getAmountCot()
+        {
+            string result = null;
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string selectMedicamentsQuery = "SELECT * FROM value_cotisation";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            result = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
         //Evenements
         private void btnShowAndHideOption_Click(object sender, EventArgs e)
         {
@@ -126,6 +252,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 btnShowAndHideOption.Text = "Cacher les détailles de la cotisation";
                 panelCotisation.Visible = true;
+
             }
             else
             {
@@ -138,6 +265,8 @@ namespace AmadiaVente.Winforms.functionality
         {
             panelCotisation.Visible = false;
             afficheNomMembreLoad();
+
+            txtBoxSommeCot.Text = getAmountCot();
 
             foreach (string nomMois in mois)
             {
@@ -194,6 +323,19 @@ namespace AmadiaVente.Winforms.functionality
 
             comboBoxMoisCot.SelectedItem = moisSelect;
             comboBoxMoisDetailCot.SelectedItem = moisSelect;
+
+
+            for (int annee = 2005; annee <= 2050; annee++)
+            {
+                comboBoxAnneeCot.Items.Add(annee);
+            }
+
+            int currentYear = DateTime.Today.Year;
+            comboBoxAnneeCot.SelectedItem = currentYear;
+
+            string moisActuelle = comboBoxMoisDetailCot.SelectedItem.ToString();
+            AfficherInformationsCotisation(moisActuelle, currentYear);
+
         }
 
         private void comboBoxNomMembre_SelectedIndexChanged(object sender, EventArgs e)
@@ -252,5 +394,52 @@ namespace AmadiaVente.Winforms.functionality
                 comboBoxNomMembre.SelectedItem = null;
             }
         }
+
+        private void btnValiderCotisation_Click(object sender, EventArgs e)
+        {
+            string numeroMembre = txtBoxNumeroMembre.Text;
+            string moisDeCotisation = comboBoxMoisCot.SelectedItem.ToString();
+            string montant = txtBoxSommeCot.Text;
+            int annee = Convert.ToInt32(DateTime.Today.ToString("yyyy"));
+
+            validerCotisation(numeroMembre, moisDeCotisation, montant, annee);
+        }
+
+        private void btnAnnulerCotisation_Click(object sender, EventArgs e)
+        {
+            reset();
+        }
+
+        private void comboBoxMoisDetailCot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string month = comboBoxMoisDetailCot.SelectedItem.ToString();
+            int year = 2023;
+
+            if (comboBoxAnneeCot.SelectedItem != null && comboBoxMoisDetailCot.SelectedItem != null)
+            {
+                year = Convert.ToInt32(comboBoxAnneeCot.SelectedItem.ToString());
+                month = comboBoxMoisDetailCot.SelectedItem.ToString();
+            }
+
+            AfficherInformationsCotisation(month, year);
+        }
+
+        private void comboBoxAnneeCot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string month = comboBoxMoisDetailCot.SelectedItem.ToString();
+            int year = Convert.ToInt32(comboBoxAnneeCot.SelectedItem.ToString());
+
+            AfficherInformationsCotisation(month, year);
+        }
+
+        private void btnChangeCotisation_Click(object sender, EventArgs e)
+        {
+            popUp.popUpChangeCotisation popup = new popUp.popUpChangeCotisation();
+
+            popup.ShowDialog();
+            popup.Dispose();
+            txtBoxSommeCot.Text = getAmountCot();
+        }
+
     }
 }
