@@ -30,6 +30,8 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -46,9 +48,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelLeftMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnCotisation = new Guna.UI2.WinForms.Guna2CircleButton();
+            btnAddMember = new Guna.UI2.WinForms.Guna2CircleButton();
             btnProfil = new Guna.UI2.WinForms.Guna2GradientButton();
             btnList = new Guna.UI2.WinForms.Guna2GradientButton();
             btnCompteRendu = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -60,8 +62,6 @@
             panelMainChild = new Guna.UI2.WinForms.Guna2GradientPanel();
             panelLeftParent = new Panel();
             panel4 = new Panel();
-            btnAddMember = new Guna.UI2.WinForms.Guna2CircleButton();
-            btnCotisation = new Guna.UI2.WinForms.Guna2CircleButton();
             panelLeftMenu.SuspendLayout();
             panelLeftParent.SuspendLayout();
             panel4.SuspendLayout();
@@ -90,6 +90,53 @@
             panelLeftMenu.ShadowDecoration.CustomizableEdges = customizableEdges18;
             panelLeftMenu.Size = new Size(164, 483);
             panelLeftMenu.TabIndex = 0;
+            // 
+            // btnCotisation
+            // 
+            btnCotisation.AccessibleDescription = "Cotisation";
+            btnCotisation.AccessibleName = "Cotisation";
+            btnCotisation.Animated = true;
+            btnCotisation.AnimatedGIF = true;
+            btnCotisation.BorderColor = Color.FromArgb(23, 117, 197);
+            btnCotisation.BorderThickness = 2;
+            btnCotisation.DisabledState.BorderColor = Color.DarkGray;
+            btnCotisation.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCotisation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCotisation.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCotisation.FillColor = Color.Transparent;
+            btnCotisation.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCotisation.ForeColor = Color.White;
+            btnCotisation.Image = Properties.Resources.icons8_pile_de_pièces;
+            btnCotisation.Location = new Point(92, 351);
+            btnCotisation.Name = "btnCotisation";
+            btnCotisation.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            btnCotisation.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnCotisation.Size = new Size(40, 40);
+            btnCotisation.TabIndex = 11;
+            btnCotisation.Click += btnCotisation_Click;
+            // 
+            // btnAddMember
+            // 
+            btnAddMember.AccessibleDescription = "Gestion Membre";
+            btnAddMember.AccessibleName = "Gestion Membre";
+            btnAddMember.BorderColor = Color.FromArgb(23, 117, 197);
+            btnAddMember.BorderThickness = 2;
+            btnAddMember.DisabledState.BorderColor = Color.DarkGray;
+            btnAddMember.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAddMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAddMember.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddMember.FillColor = Color.Transparent;
+            btnAddMember.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddMember.ForeColor = Color.White;
+            btnAddMember.Image = Properties.Resources.icons8_ajouter_un_groupe_d_utilisateurs_femme_homme_96;
+            btnAddMember.ImageSize = new Size(25, 25);
+            btnAddMember.Location = new Point(35, 351);
+            btnAddMember.Name = "btnAddMember";
+            btnAddMember.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnAddMember.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnAddMember.Size = new Size(40, 40);
+            btnAddMember.TabIndex = 10;
+            btnAddMember.Click += btnAddMember_Click;
             // 
             // btnProfil
             // 
@@ -315,42 +362,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(805, 518);
             panel4.TabIndex = 10;
-            // 
-            // btnAddMember
-            // 
-            btnAddMember.DisabledState.BorderColor = Color.DarkGray;
-            btnAddMember.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAddMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAddMember.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddMember.FillColor = Color.FromArgb(23, 117, 197);
-            btnAddMember.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddMember.ForeColor = Color.White;
-            btnAddMember.Location = new Point(35, 351);
-            btnAddMember.Name = "btnAddMember";
-            btnAddMember.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnAddMember.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnAddMember.Size = new Size(40, 40);
-            btnAddMember.TabIndex = 10;
-            btnAddMember.Text = "+";
-            btnAddMember.Click += btnAddMember_Click;
-            // 
-            // btnCotisation
-            // 
-            btnCotisation.DisabledState.BorderColor = Color.DarkGray;
-            btnCotisation.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnCotisation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnCotisation.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnCotisation.FillColor = Color.FromArgb(23, 117, 197);
-            btnCotisation.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCotisation.ForeColor = Color.White;
-            btnCotisation.Location = new Point(92, 351);
-            btnCotisation.Name = "btnCotisation";
-            btnCotisation.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            btnCotisation.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnCotisation.Size = new Size(40, 40);
-            btnCotisation.TabIndex = 11;
-            btnCotisation.Text = "Cot";
-            btnCotisation.Click += btnCotisation_Click;
             // 
             // main
             // 

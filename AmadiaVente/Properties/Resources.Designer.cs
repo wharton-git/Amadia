@@ -123,6 +123,16 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_ajouter_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-ajouter-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_ajouter_un_groupe_d_utilisateurs_femme_homme_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-ajouter-un-groupe-d\'utilisateurs-femme-homme-96", resourceCulture);
@@ -233,6 +243,16 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_info_310 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-info-310", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_mot_de_passe_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-mot-de-passe-96", resourceCulture);
@@ -266,6 +286,26 @@ namespace AmadiaVente.Properties {
         internal static System.Drawing.Bitmap icons8_panneau_de_contrôle_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-panneau-de-contrôle-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_pile_de_pièces {
+            get {
+                object obj = ResourceManager.GetObject("icons8-pile-de-pièces", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_plus_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-plus-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

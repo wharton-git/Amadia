@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -48,9 +46,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            btnChangeCotisation = new Guna.UI2.WinForms.Guna2ImageButton();
             labelAlertNumeroMembre = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelCotisation = new Guna.UI2.WinForms.Guna2GradientPanel();
             comboBoxAnneeCot = new ComboBox();
@@ -67,6 +67,7 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             comboBoxNomMembre = new ComboBox();
+            btnModifCotisation = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
             panelCotisation.SuspendLayout();
@@ -76,13 +77,13 @@
             // guna2GradientPanel1
             // 
             guna2GradientPanel1.Controls.Add(guna2GradientPanel2);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges16;
+            guna2GradientPanel1.CustomizableEdges = customizableEdges17;
             guna2GradientPanel1.Dock = DockStyle.Fill;
             guna2GradientPanel1.FillColor = Color.FromArgb(191, 210, 255);
             guna2GradientPanel1.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel1.Location = new Point(0, 0);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges17;
+            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2GradientPanel1.Size = new Size(886, 478);
             guna2GradientPanel1.TabIndex = 0;
             // 
@@ -91,7 +92,7 @@
             guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel2.BackColor = Color.Transparent;
             guna2GradientPanel2.BorderRadius = 15;
-            guna2GradientPanel2.Controls.Add(btnChangeCotisation);
+            guna2GradientPanel2.Controls.Add(btnModifCotisation);
             guna2GradientPanel2.Controls.Add(labelAlertNumeroMembre);
             guna2GradientPanel2.Controls.Add(panelCotisation);
             guna2GradientPanel2.Controls.Add(btnShowAndHideOption);
@@ -105,32 +106,14 @@
             guna2GradientPanel2.Controls.Add(guna2HtmlLabel2);
             guna2GradientPanel2.Controls.Add(guna2HtmlLabel3);
             guna2GradientPanel2.Controls.Add(comboBoxNomMembre);
-            guna2GradientPanel2.CustomizableEdges = customizableEdges14;
+            guna2GradientPanel2.CustomizableEdges = customizableEdges15;
             guna2GradientPanel2.FillColor = Color.WhiteSmoke;
             guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
             guna2GradientPanel2.Location = new Point(27, 26);
             guna2GradientPanel2.Name = "guna2GradientPanel2";
-            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges15;
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2GradientPanel2.Size = new Size(842, 432);
             guna2GradientPanel2.TabIndex = 0;
-            // 
-            // btnChangeCotisation
-            // 
-            btnChangeCotisation.AccessibleDescription = "Modifier la valeur de la Somme de Cotisation";
-            btnChangeCotisation.AccessibleName = "Boutton Modifier Cotisation";
-            btnChangeCotisation.CheckedState.ImageSize = new Size(64, 64);
-            btnChangeCotisation.HoverState.ImageSize = new Size(64, 64);
-            btnChangeCotisation.Image = Properties.Resources.icons8_boucle_96;
-            btnChangeCotisation.ImageOffset = new Point(0, 0);
-            btnChangeCotisation.ImageRotate = 0F;
-            btnChangeCotisation.ImageSize = new Size(30, 30);
-            btnChangeCotisation.Location = new Point(785, 84);
-            btnChangeCotisation.Name = "btnChangeCotisation";
-            btnChangeCotisation.PressedState.ImageSize = new Size(64, 64);
-            btnChangeCotisation.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            btnChangeCotisation.Size = new Size(32, 23);
-            btnChangeCotisation.TabIndex = 63;
-            btnChangeCotisation.Click += btnChangeCotisation_Click;
             // 
             // labelAlertNumeroMembre
             // 
@@ -149,10 +132,10 @@
             panelCotisation.Controls.Add(comboBoxAnneeCot);
             panelCotisation.Controls.Add(comboBoxMoisDetailCot);
             panelCotisation.Controls.Add(dataGridViewCotisationStatus);
-            panelCotisation.CustomizableEdges = customizableEdges2;
+            panelCotisation.CustomizableEdges = customizableEdges3;
             panelCotisation.Location = new Point(3, 190);
             panelCotisation.Name = "panelCotisation";
-            panelCotisation.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            panelCotisation.ShadowDecoration.CustomizableEdges = customizableEdges4;
             panelCotisation.Size = new Size(836, 239);
             panelCotisation.TabIndex = 61;
             // 
@@ -244,7 +227,7 @@
             // 
             // btnShowAndHideOption
             // 
-            btnShowAndHideOption.CustomizableEdges = customizableEdges4;
+            btnShowAndHideOption.CustomizableEdges = customizableEdges5;
             btnShowAndHideOption.DisabledState.BorderColor = Color.DarkGray;
             btnShowAndHideOption.DisabledState.CustomBorderColor = Color.DarkGray;
             btnShowAndHideOption.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -254,7 +237,7 @@
             btnShowAndHideOption.ForeColor = Color.Black;
             btnShowAndHideOption.Location = new Point(26, 159);
             btnShowAndHideOption.Name = "btnShowAndHideOption";
-            btnShowAndHideOption.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            btnShowAndHideOption.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnShowAndHideOption.Size = new Size(237, 25);
             btnShowAndHideOption.TabIndex = 60;
             btnShowAndHideOption.Text = "Voir les détailles de la cotisation";
@@ -266,7 +249,7 @@
             btnAnnulerCotisation.BorderColor = Color.FromArgb(191, 210, 255);
             btnAnnulerCotisation.BorderRadius = 15;
             btnAnnulerCotisation.BorderThickness = 3;
-            btnAnnulerCotisation.CustomizableEdges = customizableEdges6;
+            btnAnnulerCotisation.CustomizableEdges = customizableEdges7;
             btnAnnulerCotisation.DisabledState.BorderColor = Color.DarkGray;
             btnAnnulerCotisation.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAnnulerCotisation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -280,7 +263,7 @@
             btnAnnulerCotisation.ImageSize = new Size(30, 30);
             btnAnnulerCotisation.Location = new Point(421, 103);
             btnAnnulerCotisation.Name = "btnAnnulerCotisation";
-            btnAnnulerCotisation.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            btnAnnulerCotisation.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAnnulerCotisation.Size = new Size(166, 55);
             btnAnnulerCotisation.TabIndex = 59;
             btnAnnulerCotisation.Click += btnAnnulerCotisation_Click;
@@ -292,7 +275,7 @@
             btnValiderCotisation.BorderColor = Color.FromArgb(191, 210, 255);
             btnValiderCotisation.BorderRadius = 15;
             btnValiderCotisation.BorderThickness = 3;
-            btnValiderCotisation.CustomizableEdges = customizableEdges8;
+            btnValiderCotisation.CustomizableEdges = customizableEdges9;
             btnValiderCotisation.DisabledState.BorderColor = Color.DarkGray;
             btnValiderCotisation.DisabledState.CustomBorderColor = Color.DarkGray;
             btnValiderCotisation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -306,7 +289,7 @@
             btnValiderCotisation.ImageSize = new Size(30, 30);
             btnValiderCotisation.Location = new Point(249, 103);
             btnValiderCotisation.Name = "btnValiderCotisation";
-            btnValiderCotisation.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            btnValiderCotisation.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnValiderCotisation.Size = new Size(166, 55);
             btnValiderCotisation.TabIndex = 58;
             btnValiderCotisation.Click += btnValiderCotisation_Click;
@@ -338,7 +321,7 @@
             txtBoxSommeCot.Anchor = AnchorStyles.Top;
             txtBoxSommeCot.BackColor = Color.White;
             txtBoxSommeCot.BorderColor = Color.Gray;
-            txtBoxSommeCot.CustomizableEdges = customizableEdges10;
+            txtBoxSommeCot.CustomizableEdges = customizableEdges11;
             txtBoxSommeCot.DefaultText = "";
             txtBoxSommeCot.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxSommeCot.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -355,7 +338,7 @@
             txtBoxSommeCot.PlaceholderForeColor = Color.LightGray;
             txtBoxSommeCot.PlaceholderText = "";
             txtBoxSommeCot.SelectedText = "";
-            txtBoxSommeCot.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            txtBoxSommeCot.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtBoxSommeCot.Size = new Size(145, 29);
             txtBoxSommeCot.TabIndex = 40;
             txtBoxSommeCot.KeyPress += txtBoxSommeCot_KeyPress;
@@ -379,7 +362,7 @@
             txtBoxNumeroMembre.Anchor = AnchorStyles.Top;
             txtBoxNumeroMembre.BackColor = Color.White;
             txtBoxNumeroMembre.BorderColor = Color.Gray;
-            txtBoxNumeroMembre.CustomizableEdges = customizableEdges12;
+            txtBoxNumeroMembre.CustomizableEdges = customizableEdges13;
             txtBoxNumeroMembre.DefaultText = "";
             txtBoxNumeroMembre.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBoxNumeroMembre.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -396,7 +379,7 @@
             txtBoxNumeroMembre.PlaceholderForeColor = Color.LightGray;
             txtBoxNumeroMembre.PlaceholderText = "";
             txtBoxNumeroMembre.SelectedText = "";
-            txtBoxNumeroMembre.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            txtBoxNumeroMembre.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtBoxNumeroMembre.Size = new Size(81, 29);
             txtBoxNumeroMembre.TabIndex = 38;
             txtBoxNumeroMembre.TextChanged += txtBoxNumeroMembre_TextChanged;
@@ -439,6 +422,33 @@
             comboBoxNomMembre.TabIndex = 37;
             comboBoxNomMembre.SelectedIndexChanged += comboBoxNomMembre_SelectedIndexChanged;
             // 
+            // btnModifCotisation
+            // 
+            btnModifCotisation.AccessibleDescription = "Modifier la valeur de la Somme de Cotisation";
+            btnModifCotisation.AccessibleName = "Boutton Modifier Cotisation";
+            btnModifCotisation.Anchor = AnchorStyles.Top;
+            btnModifCotisation.BorderColor = Color.Transparent;
+            btnModifCotisation.BorderRadius = 15;
+            btnModifCotisation.BorderThickness = 3;
+            btnModifCotisation.CustomizableEdges = customizableEdges1;
+            btnModifCotisation.DisabledState.BorderColor = Color.DarkGray;
+            btnModifCotisation.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnModifCotisation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnModifCotisation.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnModifCotisation.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnModifCotisation.FillColor = Color.Transparent;
+            btnModifCotisation.FillColor2 = Color.Transparent;
+            btnModifCotisation.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnModifCotisation.ForeColor = Color.White;
+            btnModifCotisation.Image = Properties.Resources.icons8_boucle_96;
+            btnModifCotisation.ImageSize = new Size(30, 30);
+            btnModifCotisation.Location = new Point(769, 80);
+            btnModifCotisation.Name = "btnModifCotisation";
+            btnModifCotisation.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnModifCotisation.Size = new Size(48, 32);
+            btnModifCotisation.TabIndex = 64;
+            btnModifCotisation.Click += btnModifCotisation_Click;
+            // 
             // cotisation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -476,6 +486,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewCotisationStatus;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelAlertNumeroMembre;
         private ComboBox comboBoxAnneeCot;
-        private Guna.UI2.WinForms.Guna2ImageButton btnChangeCotisation;
+        private Guna.UI2.WinForms.Guna2GradientButton btnModifCotisation;
     }
 }

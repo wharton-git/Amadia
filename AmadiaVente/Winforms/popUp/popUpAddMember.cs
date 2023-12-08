@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
+using static iTextSharp.text.pdf.PdfDocument;
 
 namespace AmadiaVente.Winforms.popUp
 {
@@ -27,6 +28,76 @@ namespace AmadiaVente.Winforms.popUp
             InitializeComponent();
         }
 
+        //Méthodes
+        private void addMember(string numero, string nom, string prenom, string adresse, string contact1, string contact2, string dateNaiss)
+        {
+            try
+            {
+                using (SqliteConnection connection = new SqliteConnection(cs))
+                {
+                    connection.Open();
+
+                    // Vérifier si l'ID ou le numéro existe déjà
+                    string checkQuery = "SELECT COUNT(*) FROM membre WHERE id_membre = @id OR id_membre = @numero";
+                    using (SqliteCommand checkCommand = new SqliteCommand(checkQuery, connection))
+                    {
+                        checkCommand.Parameters.AddWithValue("@id", numero);
+                        checkCommand.Parameters.AddWithValue("@numero", numero);
+
+                        int existingRecords = Convert.ToInt32(checkCommand.ExecuteScalar());
+
+                        if (existingRecords > 0)
+                        {
+                            MessageBox.Show("Un membre avec le numéro existe déjà. Veuillez choisir un numéro différent.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return; // Sortir de la fonction si l'ID ou le numéro existe déjà
+                        }
+                    }
+
+                    // Continuer avec l'insertion si l'ID ou le numéro n'existe pas encore
+                    string dateAdhesion = DateTime.Today.ToString("yyyy-MM-dd");
+
+                    string insertQuery = "INSERT INTO membre (id_membre, nom_membre, prenom_membre, adresse, contact, contact2, date_naiss, date_adhesion) VALUES (@id, @nom, @prenom, @adresse, @contact, @contact2, @dateNaiss, @dateAdhesion)";
+
+                    if (string.IsNullOrEmpty(numero))
+                    {
+                        insertQuery = "INSERT INTO membre (nom_membre, prenom_membre, adresse, contact, contact2, date_naiss, date_adhesion) VALUES (@nom, @prenom, @adresse, @contact, @contact2, @dateNaiss, @dateAdhesion)";
+                    }
+
+                    using (SqliteCommand command = new SqliteCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", numero);
+                        command.Parameters.AddWithValue("@nom", nom);
+                        command.Parameters.AddWithValue("@prenom", prenom);
+                        command.Parameters.AddWithValue("@adresse", adresse);
+                        command.Parameters.AddWithValue("@contact", contact1);
+                        command.Parameters.AddWithValue("@contact2", contact2);
+                        command.Parameters.AddWithValue("@dateNaiss", dateNaiss);
+                        command.Parameters.AddWithValue("@dateAdhesion", dateAdhesion);
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Membre ajouté avec Succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Reset()
+        {
+            txtBoxNumero.Text = string.Empty;
+            txtBoxNom.Text = string.Empty;
+            txtBoxPrenom.Text = string.Empty;
+            txtBoxAdresse.Text = string.Empty;
+            txtBoxContact1.Text = string.Empty;
+            txtBoxContact2.Text = string.Empty;
+            dateTimePickerBirth.Value = DateTime.Today;
+        }
+
+
+        //Evenements
         private void popUpAddMember_Load(object sender, EventArgs e)
         {
 
@@ -62,6 +133,33 @@ namespace AmadiaVente.Winforms.popUp
             {
                 isDragging = false;
             }
+        }
+
+        private void btnSaveMember_Click(object sender, EventArgs e)
+        {
+            string numero = txtBoxNumero.Text;
+            string nom = txtBoxNom.Text;
+            string prenom = txtBoxPrenom.Text;
+            string adresse = txtBoxAdresse.Text;
+            string contact1 = txtBoxContact1.Text;
+            string contact2 = txtBoxContact2.Text;
+            string dateNaisse = dateTimePickerBirth.Value.ToString("yyyy-MM-dd");
+
+            DialogResult result = MessageBox.Show("Voulez-vous vraiment ajouter ce membre ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                addMember(numero, nom, prenom, adresse, contact1, contact2, dateNaisse);
+                Reset();
+
+            }
+        }
+
+        private void btnInfoAddMember_Click(object sender, EventArgs e)
+        {
+            popUp.popUpAddMemberInfo popUp = new popUpAddMemberInfo();
+            popUp.ShowDialog();
+            popUp.Dispose();
         }
     }
 }

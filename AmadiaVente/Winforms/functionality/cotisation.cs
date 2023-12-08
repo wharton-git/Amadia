@@ -431,7 +431,7 @@ namespace AmadiaVente.Winforms.functionality
             AfficherInformationsCotisation(month, year);
         }
 
-        private void btnChangeCotisation_Click(object sender, EventArgs e)
+        private void btnModifCotisation_Click(object sender, EventArgs e)
         {
             popUp.popUpChangeCotisation popup = new popUp.popUpChangeCotisation();
 
@@ -439,6 +439,5 @@ namespace AmadiaVente.Winforms.functionality
             popup.Dispose();
             txtBoxSommeCot.Text = getAmountCot();
         }
-
     }
 }

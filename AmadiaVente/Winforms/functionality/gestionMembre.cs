@@ -28,7 +28,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_membre AS Numéro, nom_membre AS Nom, prenom_membre AS Prénom, adresse AS Adresse, date_naiss AS 'Date de Naissance', date_adhesion AS 'Date Adhésion' FROM membre";
+                string sqlQuery = "SELECT id_membre AS Numéro, nom_membre AS Nom, prenom_membre AS Prénom, adresse AS Adresse, contact AS Contact, contact2 AS 'Contact 2', date_naiss AS 'Date de Naissance', date_adhesion AS 'Date Adh' FROM membre";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -109,7 +109,18 @@ namespace AmadiaVente.Winforms.functionality
 
         private void dataGridViewListMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
 
+                DataGridViewRow selectedRow = dataGridViewListMember.Rows[e.RowIndex];
+
+                string nom = selectedRow.Cells["Nom"].Value.ToString();
+                string prenom = selectedRow.Cells["Prénom"].Value.ToString();
+
+                labelNom.Text = "Nom : " + nom;
+                labelPrenom.Text = "Prénom : " + prenom;
+
+            }
         }
     }
 }
