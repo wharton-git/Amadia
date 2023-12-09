@@ -100,7 +100,7 @@ namespace AmadiaVente.Winforms.popUp
         //Evenements
         private void popUpAddMember_Load(object sender, EventArgs e)
         {
-
+            dateTimePickerBirth.Value = DateTime.Today;
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -137,21 +137,28 @@ namespace AmadiaVente.Winforms.popUp
 
         private void btnSaveMember_Click(object sender, EventArgs e)
         {
-            string numero = txtBoxNumero.Text;
-            string nom = txtBoxNom.Text;
-            string prenom = txtBoxPrenom.Text;
-            string adresse = txtBoxAdresse.Text;
-            string contact1 = txtBoxContact1.Text;
-            string contact2 = txtBoxContact2.Text;
-            string dateNaisse = dateTimePickerBirth.Value.ToString("yyyy-MM-dd");
-
-            DialogResult result = MessageBox.Show("Voulez-vous vraiment ajouter ce membre ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            if (!string.IsNullOrEmpty(txtBoxAdresse.Text) && !string.IsNullOrEmpty(txtBoxContact1.Text) && !string.IsNullOrEmpty(txtBoxNom.Text))
             {
-                addMember(numero, nom, prenom, adresse, contact1, contact2, dateNaisse);
-                Reset();
+                string numero = txtBoxNumero.Text;
+                string nom = txtBoxNom.Text;
+                string prenom = txtBoxPrenom.Text;
+                string adresse = txtBoxAdresse.Text;
+                string contact1 = txtBoxContact1.Text;
+                string contact2 = txtBoxContact2.Text;
+                string dateNaisse = dateTimePickerBirth.Value.ToString("yyyy-MM-dd");
 
+                DialogResult result = MessageBox.Show("Voulez-vous vraiment ajouter ce membre ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    addMember(numero, nom, prenom, adresse, contact1, contact2, dateNaisse);
+                    Reset();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuiller remplir les information nécessairement obligatoire ! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

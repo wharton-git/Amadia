@@ -37,6 +37,7 @@
             btnQuit = new Guna.UI2.WinForms.Guna2ImageButton();
             btnQuitList = new Guna.UI2.WinForms.Guna2ImageButton();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            test = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelAddList.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             panelAddList.BorderColor = Color.FromArgb(23, 117, 197);
             panelAddList.BorderRadius = 6;
             panelAddList.BorderThickness = 4;
+            panelAddList.Controls.Add(test);
             panelAddList.Controls.Add(btnQuit);
             panelAddList.Controls.Add(btnQuitList);
             panelAddList.CustomizableEdges = customizableEdges3;
@@ -97,6 +99,16 @@
             guna2Elipse1.BorderRadius = 15;
             guna2Elipse1.TargetControl = this;
             // 
+            // test
+            // 
+            test.BackColor = Color.Transparent;
+            test.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            test.Location = new Point(335, 141);
+            test.Name = "test";
+            test.Size = new Size(46, 23);
+            test.TabIndex = 38;
+            test.Text = "TEST : ";
+            // 
             // popUpModifierMembre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -109,6 +121,7 @@
             Text = "popUpModifierMembre";
             Load += popUpModifierMembre_Load;
             panelAddList.ResumeLayout(false);
+            panelAddList.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -118,5 +131,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton btnQuitList;
         private Guna.UI2.WinForms.Guna2ImageButton btnQuit;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel test;
     }
 }

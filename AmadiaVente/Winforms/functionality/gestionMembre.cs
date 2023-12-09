@@ -15,6 +15,7 @@ namespace AmadiaVente.Winforms.functionality
     {
         //Declaration globale
         private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
+        string idMembre = null;
 
         //Constructeur
         public gestionMembre()
@@ -76,6 +77,7 @@ namespace AmadiaVente.Winforms.functionality
             popUp.popUpAddMember popUp = new popUp.popUpAddMember();
             popUp.ShowDialog();
             popUp.Dispose();
+            afficheMembre();
         }
 
         private void btnDeleteMember_Click(object sender, EventArgs e)
@@ -102,9 +104,17 @@ namespace AmadiaVente.Winforms.functionality
 
         private void btnEditMember_Click(object sender, EventArgs e)
         {
-            popUp.popUpModifierMembre popUp = new popUp.popUpModifierMembre();
-            popUp.ShowDialog();
-            popUp.Dispose();
+            if (idMembre != null)
+            {
+                popUp.popUpModifierMembre popUp = new popUp.popUpModifierMembre(idMembre);
+                popUp.ShowDialog();
+                popUp.Dispose();
+                afficheMembre();
+                idMembre = null;
+            }else
+            {
+                MessageBox.Show("Veuillez sélectionner un membre avant de procéder à l'édition !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void dataGridViewListMember_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -116,9 +126,23 @@ namespace AmadiaVente.Winforms.functionality
 
                 string nom = selectedRow.Cells["Nom"].Value.ToString();
                 string prenom = selectedRow.Cells["Prénom"].Value.ToString();
+                string contact = selectedRow.Cells["Contact"].Value.ToString();
+                string adresse = selectedRow.Cells["Adresse"].Value.ToString();
 
-                labelNom.Text = "Nom : " + nom;
-                labelPrenom.Text = "Prénom : " + prenom;
+                if (string.IsNullOrEmpty(contact))
+                {
+                    contact = "Pas de contact";
+                }
+                if (string.IsNullOrEmpty(adresse))
+                {
+                    adresse = "Pas d'adresse défini";
+                }
+
+                idMembre = selectedRow.Cells["Numéro"].Value.ToString();
+
+                labelNom.Text = prenom + " " + nom;
+                labelPrenom.Text = contact + ", " + adresse;
+
 
             }
         }

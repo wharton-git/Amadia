@@ -70,6 +70,9 @@
             btnQuit = new Guna.UI2.WinForms.Guna2ImageButton();
             btnQuitList = new Guna.UI2.WinForms.Guna2ImageButton();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelAddList.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,6 +82,9 @@
             panelAddList.BorderColor = Color.FromArgb(23, 117, 197);
             panelAddList.BorderRadius = 6;
             panelAddList.BorderThickness = 4;
+            panelAddList.Controls.Add(guna2HtmlLabel10);
+            panelAddList.Controls.Add(guna2HtmlLabel9);
+            panelAddList.Controls.Add(guna2HtmlLabel8);
             panelAddList.Controls.Add(btnSaveMember);
             panelAddList.Controls.Add(guna2HtmlLabel7);
             panelAddList.Controls.Add(guna2HtmlLabel6);
@@ -257,8 +263,10 @@
             // 
             // dateTimePickerBirth
             // 
+            dateTimePickerBirth.BorderRadius = 15;
             dateTimePickerBirth.Checked = true;
             dateTimePickerBirth.CustomizableEdges = customizableEdges8;
+            dateTimePickerBirth.FillColor = Color.White;
             dateTimePickerBirth.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePickerBirth.Format = DateTimePickerFormat.Long;
             dateTimePickerBirth.Location = new Point(32, 223);
@@ -396,6 +404,39 @@
             guna2Elipse1.BorderRadius = 15;
             guna2Elipse1.TargetControl = this;
             // 
+            // guna2HtmlLabel8
+            // 
+            guna2HtmlLabel8.BackColor = Color.Transparent;
+            guna2HtmlLabel8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2HtmlLabel8.ForeColor = Color.Red;
+            guna2HtmlLabel8.Location = new Point(215, 36);
+            guna2HtmlLabel8.Name = "guna2HtmlLabel8";
+            guna2HtmlLabel8.Size = new Size(10, 23);
+            guna2HtmlLabel8.TabIndex = 18;
+            guna2HtmlLabel8.Text = "*";
+            // 
+            // guna2HtmlLabel9
+            // 
+            guna2HtmlLabel9.BackColor = Color.Transparent;
+            guna2HtmlLabel9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2HtmlLabel9.ForeColor = Color.Red;
+            guna2HtmlLabel9.Location = new Point(88, 117);
+            guna2HtmlLabel9.Name = "guna2HtmlLabel9";
+            guna2HtmlLabel9.Size = new Size(10, 23);
+            guna2HtmlLabel9.TabIndex = 19;
+            guna2HtmlLabel9.Text = "*";
+            // 
+            // guna2HtmlLabel10
+            // 
+            guna2HtmlLabel10.BackColor = Color.Transparent;
+            guna2HtmlLabel10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2HtmlLabel10.ForeColor = Color.Red;
+            guna2HtmlLabel10.Location = new Point(318, 117);
+            guna2HtmlLabel10.Name = "guna2HtmlLabel10";
+            guna2HtmlLabel10.Size = new Size(10, 23);
+            guna2HtmlLabel10.TabIndex = 20;
+            guna2HtmlLabel10.Text = "*";
+            // 
             // popUpAddMember
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -435,5 +476,8 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBoxContact2;
         private Guna.UI2.WinForms.Guna2Button btnSaveMember;
         private Guna.UI2.WinForms.Guna2CircleButton btnInfoAddMember;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
     }
 }

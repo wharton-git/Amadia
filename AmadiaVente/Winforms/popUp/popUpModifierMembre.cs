@@ -20,14 +20,17 @@ namespace AmadiaVente.Winforms.popUp
         private Point lastCursorPos;
         private Point lastFormPos;
 
-        public popUpModifierMembre()
+        string idMembre = null;
+
+        public popUpModifierMembre(string id)
         {
             InitializeComponent();
+            idMembre = id;
         }
 
         private void popUpModifierMembre_Load(object sender, EventArgs e)
         {
-
+            test.Text = idMembre;
         }
 
         private void panelAddList_MouseDown(object sender, MouseEventArgs e)
