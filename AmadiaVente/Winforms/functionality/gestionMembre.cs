@@ -93,6 +93,7 @@ namespace AmadiaVente.Winforms.functionality
                     String valeurCellule = selectedRow.Cells[0].Value.ToString();
                     removeMember(valeurCellule);
                     afficheMembre();
+                    idMembre = null;
                 }
             }
             else
