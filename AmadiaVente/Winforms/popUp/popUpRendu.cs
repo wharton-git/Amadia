@@ -367,6 +367,39 @@ namespace AmadiaVente.Winforms.popUp
             return result;
         }
 
+        private string[] countAdhesion(string connectionString)
+        {
+            String[] result = new string[6];
+
+            string today = DateTime.Today.ToString("yyyy-MM-dd");
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT COUNT(id_membre), SUM(droit_payee), droit_adhesion FROM adhesion WHERE date_adhesion = @today";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@today", today);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 3; i++)
+                            {
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
         private string[] checkListIdMedicMembre(string id, string connectionString)
         {
             String[] result = new string[6];
@@ -542,9 +575,6 @@ namespace AmadiaVente.Winforms.popUp
                 PdfPCell cellVideTeteFirst = new PdfPCell(new Phrase(""));
                 cellVideTeteFirst.BorderWidthRight = 0f;
 
-                PdfPCell cellAdhesion = new PdfPCell(new Phrase("ADHESION"));
-                cellAdhesion.BorderWidthRight = 0f;
-
                 PdfPCell cellCarnet = new PdfPCell(new Phrase("CARNET"));
                 cellCarnet.BorderWidthRight = 0f;
 
@@ -557,18 +587,12 @@ namespace AmadiaVente.Winforms.popUp
                 PdfPCell cellVideTeteMnM = new PdfPCell(new Phrase(""));
                 cellVideTeteMnM.BorderWidthLeft = 0f;
 
-                PdfPCell cellGlycemie = new PdfPCell(new Phrase("GLYCEMIE"));
-                cellGlycemie.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
 
                 PdfPCell cellVideNonMembre = new PdfPCell(new Phrase(""));
                 cellVideNonMembre.BorderWidthTop = 0f;
 
                 PdfPCell cellConsultation = new PdfPCell(new Phrase("CONSULTATION"));
                 cellConsultation.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
-
-
-                PdfPCell cellHB1AC = new PdfPCell(new Phrase("Hb1Ac"));
-                cellHB1AC.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
 
 
                 table.AddCell(cellVideTeteFirst);
@@ -624,14 +648,18 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell("");
                 table.AddCell("");
 
-                table.AddCell(cellAdhesion);
-                table.AddCell(cellVideTeteMnM);
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                String[] infoAdhesion = countAdhesion(cs);
+
+                var cellAdh = new PdfPCell(new Phrase("ADHESION"));
+                cellAdh.Colspan = 2;
+
+                table.AddCell(cellAdh);
+                table.AddCell(infoAdhesion[0]);
+                table.AddCell(infoAdhesion[2]);
+                table.AddCell(infoAdhesion[1]);
                 table.AddCell("");
 
-                    String[] infoCotisation = countCotisation(cs);
+                String[] infoCotisation = countCotisation(cs);
 
                     var cellCot = new PdfPCell(new Phrase("COTISATION"));
                     cellCot.Colspan = 2;
