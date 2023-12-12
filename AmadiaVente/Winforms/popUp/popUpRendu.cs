@@ -322,6 +322,31 @@ namespace AmadiaVente.Winforms.popUp
             return listId;
         }
 
+        private List<String> GetPansement(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.designation LIKE 'PANSEMENT' AND c.date_achat > @today";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+            return listId;
+        }
 
         private string[] checkListIdMedic(string id, string connectionString)
         {
@@ -637,6 +662,11 @@ namespace AmadiaVente.Winforms.popUp
             return result;
         }
 
+        private int toInt(string nombre)
+        {
+            return Convert.ToInt32(nombre);
+        }
+
         //Evenements
         private void btnQuitList_Click(object sender, EventArgs e)
         {
@@ -740,9 +770,7 @@ namespace AmadiaVente.Winforms.popUp
                 PdfPCell cellVideNonMembre = new PdfPCell(new Phrase(""));
                 cellVideNonMembre.BorderWidthTop = 0f;
 
-                PdfPCell cellConsultation = new PdfPCell(new Phrase("CONSULTATION"));
-                cellConsultation.BorderWidthBottom = 0f; // Enlève la bordure bas de la cellule
-
+                int totalFirstCons = 0;
 
                 table.AddCell(cellVideTeteFirst);
                 table.AddCell(cellVideTeteMnM);
@@ -781,6 +809,7 @@ namespace AmadiaVente.Winforms.popUp
                     table.AddCell(infoConsommableNonMembre[5]);
                     table.AddCell("");
 
+                    totalFirstCons = totalFirstCons + Convert.ToInt32(infoConsommableMembre[5]) + Convert.ToInt32(infoConsommableNonMembre[5]);
                 }
 
                 String[] infoConsultationM = getConsultationMembre(cs);
@@ -804,6 +833,8 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell(infoConsultationNM[1]);
                 table.AddCell("");
 
+                totalFirstCons = totalFirstCons + toInt(infoConsultationM[1]) + toInt(infoConsultationNM[1]);
+
                 String[] infoAdhesion = countAdhesion(cs);
 
                 var cellAdh = new PdfPCell(new Phrase("ADHESION"));
@@ -815,6 +846,8 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell(infoAdhesion[1]);
                 table.AddCell("");
 
+                totalFirstCons = totalFirstCons + toInt(infoAdhesion[1]);
+
                 String[] infoCotisation = countCotisation(cs);
 
                     var cellCot = new PdfPCell(new Phrase("COTISATION"));
@@ -825,9 +858,10 @@ namespace AmadiaVente.Winforms.popUp
                     table.AddCell(infoCotisation[1]);
                     table.AddCell(infoCotisation[2]);
                     table.AddCell("");
-                
 
-                List<String> idListTu = new List<String>();
+                totalFirstCons = totalFirstCons + toInt(infoCotisation[2]);
+
+                List <String> idListTu = new List<String>();
                 idListTu = GetTU(cs);
 
                 foreach (String id in idListTu)
@@ -844,6 +878,8 @@ namespace AmadiaVente.Winforms.popUp
                     table.AddCell(infoTU[4]);
                     table.AddCell(infoTU[5]);
                     table.AddCell("");
+
+                    totalFirstCons = totalFirstCons + toInt(infoTU[5]);
 
                 }
 
@@ -865,14 +901,27 @@ namespace AmadiaVente.Winforms.popUp
                     table.AddCell(infoTg[5]);
                     table.AddCell("");
 
+                    totalFirstCons = totalFirstCons + toInt(infoTg[5]);
                 }
 
-                table.AddCell(cellPansement);
-                table.AddCell(cellVideTeteMnM);
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                List<String> idListPanse = new List<String>();
+                idListPanse = GetPansement(cs);
+
+                foreach (String id in idListPanse)
+                {
+                    String[] infoPanse = checkListIdMedic(id, cs);
+
+                    var cellPanse = new PdfPCell(new Phrase("PANSEMENT"));
+                    cellPanse.Colspan = 2;
+
+                    table.AddCell(cellPanse);
+                    table.AddCell(infoPanse[3]);
+                    table.AddCell(infoPanse[4]);
+                    table.AddCell(infoPanse[5]);
+                    table.AddCell("");
+
+                    totalFirstCons = totalFirstCons + toInt(infoPanse[5]);
+                }
 
                 List<String> idListHB1AC = new List<String>();
                 idListHB1AC = GetHB1ACids(cs);
@@ -904,6 +953,8 @@ namespace AmadiaVente.Winforms.popUp
                     table.AddCell(infoConsommableNonMembre[4]);
                     table.AddCell(infoConsommableNonMembre[5]);
                     table.AddCell("");
+
+                    totalFirstCons = totalFirstCons + toInt(infoConsommableNonMembre[5]) + toInt(infoConsommableMembre[5]);
                 }
 
                 table.AddCell(cellECG);
@@ -925,7 +976,7 @@ namespace AmadiaVente.Winforms.popUp
                 int totalConsomable = 0;
 
                 table_1.AddCell("TOTAL CONSOMMABLE");
-                table_1.AddCell("");
+                table_1.AddCell(FormatteSommeArgent(totalFirstCons));
 
                 table_1.SpacingAfter = 10f;
 
