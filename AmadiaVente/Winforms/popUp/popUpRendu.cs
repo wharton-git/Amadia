@@ -304,7 +304,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.glycemie = 1 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today;\r\n";
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.glycemie = 1 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today;";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -461,11 +461,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT lc.id_article, designation, 'NM' as 'Non Membre', SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande  WHERE lc.id_article = @id AND c.id_membre IS NULL";
+                string sqlQuery2 = "SELECT lc.id_article, designation, 'NM' as 'Non Membre', SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande  WHERE lc.id_article = @id AND c.id_membre IS NULL  AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
@@ -492,7 +493,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT  SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE type_article = 'Médicaments'";
+                string sqlQuery2 = "SELECT  SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE type_article = 'Médicaments' AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
@@ -508,6 +509,131 @@ namespace AmadiaVente.Winforms.popUp
                     }
                 }
             }
+            return result;
+        }
+
+        private string[] getAmountConsultationM()
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string selectMedicamentsQuery = "SELECT * FROM value_consultation WHERE type LIKE 'M'";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                            string cons_membre = reader.GetString(0);
+                            string cons_non_membre = reader.GetString(1);
+
+                            return new string[] { cons_membre, cons_non_membre };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private string[] getAmountConsultationNM()
+        {
+
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string selectMedicamentsQuery = "SELECT * FROM value_consultation WHERE type LIKE 'NM'";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                            string cons_membre = reader.GetString(0);
+                            string cons_non_membre = reader.GetString(1);
+
+                            return new string[] { cons_membre, cons_non_membre };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private string[] getConsultationMembre(string connectionString)
+        {
+            String[] result = new string[3];
+            string[] PUCM = getAmountConsultationM();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT COUNT(id), SUM(prix_consultation) FROM consultation WHERE numero_membre IS NOT NULL AND date_consultation = @today";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 2; i++)
+                            {
+                                // Vérifiez si la valeur de la colonne est NULL avant de l'ajouter au tableau
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+                            }
+                            result[2] = PUCM[1];
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+
+
+        private string[] getConsultationNonMembre(string connectionString)
+        {
+            String[] result = new string[3];
+            string[] PUCNM = getAmountConsultationNM();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT COUNT(id), SUM(prix_consultation) FROM consultation WHERE numero_membre IS NULL AND date_consultation = @today";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 2; i++)
+                            {
+                                // Vérifiez si la valeur de la colonne est NULL avant de l'ajouter au tableau
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+                            }
+                            result[2] = PUCNM[1];
+                        }
+                    }
+                }
+            }
+
             return result;
         }
 
@@ -657,18 +783,25 @@ namespace AmadiaVente.Winforms.popUp
 
                 }
 
-                table.AddCell(cellConsultation);
+                String[] infoConsultationM = getConsultationMembre(cs);
+                String[] infoConsultationNM = getConsultationNonMembre(cs);
+
+
+                var cellConsumtation = new PdfPCell(new Phrase("CONSULTATION"));
+                cellConsumtation.Rowspan = 2;
+
+                table.AddCell(cellConsumtation);
                 table.AddCell("M");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                table.AddCell(infoConsultationM[0]);
+                table.AddCell(infoConsultationM[2]);
+                table.AddCell(infoConsultationM[1]);
                 table.AddCell("");
 
-                table.AddCell(cellVideNonMembre);
+                //table2.AddCell(cellVideNonMembre);
                 table.AddCell("NM");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+                table.AddCell(infoConsultationNM[0]);
+                table.AddCell(infoConsultationNM[2]);
+                table.AddCell(infoConsultationNM[1]);
                 table.AddCell("");
 
                 String[] infoAdhesion = countAdhesion(cs);
