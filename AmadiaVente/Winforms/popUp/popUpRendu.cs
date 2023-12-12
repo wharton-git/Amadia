@@ -40,22 +40,24 @@ namespace AmadiaVente.Winforms.popUp
         //Methodes
         private string prixTotalConsommable()
         {
-            String result = null;
+            string result = null;
 
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT  SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+                string sqlQuery2 = "SELECT SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON lc.id_commande = c.id_commande WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            result = reader["VALEUR"].ToString();
+                            // Utilisation de l'opérateur ternaire pour vérifier si le résultat est null
+                            result = reader["VALEUR"] != DBNull.Value ? reader["VALEUR"].ToString() : "0";
                         }
                     }
                 }
@@ -86,10 +88,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Médicaments'";
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Médicaments' AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -111,10 +115,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.designation LIKE 'HB1AC'";
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.designation LIKE 'HB1AC' AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -136,10 +142,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation LIKE 'BANDELETTE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.designation LIKE 'BANDELETTE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -161,10 +169,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation LIKE 'TENSIOMETRE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.designation LIKE 'TENSIOMETRE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -186,10 +196,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation LIKE 'GLUCOMETRE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.designation LIKE 'GLUCOMETRE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today;";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -211,10 +223,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.designation NOT LIKE 'GLUCOMETRE%' AND a.designation NOT LIKE 'TENSIOMETRE%' AND a.designation NOT LIKE 'BANDELETTE%'  AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0";
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.designation NOT LIKE 'GLUCOMETRE%' AND a.designation NOT LIKE 'TENSIOMETRE%' AND a.designation NOT LIKE 'BANDELETTE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today;\r\n";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -236,10 +250,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 1";
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 1 AND c.date_achat > @today;\r\n";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -261,10 +277,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 1 AND a.tu = 0";
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 1 AND a.tu = 0 AND c.date_achat > @today;\r\n";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -286,10 +304,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT(lc.id_article), a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article WHERE a.type_article = 'Equipements' AND a.glycemie = 1 AND a.tg = 0 AND a.tu = 0";
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.glycemie = 1 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today;\r\n";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -311,11 +331,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT lc.id_article, designation, 'NM' as 'Non Membre', SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande  WHERE lc.id_article = @id";
+                string sqlQuery2 = "SELECT lc.id_article, designation, 'NM' as 'Non Membre', SUM(qte_acheter) AS QTE, prix_article AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande  WHERE lc.id_article = @id AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
@@ -408,11 +429,12 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT lc.id_article, designation, 'M' as Membre, SUM(qte_acheter) AS QTE, CASE WHEN prix_membre = 0 THEN prix_article ELSE prix_membre END AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE lc.id_article = @id AND c.id_membre IS NOT NULL";
+                string sqlQuery2 = "SELECT lc.id_article, designation, 'M' as Membre, SUM(qte_acheter) AS QTE, CASE WHEN prix_membre = 0 THEN prix_article ELSE prix_membre END AS PU, SUM(prix) AS VALEUR FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE lc.id_article = @id AND c.id_membre IS NOT NULL AND c.date_achat > @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
@@ -474,6 +496,7 @@ namespace AmadiaVente.Winforms.popUp
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
 
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
