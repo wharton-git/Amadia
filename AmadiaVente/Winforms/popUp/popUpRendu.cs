@@ -223,7 +223,34 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.designation NOT LIKE 'GLUCOMETRE%' AND a.designation NOT LIKE 'TENSIOMETRE%' AND a.designation NOT LIKE 'BANDELETTE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today;\r\n";
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.designation NOT LIKE 'GLUCOMETRE%' AND a.designation NOT LIKE 'TENSIOMETRE%' AND a.designation NOT LIKE 'BANDELETTE%' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today AND c.utilisation = 0;";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listId.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return listId;
+        }
+
+        private List<String> GetOtherConsommableIdsUtil(string connectionString)
+        {
+            List<string> listId = new List<string>();
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT DISTINCT lc.id_article, a.type_article FROM ligneCommande lc INNER JOIN article a ON a.id_article = lc.id_article INNER JOIN commande c ON c.id_commande = lc.id_commande WHERE a.type_article = 'Equipements' AND a.glycemie = 0 AND a.tg = 0 AND a.tu = 0 AND c.date_achat > @today AND c.utilisation = 1;";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
@@ -390,7 +417,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT COUNT(numero_membre), somme ,SUM(payee) FROM cotisation WHERE date_payement = @today ";
+                string sqlQuery2 = "SELECT  CASE WHEN COUNT(id) = 0 THEN NULL ELSE COUNT(id) END AS cons, somme ,SUM(payee) FROM cotisation WHERE date_payement = @today ";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
@@ -423,7 +450,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT COUNT(id_membre), SUM(droit_payee), droit_adhesion FROM adhesion WHERE date_adhesion = @today";
+                string sqlQuery2 = "SELECT CASE WHEN COUNT(id) = 0 THEN NULL ELSE COUNT(id) END AS cons, SUM(droit_payee), droit_adhesion FROM adhesion WHERE date_adhesion = @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
@@ -537,73 +564,15 @@ namespace AmadiaVente.Winforms.popUp
             return result;
         }
 
-        private string[] getAmountConsultationM()
-        {
-            using (SqliteConnection connection = new SqliteConnection(cs))
-            {
-                connection.Open();
-
-                string selectMedicamentsQuery = "SELECT * FROM value_consultation WHERE type LIKE 'M'";
-
-                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
-                {
-
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            reader.Read();
-
-                            string cons_membre = reader.GetString(0);
-                            string cons_non_membre = reader.GetString(1);
-
-                            return new string[] { cons_membre, cons_non_membre };
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
-        private string[] getAmountConsultationNM()
-        {
-
-            using (SqliteConnection connection = new SqliteConnection(cs))
-            {
-                connection.Open();
-
-                string selectMedicamentsQuery = "SELECT * FROM value_consultation WHERE type LIKE 'NM'";
-
-                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
-                {
-
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            reader.Read();
-
-                            string cons_membre = reader.GetString(0);
-                            string cons_non_membre = reader.GetString(1);
-
-                            return new string[] { cons_membre, cons_non_membre };
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
         private string[] getConsultationMembre(string connectionString)
         {
             String[] result = new string[3];
-            string[] PUCM = getAmountConsultationM();
 
             using (SqliteConnection connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT COUNT(id), SUM(prix_consultation) FROM consultation WHERE numero_membre IS NOT NULL AND date_consultation = @today";
+                string sqlQuery2 = "SELECT CASE WHEN COUNT(id) = 0 THEN NULL ELSE COUNT(id) END AS cons, SUM(prix_consultation), prix_consultation FROM consultation WHERE numero_membre IS NOT NULL AND date_consultation = @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
@@ -613,12 +582,11 @@ namespace AmadiaVente.Winforms.popUp
                     {
                         if (reader.Read())
                         {
-                            for (int i = 0; i < 2; i++)
+                            for (int i = 0; i < 3; i++)
                             {
                                 // Vérifiez si la valeur de la colonne est NULL avant de l'ajouter au tableau
                                 result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
                             }
-                            result[2] = PUCM[1];
                         }
                     }
                 }
@@ -632,13 +600,12 @@ namespace AmadiaVente.Winforms.popUp
         private string[] getConsultationNonMembre(string connectionString)
         {
             String[] result = new string[3];
-            string[] PUCNM = getAmountConsultationNM();
 
             using (SqliteConnection connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
 
-                string sqlQuery2 = "SELECT COUNT(id), SUM(prix_consultation) FROM consultation WHERE numero_membre IS NULL AND date_consultation = @today";
+                string sqlQuery2 = "SELECT CASE WHEN COUNT(id) = 0 THEN NULL ELSE COUNT(id) END AS cons, SUM(prix_consultation), prix_consultation FROM consultation WHERE numero_membre IS NULL AND date_consultation = @today";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
                 {
@@ -648,12 +615,11 @@ namespace AmadiaVente.Winforms.popUp
                     {
                         if (reader.Read())
                         {
-                            for (int i = 0; i < 2; i++)
+                            for (int i = 0; i < 3; i++)
                             {
                                 // Vérifiez si la valeur de la colonne est NULL avant de l'ajouter au tableau
                                 result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
                             }
-                            result[2] = PUCNM[1];
                         }
                     }
                 }
@@ -964,6 +930,30 @@ namespace AmadiaVente.Winforms.popUp
                 table.AddCell("");
                 table.AddCell("");
 
+                List<String> idListConsommableUtil = new List<String>();
+                idListConsommableUtil = GetOtherConsommableIdsUtil(cs);
+
+                foreach (String id in idListConsommableUtil)
+                {
+                    String[] infoConsommableUtil = checkListIdMedic(id, cs);
+
+                    String Designation = infoConsommableUtil[1];
+
+                    var cellConsomable = new PdfPCell(new Phrase(Designation));
+                    cellConsomable.Colspan = 2;
+
+                    int valueInt = toInt(infoConsommableUtil[3]) * toInt(infoConsommableUtil[4]);
+                    string value = valueInt.ToString();
+
+                    table.AddCell(cellConsomable);
+                    table.AddCell(infoConsommableUtil[3]);
+                    table.AddCell(infoConsommableUtil[4]);
+                    table.AddCell(value);
+                    table.AddCell("");
+
+                    totalFirstCons = totalFirstCons + valueInt;
+                }
+
                 doc.Add(table);
 
                 PdfPTable table_1 = new PdfPTable(2);
@@ -989,6 +979,8 @@ namespace AmadiaVente.Winforms.popUp
                 PdfPTable table2 = new PdfPTable(6);
 
                 table2.WidthPercentage = 98;
+
+                int totalSecCons = 0;
 
                 float[] columnWidths2 = { 26f, 7f, 5f, 11f, 14f, 8f }; // La première colonne a une largeur de 100 points, les autres colonnes auront une largeur automatique
                 table2.SetWidths(columnWidths2);
@@ -1023,6 +1015,7 @@ namespace AmadiaVente.Winforms.popUp
                     table2.AddCell(infoConsommableNonMembre[5]);
                     table2.AddCell("");
 
+                    totalSecCons = totalSecCons + toInt(infoConsommableMembre[5]) + toInt(infoConsommableNonMembre[5]);
                 }
 
                 List<String> idListTensiometre = new List<String>();
@@ -1055,6 +1048,7 @@ namespace AmadiaVente.Winforms.popUp
                     table2.AddCell(infoConsommableNonMembre[5]);
                     table2.AddCell("");
 
+                    totalSecCons = totalSecCons + toInt(infoConsommableMembre[5]) + toInt(infoConsommableNonMembre[5]);
                 }
 
                 List<String> idListBandelette = new List<String>();
@@ -1087,6 +1081,8 @@ namespace AmadiaVente.Winforms.popUp
                     table2.AddCell(infoConsommableNonMembre[4]);
                     table2.AddCell(infoConsommableNonMembre[5]);
                     table2.AddCell("");
+
+                    totalSecCons = totalSecCons + toInt(infoConsommableMembre[5]) + toInt(infoConsommableNonMembre[5]);
                 }
 
                 List<String> idListConsommable = new List<String>();
@@ -1107,14 +1103,8 @@ namespace AmadiaVente.Winforms.popUp
                     table2.AddCell(infoConsommable[5]);
                     table2.AddCell("");
 
+                    totalSecCons = totalSecCons + toInt(infoConsommable[5]);
                 }
-
-                table2.AddCell(cellCarnet);
-                table2.AddCell(cellVideTeteMnM);
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
-                table2.AddCell("");
 
                 doc.Add(table2);
 
@@ -1125,13 +1115,8 @@ namespace AmadiaVente.Winforms.popUp
                 float[] columnWidths2_1 = { 27f, 13f };
                 table2_1.SetWidths(columnWidths2_1);
 
-                int totalConsomable2 = 0;
-
-                string prixConsomable = prixTotalConsommable();
-                int totalConsommable = Convert.ToInt32(prixConsomable);
-
                 table2_1.AddCell("TOTAL CONSOMMABLE");
-                table2_1.AddCell(FormatteSommeArgent(totalConsommable) + " AR");
+                table2_1.AddCell(FormatteSommeArgent(totalSecCons) + " AR");
 
                 table2_1.SpacingAfter = 10f;
 
@@ -1153,7 +1138,7 @@ namespace AmadiaVente.Winforms.popUp
                 table3.AddCell(" ");
                 table3.AddCell(" ");
 
-                int totalGen = totalConsommable + totalConsomable2 + totalMedIntGen;
+                int totalGen = totalFirstCons + totalSecCons + totalMedIntGen;
 
                 table3.AddCell("TOTAL GENERAL");
                 table3.AddCell(FormatteSommeArgent(totalGen) + " AR");

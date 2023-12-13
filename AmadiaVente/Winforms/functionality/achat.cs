@@ -103,7 +103,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string query = "SELECT prix_article, prix_membre, nbr_stock FROM article WHERE designation=@article";
+                string query = "SELECT prix_article, prix_membre, nbr_stock, prix_utilisable FROM article WHERE designation=@article";
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
@@ -120,8 +120,9 @@ namespace AmadiaVente.Winforms.functionality
                             int prixArticle = reader.GetInt32(0);
                             int prixArticleMembre = reader.GetInt32(1);
                             int NombreStock = reader.GetInt32(2);
+                            int prix_utilisable = reader.GetInt32(3);
 
-                            return new int[] { prixArticle, prixArticleMembre, NombreStock };
+                            return new int[] { prixArticle, prixArticleMembre, NombreStock, prix_utilisable };
                         }
                     }
                 }
@@ -154,6 +155,8 @@ namespace AmadiaVente.Winforms.functionality
             btnAjoutPanier.Enabled = true;
             btnValiderAchat.Enabled = false;
             dataGridViewPanier.Rows.Clear();
+            checkBoxUtil.Visible = true;
+            checkBoxUtil.Checked = false;
         }
 
         private void afficheNomMembreLoad()
@@ -331,6 +334,41 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        private void creeCommandeUtil(int membre, string idMembre, int idResponsable)
+        {
+
+            bool util = true;
+
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+                string query = "INSERT INTO commande (membre, id_membre, id_responsable, date_achat, utilisation) VALUES(@membre, @idMembre, @idResponsable, @date, @util)";
+
+                using (SqliteCommand command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@membre", membre);
+
+                    if (membre != 0)
+                    {
+                        command.Parameters.AddWithValue("@idMembre", idMembre);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@idMembre", DBNull.Value);
+                    }
+                    command.Parameters.AddWithValue("@idResponsable", idResponsable);
+                    command.Parameters.AddWithValue("@util", util);
+
+                    DateTime dateHeureActuelles = DateTime.Now;
+                    string dateHeureFormattee = dateHeureActuelles.ToString("yyyy-MM-dd HH:mm:ss");
+
+                    command.Parameters.AddWithValue("@date", dateHeureFormattee);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void validerAchat(int idArticle, int quantite, decimal pu, decimal prix, int idCommande)
         {
             using (SqliteConnection connection = new SqliteConnection(cs))
@@ -445,12 +483,14 @@ namespace AmadiaVente.Winforms.functionality
             {
                 enableFunction();
                 securiteMembreFunction();
+                checkBoxUtil.Visible = false;
 
             }
             else if (comboBoxMembre.SelectedItem != null && comboBoxMembre.SelectedItem.ToString() == "Non")
             {
                 disableFunction();
                 securiteMembreFunction();
+                checkBoxUtil.Visible = false;
             }
         }
 
@@ -472,6 +512,17 @@ namespace AmadiaVente.Winforms.functionality
             {
                 string articleSelectionner = comboBoxDesignation.SelectedItem.ToString();
                 int prixArticle = AfficheArcticle(articleSelectionner)[0];
+
+                if (checkBoxUtil.Checked == true)
+                {
+                    prixArticle = AfficheArcticle(articleSelectionner)[3];
+
+                    if (prixArticle == 0)
+                    {
+                        prixArticle = AfficheArcticle(articleSelectionner)[0];
+                    }
+                    
+                }
 
                 if (comboBoxMembre.SelectedItem != null && comboBoxMembre.SelectedItem.ToString() == "Oui")
                 {
@@ -569,7 +620,15 @@ namespace AmadiaVente.Winforms.functionality
                     membre = membre;
                     idMembre = idMembre;
                 }
-                creeCommande(membre, idMembre, session);
+
+                if (checkBoxUtil.Checked == true)
+                {
+                    creeCommandeUtil(membre, idMembre, session);
+                }
+                else
+                {
+                    creeCommande(membre, idMembre, session);
+                }
                 int idCommande = RecupererIdCommande();
 
                 foreach (DataGridViewRow row in dataGridViewPanier.Rows)
@@ -803,6 +862,20 @@ namespace AmadiaVente.Winforms.functionality
             else
             {
                 txtBoxNumeroMembre.Text = null;
+            }
+        }
+
+        private void checkBoxUtil_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUtil.Checked == true)
+            {
+                txtBoxNumeroMembre.Enabled =  comboBoxMembre.Enabled = comboBoxNomMembre.Enabled = false;
+                comboBoxTypeArticle.Enabled = comboBoxDesignation.Enabled = txtBoxPrix.Enabled = txtBoxQuantite.Enabled = true;
+                
+            }
+            else
+            {
+                reinitialiseAllFunction();
             }
         }
     }

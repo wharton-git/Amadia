@@ -82,6 +82,7 @@
             comboBoxMembre = new ComboBox();
             comboBoxNomMembre = new ComboBox();
             comboBoxTypeArticle = new ComboBox();
+            checkBoxUtil = new Guna.UI2.WinForms.Guna2CheckBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPanier).BeginInit();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
@@ -218,6 +219,7 @@
             guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel2.BackColor = Color.Transparent;
             guna2GradientPanel2.BorderRadius = 15;
+            guna2GradientPanel2.Controls.Add(checkBoxUtil);
             guna2GradientPanel2.Controls.Add(dataGridViewPanier);
             guna2GradientPanel2.Controls.Add(guna2HtmlLabel7);
             guna2GradientPanel2.Controls.Add(labelTotal);
@@ -304,7 +306,7 @@
             btnAjoutPanier.ForeColor = Color.White;
             btnAjoutPanier.Image = Properties.Resources.icons8_fast_cart_96;
             btnAjoutPanier.ImageSize = new Size(40, 40);
-            btnAjoutPanier.Location = new Point(158, 204);
+            btnAjoutPanier.Location = new Point(223, 201);
             btnAjoutPanier.Name = "btnAjoutPanier";
             btnAjoutPanier.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnAjoutPanier.Size = new Size(60, 55);
@@ -328,7 +330,7 @@
             btnModifierPanier.ForeColor = Color.White;
             btnModifierPanier.Image = Properties.Resources.Compose;
             btnModifierPanier.ImageSize = new Size(40, 40);
-            btnModifierPanier.Location = new Point(380, 204);
+            btnModifierPanier.Location = new Point(445, 201);
             btnModifierPanier.Name = "btnModifierPanier";
             btnModifierPanier.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnModifierPanier.Size = new Size(60, 55);
@@ -352,7 +354,7 @@
             btnSupprimerPanier.ForeColor = Color.White;
             btnSupprimerPanier.Image = Properties.Resources.icons8_vider_le_panier_96;
             btnSupprimerPanier.ImageSize = new Size(40, 40);
-            btnSupprimerPanier.Location = new Point(269, 204);
+            btnSupprimerPanier.Location = new Point(334, 201);
             btnSupprimerPanier.Name = "btnSupprimerPanier";
             btnSupprimerPanier.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnSupprimerPanier.Size = new Size(60, 55);
@@ -388,7 +390,7 @@
             btnValiderAchat.ForeColor = Color.White;
             btnValiderAchat.Image = Properties.Resources.icons8_checkmark_blue_96;
             btnValiderAchat.ImageSize = new Size(30, 30);
-            btnValiderAchat.Location = new Point(491, 204);
+            btnValiderAchat.Location = new Point(556, 201);
             btnValiderAchat.Name = "btnValiderAchat";
             btnValiderAchat.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnValiderAchat.Size = new Size(60, 55);
@@ -511,7 +513,7 @@
             btnAnnulerAchat.ForeColor = Color.White;
             btnAnnulerAchat.Image = Properties.Resources.icons8_effacer_96;
             btnAnnulerAchat.ImageSize = new Size(30, 30);
-            btnAnnulerAchat.Location = new Point(602, 204);
+            btnAnnulerAchat.Location = new Point(667, 201);
             btnAnnulerAchat.Name = "btnAnnulerAchat";
             btnAnnulerAchat.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btnAnnulerAchat.Size = new Size(60, 55);
@@ -633,6 +635,30 @@
             comboBoxTypeArticle.TabIndex = 26;
             comboBoxTypeArticle.SelectedIndexChanged += comboBoxTypeArticle_SelectedIndexChanged;
             // 
+            // checkBoxUtil
+            // 
+            checkBoxUtil.Anchor = AnchorStyles.None;
+            checkBoxUtil.Animated = true;
+            checkBoxUtil.BackColor = Color.Transparent;
+            checkBoxUtil.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            checkBoxUtil.CheckedState.BorderColor = Color.White;
+            checkBoxUtil.CheckedState.BorderRadius = 1;
+            checkBoxUtil.CheckedState.BorderThickness = 0;
+            checkBoxUtil.CheckedState.FillColor = Color.White;
+            checkBoxUtil.CheckMarkColor = Color.FromArgb(23, 117, 197);
+            checkBoxUtil.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBoxUtil.Location = new Point(47, 221);
+            checkBoxUtil.Name = "checkBoxUtil";
+            checkBoxUtil.Size = new Size(153, 19);
+            checkBoxUtil.TabIndex = 39;
+            checkBoxUtil.Text = "Utilisation Interne";
+            checkBoxUtil.UncheckedState.BorderColor = Color.White;
+            checkBoxUtil.UncheckedState.BorderRadius = 1;
+            checkBoxUtil.UncheckedState.BorderThickness = 0;
+            checkBoxUtil.UncheckedState.FillColor = Color.FromArgb(151, 170, 205);
+            checkBoxUtil.UseVisualStyleBackColor = false;
+            checkBoxUtil.CheckedChanged += checkBoxUtil_CheckedChanged;
+            // 
             // achat
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -680,5 +706,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel labelTotal;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
+        private Guna.UI2.WinForms.Guna2CheckBox checkBoxUtil;
     }
 }
