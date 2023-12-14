@@ -175,6 +175,9 @@
   <data name="Subtract" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Subtract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-pile-de-pièces" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-pile-de-pièces.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="show_icon_184023" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\show_icon_184023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -183,6 +186,9 @@
   </data>
   <data name="icons8-mot-de-passe-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-mot-de-passe-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-consultation-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-consultation-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-window-settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-window-settings.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,7 +241,7 @@
   <data name="icons8-effacer-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-effacer-961.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-pile-de-pièces" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-pile-de-pièces.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-chercher-192" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-chercher-192.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

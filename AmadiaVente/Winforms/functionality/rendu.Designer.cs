@@ -146,7 +146,8 @@
             txtboxSearchRendu.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtboxSearchRendu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtboxSearchRendu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtboxSearchRendu.IconLeft = Properties.Resources.Search;
+            txtboxSearchRendu.IconLeft = Properties.Resources.icons8_chercher_192;
+            txtboxSearchRendu.IconLeftSize = new Size(30, 30);
             txtboxSearchRendu.Location = new Point(459, 12);
             txtboxSearchRendu.Name = "txtboxSearchRendu";
             txtboxSearchRendu.PasswordChar = '\0';

@@ -30,6 +30,8 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -48,9 +50,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelLeftMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnConsultation = new Guna.UI2.WinForms.Guna2GradientButton();
             btnCotisation = new Guna.UI2.WinForms.Guna2CircleButton();
             btnAddMember = new Guna.UI2.WinForms.Guna2CircleButton();
             btnProfil = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -64,7 +65,6 @@
             panelMainChild = new Guna.UI2.WinForms.Guna2GradientPanel();
             panelLeftParent = new Panel();
             panel4 = new Panel();
-            btnConsultation = new Guna.UI2.WinForms.Guna2GradientButton();
             panelLeftMenu.SuspendLayout();
             panelLeftParent.SuspendLayout();
             panel4.SuspendLayout();
@@ -94,6 +94,32 @@
             panelLeftMenu.ShadowDecoration.CustomizableEdges = customizableEdges20;
             panelLeftMenu.Size = new Size(164, 494);
             panelLeftMenu.TabIndex = 0;
+            // 
+            // btnConsultation
+            // 
+            btnConsultation.Animated = true;
+            btnConsultation.BorderRadius = 15;
+            btnConsultation.CustomizableEdges = customizableEdges1;
+            btnConsultation.DisabledState.BorderColor = Color.DarkGray;
+            btnConsultation.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnConsultation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnConsultation.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnConsultation.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnConsultation.FillColor = SystemColors.ButtonFace;
+            btnConsultation.FillColor2 = SystemColors.ButtonFace;
+            btnConsultation.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConsultation.ForeColor = Color.FromArgb(23, 117, 197);
+            btnConsultation.Image = Properties.Resources.icons8_consultation_96;
+            btnConsultation.ImageAlign = HorizontalAlignment.Left;
+            btnConsultation.ImageSize = new Size(30, 30);
+            btnConsultation.Location = new Point(10, 60);
+            btnConsultation.Name = "btnConsultation";
+            btnConsultation.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnConsultation.Size = new Size(144, 45);
+            btnConsultation.TabIndex = 12;
+            btnConsultation.Text = "Consultation";
+            btnConsultation.TextAlign = HorizontalAlignment.Left;
+            btnConsultation.Click += btnConsultation_Click;
             // 
             // btnCotisation
             // 
@@ -366,32 +392,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(805, 518);
             panel4.TabIndex = 10;
-            // 
-            // btnConsultation
-            // 
-            btnConsultation.Animated = true;
-            btnConsultation.BorderRadius = 15;
-            btnConsultation.CustomizableEdges = customizableEdges1;
-            btnConsultation.DisabledState.BorderColor = Color.DarkGray;
-            btnConsultation.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnConsultation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnConsultation.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnConsultation.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnConsultation.FillColor = SystemColors.ButtonFace;
-            btnConsultation.FillColor2 = SystemColors.ButtonFace;
-            btnConsultation.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnConsultation.ForeColor = Color.FromArgb(23, 117, 197);
-            btnConsultation.Image = Properties.Resources.icons8_fournisseur_96;
-            btnConsultation.ImageAlign = HorizontalAlignment.Left;
-            btnConsultation.ImageSize = new Size(30, 30);
-            btnConsultation.Location = new Point(10, 60);
-            btnConsultation.Name = "btnConsultation";
-            btnConsultation.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnConsultation.Size = new Size(144, 45);
-            btnConsultation.TabIndex = 12;
-            btnConsultation.Text = "Consultation";
-            btnConsultation.TextAlign = HorizontalAlignment.Left;
-            btnConsultation.Click += btnConsultation_Click;
             // 
             // main
             // 

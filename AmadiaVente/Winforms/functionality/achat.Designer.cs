@@ -58,6 +58,7 @@
             dataGridViewPanier = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            checkBoxUtil = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             labelTotal = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -82,7 +83,6 @@
             comboBoxMembre = new ComboBox();
             comboBoxNomMembre = new ComboBox();
             comboBoxTypeArticle = new ComboBox();
-            checkBoxUtil = new Guna.UI2.WinForms.Guna2CheckBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPanier).BeginInit();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
@@ -255,6 +255,30 @@
             guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2GradientPanel2.Size = new Size(821, 442);
             guna2GradientPanel2.TabIndex = 39;
+            // 
+            // checkBoxUtil
+            // 
+            checkBoxUtil.Anchor = AnchorStyles.Top;
+            checkBoxUtil.Animated = true;
+            checkBoxUtil.BackColor = Color.Transparent;
+            checkBoxUtil.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            checkBoxUtil.CheckedState.BorderColor = Color.White;
+            checkBoxUtil.CheckedState.BorderRadius = 1;
+            checkBoxUtil.CheckedState.BorderThickness = 0;
+            checkBoxUtil.CheckedState.FillColor = Color.White;
+            checkBoxUtil.CheckMarkColor = Color.FromArgb(23, 117, 197);
+            checkBoxUtil.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBoxUtil.Location = new Point(57, 223);
+            checkBoxUtil.Name = "checkBoxUtil";
+            checkBoxUtil.Size = new Size(153, 19);
+            checkBoxUtil.TabIndex = 39;
+            checkBoxUtil.Text = "Utilisation Interne";
+            checkBoxUtil.UncheckedState.BorderColor = Color.White;
+            checkBoxUtil.UncheckedState.BorderRadius = 1;
+            checkBoxUtil.UncheckedState.BorderThickness = 0;
+            checkBoxUtil.UncheckedState.FillColor = Color.FromArgb(151, 170, 205);
+            checkBoxUtil.UseVisualStyleBackColor = false;
+            checkBoxUtil.CheckedChanged += checkBoxUtil_CheckedChanged;
             // 
             // guna2HtmlLabel7
             // 
@@ -634,30 +658,6 @@
             comboBoxTypeArticle.Size = new Size(195, 29);
             comboBoxTypeArticle.TabIndex = 26;
             comboBoxTypeArticle.SelectedIndexChanged += comboBoxTypeArticle_SelectedIndexChanged;
-            // 
-            // checkBoxUtil
-            // 
-            checkBoxUtil.Anchor = AnchorStyles.None;
-            checkBoxUtil.Animated = true;
-            checkBoxUtil.BackColor = Color.Transparent;
-            checkBoxUtil.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            checkBoxUtil.CheckedState.BorderColor = Color.White;
-            checkBoxUtil.CheckedState.BorderRadius = 1;
-            checkBoxUtil.CheckedState.BorderThickness = 0;
-            checkBoxUtil.CheckedState.FillColor = Color.White;
-            checkBoxUtil.CheckMarkColor = Color.FromArgb(23, 117, 197);
-            checkBoxUtil.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBoxUtil.Location = new Point(47, 221);
-            checkBoxUtil.Name = "checkBoxUtil";
-            checkBoxUtil.Size = new Size(153, 19);
-            checkBoxUtil.TabIndex = 39;
-            checkBoxUtil.Text = "Utilisation Interne";
-            checkBoxUtil.UncheckedState.BorderColor = Color.White;
-            checkBoxUtil.UncheckedState.BorderRadius = 1;
-            checkBoxUtil.UncheckedState.BorderThickness = 0;
-            checkBoxUtil.UncheckedState.FillColor = Color.FromArgb(151, 170, 205);
-            checkBoxUtil.UseVisualStyleBackColor = false;
-            checkBoxUtil.CheckedChanged += checkBoxUtil_CheckedChanged;
             // 
             // achat
             // 

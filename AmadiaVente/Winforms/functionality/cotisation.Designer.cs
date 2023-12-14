@@ -32,6 +32,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
@@ -47,10 +49,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            btnModifCotisation = new Guna.UI2.WinForms.Guna2GradientButton();
             labelAlertNumeroMembre = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelCotisation = new Guna.UI2.WinForms.Guna2GradientPanel();
             comboBoxAnneeCot = new ComboBox();
@@ -67,7 +68,7 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             comboBoxNomMembre = new ComboBox();
-            btnModifCotisation = new Guna.UI2.WinForms.Guna2GradientButton();
+            guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
             panelCotisation.SuspendLayout();
@@ -92,6 +93,7 @@
             guna2GradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel2.BackColor = Color.Transparent;
             guna2GradientPanel2.BorderRadius = 15;
+            guna2GradientPanel2.Controls.Add(guna2HtmlLabel5);
             guna2GradientPanel2.Controls.Add(btnModifCotisation);
             guna2GradientPanel2.Controls.Add(labelAlertNumeroMembre);
             guna2GradientPanel2.Controls.Add(panelCotisation);
@@ -115,12 +117,39 @@
             guna2GradientPanel2.Size = new Size(842, 432);
             guna2GradientPanel2.TabIndex = 0;
             // 
+            // btnModifCotisation
+            // 
+            btnModifCotisation.AccessibleDescription = "Modifier la valeur de la Somme de Cotisation";
+            btnModifCotisation.AccessibleName = "Boutton Modifier Cotisation";
+            btnModifCotisation.Anchor = AnchorStyles.Top;
+            btnModifCotisation.BorderColor = Color.Transparent;
+            btnModifCotisation.BorderRadius = 15;
+            btnModifCotisation.BorderThickness = 3;
+            btnModifCotisation.CustomizableEdges = customizableEdges1;
+            btnModifCotisation.DisabledState.BorderColor = Color.DarkGray;
+            btnModifCotisation.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnModifCotisation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnModifCotisation.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnModifCotisation.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnModifCotisation.FillColor = Color.Transparent;
+            btnModifCotisation.FillColor2 = Color.Transparent;
+            btnModifCotisation.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnModifCotisation.ForeColor = Color.White;
+            btnModifCotisation.Image = Properties.Resources.icons8_boucle_96;
+            btnModifCotisation.ImageSize = new Size(30, 30);
+            btnModifCotisation.Location = new Point(771, 112);
+            btnModifCotisation.Name = "btnModifCotisation";
+            btnModifCotisation.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnModifCotisation.Size = new Size(48, 32);
+            btnModifCotisation.TabIndex = 64;
+            btnModifCotisation.Click += btnModifCotisation_Click;
+            // 
             // labelAlertNumeroMembre
             // 
             labelAlertNumeroMembre.Anchor = AnchorStyles.Top;
             labelAlertNumeroMembre.BackColor = Color.Transparent;
             labelAlertNumeroMembre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelAlertNumeroMembre.Location = new Point(38, 84);
+            labelAlertNumeroMembre.Location = new Point(41, 103);
             labelAlertNumeroMembre.Name = "labelAlertNumeroMembre";
             labelAlertNumeroMembre.Size = new Size(3, 2);
             labelAlertNumeroMembre.TabIndex = 62;
@@ -133,10 +162,10 @@
             panelCotisation.Controls.Add(comboBoxMoisDetailCot);
             panelCotisation.Controls.Add(dataGridViewCotisationStatus);
             panelCotisation.CustomizableEdges = customizableEdges3;
-            panelCotisation.Location = new Point(3, 190);
+            panelCotisation.Location = new Point(3, 211);
             panelCotisation.Name = "panelCotisation";
             panelCotisation.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            panelCotisation.Size = new Size(836, 239);
+            panelCotisation.Size = new Size(836, 218);
             panelCotisation.TabIndex = 61;
             // 
             // comboBoxAnneeCot
@@ -201,7 +230,7 @@
             dataGridViewCotisationStatus.RowHeadersVisible = false;
             dataGridViewCotisationStatus.RowHeadersWidth = 62;
             dataGridViewCotisationStatus.RowTemplate.Height = 25;
-            dataGridViewCotisationStatus.Size = new Size(794, 158);
+            dataGridViewCotisationStatus.Size = new Size(794, 137);
             dataGridViewCotisationStatus.TabIndex = 66;
             dataGridViewCotisationStatus.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dataGridViewCotisationStatus.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -235,7 +264,7 @@
             btnShowAndHideOption.FillColor = Color.Transparent;
             btnShowAndHideOption.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnShowAndHideOption.ForeColor = Color.Black;
-            btnShowAndHideOption.Location = new Point(26, 159);
+            btnShowAndHideOption.Location = new Point(29, 178);
             btnShowAndHideOption.Name = "btnShowAndHideOption";
             btnShowAndHideOption.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnShowAndHideOption.Size = new Size(237, 25);
@@ -261,7 +290,7 @@
             btnAnnulerCotisation.ForeColor = Color.White;
             btnAnnulerCotisation.Image = Properties.Resources.icons8_effacer_96;
             btnAnnulerCotisation.ImageSize = new Size(30, 30);
-            btnAnnulerCotisation.Location = new Point(421, 103);
+            btnAnnulerCotisation.Location = new Point(424, 122);
             btnAnnulerCotisation.Name = "btnAnnulerCotisation";
             btnAnnulerCotisation.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAnnulerCotisation.Size = new Size(166, 55);
@@ -287,7 +316,7 @@
             btnValiderCotisation.ForeColor = Color.White;
             btnValiderCotisation.Image = Properties.Resources.icons8_checkmark_blue_96;
             btnValiderCotisation.ImageSize = new Size(30, 30);
-            btnValiderCotisation.Location = new Point(249, 103);
+            btnValiderCotisation.Location = new Point(252, 122);
             btnValiderCotisation.Name = "btnValiderCotisation";
             btnValiderCotisation.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnValiderCotisation.Size = new Size(166, 55);
@@ -299,7 +328,7 @@
             guna2HtmlLabel4.Anchor = AnchorStyles.Top;
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel4.Location = new Point(672, 19);
+            guna2HtmlLabel4.Location = new Point(674, 51);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(56, 18);
             guna2HtmlLabel4.TabIndex = 42;
@@ -310,7 +339,7 @@
             guna2HtmlLabel1.Anchor = AnchorStyles.Top;
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel1.Location = new Point(467, 20);
+            guna2HtmlLabel1.Location = new Point(469, 52);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(38, 18);
             guna2HtmlLabel1.TabIndex = 41;
@@ -331,7 +360,7 @@
             txtBoxSommeCot.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxSommeCot.ForeColor = Color.Black;
             txtBoxSommeCot.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxSommeCot.Location = new Point(672, 44);
+            txtBoxSommeCot.Location = new Point(674, 76);
             txtBoxSommeCot.Margin = new Padding(4, 4, 4, 4);
             txtBoxSommeCot.Name = "txtBoxSommeCot";
             txtBoxSommeCot.PasswordChar = '\0';
@@ -352,7 +381,7 @@
             comboBoxMoisCot.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxMoisCot.ForeColor = Color.Black;
             comboBoxMoisCot.FormattingEnabled = true;
-            comboBoxMoisCot.Location = new Point(467, 44);
+            comboBoxMoisCot.Location = new Point(469, 76);
             comboBoxMoisCot.Name = "comboBoxMoisCot";
             comboBoxMoisCot.Size = new Size(184, 29);
             comboBoxMoisCot.TabIndex = 39;
@@ -372,7 +401,7 @@
             txtBoxNumeroMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtBoxNumeroMembre.ForeColor = Color.Black;
             txtBoxNumeroMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxNumeroMembre.Location = new Point(26, 44);
+            txtBoxNumeroMembre.Location = new Point(28, 76);
             txtBoxNumeroMembre.Margin = new Padding(4, 4, 4, 4);
             txtBoxNumeroMembre.Name = "txtBoxNumeroMembre";
             txtBoxNumeroMembre.PasswordChar = '\0';
@@ -390,7 +419,7 @@
             guna2HtmlLabel2.Anchor = AnchorStyles.Top;
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel2.Location = new Point(31, 18);
+            guna2HtmlLabel2.Location = new Point(33, 50);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(57, 18);
             guna2HtmlLabel2.TabIndex = 35;
@@ -401,7 +430,7 @@
             guna2HtmlLabel3.Anchor = AnchorStyles.Top;
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel3.Location = new Point(128, 19);
+            guna2HtmlLabel3.Location = new Point(130, 51);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(102, 18);
             guna2HtmlLabel3.TabIndex = 36;
@@ -416,38 +445,21 @@
             comboBoxNomMembre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxNomMembre.ForeColor = Color.Black;
             comboBoxNomMembre.FormattingEnabled = true;
-            comboBoxNomMembre.Location = new Point(128, 44);
+            comboBoxNomMembre.Location = new Point(130, 76);
             comboBoxNomMembre.Name = "comboBoxNomMembre";
             comboBoxNomMembre.Size = new Size(318, 29);
             comboBoxNomMembre.TabIndex = 37;
             comboBoxNomMembre.SelectedIndexChanged += comboBoxNomMembre_SelectedIndexChanged;
             // 
-            // btnModifCotisation
+            // guna2HtmlLabel5
             // 
-            btnModifCotisation.AccessibleDescription = "Modifier la valeur de la Somme de Cotisation";
-            btnModifCotisation.AccessibleName = "Boutton Modifier Cotisation";
-            btnModifCotisation.Anchor = AnchorStyles.Top;
-            btnModifCotisation.BorderColor = Color.Transparent;
-            btnModifCotisation.BorderRadius = 15;
-            btnModifCotisation.BorderThickness = 3;
-            btnModifCotisation.CustomizableEdges = customizableEdges1;
-            btnModifCotisation.DisabledState.BorderColor = Color.DarkGray;
-            btnModifCotisation.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnModifCotisation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnModifCotisation.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnModifCotisation.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnModifCotisation.FillColor = Color.Transparent;
-            btnModifCotisation.FillColor2 = Color.Transparent;
-            btnModifCotisation.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnModifCotisation.ForeColor = Color.White;
-            btnModifCotisation.Image = Properties.Resources.icons8_boucle_96;
-            btnModifCotisation.ImageSize = new Size(30, 30);
-            btnModifCotisation.Location = new Point(769, 80);
-            btnModifCotisation.Name = "btnModifCotisation";
-            btnModifCotisation.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnModifCotisation.Size = new Size(48, 32);
-            btnModifCotisation.TabIndex = 64;
-            btnModifCotisation.Click += btnModifCotisation_Click;
+            guna2HtmlLabel5.BackColor = Color.Transparent;
+            guna2HtmlLabel5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2HtmlLabel5.Location = new Point(23, 3);
+            guna2HtmlLabel5.Name = "guna2HtmlLabel5";
+            guna2HtmlLabel5.Size = new Size(147, 34);
+            guna2HtmlLabel5.TabIndex = 65;
+            guna2HtmlLabel5.Text = "COTISATION";
             // 
             // cotisation
             // 
@@ -487,5 +499,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel labelAlertNumeroMembre;
         private ComboBox comboBoxAnneeCot;
         private Guna.UI2.WinForms.Guna2GradientButton btnModifCotisation;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
     }
 }

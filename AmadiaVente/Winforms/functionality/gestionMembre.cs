@@ -112,7 +112,8 @@ namespace AmadiaVente.Winforms.functionality
                 popUp.Dispose();
                 afficheMembre();
                 idMembre = null;
-            }else
+            }
+            else
             {
                 MessageBox.Show("Veuillez sélectionner un membre avant de procéder à l'édition !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

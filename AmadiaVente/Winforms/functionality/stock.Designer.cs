@@ -133,7 +133,7 @@
             // 
             labelStockTitle.BackColor = Color.Transparent;
             labelStockTitle.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelStockTitle.Location = new Point(39, 20);
+            labelStockTitle.Location = new Point(39, 3);
             labelStockTitle.Name = "labelStockTitle";
             labelStockTitle.Size = new Size(201, 56);
             labelStockTitle.TabIndex = 2;

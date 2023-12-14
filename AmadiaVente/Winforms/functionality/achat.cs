@@ -521,7 +521,7 @@ namespace AmadiaVente.Winforms.functionality
                     {
                         prixArticle = AfficheArcticle(articleSelectionner)[0];
                     }
-                    
+
                 }
 
                 if (comboBoxMembre.SelectedItem != null && comboBoxMembre.SelectedItem.ToString() == "Oui")
@@ -869,9 +869,9 @@ namespace AmadiaVente.Winforms.functionality
         {
             if (checkBoxUtil.Checked == true)
             {
-                txtBoxNumeroMembre.Enabled =  comboBoxMembre.Enabled = comboBoxNomMembre.Enabled = false;
+                txtBoxNumeroMembre.Enabled = comboBoxMembre.Enabled = comboBoxNomMembre.Enabled = false;
                 comboBoxTypeArticle.Enabled = comboBoxDesignation.Enabled = txtBoxPrix.Enabled = txtBoxQuantite.Enabled = true;
-                
+
             }
             else
             {

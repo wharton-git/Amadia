@@ -17,7 +17,7 @@ namespace AmadiaVente.Winforms.functionality
     {
         //Declaration Globale
         string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
-        
+
 
 
 

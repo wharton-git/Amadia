@@ -641,7 +641,9 @@ namespace AmadiaVente.Winforms.popUp
 
         private void popUpRendu_Load(object sender, EventArgs e)
         {
-
+            btnRetour.Visible = btnGenererPdf.Visible = false;
+            txtBoxDepense.Visible = false;
+            panelECG.Visible = true;
         }
 
         private void panelPopUpRendu_MouseDown(object sender, MouseEventArgs e)
@@ -816,18 +818,18 @@ namespace AmadiaVente.Winforms.popUp
 
                 String[] infoCotisation = countCotisation(cs);
 
-                    var cellCot = new PdfPCell(new Phrase("COTISATION"));
-                    cellCot.Colspan = 2;
+                var cellCot = new PdfPCell(new Phrase("COTISATION"));
+                cellCot.Colspan = 2;
 
-                    table.AddCell(cellCot);
-                    table.AddCell(infoCotisation[0]);
-                    table.AddCell(infoCotisation[1]);
-                    table.AddCell(infoCotisation[2]);
-                    table.AddCell("");
+                table.AddCell(cellCot);
+                table.AddCell(infoCotisation[0]);
+                table.AddCell(infoCotisation[1]);
+                table.AddCell(infoCotisation[2]);
+                table.AddCell("");
 
                 totalFirstCons = totalFirstCons + toInt(infoCotisation[2]);
 
-                List <String> idListTu = new List<String>();
+                List<String> idListTu = new List<String>();
                 idListTu = GetTU(cs);
 
                 foreach (String id in idListTu)
@@ -1237,12 +1239,18 @@ namespace AmadiaVente.Winforms.popUp
 
         private void btnSuivant_Click(object sender, EventArgs e)
         {
-
+            btnGenererPdf.Visible = btnRetour.Visible = true;
+            btnSuivant.Visible = false;
+            txtBoxDepense.Visible = true;
+            panelECG.Visible = false;
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
-
+            btnGenererPdf.Visible = btnRetour.Visible = false;
+            btnSuivant.Visible = true;
+            txtBoxDepense.Visible = false;
+            panelECG.Visible = true;
         }
     }
 }

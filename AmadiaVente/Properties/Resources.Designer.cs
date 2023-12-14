@@ -173,9 +173,29 @@ namespace AmadiaVente.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_chercher_192 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-chercher-192", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_combo_chart {
             get {
                 object obj = ResourceManager.GetObject("icons8-combo-chart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_consultation_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-consultation-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
