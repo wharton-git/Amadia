@@ -40,6 +40,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -54,6 +56,7 @@
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            panelLigne1 = new Guna.UI2.WinForms.Guna2Panel();
             checkBoxAfficheMdp = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             panelLigne1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -190,6 +193,18 @@
             guna2Panel2.Size = new Size(878, 427);
             guna2Panel2.TabIndex = 7;
             // 
+            // panelLigne1
+            // 
+            panelLigne1.Anchor = AnchorStyles.None;
+            panelLigne1.BorderRadius = 2;
+            panelLigne1.CustomizableEdges = customizableEdges7;
+            panelLigne1.FillColor = Color.FromArgb(23, 117, 197);
+            panelLigne1.Location = new Point(359, 166);
+            panelLigne1.Name = "panelLigne1";
+            panelLigne1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            panelLigne1.Size = new Size(200, 5);
+            panelLigne1.TabIndex = 5;
+            // 
             // checkBoxAfficheMdp
             // 
             checkBoxAfficheMdp.Anchor = AnchorStyles.None;
@@ -273,7 +288,7 @@
             ClientSize = new Size(1084, 517);
             Controls.Add(guna2GradientPanel1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "AMADIA";
             Load += Form1_Load;
             guna2GradientPanel1.ResumeLayout(false);
             guna2GradientPanel2.ResumeLayout(false);

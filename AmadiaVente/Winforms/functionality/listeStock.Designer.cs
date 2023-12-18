@@ -32,6 +32,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -39,15 +41,13 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            txtBoxSearchMembre = new Guna.UI2.WinForms.Guna2TextBox();
             btnRemoveList = new Guna.UI2.WinForms.Guna2GradientButton();
             btnAddNewList = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             dataGridViewList = new Guna.UI2.WinForms.Guna2DataGridView();
-            txtBoxSearchMembre = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewList).BeginInit();
@@ -84,6 +84,31 @@
             guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientPanel2.Size = new Size(821, 442);
             guna2GradientPanel2.TabIndex = 8;
+            // 
+            // txtBoxSearchMembre
+            // 
+            txtBoxSearchMembre.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtBoxSearchMembre.BorderRadius = 15;
+            txtBoxSearchMembre.CustomizableEdges = customizableEdges1;
+            txtBoxSearchMembre.DefaultText = "";
+            txtBoxSearchMembre.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtBoxSearchMembre.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtBoxSearchMembre.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxSearchMembre.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxSearchMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxSearchMembre.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxSearchMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxSearchMembre.IconLeft = Properties.Resources.icons8_chercher_192;
+            txtBoxSearchMembre.IconLeftSize = new Size(30, 30);
+            txtBoxSearchMembre.Location = new Point(517, 12);
+            txtBoxSearchMembre.Name = "txtBoxSearchMembre";
+            txtBoxSearchMembre.PasswordChar = '\0';
+            txtBoxSearchMembre.PlaceholderText = "Recherche";
+            txtBoxSearchMembre.SelectedText = "";
+            txtBoxSearchMembre.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtBoxSearchMembre.Size = new Size(276, 34);
+            txtBoxSearchMembre.TabIndex = 68;
+            txtBoxSearchMembre.TextChanged += txtBoxSearchMembre_TextChanged;
             // 
             // btnRemoveList
             // 
@@ -201,30 +226,6 @@
             dataGridViewList.ThemeStyle.RowsStyle.Height = 25;
             dataGridViewList.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewList.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // txtBoxSearchMembre
-            // 
-            txtBoxSearchMembre.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtBoxSearchMembre.BorderRadius = 15;
-            txtBoxSearchMembre.CustomizableEdges = customizableEdges1;
-            txtBoxSearchMembre.DefaultText = "";
-            txtBoxSearchMembre.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtBoxSearchMembre.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtBoxSearchMembre.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtBoxSearchMembre.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtBoxSearchMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxSearchMembre.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxSearchMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxSearchMembre.IconLeft = Properties.Resources.icons8_chercher_192;
-            txtBoxSearchMembre.IconLeftSize = new Size(30, 30);
-            txtBoxSearchMembre.Location = new Point(517, 12);
-            txtBoxSearchMembre.Name = "txtBoxSearchMembre";
-            txtBoxSearchMembre.PasswordChar = '\0';
-            txtBoxSearchMembre.PlaceholderText = "Recherche";
-            txtBoxSearchMembre.SelectedText = "";
-            txtBoxSearchMembre.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtBoxSearchMembre.Size = new Size(276, 34);
-            txtBoxSearchMembre.TabIndex = 68;
             // 
             // listeStock
             // 

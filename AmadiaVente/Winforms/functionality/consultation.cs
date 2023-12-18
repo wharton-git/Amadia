@@ -226,6 +226,49 @@ namespace AmadiaVente.Winforms.functionality
             InitializeComponent();
         }
 
+        //Methodes
+        private void afficheConsultation()
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT c.id AS 'ID Consultation', c.numero_membre AS 'Numéro Membre', m.nom_membre AS 'Nom', m.prenom_membre AS 'Prénom', prix_consultation AS 'Prix', date_consultation AS 'Date' FROM consultation c INNER JOIN membre m ON c.numero_membre = m.id_membre";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewStock.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        private void searchConsultation(String Value)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT c.id AS 'ID Consultation', c.numero_membre AS 'Numéro Membre', m.nom_membre AS 'Nom', m.prenom_membre AS 'Prénom', prix_consultation AS 'Prix', date_consultation AS 'Date' FROM consultation c INNER JOIN membre m ON c.numero_membre = m.id_membre WHERE numero_membre LIKE '%" + Value + "%' OR nom_membre LIKE '%" + Value + "%' OR prenom_membre LIKE '%" + Value + "%' or date_consultation LIKE '%" + Value + "%'";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewStock.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
         //Evenements
         private void consultation_Load(object sender, EventArgs e)
         {
@@ -234,6 +277,7 @@ namespace AmadiaVente.Winforms.functionality
             resetBoxMembre();
 
             afficheNomMembreLoad();
+            afficheConsultation();
 
         }
 
@@ -281,6 +325,7 @@ namespace AmadiaVente.Winforms.functionality
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             reset();
+            afficheConsultation();
         }
 
         private void comboBoxMembre_SelectedIndexChanged(object sender, EventArgs e)
@@ -337,6 +382,7 @@ namespace AmadiaVente.Winforms.functionality
                         int prix = Convert.ToInt32(txtBoxPrix.Text.ToString());
 
                         saveConsultation(id, prix);
+                        afficheConsultation();
                     }
                     else
                     {
@@ -355,6 +401,13 @@ namespace AmadiaVente.Winforms.functionality
             {
                 MessageBox.Show("Erreur : Champ obligatoire non rempli", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtBoxSearchMembre_TextChanged(object sender, EventArgs e)
+        {
+            String value = txtBoxSearchMembre.Text.ToString();
+
+            searchConsultation(value);
         }
     }
 }

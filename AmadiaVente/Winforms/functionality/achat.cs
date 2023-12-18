@@ -461,7 +461,7 @@ namespace AmadiaVente.Winforms.functionality
             comboBoxMembre.Items.Add("Non");
 
             comboBoxTypeArticle.Items.Add("Médicaments");
-            comboBoxTypeArticle.Items.Add("Equipements");
+            comboBoxTypeArticle.Items.Add("Consommables");
             comboBoxTypeArticle.SelectedItem = "Médicaments";
 
             txtBoxPU.Enabled = false;
@@ -500,7 +500,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 afficheMedicamentComboBox("Médicaments");
             }
-            else if (comboBoxTypeArticle.SelectedItem != null && comboBoxTypeArticle.SelectedItem.ToString() == "Equipements")
+            else if (comboBoxTypeArticle.SelectedItem != null && comboBoxTypeArticle.SelectedItem.ToString() == "Consommables")
             {
                 afficheMedicamentComboBox("Equipements");
             }

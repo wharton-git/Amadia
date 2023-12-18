@@ -44,6 +44,27 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        public void searchList(String Value)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT id_article AS Id, designation AS Désignation, prix_article AS Prix, prix_membre AS 'Prix (Membre)', type_article AS Type, nbr_stock AS 'Qte en Stock' FROM article WHERE id_article LIKE '%"+Value+"%' OR designation LIKE '%"+Value+"%' OR prix_article LIKE '%"+Value+"%'";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewList.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
         private void removeList(string id)
         {
             try
@@ -85,22 +106,31 @@ namespace AmadiaVente.Winforms.functionality
         {
             if (dataGridViewList.SelectedRows.Count > 0)
             {
-                DialogResult confirm = MessageBox.Show("Confirmez-vous la suppression de cet article ?\nCette action est irréversible !", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DataGridViewRow selectedRow = dataGridViewList.SelectedRows[0];
+                string designation = selectedRow.Cells[1].Value.ToString();
+                DialogResult confirm = MessageBox.Show("Confirmez-vous la suppression de l'article " + designation + " ?\nCette action est irréversible !", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirm == DialogResult.Yes)
                 {
 
-                    DataGridViewRow selectedRow = dataGridViewList.SelectedRows[0];
                     String valeurCellule = selectedRow.Cells[0].Value.ToString();
                     removeList(valeurCellule);
                     afficheListe();
                 }
+
             }
             else
             {
                 MessageBox.Show("Veuillez Selectionner un article à Supprimer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
+        }
+
+        private void txtBoxSearchMembre_TextChanged(object sender, EventArgs e)
+        {
+            String value = txtBoxSearchMembre.Text.ToString();
+
+            searchList(value);
         }
     }
 }

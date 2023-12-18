@@ -32,6 +32,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -40,13 +45,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            txtBoxSearchMembre = new Guna.UI2.WinForms.Guna2TextBox();
+            dataGridViewStock = new Guna.UI2.WinForms.Guna2DataGridView();
             btnValiderConsultation = new Guna.UI2.WinForms.Guna2GradientButton();
             btnAnnuler = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -58,8 +60,6 @@
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             comboBoxMembre = new ComboBox();
             comboBoxNomMembre = new ComboBox();
-            dataGridViewStock = new Guna.UI2.WinForms.Guna2DataGridView();
-            txtBoxSearchMembre = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStock).BeginInit();
@@ -105,6 +105,86 @@
             guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2GradientPanel2.Size = new Size(821, 442);
             guna2GradientPanel2.TabIndex = 9;
+            // 
+            // txtBoxSearchMembre
+            // 
+            txtBoxSearchMembre.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtBoxSearchMembre.BorderRadius = 15;
+            txtBoxSearchMembre.CustomizableEdges = customizableEdges1;
+            txtBoxSearchMembre.DefaultText = "";
+            txtBoxSearchMembre.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtBoxSearchMembre.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtBoxSearchMembre.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxSearchMembre.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxSearchMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxSearchMembre.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxSearchMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxSearchMembre.IconLeft = Properties.Resources.icons8_chercher_192;
+            txtBoxSearchMembre.IconLeftSize = new Size(30, 30);
+            txtBoxSearchMembre.Location = new Point(490, 12);
+            txtBoxSearchMembre.Name = "txtBoxSearchMembre";
+            txtBoxSearchMembre.PasswordChar = '\0';
+            txtBoxSearchMembre.PlaceholderText = "Recherche";
+            txtBoxSearchMembre.SelectedText = "";
+            txtBoxSearchMembre.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtBoxSearchMembre.Size = new Size(276, 34);
+            txtBoxSearchMembre.TabIndex = 68;
+            txtBoxSearchMembre.TextChanged += txtBoxSearchMembre_TextChanged;
+            // 
+            // dataGridViewStock
+            // 
+            dataGridViewStock.AllowUserToAddRows = false;
+            dataGridViewStock.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewStock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewStock.ColumnHeadersHeight = 30;
+            dataGridViewStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewStock.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewStock.GridColor = Color.FromArgb(231, 229, 255);
+            dataGridViewStock.Location = new Point(32, 211);
+            dataGridViewStock.Name = "dataGridViewStock";
+            dataGridViewStock.ReadOnly = true;
+            dataGridViewStock.RowHeadersVisible = false;
+            dataGridViewStock.RowTemplate.Height = 25;
+            dataGridViewStock.Size = new Size(753, 206);
+            dataGridViewStock.TabIndex = 47;
+            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dataGridViewStock.ThemeStyle.BackColor = Color.White;
+            dataGridViewStock.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dataGridViewStock.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewStock.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewStock.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewStock.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dataGridViewStock.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewStock.ThemeStyle.HeaderStyle.Height = 30;
+            dataGridViewStock.ThemeStyle.ReadOnly = true;
+            dataGridViewStock.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dataGridViewStock.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewStock.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewStock.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewStock.ThemeStyle.RowsStyle.Height = 25;
+            dataGridViewStock.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewStock.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // btnValiderConsultation
             // 
@@ -296,85 +376,6 @@
             comboBoxNomMembre.Size = new Size(318, 29);
             comboBoxNomMembre.TabIndex = 40;
             comboBoxNomMembre.SelectedIndexChanged += comboBoxNomMembre_SelectedIndexChanged;
-            // 
-            // dataGridViewStock
-            // 
-            dataGridViewStock.AllowUserToAddRows = false;
-            dataGridViewStock.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewStock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewStock.ColumnHeadersHeight = 30;
-            dataGridViewStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewStock.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewStock.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridViewStock.Location = new Point(49, 211);
-            dataGridViewStock.Name = "dataGridViewStock";
-            dataGridViewStock.ReadOnly = true;
-            dataGridViewStock.RowHeadersVisible = false;
-            dataGridViewStock.RowTemplate.Height = 25;
-            dataGridViewStock.Size = new Size(717, 206);
-            dataGridViewStock.TabIndex = 47;
-            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.Font = null;
-            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            dataGridViewStock.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            dataGridViewStock.ThemeStyle.BackColor = Color.White;
-            dataGridViewStock.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            dataGridViewStock.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewStock.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewStock.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewStock.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dataGridViewStock.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewStock.ThemeStyle.HeaderStyle.Height = 30;
-            dataGridViewStock.ThemeStyle.ReadOnly = true;
-            dataGridViewStock.ThemeStyle.RowsStyle.BackColor = Color.White;
-            dataGridViewStock.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewStock.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewStock.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewStock.ThemeStyle.RowsStyle.Height = 25;
-            dataGridViewStock.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewStock.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // txtBoxSearchMembre
-            // 
-            txtBoxSearchMembre.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtBoxSearchMembre.BorderRadius = 15;
-            txtBoxSearchMembre.CustomizableEdges = customizableEdges1;
-            txtBoxSearchMembre.DefaultText = "";
-            txtBoxSearchMembre.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtBoxSearchMembre.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtBoxSearchMembre.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtBoxSearchMembre.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtBoxSearchMembre.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxSearchMembre.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBoxSearchMembre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBoxSearchMembre.IconLeft = Properties.Resources.icons8_chercher_192;
-            txtBoxSearchMembre.IconLeftSize = new Size(30, 30);
-            txtBoxSearchMembre.Location = new Point(490, 12);
-            txtBoxSearchMembre.Name = "txtBoxSearchMembre";
-            txtBoxSearchMembre.PasswordChar = '\0';
-            txtBoxSearchMembre.PlaceholderText = "Recherche";
-            txtBoxSearchMembre.SelectedText = "";
-            txtBoxSearchMembre.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtBoxSearchMembre.Size = new Size(276, 34);
-            txtBoxSearchMembre.TabIndex = 68;
             // 
             // consultation
             // 

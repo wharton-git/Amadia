@@ -152,9 +152,9 @@
             radioEquipement.CheckedState.InnerColor = Color.MediumBlue;
             radioEquipement.Location = new Point(157, 219);
             radioEquipement.Name = "radioEquipement";
-            radioEquipement.Size = new Size(94, 19);
+            radioEquipement.Size = new Size(108, 19);
             radioEquipement.TabIndex = 6;
-            radioEquipement.Text = "Equipements";
+            radioEquipement.Text = "Consommables";
             radioEquipement.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
             radioEquipement.UncheckedState.BorderThickness = 2;
             radioEquipement.UncheckedState.FillColor = Color.Transparent;

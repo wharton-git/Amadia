@@ -633,6 +633,132 @@ namespace AmadiaVente.Winforms.popUp
             return Convert.ToInt32(nombre);
         }
 
+        private void addDepense_Versement(int depense, int versement, string connectionString)
+        {
+
+            string idResponsable = Classes.Storage.SessionId;
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string insertQuery = "INSERT INTO dep_vers (depense, versement, responsable, date) VALUES (@depense, @versement, @responsable, @date)";
+
+                string checkQuery = "SELECT COUNT(*) FROM dep_vers WHERE date = @today";
+                using (SqliteCommand checkCommand = new SqliteCommand(checkQuery, connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    int existingRecords = Convert.ToInt32(checkCommand.ExecuteScalar());
+
+                    if (existingRecords > 0)
+                    {
+                        insertQuery = "UPDATE dep_vers SET depense = @depense, versement = @versement, responsable = @responsable WHERE date = @date";
+                    }
+                }
+
+                using (SqliteCommand command = new SqliteCommand(insertQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@depense", depense);
+                    command.Parameters.AddWithValue("@versement", versement);
+                    command.Parameters.AddWithValue("@responsable", idResponsable);
+                    command.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void addECG(int qte, int pu, int val, string connectionString)
+        {
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string insertQuery = "INSERT INTO ecg_backup (qte, pu, val, date) VALUES (@qte, @pu, @val, @date)";
+
+                string checkQuery = "SELECT COUNT(*) FROM ecg_backup WHERE date = @today";
+                using (SqliteCommand checkCommand = new SqliteCommand(checkQuery, connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    int existingRecords = Convert.ToInt32(checkCommand.ExecuteScalar());
+
+                    if (existingRecords > 0)
+                    {
+                        insertQuery = "UPDATE ecg_backup SET qte = @qte, pu = @pu, val = @val WHERE date = @date";
+                    }
+                }
+
+                using (SqliteCommand command = new SqliteCommand(insertQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@qte", qte);
+                    command.Parameters.AddWithValue("@pu", pu);
+                    command.Parameters.AddWithValue("@val", val);
+                    command.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        private string getDepenseDuJour(string cs)
+        {
+            string result = null;
+
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT depense FROM dep_vers WHERE date = @today";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            result = reader["depense"].ToString();
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        private string[] getECGduJour(string connectionString)
+        {
+            String[] result = new string[3];
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string sqlQuery2 = "SELECT qte, pu, val FROM ecg_backup WHERE date = @today";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery2, connection))
+                {
+                    command.Parameters.AddWithValue("@today", DateTime.Today.ToString("yyyy-MM-dd"));
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < 3; i++)
+                            {
+                                // Vérifiez si la valeur de la colonne est NULL avant de l'ajouter au tableau
+                                result[i] = reader.IsDBNull(i) ? null : reader[i].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
         //Evenements
         private void btnQuitList_Click(object sender, EventArgs e)
         {
@@ -642,8 +768,33 @@ namespace AmadiaVente.Winforms.popUp
         private void popUpRendu_Load(object sender, EventArgs e)
         {
             btnRetour.Visible = btnGenererPdf.Visible = false;
-            txtBoxDepense.Visible = false;
+            panelDepense.Visible = false;
             panelECG.Visible = true;
+
+            string depenseJour = getDepenseDuJour(cs);
+            string[] ecgJour = getECGduJour(cs);
+
+            if (depenseJour != null)
+            {
+                txtBoxDepense.Text = depenseJour;
+            }
+            else
+            {
+                txtBoxDepense.Text = "0";
+            }
+
+            if (ecgJour != null)
+            {
+                txtBoxECGPu.Text = ecgJour[1];
+                txtBoxECGQte.Text = ecgJour[0];
+                txtBoxECGValue.Text = ecgJour[2];
+            }
+            else
+            {
+                txtBoxECGPu.Text = string.Empty;
+                txtBoxECGQte.Text = string.Empty;
+                txtBoxECGValue.Text = string.Empty;
+            }
         }
 
         private void panelPopUpRendu_MouseDown(object sender, MouseEventArgs e)
@@ -698,9 +849,44 @@ namespace AmadiaVente.Winforms.popUp
             // Définissez les marges du document en utilisant la méthode SetMargins()
             doc.SetMargins(marginLeft, marginRight, marginTop, marginBottom);
 
+            //ECG et Depense du jour
+            int depenseTake = 0;
+            int ecgVal = 0;
+            int ecgPu = 0;
+            int ecgQte = 0;
 
             try
             {
+
+                if (!String.IsNullOrEmpty(txtBoxDepense.Text))
+                {
+                    depenseTake = toInt(txtBoxDepense.Text);
+                }
+
+                if (!String.IsNullOrEmpty(txtBoxECGValue.Text))
+                {
+                    ecgVal = toInt(txtBoxECGValue.Text);
+                }
+
+                if (!String.IsNullOrEmpty(txtBoxECGPu.Text))
+                {
+                    ecgPu = toInt(txtBoxECGPu.Text);
+                }
+
+                if (!String.IsNullOrEmpty(txtBoxECGQte.Text))
+                {
+                    ecgQte = toInt(txtBoxECGQte.Text);
+                }
+
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show("Erreur lors de traitement de Depense et ECG : " + excep, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+
                 iTextSharp.text.pdf.PdfWriter.GetInstance(doc, new FileStream(pdfLocation, FileMode.Create));
                 doc.Open();
 
@@ -924,13 +1110,32 @@ namespace AmadiaVente.Winforms.popUp
 
                     totalFirstCons = totalFirstCons + toInt(infoConsommableNonMembre[5]) + toInt(infoConsommableMembre[5]);
                 }
+                string ECGQ = ecgQte.ToString();
+                string ECGP = ecgPu.ToString();
+                string ECGV = ecgVal.ToString();
+                if (ecgPu == 0)
+                {
+                    ECGP = null;
+                }
+                if (ecgVal == 0)
+                {
+                    ECGV = null;
+                }
+                if (ecgQte == 0)
+                {
+                    ECGQ = null;
+                }
 
                 table.AddCell(cellECG);
                 table.AddCell(cellVideTeteMnM);
+                table.AddCell(ECGQ);
+                table.AddCell(ECGP);
+                table.AddCell(ECGV);
                 table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
-                table.AddCell("");
+
+                totalFirstCons = totalFirstCons + ecgVal;
+
+                addECG(ecgQte, ecgPu, ecgVal, cs);
 
                 List<String> idListConsommableUtil = new List<String>();
                 idListConsommableUtil = GetOtherConsommableIdsUtil(cs);
@@ -955,6 +1160,7 @@ namespace AmadiaVente.Winforms.popUp
 
                     totalFirstCons = totalFirstCons + valueInt;
                 }
+                table.SpacingBefore = 10f;
 
                 doc.Add(table);
 
@@ -1135,8 +1341,15 @@ namespace AmadiaVente.Winforms.popUp
                 String totalMedGen = totalPrixArticle(cs);
                 int totalMedIntGen = Convert.ToInt32(totalMedGen);
 
-                table3.AddCell("TOTAL MEDICAMENTS");
-                table3.AddCell(FormatteSommeArgent(totalMedIntGen) + " AR");
+
+                int totalMedIntGen;
+
+                if (int.TryParse(totalMedGen, out totalMedIntGen))
+                {
+                    table3.AddCell("TOTAL MEDICAMENTS");
+                    table3.AddCell(FormatteSommeArgent(totalMedIntGen) + " AR");
+                }
+
                 table3.AddCell(" ");
                 table3.AddCell(" ");
 
@@ -1148,9 +1361,9 @@ namespace AmadiaVente.Winforms.popUp
                 int depense = 0; //à definir
 
                 table3.AddCell("DEPENSE");
-                table3.AddCell("");
+                table3.AddCell(FormatteSommeArgent(depenseTake) + " AR");
 
-                int versement = totalGen - depense;
+                int versement = totalGen - depenseTake;
 
                 table3.AddCell("VERSEMENT");
                 table3.AddCell(FormatteSommeArgent(versement) + " AR");
@@ -1158,6 +1371,10 @@ namespace AmadiaVente.Winforms.popUp
                 doc.Add(table3);
 
                 doc.NewPage();
+
+                //Sauvegarde Depense et Versement
+                addDepense_Versement(depenseTake, versement, cs);
+
 
                 Paragraph titlePg2 = new Paragraph("MEDICAMENTS");
 
@@ -1220,11 +1437,14 @@ namespace AmadiaVente.Winforms.popUp
                 float[] columnWidthsPg2_1 = { 23f, 13f };
                 tablePg2_1.SetWidths(columnWidthsPg2_1);
 
-                String totalMed = totalPrixArticle(cs);
-                int totalMedInt = Convert.ToInt32(totalMed);
+                string totalMed = totalPrixArticle(cs);
 
-                tablePg2_1.AddCell("TOTAL MEDICAMENTS");
-                tablePg2_1.AddCell(FormatteSommeArgent(totalMedInt) + " AR");
+                int totalMedInt;
+                if (int.TryParse(totalMed, out totalMedInt))
+                {
+                    tablePg2_1.AddCell("TOTAL MEDICAMENTS");
+                    tablePg2_1.AddCell(FormatteSommeArgent(totalMedInt) + " AR");
+                }
 
                 doc.Add(tablePg2_1);
 
@@ -1235,13 +1455,15 @@ namespace AmadiaVente.Winforms.popUp
             {
                 MessageBox.Show("Une erreur s'est produite : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            this.Close();
         }
 
         private void btnSuivant_Click(object sender, EventArgs e)
         {
             btnGenererPdf.Visible = btnRetour.Visible = true;
             btnSuivant.Visible = false;
-            txtBoxDepense.Visible = true;
+            panelDepense.Visible = true;
             panelECG.Visible = false;
         }
 
@@ -1249,8 +1471,44 @@ namespace AmadiaVente.Winforms.popUp
         {
             btnGenererPdf.Visible = btnRetour.Visible = false;
             btnSuivant.Visible = true;
-            txtBoxDepense.Visible = false;
+            panelDepense.Visible = false;
             panelECG.Visible = true;
+        }
+
+        private void txtBoxECGQte_TextChanged(object sender, EventArgs e)
+        {
+            int ecgPu = 0;
+            int ecgQte = 0;
+
+            if (!string.IsNullOrEmpty(txtBoxECGQte.Text))
+            {
+                ecgQte = toInt(txtBoxECGQte.Text);
+            }
+            if (!string.IsNullOrEmpty(txtBoxECGPu.Text))
+            {
+                ecgPu = toInt(txtBoxECGPu.Text);
+            }
+
+            int val = ecgQte * ecgPu;
+            txtBoxECGValue.Text = val.ToString();
+        }
+
+        private void txtBoxECGPu_TextChanged(object sender, EventArgs e)
+        {
+            int ecgPu = 0;
+            int ecgQte = 0;
+
+            if (!string.IsNullOrEmpty(txtBoxECGQte.Text))
+            {
+                ecgQte = toInt(txtBoxECGQte.Text);
+            }
+            if (!string.IsNullOrEmpty(txtBoxECGPu.Text))
+            {
+                ecgPu = toInt(txtBoxECGPu.Text);
+            }
+
+            int val = ecgQte * ecgPu;
+            txtBoxECGValue.Text = val.ToString();
         }
     }
 }

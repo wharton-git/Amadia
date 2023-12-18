@@ -51,9 +51,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelPopUpRendu = new Guna.UI2.WinForms.Guna2GradientPanel();
-            txtBoxDepense = new Guna.UI2.WinForms.Guna2Panel();
+            panelDepense = new Guna.UI2.WinForms.Guna2Panel();
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtBoxDepense = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnGenererPdf = new Guna.UI2.WinForms.Guna2Button();
             btnRetour = new Guna.UI2.WinForms.Guna2Button();
@@ -69,7 +69,7 @@
             btnQuitList = new Guna.UI2.WinForms.Guna2ImageButton();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             panelPopUpRendu.SuspendLayout();
-            txtBoxDepense.SuspendLayout();
+            panelDepense.SuspendLayout();
             panelECG.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,7 +79,7 @@
             panelPopUpRendu.BorderColor = Color.FromArgb(23, 117, 197);
             panelPopUpRendu.BorderRadius = 6;
             panelPopUpRendu.BorderThickness = 4;
-            panelPopUpRendu.Controls.Add(txtBoxDepense);
+            panelPopUpRendu.Controls.Add(panelDepense);
             panelPopUpRendu.Controls.Add(btnGenererPdf);
             panelPopUpRendu.Controls.Add(btnRetour);
             panelPopUpRendu.Controls.Add(btnSuivant);
@@ -96,48 +96,49 @@
             panelPopUpRendu.MouseMove += panelPopUpRendu_MouseMove;
             panelPopUpRendu.MouseUp += panelPopUpRendu_MouseUp;
             // 
-            // txtBoxDepense
+            // panelDepense
             // 
-            txtBoxDepense.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtBoxDepense.Controls.Add(guna2HtmlLabel6);
-            txtBoxDepense.Controls.Add(guna2TextBox1);
-            txtBoxDepense.Controls.Add(guna2HtmlLabel5);
-            txtBoxDepense.CustomizableEdges = customizableEdges3;
-            txtBoxDepense.Location = new Point(34, 27);
-            txtBoxDepense.Name = "txtBoxDepense";
-            txtBoxDepense.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtBoxDepense.Size = new Size(699, 156);
-            txtBoxDepense.TabIndex = 6;
+            panelDepense.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelDepense.Controls.Add(guna2HtmlLabel6);
+            panelDepense.Controls.Add(txtBoxDepense);
+            panelDepense.Controls.Add(guna2HtmlLabel5);
+            panelDepense.CustomizableEdges = customizableEdges3;
+            panelDepense.Location = new Point(34, 27);
+            panelDepense.Name = "panelDepense";
+            panelDepense.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            panelDepense.Size = new Size(699, 156);
+            panelDepense.TabIndex = 6;
             // 
             // guna2HtmlLabel6
             // 
             guna2HtmlLabel6.BackColor = Color.Transparent;
             guna2HtmlLabel6.Location = new Point(250, 57);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(83, 17);
+            guna2HtmlLabel6.Size = new Size(95, 17);
             guna2HtmlLabel6.TabIndex = 9;
-            guna2HtmlLabel6.Text = "Total Dépense :";
+            guna2HtmlLabel6.Text = "Dépense du jour :";
             // 
-            // guna2TextBox1
+            // txtBoxDepense
             // 
-            guna2TextBox1.BorderRadius = 15;
-            guna2TextBox1.CustomizableEdges = customizableEdges1;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(250, 80);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2TextBox1.Size = new Size(215, 36);
-            guna2TextBox1.TabIndex = 8;
+            txtBoxDepense.BorderRadius = 15;
+            txtBoxDepense.CustomizableEdges = customizableEdges1;
+            txtBoxDepense.DefaultText = "";
+            txtBoxDepense.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtBoxDepense.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtBoxDepense.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxDepense.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtBoxDepense.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxDepense.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxDepense.ForeColor = Color.Black;
+            txtBoxDepense.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtBoxDepense.Location = new Point(250, 80);
+            txtBoxDepense.Name = "txtBoxDepense";
+            txtBoxDepense.PasswordChar = '\0';
+            txtBoxDepense.PlaceholderText = "";
+            txtBoxDepense.SelectedText = "";
+            txtBoxDepense.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtBoxDepense.Size = new Size(215, 36);
+            txtBoxDepense.TabIndex = 8;
             // 
             // guna2HtmlLabel5
             // 
@@ -271,6 +272,7 @@
             txtBoxECGValue.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxECGValue.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxECGValue.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxECGValue.ForeColor = Color.Black;
             txtBoxECGValue.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxECGValue.Location = new Point(474, 80);
             txtBoxECGValue.Name = "txtBoxECGValue";
@@ -292,6 +294,7 @@
             txtBoxECGPu.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxECGPu.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxECGPu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxECGPu.ForeColor = Color.Black;
             txtBoxECGPu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxECGPu.Location = new Point(250, 80);
             txtBoxECGPu.Name = "txtBoxECGPu";
@@ -301,6 +304,7 @@
             txtBoxECGPu.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtBoxECGPu.Size = new Size(200, 36);
             txtBoxECGPu.TabIndex = 1;
+            txtBoxECGPu.TextChanged += txtBoxECGPu_TextChanged;
             // 
             // txtBoxECGQte
             // 
@@ -313,6 +317,7 @@
             txtBoxECGQte.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBoxECGQte.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxECGQte.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBoxECGQte.ForeColor = Color.Black;
             txtBoxECGQte.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBoxECGQte.Location = new Point(26, 80);
             txtBoxECGQte.Name = "txtBoxECGQte";
@@ -322,6 +327,7 @@
             txtBoxECGQte.ShadowDecoration.CustomizableEdges = customizableEdges16;
             txtBoxECGQte.Size = new Size(200, 36);
             txtBoxECGQte.TabIndex = 0;
+            txtBoxECGQte.TextChanged += txtBoxECGQte_TextChanged;
             // 
             // btnQuitList
             // 
@@ -357,8 +363,8 @@
             Text = "popUpRendu";
             Load += popUpRendu_Load;
             panelPopUpRendu.ResumeLayout(false);
-            txtBoxDepense.ResumeLayout(false);
-            txtBoxDepense.PerformLayout();
+            panelDepense.ResumeLayout(false);
+            panelDepense.PerformLayout();
             panelECG.ResumeLayout(false);
             panelECG.PerformLayout();
             ResumeLayout(false);
@@ -373,7 +379,6 @@
         private Guna.UI2.WinForms.Guna2Button btnRetour;
         private Guna.UI2.WinForms.Guna2Button btnSuivant;
         private Guna.UI2.WinForms.Guna2Panel panelECG;
-        private Guna.UI2.WinForms.Guna2Panel txtBoxDepense;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxECGQte;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxECGValue;
@@ -381,8 +386,9 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtBoxDepense;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2Panel panelDepense;
     }
 }

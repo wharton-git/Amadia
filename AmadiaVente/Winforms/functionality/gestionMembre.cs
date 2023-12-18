@@ -44,6 +44,28 @@ namespace AmadiaVente.Winforms.functionality
             }
         }
 
+        private void searchMembre(string value)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT id_membre AS Numéro, nom_membre AS Nom, prenom_membre AS Prénom, adresse AS Adresse, contact AS Contact, contact2 AS 'Contact 2', date_naiss AS 'Date de Naissance', date_adhesion AS 'Date Adh' FROM membre WHERE id_membre LIKE '%" + value + "%' OR nom_membre LIKE '%" + value + "%' OR prenom_membre LIKE '%" + value + "%' OR adresse LIKE '%" + value + "%' OR contact LIKE '%" + value + "%' OR contact2 LIKE '%" + value + "%' OR date_naiss LIKE '%" + value + "%' OR date_adhesion LIKE '%" + value + "%'";
+
+                using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
+                {
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+
+                        dataGridViewListMember.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
         private void removeMember(string id)
         {
             try
@@ -70,6 +92,8 @@ namespace AmadiaVente.Winforms.functionality
         private void gestionMembre_Load(object sender, EventArgs e)
         {
             afficheMembre();
+
+            labelNom.Text = labelPrenom.Text = String.Empty;
         }
 
         private void btnAddMember_Click(object sender, EventArgs e)
@@ -78,6 +102,7 @@ namespace AmadiaVente.Winforms.functionality
             popUp.ShowDialog();
             popUp.Dispose();
             afficheMembre();
+            labelNom.Text = labelPrenom.Text = txtBoxSearchMembre.Text = String.Empty;
         }
 
         private void btnDeleteMember_Click(object sender, EventArgs e)
@@ -95,6 +120,9 @@ namespace AmadiaVente.Winforms.functionality
                     afficheMembre();
                     idMembre = null;
                 }
+
+                labelNom.Text = labelPrenom.Text = txtBoxSearchMembre.Text = String.Empty;
+
             }
             else
             {
@@ -112,6 +140,7 @@ namespace AmadiaVente.Winforms.functionality
                 popUp.Dispose();
                 afficheMembre();
                 idMembre = null;
+                labelNom.Text = labelPrenom.Text = txtBoxSearchMembre.Text = String.Empty;
             }
             else
             {
@@ -147,6 +176,13 @@ namespace AmadiaVente.Winforms.functionality
 
 
             }
+        }
+
+        private void txtBoxSearchMembre_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtBoxSearchMembre.Text.ToString();
+
+            searchMembre(value);
         }
     }
 }

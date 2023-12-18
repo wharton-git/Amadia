@@ -134,7 +134,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 afficheMedicamentComboBox("Médicaments");
             }
-            else if (TypeMedicament.SelectedItem != null && TypeMedicament.SelectedItem.ToString() == "Equipements")
+            else if (TypeMedicament.SelectedItem != null && TypeMedicament.SelectedItem.ToString() == "Consommables")
             {
                 afficheMedicamentComboBox("Equipements");
             }
@@ -722,7 +722,7 @@ namespace AmadiaVente.Winforms.functionality
         private void Fournisseur1_Load(object sender, EventArgs e)
         {
             TypeMedicament.Items.Add("Médicaments");
-            TypeMedicament.Items.Add("Equipements");
+            TypeMedicament.Items.Add("Consommables");
             PUMedicament.Enabled = false;
             btnValiderAchat.Enabled = false;
             txtBoxPrixdeVente.Enabled = false;
