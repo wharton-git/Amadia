@@ -44,8 +44,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -59,7 +57,6 @@
             panelLigne1 = new Guna.UI2.WinForms.Guna2Panel();
             checkBoxAfficheMdp = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            panelLigne1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2GradientPanel1.SuspendLayout();
@@ -240,18 +237,6 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Panel1.Size = new Size(200, 5);
             guna2Panel1.TabIndex = 6;
-            // 
-            // panelLigne1
-            // 
-            panelLigne1.Anchor = AnchorStyles.None;
-            panelLigne1.BorderRadius = 2;
-            panelLigne1.CustomizableEdges = customizableEdges7;
-            panelLigne1.FillColor = Color.FromArgb(23, 117, 197);
-            panelLigne1.Location = new Point(359, 166);
-            panelLigne1.Name = "panelLigne1";
-            panelLigne1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            panelLigne1.Size = new Size(200, 5);
-            panelLigne1.TabIndex = 5;
             // 
             // guna2PictureBox2
             // 
