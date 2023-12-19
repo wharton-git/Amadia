@@ -318,7 +318,7 @@
             // 
             btnHideConfirmMdp.Image = Properties.Resources.show_icon_184023;
             btnHideConfirmMdp.ImageRotate = 0F;
-            btnHideConfirmMdp.Location = new Point(244, 141);
+            btnHideConfirmMdp.Location = new Point(246, 141);
             btnHideConfirmMdp.Name = "btnHideConfirmMdp";
             btnHideConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges15;
             btnHideConfirmMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -332,7 +332,7 @@
             // 
             btnHideNewMdp.Image = Properties.Resources.show_icon_184023;
             btnHideNewMdp.ImageRotate = 0F;
-            btnHideNewMdp.Location = new Point(246, 82);
+            btnHideNewMdp.Location = new Point(244, 82);
             btnHideNewMdp.Name = "btnHideNewMdp";
             btnHideNewMdp.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnHideNewMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;

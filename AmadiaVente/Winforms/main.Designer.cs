@@ -50,6 +50,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             panelLeftMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
             btnConsultation = new Guna.UI2.WinForms.Guna2GradientButton();
             btnCotisation = new Guna.UI2.WinForms.Guna2CircleButton();
@@ -400,6 +401,7 @@
             ClientSize = new Size(990, 518);
             Controls.Add(panel4);
             Controls.Add(panelLeftParent);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "main";
             Text = "AMADIA";
             Load += main_Load;

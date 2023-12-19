@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AmadiaVente.Winforms.functionality;
 using Microsoft.Data.Sqlite;
 
 namespace AmadiaVente.Winforms.popUp
@@ -26,9 +27,55 @@ namespace AmadiaVente.Winforms.popUp
             InitializeComponent();
         }
         //Méthodes
-        private void verifyLogin(string login)
+        private string[] verifyLogin(string login)
         {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
 
+                string selectMedicamentsQuery = "SELECT username, code_recup FROM user WHERE username = @username";
+
+                using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@username", login);
+
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                            string username = reader.GetString(0);
+                            string recoveryCode = reader.GetString(1);
+
+                            return new string[] { username, recoveryCode };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private bool verifyCode(string enterCode, string recoveryCode)
+        {
+            return enterCode == recoveryCode;
+        }
+
+        private void reinitialiseMdp(string mdp, string username)
+        {
+            using (SqliteConnection connection = new SqliteConnection(cs))
+            {
+                connection.Open();
+                string query = "UPDATE user SET password = @mdp WHERE username = @login";
+
+                using (SqliteCommand command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@mdp", mdp);
+                    command.Parameters.AddWithValue("@login", username);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         //Evenements
@@ -36,6 +83,9 @@ namespace AmadiaVente.Winforms.popUp
         {
             panelChangeMdp.Visible = false;
             panelVerifiyAccount.Visible = true;
+
+            txtBoxRecoveryMdp.UseSystemPasswordChar = true;
+            txtBoxRecoveryConfirmMdp.UseSystemPasswordChar = true;
         }
 
         private void btnQuitList_Click(object sender, EventArgs e)
@@ -96,20 +146,125 @@ namespace AmadiaVente.Winforms.popUp
 
                     if (confirm == DialogResult.Yes)
                     {
-                        panelChangeMdp.Visible = true;
-                        panelVerifiyAccount.Visible = false;
+                        string[] takeInfo = verifyLogin(login);
+
+                        if (takeInfo != null)
+                        {
+                            string takeLogin = takeInfo[0];
+                            string takeReciveryCode = takeInfo[1];
+
+                            if (verifyCode(recoveryCode, takeReciveryCode))
+                            {
+                                panelChangeMdp.Visible = true;
+                                panelVerifiyAccount.Visible = false;
+                                MessageBox.Show("Créer votre nouveau mot de passe !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Code de récuperation erroné.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Utilisateur introuvable.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Veuiller entrer votre Code de récupération", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Veuiller entrer votre Code de récupération.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Veuiller entrer votre nom d'utilisateur (Login)", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Veuiller entrer votre nom d'utilisateur (Login).", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void btnSaveRecoveryMdp_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBoxRecoveryMdp.Text))
+            {
+                if (!string.IsNullOrEmpty(txtBoxRecoveryConfirmMdp.Text))
+                {
+                    string newConfirmMdp = txtBoxRecoveryConfirmMdp.Text.ToString();
+                    string newMdp = txtBoxRecoveryMdp.Text.ToString();
+                    string username = txtBoxLogin.Text.ToString();
+
+                    if (verifyCode(newConfirmMdp, newMdp))
+                    {
+                        try
+                        {
+                            reinitialiseMdp(newConfirmMdp, username);
+                            MessageBox.Show("Votre mot de passe a été réinitilisé avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Erreur lors de la réinitialisation du mot de passe", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez confirmez votre nouveau mot de passe.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nouveau mot de passe vide !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtBoxRecoveryConfirmMdp_TextChanged(object sender, EventArgs e)
+        {
+            string mdp = txtBoxRecoveryMdp.Text.ToString();
+            string confirmMdp = txtBoxRecoveryConfirmMdp.Text.ToString();
+
+            if (verifyCode(mdp, confirmMdp))
+            {
+                txtBoxRecoveryConfirmMdp.FillColor = Color.PaleGreen;
+            }
+            else
+            {
+                txtBoxRecoveryConfirmMdp.FillColor = Color.LightPink;
+            }
+
+            if (string.IsNullOrEmpty(txtBoxRecoveryConfirmMdp.Text))
+            {
+                txtBoxRecoveryConfirmMdp.FillColor = Color.White;
+            }
+        }
+
+        private void btnHideNewMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxRecoveryMdp.UseSystemPasswordChar = true;
+            btnShowNewMpd.Visible = true;
+            btnHideNewMdp.Visible = false;
+        }
+
+        private void btnHideConfirmMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxRecoveryConfirmMdp.UseSystemPasswordChar = true;
+            btnShowConfirmMdp.Visible = true;
+            btnHideConfirmMdp.Visible = false;
+        }
+
+        private void btnShowConfirmMdp_Click(object sender, EventArgs e)
+        {
+            txtBoxRecoveryConfirmMdp.UseSystemPasswordChar = false;
+            btnShowConfirmMdp.Visible = false;
+            btnHideConfirmMdp.Visible = true;
+        }
+
+        private void btnShowNewMpd_Click(object sender, EventArgs e)
+        {
+            txtBoxRecoveryMdp.UseSystemPasswordChar = false;
+            btnShowNewMpd.Visible = false;
+            btnHideNewMdp.Visible = true;
         }
     }
 }
