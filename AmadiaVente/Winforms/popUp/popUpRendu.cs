@@ -1180,6 +1180,8 @@ namespace AmadiaVente.Winforms.popUp
 
                 doc.Add(table_1);
 
+                table.SpacingBefore = 10f;
+
                 //2nd partie Tableau
 
                 PdfPTable table2 = new PdfPTable(6);
@@ -1337,6 +1339,7 @@ namespace AmadiaVente.Winforms.popUp
                 table3.SetWidths(columnWidths3);
 
                 String totalMedGen = totalPrixArticle(cs);
+                int totalMedIntGen = Convert.ToInt32(totalMedGen);
 
 
                 int totalMedIntGen;
@@ -1444,6 +1447,7 @@ namespace AmadiaVente.Winforms.popUp
                 }
 
                 doc.Add(tablePg2_1);
+
                 doc.Close();
                 MessageBox.Show("Generation succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
