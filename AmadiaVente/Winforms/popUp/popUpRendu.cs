@@ -1339,7 +1339,6 @@ namespace AmadiaVente.Winforms.popUp
                 table3.SetWidths(columnWidths3);
 
                 String totalMedGen = totalPrixArticle(cs);
-                int totalMedIntGen = Convert.ToInt32(totalMedGen);
 
 
                 int totalMedIntGen;

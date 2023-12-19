@@ -1,3 +1,4 @@
+using AmadiaVente.Winforms.popUp;
 using System.Data.SQLite;
 
 namespace AmadiaVente
@@ -147,6 +148,14 @@ namespace AmadiaVente
         private void checkBoxAfficheMdp_CheckedChanged(object sender, EventArgs e)
         {
             txtBoxPassword.UseSystemPasswordChar = !checkBoxAfficheMdp.Checked;
+        }
+
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            popUpNewAccount popUp = new popUpNewAccount();
+
+            popUp.ShowDialog();
+            popUp.Dispose();
         }
     }
 }

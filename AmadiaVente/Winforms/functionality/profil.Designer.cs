@@ -32,6 +32,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -47,18 +49,21 @@
             guna2GradientPanel3 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel4 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            guna2GradientPanel5 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2GradientPanel1.SuspendLayout();
             guna2GradientPanel3.SuspendLayout();
             guna2GradientPanel2.SuspendLayout();
             guna2GradientPanel4.SuspendLayout();
+            guna2GradientPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // labelProfilPrenom
             // 
+            labelProfilPrenom.Anchor = AnchorStyles.Left;
             labelProfilPrenom.BackColor = Color.Transparent;
             labelProfilPrenom.Font = new Font("Arial", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelProfilPrenom.ForeColor = Color.Black;
-            labelProfilPrenom.Location = new Point(45, 196);
+            labelProfilPrenom.ForeColor = Color.White;
+            labelProfilPrenom.Location = new Point(32, 6);
             labelProfilPrenom.Name = "labelProfilPrenom";
             labelProfilPrenom.Size = new Size(292, 44);
             labelProfilPrenom.TabIndex = 1;
@@ -69,7 +74,7 @@
             labelProfilUsername.BackColor = Color.Transparent;
             labelProfilUsername.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelProfilUsername.ForeColor = Color.Black;
-            labelProfilUsername.Location = new Point(45, 69);
+            labelProfilUsername.Location = new Point(45, 40);
             labelProfilUsername.Name = "labelProfilUsername";
             labelProfilUsername.Size = new Size(220, 29);
             labelProfilUsername.TabIndex = 2;
@@ -80,7 +85,7 @@
             labelProfilId.BackColor = Color.Transparent;
             labelProfilId.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelProfilId.ForeColor = Color.Black;
-            labelProfilId.Location = new Point(45, 18);
+            labelProfilId.Location = new Point(564, 13);
             labelProfilId.Name = "labelProfilId";
             labelProfilId.Size = new Size(193, 29);
             labelProfilId.TabIndex = 3;
@@ -114,6 +119,7 @@
             // 
             // guna2GradientPanel1
             // 
+            guna2GradientPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel1.BackColor = Color.Transparent;
             guna2GradientPanel1.BorderRadius = 15;
             guna2GradientPanel1.Controls.Add(labelProfilNom);
@@ -124,11 +130,12 @@
             guna2GradientPanel1.Location = new Point(45, 116);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2GradientPanel1.Size = new Size(305, 58);
+            guna2GradientPanel1.Size = new Size(584, 58);
             guna2GradientPanel1.TabIndex = 5;
             // 
             // labelProfilNom
             // 
+            labelProfilNom.Anchor = AnchorStyles.Left;
             labelProfilNom.BackColor = Color.Transparent;
             labelProfilNom.Font = new Font("Arial", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelProfilNom.ForeColor = Color.White;
@@ -141,13 +148,13 @@
             // guna2GradientPanel3
             // 
             guna2GradientPanel3.Controls.Add(guna2GradientPanel2);
-            guna2GradientPanel3.CustomizableEdges = customizableEdges9;
+            guna2GradientPanel3.CustomizableEdges = customizableEdges11;
             guna2GradientPanel3.Dock = DockStyle.Fill;
             guna2GradientPanel3.FillColor = Color.FromArgb(191, 210, 255);
             guna2GradientPanel3.FillColor2 = Color.FromArgb(151, 170, 205);
             guna2GradientPanel3.Location = new Point(0, 0);
             guna2GradientPanel3.Name = "guna2GradientPanel3";
-            guna2GradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2GradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2GradientPanel3.Size = new Size(886, 478);
             guna2GradientPanel3.TabIndex = 6;
             // 
@@ -158,12 +165,12 @@
             guna2GradientPanel2.BorderRadius = 15;
             guna2GradientPanel2.Controls.Add(guna2GradientPanel4);
             guna2GradientPanel2.Controls.Add(btnEditProfil);
-            guna2GradientPanel2.CustomizableEdges = customizableEdges7;
+            guna2GradientPanel2.CustomizableEdges = customizableEdges9;
             guna2GradientPanel2.FillColor = Color.WhiteSmoke;
             guna2GradientPanel2.FillColor2 = SystemColors.ButtonFace;
             guna2GradientPanel2.Location = new Point(31, 22);
             guna2GradientPanel2.Name = "guna2GradientPanel2";
-            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2GradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2GradientPanel2.Size = new Size(821, 442);
             guna2GradientPanel2.TabIndex = 6;
             // 
@@ -171,19 +178,35 @@
             // 
             guna2GradientPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GradientPanel4.BorderRadius = 15;
+            guna2GradientPanel4.Controls.Add(guna2GradientPanel5);
             guna2GradientPanel4.Controls.Add(labelProfilUsername);
             guna2GradientPanel4.Controls.Add(labelProfilId);
-            guna2GradientPanel4.Controls.Add(labelProfilPrenom);
             guna2GradientPanel4.Controls.Add(guna2GradientPanel1);
-            guna2GradientPanel4.CustomizableEdges = customizableEdges5;
+            guna2GradientPanel4.CustomizableEdges = customizableEdges7;
             guna2GradientPanel4.FillColor = Color.White;
             guna2GradientPanel4.FillColor2 = Color.White;
             guna2GradientPanel4.ForeColor = Color.Black;
             guna2GradientPanel4.Location = new Point(36, 19);
             guna2GradientPanel4.Name = "guna2GradientPanel4";
-            guna2GradientPanel4.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2GradientPanel4.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2GradientPanel4.Size = new Size(760, 292);
             guna2GradientPanel4.TabIndex = 6;
+            // 
+            // guna2GradientPanel5
+            // 
+            guna2GradientPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            guna2GradientPanel5.BackColor = Color.Transparent;
+            guna2GradientPanel5.BorderRadius = 15;
+            guna2GradientPanel5.Controls.Add(labelProfilPrenom);
+            guna2GradientPanel5.CustomizableEdges = customizableEdges5;
+            guna2GradientPanel5.FillColor = Color.Black;
+            guna2GradientPanel5.FillColor2 = Color.Black;
+            guna2GradientPanel5.ForeColor = SystemColors.ButtonHighlight;
+            guna2GradientPanel5.Location = new Point(45, 192);
+            guna2GradientPanel5.Name = "guna2GradientPanel5";
+            guna2GradientPanel5.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2GradientPanel5.Size = new Size(584, 58);
+            guna2GradientPanel5.TabIndex = 6;
             // 
             // profil
             // 
@@ -201,6 +224,8 @@
             guna2GradientPanel2.ResumeLayout(false);
             guna2GradientPanel4.ResumeLayout(false);
             guna2GradientPanel4.PerformLayout();
+            guna2GradientPanel5.ResumeLayout(false);
+            guna2GradientPanel5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -214,5 +239,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelProfilNom;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel4;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel5;
     }
 }

@@ -22,6 +22,7 @@ namespace AmadiaVente.Winforms.functionality
         public profil()
         {
             InitializeComponent();
+            labelProfilId.Visible = false;
 
         }
 

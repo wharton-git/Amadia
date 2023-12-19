@@ -269,7 +269,10 @@ namespace AmadiaVente.Winforms.popUp
 
         private void btnModifDroitAdhesion_Click(object sender, EventArgs e)
         {
-
+            popUp.popUpChangeAdhesion popUp = new popUpChangeAdhesion();
+            popUp.ShowDialog();
+            popUp.Dispose();
+            txtBoxDroitAdh.Text = getAmountAdh();
         }
     }
 }

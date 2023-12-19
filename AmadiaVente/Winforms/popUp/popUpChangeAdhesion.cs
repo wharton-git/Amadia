@@ -7,12 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
 using Microsoft.Data.Sqlite;
 
 namespace AmadiaVente.Winforms.popUp
 {
-    public partial class popUpChangeCotisation : Form
+    public partial class popUpChangeAdhesion : Form
     {
         //Declaration globale
         private string cs = "Data Source=" + System.IO.Path.Combine(Application.StartupPath, "sysCall.dll");
@@ -22,20 +21,20 @@ namespace AmadiaVente.Winforms.popUp
         private Point lastFormPos;
 
         //Constructeur
-        public popUpChangeCotisation()
+        public popUpChangeAdhesion()
         {
             InitializeComponent();
         }
 
-        //Méthodes
-        private string getAmountCot()
+        //Methodes
+        private string getAmountAdh()
         {
             string result = null;
             using (SqliteConnection connection = new SqliteConnection(cs))
             {
                 connection.Open();
 
-                string selectMedicamentsQuery = "SELECT * FROM value_cotisation";
+                string selectMedicamentsQuery = "SELECT * FROM value_adhesion";
 
                 using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
                 {
@@ -59,7 +58,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string updateStockQuery = "UPDATE value_cotisation SET somme_coti = @newAmount";
+                string updateStockQuery = "UPDATE value_adhesion SET amount = @newAmount";
 
                 using (SqliteCommand updateCommand = new SqliteCommand(updateStockQuery, connection))
                 {
@@ -72,14 +71,14 @@ namespace AmadiaVente.Winforms.popUp
 
         //Evenements
 
-        private void popUpChangeCotisation_Load(object sender, EventArgs e)
-        {
-            txtBoxSomme.Text = getAmountCot();
-        }
-
         private void btnQuit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void popUpChangeAdhesion_Load(object sender, EventArgs e)
+        {
+            txtBoxSomme.Text = getAmountAdh();
         }
 
         private void panelCotisationChange_MouseDown(object sender, MouseEventArgs e)
@@ -109,15 +108,15 @@ namespace AmadiaVente.Winforms.popUp
             }
         }
 
-        private void btnaliderNVsomme_Click(object sender, EventArgs e)
+        private void btnValiderNVsomme_Click(object sender, EventArgs e)
         {
-            string newValue = getAmountCot();
+            string newValue = getAmountAdh();
             if (txtBoxSomme.Text != string.Empty)
             {
                 newValue = txtBoxSomme.Text.ToString();
             }
 
-            DialogResult confirm = MessageBox.Show("Confirmer la modification de la somme de cotisation ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult confirm = MessageBox.Show("Confirmer la modification du frais d'adhésion ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
             {
                 changeAmount(newValue);
