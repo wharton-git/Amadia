@@ -26,11 +26,16 @@ namespace AmadiaVente.Winforms.popUp
             InitializeComponent();
         }
         //Méthodes
+        private void verifyLogin(string login)
+        {
+
+        }
 
         //Evenements
         private void popUpRecuperationMdp_Load(object sender, EventArgs e)
         {
-
+            panelChangeMdp.Visible = false;
+            panelVerifiyAccount.Visible = true;
         }
 
         private void btnQuitList_Click(object sender, EventArgs e)
@@ -63,6 +68,48 @@ namespace AmadiaVente.Winforms.popUp
             {
                 isDragging = false;
             }
+        }
+
+        private void brnCheckMdpRecovery_Click(object sender, EventArgs e)
+        {
+            string login = "Vide";
+            string recoveryCode = "Vide";
+            bool loginStat = false;
+            bool codeStat = false;
+
+            if (!string.IsNullOrEmpty(txtBoxLogin.Text))
+            {
+                login = txtBoxLogin.Text.ToString();
+                loginStat = true;
+            }
+            if (!string.IsNullOrEmpty(txtBoxRecoveryCode.Text))
+            {
+                recoveryCode = txtBoxRecoveryCode.Text.ToString();
+                codeStat = true;
+            }
+
+            if (loginStat)
+            {
+                if (codeStat)
+                {
+                    DialogResult confirm = MessageBox.Show("Procéder à la verification ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (confirm == DialogResult.Yes)
+                    {
+                        panelChangeMdp.Visible = true;
+                        panelVerifiyAccount.Visible = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Veuiller entrer votre Code de récupération", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuiller entrer votre nom d'utilisateur (Login)", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
     }
 }

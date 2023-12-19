@@ -20,7 +20,7 @@ namespace AmadiaVente.Winforms.userControles
         {
             InitializeComponent();
         }
-        //Methodes
+
 
         //Evenements
         private void brnCheckMdpRecovery_Click(object sender, EventArgs e)

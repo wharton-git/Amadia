@@ -160,7 +160,7 @@
             btnChangeCode.FocusedColor = Color.Transparent;
             btnChangeCode.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnChangeCode.ForeColor = Color.Black;
-            btnChangeCode.Location = new Point(103, 363);
+            btnChangeCode.Location = new Point(98, 340);
             btnChangeCode.Name = "btnChangeCode";
             btnChangeCode.PressedColor = Color.Transparent;
             btnChangeCode.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -173,7 +173,7 @@
             // 
             labelCodeRecupMdp.BackColor = Color.Transparent;
             labelCodeRecupMdp.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCodeRecupMdp.Location = new Point(139, 300);
+            labelCodeRecupMdp.Location = new Point(140, 277);
             labelCodeRecupMdp.Name = "labelCodeRecupMdp";
             labelCodeRecupMdp.Size = new Size(97, 49);
             labelCodeRecupMdp.TabIndex = 29;
