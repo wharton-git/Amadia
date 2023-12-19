@@ -86,6 +86,9 @@ namespace AmadiaVente.Winforms.popUp
 
             txtBoxRecoveryMdp.UseSystemPasswordChar = true;
             txtBoxRecoveryConfirmMdp.UseSystemPasswordChar = true;
+
+            btnHideConfirmMdp.Visible = false;
+            btnHideNewMdp.Visible = false;
         }
 
         private void btnQuitList_Click(object sender, EventArgs e)

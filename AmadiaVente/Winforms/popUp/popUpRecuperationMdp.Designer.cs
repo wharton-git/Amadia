@@ -33,6 +33,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -50,13 +54,13 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             panelRecupMdp = new Guna.UI2.WinForms.Guna2GradientPanel();
             panelChangeMdp = new Guna.UI2.WinForms.Guna2Panel();
+            btnHideConfirmMdp = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            btnHideNewMdp = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            btnShowConfirmMdp = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            btnShowNewMpd = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnSaveRecoveryMdp = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -70,17 +74,13 @@
             txtBoxRecoveryCode = new Guna.UI2.WinForms.Guna2TextBox();
             txtBoxLogin = new Guna.UI2.WinForms.Guna2TextBox();
             btnQuitList = new Guna.UI2.WinForms.Guna2ImageButton();
-            btnHideConfirmMdp = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            btnHideNewMdp = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            btnShowConfirmMdp = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            btnShowNewMpd = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             panelRecupMdp.SuspendLayout();
             panelChangeMdp.SuspendLayout();
-            panelVerifiyAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnHideConfirmMdp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnHideNewMdp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnShowConfirmMdp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnShowNewMpd).BeginInit();
+            panelVerifiyAccount.SuspendLayout();
             SuspendLayout();
             // 
             // guna2Elipse1
@@ -127,6 +127,62 @@
             panelChangeMdp.ShadowDecoration.CustomizableEdges = customizableEdges14;
             panelChangeMdp.Size = new Size(364, 275);
             panelChangeMdp.TabIndex = 2;
+            // 
+            // btnHideConfirmMdp
+            // 
+            btnHideConfirmMdp.Image = Properties.Resources.show_icon_184023;
+            btnHideConfirmMdp.ImageRotate = 0F;
+            btnHideConfirmMdp.Location = new Point(303, 144);
+            btnHideConfirmMdp.Name = "btnHideConfirmMdp";
+            btnHideConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            btnHideConfirmMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnHideConfirmMdp.Size = new Size(25, 22);
+            btnHideConfirmMdp.SizeMode = PictureBoxSizeMode.Zoom;
+            btnHideConfirmMdp.TabIndex = 37;
+            btnHideConfirmMdp.TabStop = false;
+            btnHideConfirmMdp.Click += btnHideConfirmMdp_Click;
+            // 
+            // btnHideNewMdp
+            // 
+            btnHideNewMdp.Image = Properties.Resources.show_icon_184023;
+            btnHideNewMdp.ImageRotate = 0F;
+            btnHideNewMdp.Location = new Point(303, 64);
+            btnHideNewMdp.Name = "btnHideNewMdp";
+            btnHideNewMdp.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnHideNewMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnHideNewMdp.Size = new Size(25, 22);
+            btnHideNewMdp.SizeMode = PictureBoxSizeMode.Zoom;
+            btnHideNewMdp.TabIndex = 36;
+            btnHideNewMdp.TabStop = false;
+            btnHideNewMdp.Click += btnHideNewMdp_Click;
+            // 
+            // btnShowConfirmMdp
+            // 
+            btnShowConfirmMdp.Image = Properties.Resources.hidden_eye_close_hide_icon_232825;
+            btnShowConfirmMdp.ImageRotate = 0F;
+            btnShowConfirmMdp.Location = new Point(303, 144);
+            btnShowConfirmMdp.Name = "btnShowConfirmMdp";
+            btnShowConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            btnShowConfirmMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnShowConfirmMdp.Size = new Size(25, 22);
+            btnShowConfirmMdp.SizeMode = PictureBoxSizeMode.Zoom;
+            btnShowConfirmMdp.TabIndex = 35;
+            btnShowConfirmMdp.TabStop = false;
+            btnShowConfirmMdp.Click += btnShowConfirmMdp_Click;
+            // 
+            // btnShowNewMpd
+            // 
+            btnShowNewMpd.Image = Properties.Resources.hidden_eye_close_hide_icon_232825;
+            btnShowNewMpd.ImageRotate = 0F;
+            btnShowNewMpd.Location = new Point(303, 64);
+            btnShowNewMpd.Name = "btnShowNewMpd";
+            btnShowNewMpd.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnShowNewMpd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnShowNewMpd.Size = new Size(25, 22);
+            btnShowNewMpd.SizeMode = PictureBoxSizeMode.Zoom;
+            btnShowNewMpd.TabIndex = 34;
+            btnShowNewMpd.TabStop = false;
+            btnShowNewMpd.Click += btnShowNewMpd_Click;
             // 
             // guna2HtmlLabel2
             // 
@@ -365,62 +421,6 @@
             btnQuitList.TabIndex = 0;
             btnQuitList.Click += btnQuitList_Click;
             // 
-            // btnHideConfirmMdp
-            // 
-            btnHideConfirmMdp.Image = Properties.Resources.show_icon_184023;
-            btnHideConfirmMdp.ImageRotate = 0F;
-            btnHideConfirmMdp.Location = new Point(303, 143);
-            btnHideConfirmMdp.Name = "btnHideConfirmMdp";
-            btnHideConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            btnHideConfirmMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnHideConfirmMdp.Size = new Size(25, 22);
-            btnHideConfirmMdp.SizeMode = PictureBoxSizeMode.Zoom;
-            btnHideConfirmMdp.TabIndex = 37;
-            btnHideConfirmMdp.TabStop = false;
-            btnHideConfirmMdp.Click += btnHideConfirmMdp_Click;
-            // 
-            // btnHideNewMdp
-            // 
-            btnHideNewMdp.Image = Properties.Resources.show_icon_184023;
-            btnHideNewMdp.ImageRotate = 0F;
-            btnHideNewMdp.Location = new Point(303, 64);
-            btnHideNewMdp.Name = "btnHideNewMdp";
-            btnHideNewMdp.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnHideNewMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnHideNewMdp.Size = new Size(25, 22);
-            btnHideNewMdp.SizeMode = PictureBoxSizeMode.Zoom;
-            btnHideNewMdp.TabIndex = 36;
-            btnHideNewMdp.TabStop = false;
-            btnHideNewMdp.Click += btnHideNewMdp_Click;
-            // 
-            // btnShowConfirmMdp
-            // 
-            btnShowConfirmMdp.Image = Properties.Resources.hidden_eye_close_hide_icon_232825;
-            btnShowConfirmMdp.ImageRotate = 0F;
-            btnShowConfirmMdp.Location = new Point(303, 143);
-            btnShowConfirmMdp.Name = "btnShowConfirmMdp";
-            btnShowConfirmMdp.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            btnShowConfirmMdp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnShowConfirmMdp.Size = new Size(25, 22);
-            btnShowConfirmMdp.SizeMode = PictureBoxSizeMode.Zoom;
-            btnShowConfirmMdp.TabIndex = 35;
-            btnShowConfirmMdp.TabStop = false;
-            btnShowConfirmMdp.Click += btnShowConfirmMdp_Click;
-            // 
-            // btnShowNewMpd
-            // 
-            btnShowNewMpd.Image = Properties.Resources.hidden_eye_close_hide_icon_232825;
-            btnShowNewMpd.ImageRotate = 0F;
-            btnShowNewMpd.Location = new Point(303, 64);
-            btnShowNewMpd.Name = "btnShowNewMpd";
-            btnShowNewMpd.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnShowNewMpd.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnShowNewMpd.Size = new Size(25, 22);
-            btnShowNewMpd.SizeMode = PictureBoxSizeMode.Zoom;
-            btnShowNewMpd.TabIndex = 34;
-            btnShowNewMpd.TabStop = false;
-            btnShowNewMpd.Click += btnShowNewMpd_Click;
-            // 
             // popUpRecuperationMdp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -435,12 +435,12 @@
             panelRecupMdp.ResumeLayout(false);
             panelChangeMdp.ResumeLayout(false);
             panelChangeMdp.PerformLayout();
-            panelVerifiyAccount.ResumeLayout(false);
-            panelVerifiyAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnHideConfirmMdp).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnHideNewMdp).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnShowConfirmMdp).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnShowNewMpd).EndInit();
+            panelVerifiyAccount.ResumeLayout(false);
+            panelVerifiyAccount.PerformLayout();
             ResumeLayout(false);
         }
 

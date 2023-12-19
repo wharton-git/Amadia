@@ -15,17 +15,7 @@ namespace AmadiaVente
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Créez et affichez le Splash Screen
-            splashScreen.splashScreen splashScreen = new splashScreen.splashScreen();
-            splashScreen.Show();
-
-            // Simulation d'une opération de chargement (remplacez cela par votre propre logique de chargement)
-            System.Threading.Thread.Sleep(4000);
-
-            // Fermez le Splash Screen
-            splashScreen.Close();
-
-            Application.Run(new Form1());
+            Application.Run(new splashScreen.splashScreen());
         }
     }
 }
