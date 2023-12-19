@@ -49,9 +49,8 @@ namespace AmadiaVente.Winforms.functionality
                             string password = reader.GetString(2);
                             string nomUser = reader.GetString(3);
                             string prenomUser = reader.GetString(4);
-                            string fonction = reader.GetString(5);
 
-                            return new string[] { userId.ToString(), username, password, nomUser, prenomUser, fonction };
+                            return new string[] { userId.ToString(), username, password, nomUser, prenomUser };
                         }
                     }
                 }
@@ -67,7 +66,7 @@ namespace AmadiaVente.Winforms.functionality
             labelProfilId.Text = "Id : " + info[0];
             labelProfilUsername.Text = "Nom d'utilisateur : " + info[1];
             labelProfilNom.Text = info[3];
-            labelProfilPrenom.Text = info[4] + "( " + info[5] + " )";
+            labelProfilPrenom.Text = info[4];
         }
 
         private void btnEditProfil_Click(object sender, EventArgs e)
@@ -86,7 +85,7 @@ namespace AmadiaVente.Winforms.functionality
             labelProfilId.Text = "Id : " + info[0];
             labelProfilUsername.Text = "Nom d'utilisateur : " + info[1];
             labelProfilNom.Text = info[3];
-            labelProfilPrenom.Text = info[4] + "( " + info[5] + " )";
+            labelProfilPrenom.Text = info[4];
         }
     }
 }

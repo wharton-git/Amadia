@@ -70,7 +70,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string selectMedicamentsQuery = "SELECT username,password,nom_user,prenom_user,fonction_user FROM user WHERE id_user = @id";
+                string selectMedicamentsQuery = "SELECT username,password,nom_user,prenom_user FROM user WHERE id_user = @id";
 
                 using (SqliteCommand command = new SqliteCommand(selectMedicamentsQuery, connection))
                 {
@@ -86,9 +86,8 @@ namespace AmadiaVente.Winforms.popUp
                             string passUser = reader.GetString(1);
                             string nomUser = reader.GetString(2);
                             string prenomUser = reader.GetString(3);
-                            string fonctionUser = reader.GetString(4);
 
-                            return new string[] { loginUser, passUser, nomUser, prenomUser, fonctionUser };
+                            return new string[] { loginUser, passUser, nomUser, prenomUser };
                         }
                     }
                 }
@@ -96,21 +95,20 @@ namespace AmadiaVente.Winforms.popUp
             return null;
         }
 
-        private void updateInfo(string login, string nom, string prenom, string fonction, string id)
+        private void updateInfo(string login, string nom, string prenom, string id)
         {
             try
             {
                 using (SqliteConnection con = new SqliteConnection(cs))
                 {
                     con.Open();
-                    string updateInfoQuery = "UPDATE user SET username = @login, nom_user = @nom, prenom_user = @prenom, fonction_user = @fonction WHERE id_user = @id";
+                    string updateInfoQuery = "UPDATE user SET username = @login, nom_user = @nom, prenom_user = @prenom WHERE id_user = @id";
 
                     using (SqliteCommand comm = new SqliteCommand(updateInfoQuery, con))
                     {
                         comm.Parameters.AddWithValue("@login", login);
                         comm.Parameters.AddWithValue("@nom", nom);
                         comm.Parameters.AddWithValue("@prenom", prenom);
-                        comm.Parameters.AddWithValue("@fonction", fonction);
                         comm.Parameters.AddWithValue("@id", id);
 
                         comm.ExecuteNonQuery();
@@ -174,7 +172,6 @@ namespace AmadiaVente.Winforms.popUp
             panelEditMdp.Visible = false;
             txtBoxEditNom.Text = info[2];
             txtBoxEditPrenom.Text = info[3];
-            txtBoxNewFonction.Text = info[4];
             txtBoxEditUsername.Text = info[0];
 
             btnHideCurrentMdp.Visible = btnHideNewMdp.Visible = btnHideConfirmMdp.Visible = false;
@@ -190,9 +187,8 @@ namespace AmadiaVente.Winforms.popUp
             string nvNom = txtBoxEditNom.Text.ToString();
             string nvPrenom = txtBoxEditPrenom.Text.ToString();
             string nvUserName = txtBoxEditUsername.Text.ToString();
-            string nvFonction = txtBoxNewFonction.Text.ToString();
 
-            if (!string.IsNullOrEmpty(txtBoxEditNom.Text) && !string.IsNullOrEmpty(txtBoxEditPrenom.Text) && !string.IsNullOrEmpty(txtBoxEditUsername.Text) && !string.IsNullOrEmpty(txtBoxNewFonction.Text))
+            if (!string.IsNullOrEmpty(txtBoxEditNom.Text) && !string.IsNullOrEmpty(txtBoxEditPrenom.Text) && !string.IsNullOrEmpty(txtBoxEditUsername.Text))
             {
 
                 if (!string.IsNullOrEmpty(txtBoxEditCurrentMdp.Text))
@@ -210,7 +206,7 @@ namespace AmadiaVente.Winforms.popUp
                             if (sameMdp(newPass, confirmPass))
                             {
                                 updateMdp(newPass, userId);
-                                updateInfo(nvUserName, nvNom, nvPrenom, nvFonction, userId);
+                                updateInfo(nvUserName, nvNom, nvPrenom, userId);
                                 clearMdp();
                             }
                             else
@@ -231,7 +227,7 @@ namespace AmadiaVente.Winforms.popUp
                 }
                 else
                 {
-                    updateInfo(nvUserName, nvNom, nvPrenom, nvFonction, userId);
+                    updateInfo(nvUserName, nvNom, nvPrenom, userId);
                 }
 ;
             }

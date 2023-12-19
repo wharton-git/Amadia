@@ -30,7 +30,7 @@ namespace AmadiaVente
             {
                 connection.Open();
 
-                string query = "SELECT id_user, nom_user, prenom_user, fonction_user FROM user WHERE username = @username AND password = @password";
+                string query = "SELECT id_user, nom_user, prenom_user FROM user WHERE username = @username AND password = @password";
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
@@ -48,9 +48,8 @@ namespace AmadiaVente
                             int idUser = reader.GetInt32(0);
                             string nomUser = reader.GetString(1);
                             string prenomUser = reader.GetString(2);
-                            string fonctionUser = reader.GetString(3);
 
-                            return new string[] { nomUser, prenomUser, fonctionUser, idUser.ToString() };
+                            return new string[] { nomUser, prenomUser, idUser.ToString() };
                         }
                     }
                 }
@@ -93,8 +92,7 @@ namespace AmadiaVente
                 {
                     sessionNom = connection[0];
                     sessionPrenom = connection[1];
-                    sessionFunction = connection[2];
-                    sessionId = connection[3];
+                    sessionId = connection[2];
                     Classes.Storage.SessionId = sessionId;
                     connectAction();
                 }
@@ -154,6 +152,13 @@ namespace AmadiaVente
         {
             popUpNewAccount popUp = new popUpNewAccount();
 
+            popUp.ShowDialog();
+            popUp.Dispose();
+        }
+
+        private void btnMdpOublie_Click(object sender, EventArgs e)
+        {
+            popUpRecuperationMdp popUp = new popUpRecuperationMdp();
             popUp.ShowDialog();
             popUp.Dispose();
         }
