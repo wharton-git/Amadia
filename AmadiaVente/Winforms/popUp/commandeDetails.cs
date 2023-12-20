@@ -65,7 +65,7 @@ namespace AmadiaVente.Winforms.popUp
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT a.designation AS Désignation, qte_acheter AS Quantité, a.type_article AS Type, prix AS PRIX FROM ligneCommande lc INNER JOIN article a ON lc.id_article = a.id_article WHERE id_commande = @idCommande";
+                string sqlQuery = "SELECT a.designation AS Désignation, qte_acheter AS Quantité,CASE WHEN a.type_article = 'Equipements' THEN 'Consommables' ELSE a.type_article END AS Type, prix AS PRIX FROM ligneCommande lc INNER JOIN article a ON lc.id_article = a.id_article WHERE id_commande = @idCommande";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {

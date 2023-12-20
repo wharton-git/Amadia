@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmadiaVente", "AmadiaVente\AmadiaVente.csproj", "{E34FED67-B2CF-4847-889F-3671A02D0BF5}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstallerAmadia", "InstallerAmadia\InstallerAmadia.vdproj", "{2A5C9F82-4F8C-404B-AF9E-C3037B106733}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{E34FED67-B2CF-4847-889F-3671A02D0BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E34FED67-B2CF-4847-889F-3671A02D0BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E34FED67-B2CF-4847-889F-3671A02D0BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5C9F82-4F8C-404B-AF9E-C3037B106733}.Debug|Any CPU.ActiveCfg = Debug
+		{2A5C9F82-4F8C-404B-AF9E-C3037B106733}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

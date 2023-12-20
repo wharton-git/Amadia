@@ -29,7 +29,7 @@ namespace AmadiaVente.Winforms.functionality
             {
                 connection.Open();
 
-                string sqlQuery = "SELECT id_article AS Id, designation AS Désignation, prix_article AS Prix, prix_membre AS 'Prix (Membre)', type_article AS Type, nbr_stock AS 'Qte en Stock' FROM article";
+                string sqlQuery = "SELECT id_article AS Id, designation AS Désignation, prix_article AS Prix, prix_membre AS 'Prix (Membre)', CASE WHEN type_article = 'Equipements' THEN 'Consommables' ELSE type_article END AS Type, nbr_stock AS 'Qte en Stock' FROM article";
 
                 using (SqliteCommand command = new SqliteCommand(sqlQuery, connection))
                 {
